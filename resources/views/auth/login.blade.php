@@ -55,7 +55,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Hope UI | Responsive Bootstrap 5 Admin Dashboard Template</title>
+    <title>SUMAG | Login</title>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="/images/favicon.ico" />
@@ -98,7 +98,7 @@
                         <div class="col-md-10">
                             <div class="card card-transparent shadow-none d-flex justify-content-center mb-0 auth-card">
                                 <div class="card-body">
-                                    <a href="../../dashboard/index.html"
+                                    <a href="/"
                                         class="navbar-brand d-flex align-items-center mb-3">
                                         <!--Logo start-->
                                         <svg width="30" class="" viewBox="0 0 30 30" fill="none"
@@ -155,7 +155,7 @@
                                             <button type="submit" class="btn btn-primary">Ingresar</button>
                                         </div>
                                         <p class="mt-3 text-center">
-                                            ¿No tienes una cuenta? <a href="sign-up.html" class="text-underline">Click
+                                            ¿No tienes una cuenta? <a href="{{ route('register') }}" class="text-underline">Click
                                                 Aqui para registrarse</a>
                                         </p>
                                     </form>

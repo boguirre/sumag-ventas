@@ -16,7 +16,6 @@ class AdminController extends Controller
     {
         return view('admin.index');
     }
-
     /**
      * Show the form for creating a new resource.
      *
@@ -24,7 +23,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**

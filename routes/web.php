@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect()->route('login');
 });
 
 Route::middleware([
@@ -28,3 +28,5 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::resource('admin',AdminController::class)->names('admin');
+
+Route::get('admin/products',[AdminController::class, 'products'])->name('admin.products');

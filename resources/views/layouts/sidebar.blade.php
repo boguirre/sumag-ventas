@@ -29,7 +29,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="{{route('admin.index')}}">
+                <a class="nav-link {{ (Request::is('admin') ? 'active' : '') }}" aria-current="page" href="{{route('admin.index')}}">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.4" d="M16.0756 2H19.4616C20.8639 2 22.0001 3.14585 22.0001 4.55996V7.97452C22.0001 9.38864 20.8639 10.5345 19.4616 10.5345H16.0756C14.6734 10.5345 13.5371 9.38864 13.5371 7.97452V4.55996C13.5371 3.14585 14.6734 2 16.0756 2Z" fill="currentColor"></path>
@@ -146,7 +146,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-special" role="button" aria-expanded="false" aria-controls="sidebar-special">
+                <a class="nav-link {{ (Request::is('categoria')|Request::is('medida') ? 'active' : '') }}" data-bs-toggle="collapse" href="#sidebar-special" role="button" aria-expanded="false" aria-controls="sidebar-special">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path opacity="0.4" d="M13.3051 5.88243V6.06547C12.8144 6.05584 12.3237 6.05584 11.8331 6.05584V5.89206C11.8331 5.22733 11.2737 4.68784 10.6064 4.68784H9.63482C8.52589 4.68784 7.62305 3.80152 7.62305 2.72254C7.62305 2.32755 7.95671 2 8.35906 2C8.77123 2 9.09508 2.32755 9.09508 2.72254C9.09508 3.01155 9.34042 3.24276 9.63482 3.24276H10.6064C12.0882 3.2524 13.2953 4.43736 13.3051 5.88243Z" fill="currentColor"></path>
@@ -162,7 +162,7 @@
                 </a>
                 <ul class="sub-nav collapse" id="sidebar-special" data-bs-parent="#sidebar-menu">
                     <li class="nav-item">
-                        <a class="nav-link " href="">
+                        <a class="nav-link {{ (Request::is('categoria') ? 'active' : '') }} " href="{{route('categoria.index')}}">
                           <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
@@ -174,8 +174,8 @@
                           <span class="item-name" title="Categorias">Categorias</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="../dashboard/special-pages/calender.html">
+                    <li class="nav-item {{ (Request::is('medida') ? 'active' : '') }}">
+                        <a class="nav-link "  href="{{route('categoria.index')}}">
                             <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>

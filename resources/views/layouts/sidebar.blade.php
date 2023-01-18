@@ -7,7 +7,7 @@
             <rect x="10.5366" y="16.3945" width="16" height="4" rx="2" transform="rotate(45 10.5366 16.3945)" fill="currentColor"/>
             <rect x="10.5562" y="-0.556152" width="28" height="4" rx="2" transform="rotate(45 10.5562 -0.556152)" fill="currentColor"/>
         </svg>
-        <!--logo End-->            <h4 class="logo-title">Hope UI</h4>
+        <!--logo End-->            <h4 class="logo-title">SUMAG</h4>
     </a>
     <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
         <i class="icon">
@@ -24,7 +24,7 @@
         <ul class="navbar-nav iq-main-menu" id="sidebar-menu">
             <li class="nav-item static-item">
                 <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                    <span class="default-icon">Home</span>
+                    <span class="default-icon">General</span>
                     <span class="mini-icon">-</span>
                 </a>
             </li>
@@ -39,7 +39,7 @@
                     <span class="item-name">Dashboard</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#horizontal-menu" role="button" aria-expanded="false" aria-controls="horizontal-menu">
                     <i class="icon">
                         
@@ -124,8 +124,8 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-             <li class="nav-item">
+            </li> --}}
+             {{-- <li class="nav-item">
                 <a class="nav-link" aria-current="page" href="https://templates.iqonic.design/hope-ui/html/dist/" target="_blank">
                     <i class="icon">
                          <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -137,7 +137,7 @@
                     </i>
                     <span>Design System<span class="badge rounded-pill bg-success">UI</span></span>
                 </a>
-            </li>
+            </li> --}}
             <li><hr class="hr-horizontal"></li>
             <li class="nav-item static-item">
                 <a class="nav-link static-item disabled" href="#" tabindex="-1">

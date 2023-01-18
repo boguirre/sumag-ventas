@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\MedidaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,3 +30,5 @@ Route::middleware([
     })->name('dashboard');
 });
 Route::resource('admin',AdminController::class)->middleware('auth')->names('admin');
+Route::resource('categoria', CategoriaController::class)->middleware('auth')->names('categoria');
+Route::resource('medida', MedidaController::class)->middleware('auth')->names('medida');

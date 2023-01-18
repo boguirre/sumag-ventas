@@ -141,7 +141,7 @@
             <li><hr class="hr-horizontal"></li>
             <li class="nav-item static-item">
                 <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                    <span class="default-icon">Pages</span>
+                    <span class="default-icon">Productos</span>
                     <span class="mini-icon">-</span>
                 </a>
             </li>
@@ -153,7 +153,7 @@
                             <path fill-rule="evenodd" clip-rule="evenodd" d="M15.164 6.08279C15.4791 6.08712 15.7949 6.09145 16.1119 6.09469C19.5172 6.09469 22 8.52241 22 11.875V16.1813C22 19.5339 19.5172 21.9616 16.1119 21.9616C14.7478 21.9905 13.3837 22.0001 12.0098 22.0001C10.6359 22.0001 9.25221 21.9905 7.88813 21.9616C4.48283 21.9616 2 19.5339 2 16.1813V11.875C2 8.52241 4.48283 6.09469 7.89794 6.09469C9.18351 6.07542 10.4985 6.05615 11.8332 6.05615C12.3238 6.05615 12.8145 6.05615 13.3052 6.06579C13.9238 6.06579 14.5425 6.07427 15.164 6.08279ZM10.8518 14.7459H9.82139V15.767C9.82139 16.162 9.48773 16.4896 9.08538 16.4896C8.67321 16.4896 8.34936 16.162 8.34936 15.767V14.7459H7.30913C6.90677 14.7459 6.57311 14.4279 6.57311 14.0233C6.57311 13.6283 6.90677 13.3008 7.30913 13.3008H8.34936V12.2892C8.34936 11.8942 8.67321 11.5667 9.08538 11.5667C9.48773 11.5667 9.82139 11.8942 9.82139 12.2892V13.3008H10.8518C11.2542 13.3008 11.5878 13.6283 11.5878 14.0233C11.5878 14.4279 11.2542 14.7459 10.8518 14.7459ZM15.0226 13.1177H15.1207C15.5231 13.1177 15.8567 12.7998 15.8567 12.3952C15.8567 12.0002 15.5231 11.6727 15.1207 11.6727H15.0226C14.6104 11.6727 14.2866 12.0002 14.2866 12.3952C14.2866 12.7998 14.6104 13.1177 15.0226 13.1177ZM16.7007 16.4318H16.7988C17.2012 16.4318 17.5348 16.1139 17.5348 15.7092C17.5348 15.3143 17.2012 14.9867 16.7988 14.9867H16.7007C16.2885 14.9867 15.9647 15.3143 15.9647 15.7092C15.9647 16.1139 16.2885 16.4318 16.7007 16.4318Z" fill="currentColor"></path>
                         </svg>
                     </i>
-                    <span class="item-name">Special Pages</span>
+                    <span class="item-name">Productos</span>
                     <i class="right-icon">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -170,8 +170,8 @@
                                     </g>
                                 </svg>
                             </i>
-                          <i class="sidenav-mini-icon"> B </i>
-                          <span class="item-name">Billing</span>
+                          <i class="sidenav-mini-icon" title="Categorias"> C </i>
+                          <span class="item-name" title="Categorias">Categorias</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -183,8 +183,8 @@
                                     </g>
                                 </svg>
                             </i>
-                            <i class="sidenav-mini-icon"> C </i>
-                            <span class="item-name">Calender</span>
+                            <i class="sidenav-mini-icon" title="Medidas"> M </i>
+                            <span class="item-name" title="Medidas">Medidas</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -196,8 +196,8 @@
                                     </g>
                                 </svg>
                             </i>
-                           <i class="sidenav-mini-icon"> K </i>
-                           <span class="item-name">kanban</span>
+                           <i class="sidenav-mini-icon" title="Articulos"> AR </i>
+                           <span class="item-name" title="Articulos">Articulos</span>
                         </a>
                     </li>
                     <li class="nav-item">

@@ -27,6 +27,4 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-Route::resource('admin',AdminController::class)->names('admin');
-
-Route::get('admin/products',[AdminController::class, 'products'])->name('admin.products');
+Route::resource('admin',AdminController::class)->middleware('auth')->names('admin');

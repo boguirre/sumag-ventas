@@ -107,18 +107,22 @@
                            </a>
                            <h2 class="mb-2 text-center">Sign In</h2>
                            <p class="text-center">Login to stay connected.</p>
-                           <form>
+                           <x-jet-validation-errors class="mb-4" style="color:red"/>
+
+                           <form method="POST" action="{{ route('login') }}">
+                            @csrf
+
                               <div class="row">
                                  <div class="col-lg-12">
                                     <div class="form-group">
                                        <label for="email" class="form-label">Email</label>
-                                       <input type="email" class="form-control" id="email" aria-describedby="email" placeholder=" ">
+                                       <input type="email" class="form-control" id="email"  name="email" aria-describedby="email" placeholder=" ">
                                     </div>
                                  </div>
                                  <div class="col-lg-12">
                                     <div class="form-group">
                                        <label for="password" class="form-label">Password</label>
-                                       <input type="password" class="form-control" id="password" aria-describedby="password" placeholder=" ">
+                                       <input type="password" class="form-control" id="password" aria-describedby="password" placeholder=" " name="password">
                                     </div>
                                  </div>
                                  <div class="col-lg-12 d-flex justify-content-between">

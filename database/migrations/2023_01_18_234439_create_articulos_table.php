@@ -15,6 +15,7 @@ return new class extends Migration
     {
         Schema::create('articulos', function (Blueprint $table) {
             $table->id();
+            $table->string('codigo');
             $table->string('nombre');
             $table->string('desccripcion');
             $table->integer('stock');

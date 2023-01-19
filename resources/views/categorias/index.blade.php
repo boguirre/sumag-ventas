@@ -37,7 +37,8 @@
                       </tr>
                    </thead>
                    <tbody>
-                     @forelse ($categorias as $categoria)
+                     {{$categorias}}
+                     {{-- @forelse ($categorias as $categoria)
                       <tr>
                          <td>{{$categoria->nombre}}</td>
                          @switch($categoria->estado)
@@ -52,7 +53,7 @@
                         <tr>
                            <span>No hay datos</span>
                         </tr>
-                      @endforelse
+                      @endforelse --}}
                    </tbody>
                    <tfoot>
                       <tr>

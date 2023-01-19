@@ -34,3 +34,4 @@ Route::resource('admin',AdminController::class)->middleware('auth')->names('admi
 Route::resource('categoria', CategoriaController::class)->middleware('auth')->names('categoria');
 Route::resource('medida', MedidaController::class)->middleware('auth')->names('medida');
 Route::resource('articulo', ArticuloController::class)->middleware('auth')->names('articulo');
+Route::resource('venta', ArticuloController::class)->middleware('auth')->names('venta');

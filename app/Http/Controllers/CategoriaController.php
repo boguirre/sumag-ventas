@@ -83,7 +83,7 @@ class CategoriaController extends Controller
             'nombre' => 'required|max:50',
             
         ],[
-            'codigo.required'=>'El campo codigo es requerido.'
+            'nombre.required'=>'El campo nombre es requerido.'
 
         ]);
         $categorium->update($request->all());

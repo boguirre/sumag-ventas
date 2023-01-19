@@ -15,7 +15,8 @@ class MedidaController extends Controller
      */
     public function index()
     {
-        return view('medidas.index');
+        $medidas = Medida::all();
+        return view('medidas.index', compact('medidas'));
 
     }
 
@@ -26,7 +27,7 @@ class MedidaController extends Controller
      */
     public function create()
     {
-        //
+        return view('medidas.create');
     }
 
     /**

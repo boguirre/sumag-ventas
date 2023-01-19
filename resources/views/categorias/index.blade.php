@@ -33,7 +33,6 @@
                    <thead>
                       <tr>
                          <th>Nombre</th>
-                         <th>Estado</th>
                       </tr>
                    </thead>
                    <tbody>

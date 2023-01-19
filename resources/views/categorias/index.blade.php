@@ -37,34 +37,12 @@
                       </tr>
                    </thead>
                    <tbody>
-                     {{$categorias}}
-                     {{-- @forelse ($categorias as $categoria)
-                      <tr>
-                         <td>{{$categoria->nombre}}</td>
-                         @switch($categoria->estado)
-                             @case(1)
-                                 <td>Activo</td>
-                                 @break
-                             @default
-                                 
-                         @endswitch
-                      </tr>
-                      @empty
-                        <tr>
-                           <span>No hay datos</span>
-                        </tr>
-                      @endforelse --}}
+                     @foreach ($categorias as $categoria)
+                         <tr>
+                           <td>{{$categoria->nombre}}</td>
+                         </tr>
+                     @endforeach
                    </tbody>
-                   <tfoot>
-                      <tr>
-                         <th>Name</th>
-                         <th>Position</th>
-                         <th>Office</th>
-                         <th>Age</th>
-                         <th>Start date</th>
-                         <th>Salary</th>
-                      </tr>
-                   </tfoot>
                 </table>
              </div>
           </div>

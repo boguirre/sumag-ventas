@@ -7,5 +7,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Articulo extends Model
 {
+
+    protected $guarded = ['id'];
+
     use HasFactory;
+
+    public function medida()
+    {
+        return $this->belongsTo(Medida::class);
+    }
+
+    public function categoria()
+    {
+        return $this->belongsTo(Categoria::class);
+    }
+
+    public function images()
+    {
+        return $this->morphMany(Image::class, 'imageable');
+    }
 }

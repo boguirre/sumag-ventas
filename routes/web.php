@@ -32,6 +32,7 @@ Route::middleware([
 });
 Route::resource('admin',AdminController::class)->middleware('auth')->names('admin');
 Route::resource('categoria', CategoriaController::class)->middleware('auth')->names('categoria');
+Route::post('categoria/{categorium}/activar', [CategoriaController::class, 'activar'])->middleware('auth')->name('categoria.activar');
 Route::resource('medida', MedidaController::class)->middleware('auth')->names('medida');
 Route::resource('articulo', ArticuloController::class)->middleware('auth')->names('articulo');
 Route::resource('venta', ArticuloController::class)->middleware('auth')->names('venta');

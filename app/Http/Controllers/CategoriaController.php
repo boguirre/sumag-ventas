@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Categoria;
-use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CategoriaController extends Controller
@@ -27,7 +26,7 @@ class CategoriaController extends Controller
      */
     public function create()
     {
-        //
+        return view('categorias.create');
     }
 
     /**
@@ -38,16 +37,24 @@ class CategoriaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|max:50'
+            
+        ],[
+            'nombre.required'=>'El campo nombre es requerido.'
+
+        ]);
+        Categoria::create($request->all());
+        return redirect()->route('categoria.index')->with('guardar', 'ok');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Categoria $categoria)
+    public function show($id)
     {
         //
     }
@@ -55,34 +62,53 @@ class CategoriaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Categoria $categoria)
+    public function edit( Categoria $categorium)
     {
-        //
+        return view('categorias.edit',compact('categorium'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Categoria $categoria)
+    public function update(Request $request, Categoria $categorium)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|max:50',
+            
+        ],[
+            'nombre.required'=>'El campo nombre es requerido.'
+
+        ]);
+        $categorium->update($request->all());
+
+        return redirect()->route('categoria.index')->with('editar', 'ok');
     }
+    
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Categoria  $categoria
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Categoria $categoria)
+    public function destroy(Categoria $categorium)
     {
-        //
+        $categorium->estado = 0;
+        $categorium->save();
+        return redirect()->route('categoria.index')->with('eliminar', 'ok');
+    }
+
+    public function activar(Categoria $categorium)
+    {
+        $categorium->estado = 1;
+        $categorium->save();
+        return redirect()->route('categoria.index');
     }
 }

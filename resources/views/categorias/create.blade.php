@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="flex-wrap d-flex justify-content-between align-items-center" style="color: black">
                     <div>
-                        <h1>Registrar Medidas</h1>
+                        <h1>Registrar Categoria</h1>
                     </div>
                     {{-- <div>
                   <a href="{{route('categoria.create')}}" class="btn btn-link  btn-soft-primary">
@@ -28,15 +28,7 @@
                 </div>
             </div> --}}
                 <div class="card-body">
-                    {!! Form::open(['route' => 'medida.store', 'autocomplete' => 'off', 'files' => true, 'class' => '']) !!}
-                    <div class="form-group">
-                        <label class="form-label" for="codigo">Codigo:</label>
-                        <input type="text" class="form-control" id="codigo" name="codigo"
-                            placeholder="Ingrese El Codigo" value="{{ old('codigo') }}">
-                        @error('codigo')
-                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                        @enderror
-                    </div>
+                    {!! Form::open(['route' => 'categoria.store', 'autocomplete' => 'off', 'files' => true, 'class' => '']) !!}
                     <div class="form-group">
                         <label class="form-label" for="pwd">Nombre:</label>
                         <input type="text" class="form-control" id="nombre" name="nombre"
@@ -54,4 +46,4 @@
 
             </div>
         </div>
-@endsection
+    @endsection

@@ -15,6 +15,18 @@ return new class extends Migration
     {
         Schema::create('ventas', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('users');
+
+
+            $table->dateTime('venta_fecha');
+
+            $table->decimal('impuesto');
+            
+            $table->decimal('total');
+
+            $table->enum('estado',['VALIDO','CANCELEDO'])->default('VALIDO');
+
             $table->timestamps();
         });
     }

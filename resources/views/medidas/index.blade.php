@@ -5,26 +5,81 @@
       <div class="col-md-12">
           <div class="flex-wrap d-flex justify-content-between align-items-center" style="color: black">
               <div>
-                  <h1>Bienvenido al Sistema!</h1>
-                  <p>Podras interactuar con las diferentes funciones
-                  </p>
+                  <h1>Medidas</h1>
               </div>
-              {{-- <div>
-                  <a href="" class="btn btn-link btn-soft-light">
-                      <svg width="20" viewBox="0 0 24 24" fill="none"
-                          xmlns="http://www.w3.org/2000/svg">
-                          <path
-                              d="M11.8251 15.2171H12.1748C14.0987 15.2171 15.731 13.985 16.3054 12.2764C16.3887 12.0276 16.1979 11.7713 15.9334 11.7713H14.8562C14.5133 11.7713 14.2362 11.4977 14.2362 11.16C14.2362 10.8213 14.5133 10.5467 14.8562 10.5467H15.9005C16.2463 10.5467 16.5263 10.2703 16.5263 9.92875C16.5263 9.58722 16.2463 9.31075 15.9005 9.31075H14.8562C14.5133 9.31075 14.2362 9.03619 14.2362 8.69849C14.2362 8.35984 14.5133 8.08528 14.8562 8.08528H15.9005C16.2463 8.08528 16.5263 7.8088 16.5263 7.46728C16.5263 7.12575 16.2463 6.84928 15.9005 6.84928H14.8562C14.5133 6.84928 14.2362 6.57472 14.2362 6.23606C14.2362 5.89837 14.5133 5.62381 14.8562 5.62381H15.9886C16.2483 5.62381 16.4343 5.3789 16.3645 5.13113C15.8501 3.32401 14.1694 2 12.1748 2H11.8251C9.42172 2 7.47363 3.92287 7.47363 6.29729V10.9198C7.47363 13.2933 9.42172 15.2171 11.8251 15.2171Z"
-                              fill="currentColor"></path>
-                          <path opacity="0.4"
-                              d="M19.5313 9.82568C18.9966 9.82568 18.5626 10.2533 18.5626 10.7823C18.5626 14.3554 15.6186 17.2627 12.0005 17.2627C8.38136 17.2627 5.43743 14.3554 5.43743 10.7823C5.43743 10.2533 5.00345 9.82568 4.46872 9.82568C3.93398 9.82568 3.5 10.2533 3.5 10.7823C3.5 15.0873 6.79945 18.6413 11.0318 19.1186V21.0434C11.0318 21.5715 11.4648 22.0001 12.0005 22.0001C12.5352 22.0001 12.9692 21.5715 12.9692 21.0434V19.1186C17.2006 18.6413 20.5 15.0873 20.5 10.7823C20.5 10.2533 20.066 9.82568 19.5313 9.82568Z"
-                              fill="currentColor"></path>
-                      </svg>
-                      Announcements
+              <div>
+                  <a href="{{route('medida.create')}}" class="btn btn-link  btn-soft-primary">
+                    <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                <path fill-rule="evenodd" clip-rule="evenodd" d="M9.5 12.5537C12.2546 12.5537 14.4626 10.3171 14.4626 7.52684C14.4626 4.73663 12.2546 2.5 9.5 2.5C6.74543 2.5 4.53737 4.73663 4.53737 7.52684C4.53737 10.3171 6.74543 12.5537 9.5 12.5537ZM9.5 15.0152C5.45422 15.0152 2 15.6621 2 18.2464C2 20.8298 5.4332 21.5 9.5 21.5C13.5448 21.5 17 20.8531 17 18.2687C17 15.6844 13.5668 15.0152 9.5 15.0152ZM19.8979 9.58786H21.101C21.5962 9.58786 22 9.99731 22 10.4995C22 11.0016 21.5962 11.4111 21.101 11.4111H19.8979V12.5884C19.8979 13.0906 19.4952 13.5 18.999 13.5C18.5038 13.5 18.1 13.0906 18.1 12.5884V11.4111H16.899C16.4027 11.4111 16 11.0016 16 10.4995C16 9.99731 16.4027 9.58786 16.899 9.58786H18.1V8.41162C18.1 7.90945 18.5038 7.5 18.999 7.5C19.4952 7.5 19.8979 7.90945 19.8979 8.41162V9.58786Z" fill="currentColor"></path>                            </svg>                        
+                      Registrar
                   </a>
-              </div> --}}
+              </div>
           </div>
       </div>
   </div>
 </div>
+@endsection
+@section('content')
+<div class="row">
+    <div class="col-sm-12">
+       <div class="card">
+          <div class="card-header d-flex justify-content-between">
+             <div class="header-title">
+                <h4 class="card-title"> Lista De Medidas </h4>
+             </div>
+          </div>
+          <div class="card-body">
+             <div class="table-responsive">
+                <table id="datatable" class="table table-striped" data-toggle="data-table">
+                   <thead>
+                      <tr>
+                        <th>ID</th>
+
+                         <th>Codigo</th>
+                         <th>Nombre</th>
+                         <th  class="text-center ">Acciones</th>
+
+                         {{-- <th>Estado</th> --}}
+                      </tr>
+                   </thead>
+                   <tbody>
+                     @foreach ($medidas as $medida)
+                      <tr>
+                        <td>{{$medida->id}}</td>
+
+                        <td>{{$medida->codigo}}</td>
+
+                         <td>{{$medida->nombre}}</td>
+                         <td class="text-center">
+                           <ul class="table-controls">
+                               <form action="{{route('medida.destroy', $medida)}}" method="POST" class="casino">
+                                   @csrf
+                                   @method('DELETE')
+                                   <a href="{{route('medida.edit',$medida)}}" class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" data-original-title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 p-1 br-8 mb-1"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
+
+                                   <button type="submit" class="btn btn-danger" style=""><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash p-1 br-8 mb-1">
+                                       <polyline points="3 6 5 6 21 6"></polyline>
+                                       <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                   </svg></button>
+
+                               </form>
+                               
+                               
+               
+                           </ul>
+                       </td>
+                      </tr>
+                     
+                      @endforeach
+                   </tbody>
+                   
+                </table>
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+
+
+
+
 @endsection

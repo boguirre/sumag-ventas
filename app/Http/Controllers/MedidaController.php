@@ -15,7 +15,8 @@ class MedidaController extends Controller
      */
     public function index()
     {
-        return view('medidas.index');
+        $medidas = Medida::where('estado',1)->get();
+        return view('medidas.index', compact('medidas'));
 
     }
 
@@ -26,7 +27,7 @@ class MedidaController extends Controller
      */
     public function create()
     {
-        //
+        return view('medidas.create');
     }
 
     /**
@@ -37,7 +38,19 @@ class MedidaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'codigo' => 'required|max:50',
+
+            'nombre' => 'required|max:50',
+            
+        ],[
+            'nombre.required'=>'El campo nombre es requerido.',
+            'codigo.required'=>'El campo codigo es requerido.'
+
+        ]);
+        Medida::create($request->all());
+        return redirect()->route('medida.index')->with('guardar', 'ok');
+
     }
 
     /**
@@ -59,7 +72,7 @@ class MedidaController extends Controller
      */
     public function edit(Medida $medida)
     {
-        //
+        return view('medidas.edit',compact('medida'));
     }
 
     /**
@@ -71,17 +84,27 @@ class MedidaController extends Controller
      */
     public function update(Request $request, Medida $medida)
     {
-        //
+        $request->validate([
+            'codigo' => 'required|max:50',
+
+            'nombre' => 'required|max:50',
+            
+        ],[
+            'nombre.required'=>'El campo nombre es requerido.',
+            'codigo.required'=>'El campo codigo es requerido.'
+
+        ]);
+        $medida->update($request->all());
+
+        return redirect()->route('medida.index')->with('editar', 'ok');
+
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Medida  $medida
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(Medida $medida)
     {
-        //
+        $medida->estado = 0;
+        $medida->save();
+        return redirect()->route('medida.index')->with('eliminar', 'ok');
+
     }
 }

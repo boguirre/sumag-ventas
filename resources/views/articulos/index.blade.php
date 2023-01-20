@@ -51,9 +51,16 @@
                             <tbody>
                                 @foreach ($articulos as $articulo)
                                     <tr>
-                                        <td>{{ $articulo->id }}</td>
+                                        <td>
+                                                <div style="background: {{ $articulo->estado == 1 ? 'green' : 'red' }}; width: 25px; height: 25px; color: white" class="text-center">
+                                                    {{ $articulo->id }}
+                                                </div>
+                                               
+                                                    
+                                        </td>
 
-                                        <td>{{ $articulo->codigo }}</td>
+                                        <td >
+                                            {{ $articulo->codigo }}</td>
 
                                         <td>{{ $articulo->nombre }}</td>
 
@@ -82,16 +89,13 @@
                                                             </path>
                                                         </svg></a>
 
-                                                    <button type="submit" class="btn btn-danger" style=""><svg
-                                                            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
-                                                            viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                                                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-                                                            class="feather feather-trash p-1 br-8 mb-1">
-                                                            <polyline points="3 6 5 6 21 6"></polyline>
-                                                            <path
-                                                                d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2">
-                                                            </path>
-                                                        </svg></button>
+                                                    @if ($articulo->estado == 1)
+                                                        <button type="submit" class="btn btn-danger" style="">Dar
+                                                            baja</button>
+                                                    @else
+                                                        <button type="submit" class="btn btn-success"
+                                                            style="">Activar</button>
+                                                    @endif
 
                                                 </form>
 

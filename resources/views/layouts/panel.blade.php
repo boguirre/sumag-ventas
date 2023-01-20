@@ -33,7 +33,8 @@
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 
-    
+
+
 
 </head>
 
@@ -124,7 +125,7 @@
 
     <!-- Wrapper End-->
     <!-- offcanvas start -->
-    
+
     <!-- Library Bundle Script -->
     <script src="/js/core/libs.min.js"></script>
 
@@ -155,6 +156,21 @@
 
     <!-- App Script -->
     <script src="/js/hope-ui.js" defer></script>
+
+    <script>
+        document.getElementById("file").addEventListener('change', cambiarImagen);
+
+        function cambiarImagen(event) {
+            var file = event.target.files[0];
+
+            var reader = new FileReader();
+            reader.onload = (event) => {
+                document.getElementById("picture").setAttribute('src', event.target.result);
+            };
+
+            reader.readAsDataURL(file);
+        }
+    </script>
 </body>
 
 </html>

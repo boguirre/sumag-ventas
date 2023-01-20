@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Venta;
 use App\Http\Controllers\Controller;
+use App\Models\Articulo;
 use Illuminate\Http\Request;
 
 class VentaController extends Controller
@@ -27,7 +28,9 @@ class VentaController extends Controller
      */
     public function create()
     {
-        //
+        $articulos = Articulo::get();
+
+        return view('ventas.create', compact('articulos'));
     }
 
     /**

@@ -30,7 +30,8 @@
     <!-- RTL Css -->
     <link rel="stylesheet" href="/css/rtl.min.css" />
 
-    
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+
 
     
 
@@ -119,7 +120,8 @@
         </footer>
         <!-- Footer Section End -->
     </main>
-    
+    @yield('scripts')
+
     <!-- Wrapper End-->
     <!-- offcanvas start -->
     

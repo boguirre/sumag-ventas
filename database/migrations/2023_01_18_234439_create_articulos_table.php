@@ -17,10 +17,12 @@ return new class extends Migration
             $table->id();
             $table->string('codigo');
             $table->string('nombre');
-            $table->string('desccripcion');
+            $table->string('descripcion');
             $table->integer('stock');
+            $table->integer('stock_minimo');
             $table->double('precio_unitario');
             $table->double('precio_venta');
+            $table->integer('estado')->default(1);
             $table->unsignedBigInteger('categoria_id');
             $table->foreign('categoria_id')->references('id')->on('categorias')->onDelete('cascade');
             $table->unsignedBigInteger('medida_id');

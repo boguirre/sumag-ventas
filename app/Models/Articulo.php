@@ -24,6 +24,6 @@ class Articulo extends Model
 
     public function images()
     {
-        return $this->morphMany(Image::class, 'imageable');
+        return $this->morphOne(Image::class, 'imageable');
     }
 }

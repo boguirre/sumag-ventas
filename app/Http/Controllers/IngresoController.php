@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Articulo;
 use App\Models\Ingreso;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class IngresoController extends Controller
 {
@@ -28,7 +30,7 @@ class IngresoController extends Controller
      */
     public function create()
     {
-        $articulos = Articulo::get();
+        $articulos = Articulo::where('estado', 1)->get();
         return view('ingresos.create', compact('articulos'));
     }
 
@@ -40,7 +42,15 @@ class IngresoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ingreso = Ingreso::create($request->all()+[
+            'user_id'=>Auth::user()->id,
+            'ingreso_fecha'=>Carbon::now('America/Lima'),
+        ]);
+        foreach ($request->articulo_id as $key => $articulo) {
+            $results[] = array("articulo_id"=>$request->articulo_id[$key], "cantidad"=>$request->quantity[$key]);
+        }
+        $ingreso->ingresoDetalles()->createMany($results);
+        return redirect()->route('ingreso.index');
     }
 
     /**

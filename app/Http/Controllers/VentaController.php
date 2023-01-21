@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Venta;
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class VentaController extends Controller
 {
@@ -41,7 +43,16 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $venta = Venta::create($request->all()+[
+            'user_id'=>Auth::user()->id,
+            'venta_fecha'=>Carbon::now('America/Lima'),
+        ]);
+        foreach ($request->articulo_id as $key => $articulo) {
+            $results[] = array("articulo_id"=>$request->articulo_id[$key], "cantidad"=>$request->cantidad[$key], "precio"=>$request->precio[$key], "descuento"=>$request->descuento[$key]);
+        }
+        $venta->ventaDetalles()->createMany($results);
+        return redirect()->route('venta.index');
+
     }
 
     /**

@@ -54,7 +54,6 @@
                                         <td>{{ $ventum->venta_fecha }}</td>
 
                                         <td>{{ $ventum->total }}</td>
-                                        @if ($ventum->status == 'VALIDO')
 
                                         <td>{{ $venta->total }}</td>
                                         @if ($venta->estado == 'VALIDO')

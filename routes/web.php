@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\MedidaController;
 use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Route;
@@ -37,3 +38,4 @@ Route::post('categoria/{categorium}/activar', [CategoriaController::class, 'acti
 Route::resource('medida', MedidaController::class)->middleware('auth')->names('medida');
 Route::resource('articulo', ArticuloController::class)->middleware('auth')->names('articulo');
 Route::resource('venta', VentaController::class)->middleware('auth')->names('venta');
+Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');

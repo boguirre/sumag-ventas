@@ -28,8 +28,8 @@ class ArticuloController extends Controller
      */
     public function create()
     {
-        $categorias = Categoria::all();
-        $medidas = Medida::all();
+        $categorias = Categoria::where('estado', 1)->get();
+        $medidas = Medida::where('estado', 1)->get();
         return view('articulos.create', compact('categorias', 'medidas'));
     }
 

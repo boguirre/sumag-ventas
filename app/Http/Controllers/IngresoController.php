@@ -59,9 +59,14 @@ class IngresoController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Ingreso $ingreso)
     {
-        //
+        $subtotal = 0 ;
+        $ingresoDetalles = $ingreso->ingresoDetalles;
+        foreach ($ingresoDetalles as $ingresoDetalle) {
+            $subtotal += $ingresoDetalle->cantidad * $ingresoDetalle->cantidad;
+        }
+        return view('ingresos.show', compact('ingreso', 'ingresoDetalles'));
     }
 
     /**

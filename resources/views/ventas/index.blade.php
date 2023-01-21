@@ -55,8 +55,7 @@
 
                                         <td>{{ $ventum->total }}</td>
 
-                                        <td>{{ $venta->total }}</td>
-                                        @if ($venta->estado == 'VALIDO')
+                                        @if ($ventum->estado == 'VALIDO')
                                         <td>
                                             <a class="jsgrid-button btn btn-success" href="" title="Editar">
                                                 Activo <i class="fas fa-check"></i>

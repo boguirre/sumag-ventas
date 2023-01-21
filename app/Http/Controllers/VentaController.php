@@ -61,9 +61,15 @@ class VentaController extends Controller
      * @param  \App\Models\Venta  $venta
      * @return \Illuminate\Http\Response
      */
-    public function show(Venta $venta)
+    public function show(Venta $ventum)
     {
-        //
+        $subtotal = 0 ;
+        $ventaDetalles = $ventum->ventaDetalles;
+        foreach ($ventaDetalles as $ventaDetalle) {
+            $subtotal += $ventaDetalle->cantidad*$ventaDetalle->precio-$ventaDetalle->cantidad* $ventaDetalle->precio*$ventaDetalle->descuento/100;
+        }
+        return view('ventas.show', compact('ventum', 'ventaDetalles', 'subtotal'));
+    
     }
 
     /**

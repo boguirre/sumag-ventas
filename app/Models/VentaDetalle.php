@@ -9,8 +9,10 @@ class VentaDetalle extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
-
+    public function venta(){
+        return $this->belongsTo(Venta::class);
+    }
     public function articulo(){
-        return $this->belongsTo(Articulo::class);
+        return $this->belongsTo(Articulo::class,'articulo_id');
     }
 }

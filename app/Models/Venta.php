@@ -10,8 +10,8 @@ class Venta extends Model
     use HasFactory;
     protected $guarded = ['id'];
 
-    public function user(){
-        return $this->belongsTo(User::class);
+    public function users(){
+        return $this->belongsTo(User::class,'user_id');
     }
     public function ventaDetalles(){
         return $this->hasMany(VentaDetalle::class);

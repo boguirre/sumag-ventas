@@ -121,6 +121,8 @@
         </footer>
         <!-- Footer Section End -->
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
+
     @yield('scripts')
 
     <!-- Wrapper End-->
@@ -157,7 +159,6 @@
     <!-- App Script -->
     <script src="/js/hope-ui.js" defer></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.29/dist/sweetalert2.all.min.js"></script>
 
     <script>
         document.getElementById("file").addEventListener('change', cambiarImagen);

@@ -201,12 +201,14 @@ function agregar() {
             $('#detalles').append(fila);
         } else {
             Swal.fire({
+                icon: 'error',
                 type: 'error',
                 text: 'La cantidad a vender supera el stock.',
             })
         }
     } else {
         Swal.fire({
+            icon: 'error',
             type: 'error',
             text: 'Rellene todos los campos del detalle de la venta.',
         })

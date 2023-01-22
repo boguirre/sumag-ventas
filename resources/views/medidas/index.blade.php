@@ -51,7 +51,7 @@
                          <td>{{$medida->nombre}}</td>
                          <td class="text-center">
                            <ul class="table-controls">
-                               <form action="{{route('medida.destroy', $medida)}}" method="POST" class="casino">
+                               <form action="{{route('medida.destroy', $medida)}}" method="POST" class="casino formulario">
                                    @csrf
                                    @method('DELETE')
                                    <a href="{{route('medida.edit',$medida)}}" class="bs-tooltip" data-bs-toggle="tooltip" data-bs-placement="top" title="Editar" data-original-title="Edit"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit-2 p-1 br-8 mb-1"><path d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z"></path></svg></a>
@@ -78,8 +78,31 @@
        </div>
     </div>
  </div>
+@endsection
+
+@section('scripts')
+                <script>
+                    $('.formulario').submit(function(e) {
+                        e.preventDefault()
+
+                        Swal.fire({
+                            title: 'Estas seguro de desactivar?',
+                            text: "¡No podrás revertir esto!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Si!',
+                            cancelButtonText: 'Cancelar',
+                        }).then((result) => {
+                            if (result.value) {
 
 
+                                this.submit()
 
+                            }
+                        })
 
+                    })
+                </script>
 @endsection

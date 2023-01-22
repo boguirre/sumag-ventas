@@ -51,7 +51,7 @@ class VentaController extends Controller
             $results[] = array("articulo_id"=>$request->articulo_id[$key], "cantidad"=>$request->cantidad[$key], "precio"=>$request->precio[$key], "descuento"=>$request->descuento[$key]);
         }
         $venta->ventaDetalles()->createMany($results);
-        return redirect()->route('venta.index');
+        return redirect()->route('venta.index')->with('guardar', 'ok');
 
     }
 

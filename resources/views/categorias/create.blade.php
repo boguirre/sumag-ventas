@@ -28,7 +28,7 @@
                 </div>
             </div> --}}
                 <div class="card-body">
-                    {!! Form::open(['route' => 'categoria.store', 'autocomplete' => 'off', 'files' => true, 'class' => '']) !!}
+                    {!! Form::open(['route' => 'categoria.store', 'autocomplete' => 'off', 'files' => true, 'class' => 'formulario']) !!}
                     <div class="form-group">
                         <label class="form-label" for="pwd">Nombre:</label>
                         <input type="text" class="form-control" id="nombre" name="nombre"
@@ -47,3 +47,29 @@
             </div>
         </div>
     @endsection
+@section('scripts')
+                <script>
+                    $('.formulario').submit(function(e) {
+                        e.preventDefault()
+
+                        Swal.fire({
+                            title: 'Estas seguro de guardar?',
+                            text: "¡No podrás revertir esto!",
+                            icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Si, Guardar!',
+                            cancelButtonText: 'Cancelar',
+                        }).then((result) => {
+                            if (result.value) {
+
+
+                                this.submit()
+
+                            }
+                        })
+
+                    })
+                </script>
+@endsection

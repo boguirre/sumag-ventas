@@ -109,6 +109,6 @@ class CategoriaController extends Controller
     {
         $categorium->estado = 1;
         $categorium->save();
-        return redirect()->route('categoria.index');
+        return redirect()->route('categoria.index')->with('activar', 'ok');
     }
 }

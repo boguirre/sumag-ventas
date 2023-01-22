@@ -73,8 +73,9 @@
                                         <td>{{ $articulo->precio_venta }}</td>
                                         <td class="text-center">
                                             <ul class="table-controls">
-                                                <form action="{{ route('articulo.destroy', $articulo) }}" method="POST"
-                                                    class="casino">
+                                                    @if ($articulo->estado == 1)
+                                                    <form action="{{ route('articulo.destroy', $articulo) }}" method="POST"
+                                                    class="casino formulario">
                                                     @csrf
                                                     @method('DELETE')
                                                     <a href="{{ route('articulo.edit', $articulo) }}" class="bs-tooltip"
@@ -89,18 +90,33 @@
                                                             </path>
                                                         </svg></a>
 
-                                                    @if ($articulo->estado == 1)
                                                         <button type="submit" class="btn btn-danger" style="">Dar
                                                             baja</button>
-                                                    @else
-                                                        <button type="submit" class="btn btn-success"
+
+                                                        
+                                                        </form>
+                                                    
+                                                @else
+                                                <form action="{{ route('articulo.destroy', $articulo) }}" method="POST"
+                                                class="casino formulario2">
+                                                @csrf
+                                                @method('DELETE')
+                                                <a href="{{ route('articulo.edit', $articulo) }}" class="bs-tooltip"
+                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"
+                                                        data-original-title="Edit"><svg xmlns="http://www.w3.org/2000/svg"
+                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                            stroke-linejoin="round"
+                                                            class="feather feather-edit-2 p-1 br-8 mb-1">
+                                                            <path
+                                                                d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
+                                                            </path>
+                                                        </svg></a>
+                                                <button type="submit" class="btn btn-success"
                                                             style="">Activar</button>
-                                                    @endif
 
                                                 </form>
-
-
-
+                                                @endif
                                             </ul>
                                         </td>
                                     </tr>
@@ -113,4 +129,56 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+                <script>
+                    $('.formulario').submit(function(e) {
+                        e.preventDefault()
+
+                        Swal.fire({
+                            title: 'Estas seguro de dar de baja?',
+                            text: "¡No podrás revertir esto!",
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Dar Baja',
+                            cancelButtonText: 'Cancelar',
+                        }).then((result) => {
+                            if (result.value) {
+
+
+                                this.submit()
+
+                            }
+                        })
+
+                    })
+                </script>
+
+<script>
+    $('.formulario2').submit(function(e) {
+        e.preventDefault()
+
+        Swal.fire({
+            title: 'Estas seguro de Activar este articulo?',
+            text: "¡No podrás revertir esto!",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si Activar',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.value) {
+
+
+                this.submit()
+
+            }
+        })
+
+    })
+</script>
 @endsection

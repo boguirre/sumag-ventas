@@ -56,7 +56,7 @@
                                         <td class="text-center">
                                             <ul class="table-controls">
                                                 <form action="{{ route('categoria.destroy', $categorium) }}" method="POST"
-                                                    class="casino">
+                                                    class="casino formulario">
                                                     @csrf
                                                     @method('DELETE')
                                                     <a href="{{ route('categoria.edit', $categorium) }}"
@@ -86,7 +86,7 @@
                                         <td class="text-center">
                                             <ul class="table-controls">
                                                 <form action="{{ route('categoria.activar', $categorium) }}" method="POST"
-                                                    class="casino">
+                                                    class="casino formulario2">
                                                     @csrf
                                                     @method('POST')
                                                     <button type="submit"
@@ -105,4 +105,55 @@
             </div>
 
         </div>
+    @endsection
+
+
+    @section('scripts')
+        <script>
+            $('.formulario').submit(function(e) {
+                e.preventDefault()
+
+                Swal.fire({
+                    title: 'Estas seguro de Desactivar esta categoria?',
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si!',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.value) {
+
+
+                        this.submit()
+
+                    }
+                })
+
+            })
+        </script>
+
+        <script>
+            $('.formulario2').submit(function(e) {
+                e.preventDefault()
+
+                Swal.fire({
+                    title: 'Estas seguro de Activar esta categoria?',
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si!',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.value) {
+
+
+                        this.submit()
+
+                    }
+                })
+
+            })
+        </script>
     @endsection

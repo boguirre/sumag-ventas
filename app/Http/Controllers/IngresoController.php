@@ -50,7 +50,7 @@ class IngresoController extends Controller
             $results[] = array("articulo_id"=>$request->articulo_id[$key], "cantidad"=>$request->quantity[$key]);
         }
         $ingreso->ingresoDetalles()->createMany($results);
-        return redirect()->route('ingreso.index');
+        return redirect()->route('ingreso.index')->with('guardar', 'ok');
     }
 
     /**

@@ -28,7 +28,7 @@
                 </div>
             </div> --}}
                 <div class="card-body">
-                    {!! Form::open(['route' => 'ingreso.store', 'autocomplete' => 'off', 'files' => true, 'class' => '']) !!}
+                    {!! Form::open(['route' => 'ingreso.store', 'autocomplete' => 'off', 'files' => true, 'class' => 'formulario']) !!}
                     
                     <div class="row">
                         <div class="col-md-6">
@@ -125,6 +125,32 @@
 @endsection
 
 @section('scripts')
+
+<script>
+    $('.formulario').submit(function(e) {
+        e.preventDefault()
+
+        Swal.fire({
+            title: 'Estas seguro de guardar?',
+            text: "¡No podrás revertir esto!",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Guardar!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.value) {
+
+
+                this.submit()
+
+            }
+        })
+
+    })
+</script>
+
 <script>
     $(document).ready(function () {
     $("#agregar").click(function () {

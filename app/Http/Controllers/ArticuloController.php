@@ -76,7 +76,7 @@ class ArticuloController extends Controller
             ]);
         }
 
-        return redirect()->route('articulo.index');
+        return redirect()->route('articulo.index')->with('guardar', 'ok');
     }
 
     /**
@@ -179,7 +179,7 @@ class ArticuloController extends Controller
             'estado' => $estado
         ]);
 
-        return redirect()->route('articulo.index');
+        return redirect()->route('articulo.index')->with('baja', 'ok');
     }
     
 }

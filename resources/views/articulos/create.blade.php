@@ -28,7 +28,7 @@
                 </div>
             </div> --}}
                 <div class="card-body">
-                    {!! Form::open(['route' => 'articulo.store', 'autocomplete' => 'off', 'files' => true, 'class' => '']) !!}
+                    {!! Form::open(['route' => 'articulo.store', 'autocomplete' => 'off', 'files' => true, 'class' => 'formulario']) !!}
                     <div class="form-group">
                         <label class="form-label" for="pwd">Codigo:</label>
                         <input type="text" class="form-control" id="codigo" name="codigo"
@@ -93,13 +93,13 @@
                     </div>
 
                     <div class="form-group">
-                      <label class="form-label" for="pwd">Stock Minimo:</label>
-                      <input type="number" class="form-control" id="stock_minimo" name="stock_minimo"
-                          placeholder="Ingrese El stock minimo" value="{{ old('stock_minimo') }}">
-                      @error('stock_minimo')
-                          <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                      @enderror
-                  </div>
+                        <label class="form-label" for="pwd">Stock Minimo:</label>
+                        <input type="number" class="form-control" id="stock_minimo" name="stock_minimo"
+                            placeholder="Ingrese El stock minimo" value="{{ old('stock_minimo') }}">
+                        @error('stock_minimo')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
 
                     <div class="form-group">
                         <label class="form-label" for="pwd">Precio Unitario:</label>
@@ -120,30 +120,59 @@
                     </div>
 
                     <div class="form-group">
-                      <label class="form-label" for="pwd">Seleccione una imagen:</label>
-                      <input type="file" class="form-control" id="file" name="file" accept="image/*">
-                      @error('file')
-                          <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                      @enderror
+                        <label class="form-label" for="pwd">Seleccione una imagen:</label>
+                        <input type="file" class="form-control" id="file" name="file" accept="image/*">
+                        @error('file')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
                     </div>
 
                     <div class="grid grid-cols-2 gap-4 form-group">
-                          <figure>
+                        <figure>
                             @isset($articulo->images)
-                            <img id="picture" class="form-group" style="width: 250px; height: 250px; " src="{{Storage::url($articulo->images->url)}}" alt="">
+                                <img id="picture" class="form-group" style="width: 250px; height: 250px; "
+                                    src="{{ Storage::url($articulo->images->url) }}" alt="">
                             @else
-                            <img id="picture" class="w-full h-64 object-cover object-center" style="width: 250px; height: 250px; " alt="">
+                                <img id="picture" class="w-full h-64 object-cover object-center"
+                                    style="width: 250px; height: 250px; " alt="">
                             @endisset
-                                  
-                          </figure>
-                     <div>
-                    <button type="submit" class="btn btn-primary">Registrar</button>
-                    <button type="submit" class="btn btn-danger">Cancelar</button>
-                    {!! Form::close() !!}
+
+                        </figure>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Registrar</button>
+                            <button type="submit" class="btn btn-danger">Cancelar</button>
+                            {!! Form::close() !!}
+                        </div>
+
+
+
+                    </div>
                 </div>
+@endsection
+
+@section('scripts')
+                <script>
+                    $('.formulario').submit(function(e) {
+                        e.preventDefault()
+
+                        Swal.fire({
+                            title: 'Estas seguro de guardar?',
+                            text: "¡No podrás revertir esto!",
+                            icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Si, Guardar!',
+                            cancelButtonText: 'Cancelar',
+                        }).then((result) => {
+                            if (result.value) {
 
 
+                                this.submit()
 
-            </div>
-        </div>
-    @endsection
+                            }
+                        })
+
+                    })
+                </script>
+@endsection

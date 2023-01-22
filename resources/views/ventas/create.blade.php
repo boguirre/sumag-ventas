@@ -151,29 +151,16 @@
 
 @section('scripts')
 <script>
-    $('.formulario').submit(function(e) {
-        e.preventDefault()
-
-        Swal.fire({
-            title: 'Estas seguro de guardar?',
-            text: "¡No podrás revertir esto!",
-            icon: 'info',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Si, Guardar!',
-            cancelButtonText: 'Cancelar',
-        }).then((result) => {
-            if (result.value) {
-
-
-                this.submit()
-
-            }
-        })
-
-    })
+    function evaluar() {
+        if (total > 0) {
+            $("#guardar").show();
+        } else {
+            $("#guardar").hide();
+        }
+    }
+    evaluar()
 </script>
+
 <script>
     $(document).ready(function () {
     $("#agregar").click(function () {
@@ -259,5 +246,29 @@ function totales() {
         $("#fila" + index).remove();
         evaluar();
     }
+</script>
+<script>
+    $('.formulario').submit(function(e) {
+        e.preventDefault()
+
+        Swal.fire({
+            title: 'Estas seguro de guardar?',
+            text: "¡No podrás revertir esto!",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Guardar!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.value) {
+
+
+                this.submit()
+
+            }
+        })
+
+    })
 </script>
 @endsection

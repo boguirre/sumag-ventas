@@ -125,8 +125,18 @@
 @endsection
 
 @section('scripts')
-
 <script>
+    function evaluar() {
+        if (total_pagar > 0) {
+            $("#guardar").show();
+        } else {
+            $("#guardar").hide();
+        }
+    }
+    evaluar()
+</script>
+<script>
+    
     $('.formulario').submit(function(e) {
         e.preventDefault()
 

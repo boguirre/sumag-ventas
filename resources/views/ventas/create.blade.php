@@ -37,16 +37,20 @@
                             <select class="form-control" name="articulo_id" id="articulo_id">
                                 <option value="" disabled selected>Selecccione un producto</option>
                                 @foreach ($articulos as $articulo)
-                                <option value="{{$articulo->id}}_{{$articulo->stock}}_{{$articulo->precio_venta}}">{{$articulo->nombre}}</option>
+                                <option value="{{$articulo->id}}_{{$articulo->stock}}_{{$articulo->precio_venta}}_{{$articulo->codigo}}">{{$articulo->nombre}}</option>
                                 @endforeach
                             </select>
 
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-2">
+                            <label for="">Codigo</label>
+                            <input type="text" name="" id="codigo" value="" class="form-control" disabled>
+                          </div>
+                        <div class="col-md-2">
                             <label for="">Stock actual</label>
                             <input type="text" name="" id="stock" value="" class="form-control" disabled>
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-2">
                         <label for="">Precio</label>
                         <input type="text" name="" id="precio_venta" value="" class="form-control" disabled>
                 </div>
@@ -87,6 +91,7 @@
                                 <thead>
                                     <tr>
                                         <th>Eliminar</th>
+                                        <th>Codigo</th>
                                         <th>Producto</th>
                                         <th>Precio Venta (PEN)</th>
                                         <th>Descuento</th>
@@ -96,7 +101,7 @@
                                 </thead>
                                 <tfoot>
                                     <tr>
-                                        <th colspan="5">
+                                        <th colspan="6">
                                             <p align="right">TOTAL:</p>
                                         </th>
                                         <th>
@@ -104,7 +109,7 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th colspan="5">
+                                        <th colspan="6">
                                             <p align="right">TOTAL IMPUESTO (18%):</p>
                                         </th>
                                         <th>
@@ -112,7 +117,7 @@
                                         </th>
                                     </tr>
                                     <tr>
-                                        <th colspan="5">
+                                        <th colspan="6">
                                             <p align="right">TOTAL PAGAR:</p>
                                         </th>
                                         <th>
@@ -181,6 +186,7 @@ var cont = 0;
 $("#articulo_id").change(mostrarValores);
 function mostrarValores() {
     datosProducto = document.getElementById('articulo_id').value.split('_');
+    $("#codigo").val(datosProducto[3]);
     $("#precio_venta").val(datosProducto[2]);
     $("#stock").val(datosProducto[1]);
 };
@@ -193,13 +199,14 @@ function agregar() {
     quantity = $("#cantidad").val();
     discount = $("#descuento").val();
     price = $("#precio_venta").val();
+    codigo = $("#codigo").val();
     stock = $("#stock").val();
     impuesto = $("#impuesto").val();
     if (product_id != "" && quantity != "" && quantity > 0 && discount != "" && price != "") {
         if (parseInt(stock) >= parseInt(quantity)) {
             subtotal[cont] = (quantity * price) - (quantity * price * discount / 100);
             total = total + subtotal[cont];
-            var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont + ');">                            <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                            <path fill-rule="evenodd" clip-rule="evenodd" d="M20.2871 5.24297C20.6761 5.24297 21 5.56596 21 5.97696V6.35696C21 6.75795 20.6761 7.09095 20.2871 7.09095H3.71385C3.32386 7.09095 3 6.75795 3 6.35696V5.97696C3 5.56596 3.32386 5.24297 3.71385 5.24297H6.62957C7.22185 5.24297 7.7373 4.82197 7.87054 4.22798L8.02323 3.54598C8.26054 2.61699 9.0415 2 9.93527 2H14.0647C14.9488 2 15.7385 2.61699 15.967 3.49699L16.1304 4.22698C16.2627 4.82197 16.7781 5.24297 17.3714 5.24297H20.2871ZM18.8058 19.134C19.1102 16.2971 19.6432 9.55712 19.6432 9.48913C19.6626 9.28313 19.5955 9.08813 19.4623 8.93113C19.3193 8.78413 19.1384 8.69713 18.9391 8.69713H5.06852C4.86818 8.69713 4.67756 8.78413 4.54529 8.93113C4.41108 9.08813 4.34494 9.28313 4.35467 9.48913C4.35646 9.50162 4.37558 9.73903 4.40755 10.1359C4.54958 11.8992 4.94517 16.8102 5.20079 19.134C5.38168 20.846 6.50498 21.922 8.13206 21.961C9.38763 21.99 10.6811 22 12.0038 22C13.2496 22 14.5149 21.99 15.8094 21.961C17.4929 21.932 18.6152 20.875 18.8058 19.134Z" fill="currentColor"></path>                            </svg>                        </button></td> <td><input type="hidden" name="articulo_id[]" value="' + product_id + '">' + producto + '</td> <td> <input type="hidden" name="precio[]" value="' + parseFloat(price).toFixed(2) + '"> <input class="form-control" type="number" value="' + parseFloat(price).toFixed(2) + '" disabled> </td> <td> <input type="hidden" name="descuento[]" value="' + parseFloat(discount) + '"> <input class="form-control" type="number" value="' + parseFloat(discount) + '" disabled> </td> <td> <input type="hidden" name="cantidad[]" value="' + quantity + '"> <input type="number" value="' + quantity + '" class="form-control" disabled> </td> <td align="right">s/' + parseFloat(subtotal[cont]).toFixed(2) + '</td></tr>';
+            var fila = '<tr class="selected" id="fila' + cont + '"><td><button type="button" class="btn btn-danger btn-sm" onclick="eliminar(' + cont + ');">                            <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                            <path fill-rule="evenodd" clip-rule="evenodd" d="M20.2871 5.24297C20.6761 5.24297 21 5.56596 21 5.97696V6.35696C21 6.75795 20.6761 7.09095 20.2871 7.09095H3.71385C3.32386 7.09095 3 6.75795 3 6.35696V5.97696C3 5.56596 3.32386 5.24297 3.71385 5.24297H6.62957C7.22185 5.24297 7.7373 4.82197 7.87054 4.22798L8.02323 3.54598C8.26054 2.61699 9.0415 2 9.93527 2H14.0647C14.9488 2 15.7385 2.61699 15.967 3.49699L16.1304 4.22698C16.2627 4.82197 16.7781 5.24297 17.3714 5.24297H20.2871ZM18.8058 19.134C19.1102 16.2971 19.6432 9.55712 19.6432 9.48913C19.6626 9.28313 19.5955 9.08813 19.4623 8.93113C19.3193 8.78413 19.1384 8.69713 18.9391 8.69713H5.06852C4.86818 8.69713 4.67756 8.78413 4.54529 8.93113C4.41108 9.08813 4.34494 9.28313 4.35467 9.48913C4.35646 9.50162 4.37558 9.73903 4.40755 10.1359C4.54958 11.8992 4.94517 16.8102 5.20079 19.134C5.38168 20.846 6.50498 21.922 8.13206 21.961C9.38763 21.99 10.6811 22 12.0038 22C13.2496 22 14.5149 21.99 15.8094 21.961C17.4929 21.932 18.6152 20.875 18.8058 19.134Z" fill="currentColor"></path>                            </svg>                        </button></td><td><input type="hidden" name="codigo[]" value="">' + codigo + '</td> <td><input type="hidden" name="articulo_id[]" value="' + product_id + '">' + producto + '</td> <td> <input type="hidden" name="precio[]" value="' + parseFloat(price).toFixed(2) + '"> <input class="form-control" type="number" value="' + parseFloat(price).toFixed(2) + '" disabled> </td> <td> <input type="hidden" name="descuento[]" value="' + parseFloat(discount) + '"> <input class="form-control" type="number" value="' + parseFloat(discount) + '" disabled> </td> <td> <input type="hidden" name="cantidad[]" value="' + quantity + '"> <input type="number" value="' + quantity + '" class="form-control" disabled> </td> <td align="right">s/' + parseFloat(subtotal[cont]).toFixed(2) + '</td></tr>';
             cont++;
             limpiar();
             totales();

@@ -38,4 +38,6 @@ Route::post('categoria/{categorium}/activar', [CategoriaController::class, 'acti
 Route::resource('medida', MedidaController::class)->middleware('auth')->names('medida');
 Route::resource('articulo', ArticuloController::class)->middleware('auth')->names('articulo');
 Route::resource('venta', VentaController::class)->middleware('auth')->names('venta');
+Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');
+
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');

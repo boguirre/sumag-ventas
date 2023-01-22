@@ -105,4 +105,16 @@ class VentaController extends Controller
     {
         //
     }
+    public function cambio_estado(Venta $ventum)
+    {
+        if ($ventum->estado == 'VALIDO') {
+            $ventum->update(['estado'=>'CANCELADO']);
+            return redirect()->back();
+        }else {
+            $ventum->update(['estado'=>'VALIDO']);
+            return redirect()->back();
+        } 
+    }
+
+    
 }

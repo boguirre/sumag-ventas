@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('codigo');
             $table->string('nombre');
             $table->string('descripcion');
-            $table->integer('stock');
+            $table->integer('stock')->default(0);
             $table->integer('stock_minimo');
             $table->double('precio_unitario');
             $table->double('precio_venta');

@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Prestamo;
+use App\Models\Empresa;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class PrestamoController extends Controller
+class EmpresaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class PrestamoController extends Controller
      */
     public function index()
     {
-        return view('prestamos.index');
+        //
     }
 
     /**
@@ -42,10 +42,10 @@ class PrestamoController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Prestamo  $prestamo
+     * @param  \App\Models\Empresa  $empresa
      * @return \Illuminate\Http\Response
      */
-    public function show(Prestamo $prestamo)
+    public function show(Empresa $empresa)
     {
         //
     }
@@ -53,10 +53,10 @@ class PrestamoController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Prestamo  $prestamo
+     * @param  \App\Models\Empresa  $empresa
      * @return \Illuminate\Http\Response
      */
-    public function edit(Prestamo $prestamo)
+    public function edit(Empresa $empresa)
     {
         //
     }
@@ -65,10 +65,10 @@ class PrestamoController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Prestamo  $prestamo
+     * @param  \App\Models\Empresa  $empresa
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Prestamo $prestamo)
+    public function update(Request $request, Empresa $empresa)
     {
         //
     }
@@ -76,10 +76,10 @@ class PrestamoController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Prestamo  $prestamo
+     * @param  \App\Models\Empresa  $empresa
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Prestamo $prestamo)
+    public function destroy(Empresa $empresa)
     {
         //
     }

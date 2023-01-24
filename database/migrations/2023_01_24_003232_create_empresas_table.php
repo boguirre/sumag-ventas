@@ -13,13 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prestamos', function (Blueprint $table) {
+        Schema::create('empresas', function (Blueprint $table) {
             $table->id();
-            $table->text('descripcion')->nullable();
-            $table->double('numerocredito');
-            $table->double('monto');
-            $table->unsignedBigInteger('empresa_id');
-            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
+            $table->string('codigo')->nullable();
+            $table->string('nombre')->nullable();
             $table->integer('estado')->default(1);
             $table->timestamps();
         });
@@ -32,6 +29,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prestamos');
+        Schema::dropIfExists('empresas');
     }
 };

@@ -5,6 +5,7 @@ use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\MedidaController;
+use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Route;
 
@@ -41,3 +42,4 @@ Route::resource('venta', VentaController::class)->middleware('auth')->names('ven
 Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');
 
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');
+Route::resource('prestamo', PrestamoController::class)->middleware('auth')->names('prestamo');

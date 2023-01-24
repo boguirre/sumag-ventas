@@ -38,6 +38,7 @@ return array(
     'App\\Models\\Ingreso' => $baseDir . '/app/Models/Ingreso.php',
     'App\\Models\\IngresoDetalle' => $baseDir . '/app/Models/IngresoDetalle.php',
     'App\\Models\\Medida' => $baseDir . '/app/Models/Medida.php',
+    'App\\Models\\Prestamo' => $baseDir . '/app/Models/Prestamo.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Models\\Venta' => $baseDir . '/app/Models/Venta.php',
     'App\\Models\\VentaDetalle' => $baseDir . '/app/Models/VentaDetalle.php',

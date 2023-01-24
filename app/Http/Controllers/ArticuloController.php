@@ -47,7 +47,6 @@ class ArticuloController extends Controller
             'descripcion' => 'required|max:50',
             'categoria_id' => 'required',
             'medida_id' => 'required',
-            'stock' => 'required|min:1',
             'stock_minimo' => 'required|min:1',
             'precio_venta' => 'required|min:1',
             'precio_unitario' => 'required|min:1',
@@ -59,10 +58,9 @@ class ArticuloController extends Controller
             'descripcion.required'=>'El campo descripcion es requerido.',
             'categoria_id.required'=>'El campo categoria es requerido.',
             'medida_id.required'=>'El campo medida es requerido.',
-            'stock.required'=>'El campo stock es requerido.',
             'stock_minimo.required'=>'El campo stock minimo es requerido.',
             'precio_venta.required'=>'El campo precio venta es requerido.',
-            'precio_unitario.required'=>'El campo precio unitario es requerido.',
+            'precio_unitario.required'=>'El campo precio compra es requerido.',
             'file.required'=>'debe seleccionar una imagen',
         ]);
 
@@ -118,7 +116,6 @@ class ArticuloController extends Controller
             'descripcion' => 'required|max:50',
             'categoria_id' => 'required',
             'medida_id' => 'required',
-            'stock' => 'required|min:1',
             'stock_minimo' => 'required|min:1',
             'precio_venta' => 'required|min:1',
             'precio_unitario' => 'required|min:1',
@@ -130,10 +127,9 @@ class ArticuloController extends Controller
             'descripcion.required'=>'El campo descripcion es requerido.',
             'categoria_id.required'=>'El campo categoria es requerido.',
             'medida_id.required'=>'El campo medida es requerido.',
-            'stock.required'=>'El campo stock es requerido.',
             'stock_minimo.required'=>'El campo stock minimo es requerido.',
             'precio_venta.required'=>'El campo precio venta es requerido.',
-            'precio_unitario.required'=>'El campo precio unitario es requerido.',
+            'precio_unitario.required'=>'El campo precio compra es requerido.',
             'file.required'=>'debe seleccionar una imagen',
         ]);
 

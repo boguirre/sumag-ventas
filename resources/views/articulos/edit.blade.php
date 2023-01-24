@@ -79,15 +79,6 @@
                   </div>
 
                   <div class="form-group">
-                      <label class="form-label" for="pwd">Stock:</label>
-                      <input type="number" class="form-control" id="stock" name="stock"
-                          placeholder="Ingrese El stock" value="{{ $articulo->stock}}">
-                      @error('stock')
-                          <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                      @enderror
-                  </div>
-
-                  <div class="form-group">
                     <label class="form-label" for="pwd">Stock Minimo:</label>
                     <input type="number" class="form-control" id="stock_minimo" name="stock_minimo"
                         placeholder="Ingrese El stock minimo" value="{{ $articulo->stock_minimo }}">
@@ -97,9 +88,9 @@
                 </div>
 
                   <div class="form-group">
-                      <label class="form-label" for="pwd">Precio Unitario:</label>
+                      <label class="form-label" for="pwd">Precio Compra:</label>
                       <input type="number" class="form-control" id="precio_unitario" name="precio_unitario"
-                          placeholder="Ingrese El precio unitario" value="{{ $articulo->precio_unitario }}">
+                          placeholder="Ingrese El precio compra" value="{{ $articulo->precio_unitario }}">
                       @error('precio_unitario')
                           <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                       @enderror

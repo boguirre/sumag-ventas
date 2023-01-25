@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\MedidaController;
 use App\Http\Controllers\PrestamoController;
@@ -43,3 +44,4 @@ Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estad
 
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');
 Route::resource('prestamo', PrestamoController::class)->middleware('auth')->names('prestamo');
+Route::resource('empresa', EmpresaController::class)->middleware('auth')->names('empresa');

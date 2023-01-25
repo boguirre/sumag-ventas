@@ -18,6 +18,8 @@ return new class extends Migration
             $table->text('descripcion')->nullable();
             $table->double('numerocredito');
             $table->double('monto');
+            $table->dateTime('fecha_prestamo');
+            $table->dateTime('fecha_vencimiento');
             $table->unsignedBigInteger('empresa_id');
             $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
             $table->integer('estado')->default(1);

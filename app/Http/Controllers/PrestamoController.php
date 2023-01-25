@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Prestamo;
 use App\Http\Controllers\Controller;
+use App\Models\Empresa;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PrestamoController extends Controller
@@ -26,7 +28,8 @@ class PrestamoController extends Controller
      */
     public function create()
     {
-        //
+        $empresas = Empresa::all();
+        return view('prestamos.create', compact('empresas'));
     }
 
     /**
@@ -37,7 +40,27 @@ class PrestamoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'descripcion' => 'required',
+            'numerocredito' => 'required|numeric',
+            'monto' => 'required|numeric',
+            'empresa_id' => 'required',
+            'fecha_prestamo' => 'required',
+            'fecha_vencimiento' => 'required'
+            
+        ],[
+            'numerocredito.required'=>'El campo numero de credito es requerido',
+            'numerocredito.numeric'=>'El campo numero de credito debe ser numerico',
+            'monto.required'=>'El campo monto es requerido.',
+            'descripcion.required'=>'El campo descripcion es requerido.',
+            'empresa_id.required'=>'Debe seleccionar una empresa',
+            'fecha_prestamo.required'=>'El campo fecha prestamo es requerido.',
+            'fecha_vencimiento.required'=>'El campo fecha de vencimiento es requerido.',
+        ]);
+
+        $prestamo  = Prestamo::create($request->all());
+
+        return redirect()->route('prestamo.index')->with('guardar', 'ok');
     }
 
     /**
@@ -48,7 +71,7 @@ class PrestamoController extends Controller
      */
     public function show(Prestamo $prestamo)
     {
-        //
+        return view('prestamos.show', compact('prestamo'));
     }
 
     /**
@@ -83,5 +106,31 @@ class PrestamoController extends Controller
     public function destroy(Prestamo $prestamo)
     {
         //
+    }
+
+    public function addpago(Request $request, Prestamo $prestamo)
+    {
+        $request->validate([
+            'monto' => 'required|numeric'
+        ],[
+            'monto.required' => 'el nonto es requerido',
+        ]);
+
+        if ($request->monto > $prestamo->monto) {
+            return redirect()->route('prestamo.show', $prestamo)->with('info', 'El monto no debe exceder del prestamo');
+        }
+
+        if ($request->monto >= $prestamo->monto) {
+            $prestamo->update([
+                'estado' => 2
+            ]);
+        }
+
+        $prestamo->prestamo_detalles()->create([
+            'monto' => $request->monto,
+            'fecha_pago' => Carbon::now('America/Lima')
+        ]);
+
+        return redirect()->route('prestamo.show', $prestamo)->with('addpago', 'ok');
     }
 }

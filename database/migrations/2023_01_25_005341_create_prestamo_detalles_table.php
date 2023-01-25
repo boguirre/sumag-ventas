@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('prestamo_detalles', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('prestamo_id');
+            $table->foreign('prestamo_id')->references('id')->on('prestamos')->onDelete('cascade');
+            $table->double('monto');
+            $table->dateTime('fecha_pago');
             $table->timestamps();
         });
     }

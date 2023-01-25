@@ -8,4 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class PrestamoDetalle extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function prestamo(){
+        return $this->belongsTo(Prestamo::class);
+    }
 }

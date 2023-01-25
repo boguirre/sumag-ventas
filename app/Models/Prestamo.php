@@ -13,4 +13,8 @@ class Prestamo extends Model
     public function empresa(){
         return $this->belongsTo(Empresa::class);
     }
+
+    public function prestamo_detalles(){
+        return $this->hasMany(PrestamoDetalle::class);
+    }
 }

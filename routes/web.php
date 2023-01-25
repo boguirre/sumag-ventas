@@ -45,3 +45,4 @@ Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estad
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');
 Route::resource('prestamo', PrestamoController::class)->middleware('auth')->names('prestamo');
 Route::resource('empresa', EmpresaController::class)->middleware('auth')->names('empresa');
+Route::post('prestamo/{prestamo}/addpago', [PrestamoController::class, 'addpago'])->name('prestamo.addpago');

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Prestamo extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+
+    public function empresa(){
+        return $this->belongsTo(Empresa::class);
+    }
 }

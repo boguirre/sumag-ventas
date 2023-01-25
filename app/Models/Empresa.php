@@ -9,6 +9,7 @@ class Empresa extends Model
 {
     use HasFactory;
     protected $guarded = ['id'];
+    
     public function prestamos(){
         return $this->hasMany(Prestamo::class);
     }

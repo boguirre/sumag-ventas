@@ -61,6 +61,9 @@
                                         @else
                                             <td><a class="btn btn-success">Cancelada</a></td>
                                         @endif
+                                        @if ($prestamo->prestamo_detalles->count())
+                                            <td>No se puede editar</td>
+                                        @else
                                         <td class="text-center">
                                             <ul class="table-controls">
                                                 <form action="{{ route('prestamo.destroy', $prestamo) }}" method="POST"
@@ -84,6 +87,7 @@
                                                 
                                             </ul>
                                         </td>
+                                        @endif
                                     </tr>
                                 @endforeach
                             </tbody>

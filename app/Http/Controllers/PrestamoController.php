@@ -43,7 +43,7 @@ class PrestamoController extends Controller
         $request->validate([
             'descripcion' => 'required',
             'numerocredito' => 'required|numeric',
-            'monto' => 'required|numeric',
+            'monto_prestamo' => 'required|numeric',
             'empresa_id' => 'required',
             'fecha_prestamo' => 'required',
             'fecha_vencimiento' => 'required'
@@ -51,14 +51,16 @@ class PrestamoController extends Controller
         ],[
             'numerocredito.required'=>'El campo numero de credito es requerido',
             'numerocredito.numeric'=>'El campo numero de credito debe ser numerico',
-            'monto.required'=>'El campo monto es requerido.',
+            'monto_prestamo.required'=>'El campo monto es requerido.',
             'descripcion.required'=>'El campo descripcion es requerido.',
             'empresa_id.required'=>'Debe seleccionar una empresa',
             'fecha_prestamo.required'=>'El campo fecha prestamo es requerido.',
             'fecha_vencimiento.required'=>'El campo fecha de vencimiento es requerido.',
         ]);
 
-        $prestamo  = Prestamo::create($request->all());
+        $prestamo  = Prestamo::create($request->all()+[
+            'monto_deuda' => $request->monto_prestamo
+        ]);
 
         return redirect()->route('prestamo.index')->with('guardar', 'ok');
     }
@@ -116,11 +118,11 @@ class PrestamoController extends Controller
             'monto.required' => 'el nonto es requerido',
         ]);
 
-        if ($request->monto > $prestamo->monto) {
+        if ($request->monto > $prestamo->monto_deuda) {
             return redirect()->route('prestamo.show', $prestamo)->with('info', 'El monto no debe exceder del prestamo');
         }
 
-        if ($request->monto >= $prestamo->monto) {
+        if ($request->monto >= $prestamo->monto_deuda) {
             $prestamo->update([
                 'estado' => 2
             ]);

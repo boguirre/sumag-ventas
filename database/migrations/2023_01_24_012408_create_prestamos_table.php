@@ -17,7 +17,8 @@ return new class extends Migration
             $table->id();
             $table->text('descripcion')->nullable();
             $table->double('numerocredito');
-            $table->double('monto');
+            $table->double('monto_prestammo');
+            $table->double('monto_deuda');
             $table->dateTime('fecha_prestamo');
             $table->dateTime('fecha_vencimiento');
             $table->unsignedBigInteger('empresa_id');

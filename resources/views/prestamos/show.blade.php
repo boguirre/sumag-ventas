@@ -47,8 +47,14 @@
                                 class="form-control" disabled>
                         </div>
                         <div class="col-md-3">
-                            <label for="">Monto</label>
-                            <input type="text" name="" id="uni_medida" value="{{ $prestamo->monto }}"
+                            <label for="">Monto del Prestamo</label>
+                            <input type="text" name="" id="uni_medida" value="{{ $prestamo->monto_prestamo }}"
+                                class="form-control" disabled>
+                        </div>
+                        
+                        <div class="col-md-3">
+                            <label for="">Monto Faltante a Pagar</label>
+                            <input type="text" name="" id="uni_medida" value="{{ $prestamo->monto_deuda }}"
                                 class="form-control" disabled>
                         </div>
 
@@ -63,7 +69,7 @@
                     </div>
 
 
-                    @if ($prestamo->monto > 0)
+                    @if ($prestamo->monto_deuda > 0)
                         <div class="col-md-3" style="margin-top: 15px">
                             <label for="">Monto a Pagar</label>
                             <input type="number" name="monto" id="uni_medida" value="" class="form-control"
@@ -78,7 +84,7 @@
                     <br>
 
                     <div class="form-group" style="margin-bottom: 15px">
-                        @if ($prestamo->monto > 0)
+                        @if ($prestamo->monto_deuda > 0)
                             <button type="submit" id="agregar" class="btn btn-primary rounded-pill" style="float:right">
                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"

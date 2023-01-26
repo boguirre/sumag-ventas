@@ -43,9 +43,9 @@
 
                     <div class="form-group">
                         <label class="form-label" for="pwd">Monto:</label>
-                        <input type="number" class="form-control" id="monto" name="monto"
-                            placeholder="Ingrese el monto" value="{{ old('monto') }}">
-                        @error('monto')
+                        <input type="number" class="form-control" id="monto_prestamo" name="monto_prestamo"
+                            placeholder="Ingrese el monto" value="{{ old('monto_prestamo') }}">
+                        @error('monto_prestamo')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Venta;
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -114,6 +115,17 @@ class VentaController extends Controller
             $ventum->update(['estado'=>'VALIDO']);
             return redirect()->back();
         } 
+    }
+    public function pdf(Venta $ventum){
+        $subtotal = 0 ;
+        $ventaDetalles = $ventum->ventaDetalles;
+        foreach ($ventaDetalles as $ventaDetalle) {
+            $subtotal += $ventaDetalle->cantidad*$ventaDetalle->precio-$ventaDetalle->cantidad* $ventaDetalle->precio*$ventaDetalle->descuento/100;
+        }
+        $pdf = Pdf::loadView('ventas.pdf.index', compact('ventum', 'ventaDetalles', 'subtotal'));
+        return $pdf->download('Reporte_de_venta_'.$ventum->id.'.pdf');
+
+
     }
 
     

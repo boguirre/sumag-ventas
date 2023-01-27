@@ -30,6 +30,9 @@
                     <div class="header-title">
                         <h4 class="card-title"> Lista De Prestamos </h4>
                     </div>
+                    <div style="float: right;  margin-top: 2%;
+                        margin-left: 2%;
+                        margin-right: 2%; color: black">Monto Total Faltante a Pagar: <strong style="color: green">S/.{{$prestamos->where('estado', 1)->sum('monto_deuda')}}</strong></div>
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">

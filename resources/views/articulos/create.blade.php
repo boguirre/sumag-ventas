@@ -77,7 +77,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="pwd">Descripcion:</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion" rows="5"></textarea>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="5" value="{{ old('descripcion') }}"></textarea>
                         @error('descripcion')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
@@ -94,7 +94,7 @@
                     <div class="form-group">
                         <label class="form-label" for="pwd">Precio Compra:</label>
                         <input type="number" class="form-control" id="precio_unitario" name="precio_unitario"
-                            placeholder="Ingrese El precio compra" value="{{ old('precio_unitario') }}">
+                            placeholder="Ingrese El precio compra" value="{{ old('precio_unitario') }}" step=".01">
                         @error('precio_unitario')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
@@ -103,7 +103,7 @@
                     <div class="form-group">
                         <label class="form-label" for="pwd">Precio Venta:</label>
                         <input type="number" class="form-control" id="precio_venta" name="precio_venta"
-                            placeholder="Ingrese El precio venta" value="{{ old('precio_venta') }}">
+                            placeholder="Ingrese El precio venta" value="{{ old('precio_venta') }}" step=".01">
                         @error('precio_venta')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror

@@ -39,6 +39,8 @@ Route::resource('categoria', CategoriaController::class)->middleware('auth')->na
 Route::post('categoria/{categorium}/activar', [CategoriaController::class, 'activar'])->middleware('auth')->name('categoria.activar');
 Route::resource('medida', MedidaController::class)->middleware('auth')->names('medida');
 Route::resource('articulo', ArticuloController::class)->middleware('auth')->names('articulo');
+Route::get('/venta/{ventum}/pdf',[VentaController::class, 'pdf'])->name('venta.pdf');
+
 Route::resource('venta', VentaController::class)->middleware('auth')->names('venta');
 Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');
 

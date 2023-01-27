@@ -163,7 +163,7 @@
                 </a>
                 <ul class="sub-nav collapse" id="sidebar-special" data-bs-parent="#sidebar-menu">
                     <li class="nav-item">
-                        <a class="nav-link {{ (Request::is('categoria') ? 'active' : '') }} " href="{{route('categoria.index')}}">
+                        <a class="nav-link {{ (Request::is('categoria')| Request::is('categoria/*') ? 'active' : '') }} " href="{{route('categoria.index')}}">
                           <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
@@ -176,7 +176,7 @@
                         </a>
                     </li>
                     <li class="nav-item ">
-                        <a class="nav-link {{ (Request::is('medida') ? 'active' : '') }}"  href="{{route('medida.index')}}">
+                        <a class="nav-link {{ (Request::is('medida')| Request::is('medida/*') ? 'active' : '') }}"  href="{{route('medida.index')}}">
                             <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
@@ -189,7 +189,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link {{ (Request::is('articulo') ? 'active' : '') }}"  href="{{route('articulo.index')}}">
+                        <a class="nav-link {{ (Request::is('articulo') | Request::is('articulo/*')? 'active' : '') }}"  href="{{route('articulo.index')}}">
                            <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
@@ -201,45 +201,7 @@
                            <span class="item-name" title="Articulos">Articulos</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="../dashboard/special-pages/pricing.html">
-                            <i class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                    <g>
-                                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                    </g>
-                                </svg>
-                            </i>
-                            <i class="sidenav-mini-icon"> P </i>
-                            <span class="item-name">Pricing</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="../dashboard/special-pages/rtl-support.html">
-                            <i class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                    <g>
-                                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                    </g>
-                                </svg>
-                            </i>
-                            <i class="sidenav-mini-icon"> R </i>
-                            <span class="item-name">RTL Support</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link " href="../dashboard/special-pages/timeline.html">
-                            <i class="icon">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
-                                    <g>
-                                    <circle cx="12" cy="12" r="8" fill="currentColor"></circle>
-                                    </g>
-                                </svg>
-                            </i>
-                            <i class="sidenav-mini-icon"> T </i>
-                            <span class="item-name">Timeline</span>
-                        </a>
-                    </li>
+                    
                 </ul>
             </li>
             <li class="nav-item">
@@ -254,7 +216,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ (Request::is('ingreso') ? 'active' : '') }}" href="{{route('ingreso.index')}}">
+                <a class="nav-link {{ (Request::is('ingreso')| Request::is('ingreso/*') ? 'active' : '') }}" href="{{route('ingreso.index')}}">
                     <i class="icon">
                     <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M7.7688 8.71387H16.2312C18.5886 8.71387 20.5 10.5831 20.5 12.8885V17.8254C20.5 20.1308 18.5886 22 16.2312 22H7.7688C5.41136 22 3.5 20.1308 3.5 17.8254V12.8885C3.5 10.5831 5.41136 8.71387 7.7688 8.71387ZM11.9949 17.3295C12.4928 17.3295 12.8891 16.9419 12.8891 16.455V14.2489C12.8891 13.772 12.4928 13.3844 11.9949 13.3844C11.5072 13.3844 11.1109 13.772 11.1109 14.2489V16.455C11.1109 16.9419 11.5072 17.3295 11.9949 17.3295Z" fill="currentColor"></path>
@@ -265,7 +227,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ (Request::is('prestamo') ? 'active' : '') }}" href="{{route('prestamo.index')}}">
+                <a class="nav-link {{ (Request::is('prestamo')| Request::is('prestamo/*') ? 'active' : '') }}" href="{{route('prestamo.index')}}">
                     <i class="icon">
                     <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M7.7688 8.71387H16.2312C18.5886 8.71387 20.5 10.5831 20.5 12.8885V17.8254C20.5 20.1308 18.5886 22 16.2312 22H7.7688C5.41136 22 3.5 20.1308 3.5 17.8254V12.8885C3.5 10.5831 5.41136 8.71387 7.7688 8.71387ZM11.9949 17.3295C12.4928 17.3295 12.8891 16.9419 12.8891 16.455V14.2489C12.8891 13.772 12.4928 13.3844 11.9949 13.3844C11.5072 13.3844 11.1109 13.772 11.1109 14.2489V16.455C11.1109 16.9419 11.5072 17.3295 11.9949 17.3295Z" fill="currentColor"></path>
@@ -276,7 +238,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link {{ (Request::is('empresa') ? 'active' : '') }}" href="{{route('empresa.index')}}">
+                <a class="nav-link {{ (Request::is('empresa')| Request::is('empresa/*') ? 'active' : '') }}" href="{{route('empresa.index')}}">
                     <i class="icon">
                     <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M7.7688 8.71387H16.2312C18.5886 8.71387 20.5 10.5831 20.5 12.8885V17.8254C20.5 20.1308 18.5886 22 16.2312 22H7.7688C5.41136 22 3.5 20.1308 3.5 17.8254V12.8885C3.5 10.5831 5.41136 8.71387 7.7688 8.71387ZM11.9949 17.3295C12.4928 17.3295 12.8891 16.9419 12.8891 16.455V14.2489C12.8891 13.772 12.4928 13.3844 11.9949 13.3844C11.5072 13.3844 11.1109 13.772 11.1109 14.2489V16.455C11.1109 16.9419 11.5072 17.3295 11.9949 17.3295Z" fill="currentColor"></path>
@@ -286,7 +248,7 @@
                     <span class="item-name">Empresas</span>
                 </a>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-auth" role="button" aria-expanded="false" aria-controls="sidebar-user">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -368,8 +330,8 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-user" role="button" aria-expanded="false" aria-controls="sidebar-user">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -501,8 +463,8 @@
                     <span class="default-icon">Elements</span>
                     <span class="mini-icon">-</span>
                 </a>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
                 <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
                     <i class="icon">
                          <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                
@@ -511,8 +473,8 @@
                     </i>
                     <span class="item-name">Components</span>
                 </a>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-widget" role="button" aria-expanded="false" aria-controls="sidebar-widget">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -769,7 +731,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
         <!-- Sidebar Menu End -->        </div>
 </div>

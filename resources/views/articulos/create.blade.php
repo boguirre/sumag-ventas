@@ -124,7 +124,7 @@
                                     src="{{ Storage::url($articulo->images->url) }}" alt="">
                             @else
                                 <img id="picture" class="w-full h-64 object-cover object-center"
-                                    style="width: 250px; height: 250px; " alt="">
+                                    style="width: 250px; height: 250px; " alt="" src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
                             @endisset
 
                         </figure>

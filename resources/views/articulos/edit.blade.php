@@ -125,8 +125,10 @@
                     </figure>
                     <div>
                     <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <button type="submit" class="btn btn-danger">Cancelar</button>
-                    {!! Form::close() !!}
+                    <a href="{{route('articulo.index')}}" class="btn btn-danger">
+                        Cancelar
+                     </a>                    
+                     {!! Form::close() !!}
                 </div>
 
 

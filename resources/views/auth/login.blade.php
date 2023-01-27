@@ -148,16 +148,16 @@
                                                     <label class="form-check-label" for="customCheck1">Recordarme
                                                         </label>
                                                 </div>
-                                                <a href="recoverpw.html">¿Te olvidaste tu contraseña?</a>
+                                                {{-- <a href="recoverpw.html">¿Te olvidaste tu contraseña?</a> --}}
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-center">
                                             <button type="submit" class="btn btn-primary">Ingresar</button>
                                         </div>
-                                        <p class="mt-3 text-center">
+                                        {{-- <p class="mt-3 text-center">
                                             ¿No tienes una cuenta? <a href="{{ route('register') }}" class="text-underline">Click
                                                 Aqui para registrarse</a>
-                                        </p>
+                                        </p> --}}
                                     </form>
                                 </div>
                             </div>

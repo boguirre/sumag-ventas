@@ -163,7 +163,7 @@
                 </a>
                 <ul class="sub-nav collapse" id="sidebar-special" data-bs-parent="#sidebar-menu">
                     <li class="nav-item">
-                        <a class="nav-link {{ (Request::is('categoria') ? 'active' : '') }} " href="{{route('categoria.index')}}">
+                        <a class="nav-link {{ (Request::is('categoria')| Request::is('categoria/*') ? 'active' : '') }} " href="{{route('categoria.index')}}">
                           <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>

@@ -29,7 +29,7 @@ return new class extends Migration
             
             $table->decimal('total');
 
-            $table->enum('estado',['VALIDO','CANCELEDO'])->default('VALIDO');
+            $table->enum('estado',['VALIDO','CANCELADO'])->default('VALIDO');
 
             $table->timestamps();
         });

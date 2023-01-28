@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Empresa;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class PrestamoController extends Controller
 {
@@ -134,5 +135,20 @@ class PrestamoController extends Controller
         ]);
 
         return redirect()->route('prestamo.show', $prestamo)->with('addpago', 'ok');
+    }
+
+    public function reporte(){
+        $prestamos= DB::select('call sp_sumaprestamos()');
+        $data=[];
+        foreach($prestamos as $prestamo){
+                 
+               $data['label'][] = $prestamo->nombre;
+
+               $data['data'][] = $prestamo->cantidad;
+
+        }
+        $data['data'] = json_encode($data);
+
+        return view('prestamos.reporte.index',$data);
     }
 }

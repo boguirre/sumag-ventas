@@ -19,7 +19,8 @@
 @endsection
 
 @section('content')
-<div class="col-md-9 col-lg-8">
+<div class="row">
+<div class="col-md-9 col-lg-7">
     <div class="card" data-aos="fade-up" data-aos-delay="800">
        <div class="flex-wrap card-header d-flex justify-content-center align-items-center">
           <div class="header-title ">
@@ -35,7 +36,22 @@
     </div>
  </div>
 
- 
+ <div class="col-md-6 col-lg-5">
+    <div class="card" data-aos="fade-up" data-aos-delay="800">
+       <div class="flex-wrap card-header d-flex justify-content-center align-items-center">
+          <div class="header-title ">
+             {{-- <h4 class="card-title text-center">$855.8K</h4> --}}
+             <p class="mb-0 text-center" > <b >PRESTAMOS POR EMPRESA</b></p>          
+          </div>
+          
+          
+       </div>
+       <div class="card-body ">
+        <div class="pt-4 pb-2 " id="chartfiltro" ></div>
+     </div>
+    </div>
+ </div>
+</div>
 @endsection
 
 @section('scripts')
@@ -90,6 +106,39 @@
         };
         var chart = new ApexCharts(document.querySelector("#chartprestamo"), options);
         chart.render();
+    })
+    </script>
+    <script>
+            $(document).ready(function(){
+
+                const cData = JSON.parse(`<?php echo $report; ?>`)
+        console.log(cData);
+                var options = {
+          series: cData.report,
+          chart: {
+            height: 500,
+          type: 'donut'
+
+        },
+        labels: ['EN DEUDA','CANCELADO'],
+        responsive: [{
+          breakpoint: 350,
+          options: {
+            chart: {
+              width: 380,
+            },
+            legend: {
+              position: 'bottom'
+            }
+          }
+        }]
+        };
+
+        
+      
+
+        var charts = new ApexCharts(document.querySelector("#chartfiltro"), options);
+        charts.render();
     })
     </script>
 @endsection

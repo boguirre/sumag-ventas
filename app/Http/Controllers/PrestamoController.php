@@ -171,7 +171,26 @@ class PrestamoController extends Controller
 
         }
         $data['data'] = json_encode($data);
+        $reporte="";
+        $report=$this->reporteEstado($reporte);
+        return view('prestamos.reporte.index',$data+$report);
+    }
 
-        return view('prestamos.reporte.index',$data);
+    public function reporteEstado(){
+        $prestamosestados= DB::select('call sp_sumaestados()');
+        $report=[];
+        foreach($prestamosestados as $prestamosestado){
+                 
+                $report['label'][] = $prestamosestado->estado;
+
+                $report['report'][] = $prestamosestado->cantidad;
+
+          }
+
+         $report['report'] = json_encode($report);
+
+         $reporte=$report;
+
+         return $reporte;
     }
 }

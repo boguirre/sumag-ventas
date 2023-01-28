@@ -85,7 +85,8 @@ class PrestamoController extends Controller
      */
     public function edit(Prestamo $prestamo)
     {
-        //
+        $empresas = Empresa::pluck('nombre', 'id');
+        return view('prestamos.edit', compact('prestamo', 'empresas'));
     }
 
     /**
@@ -97,7 +98,29 @@ class PrestamoController extends Controller
      */
     public function update(Request $request, Prestamo $prestamo)
     {
-        //
+        $request->validate([
+            'descripcion' => 'required',
+            'numerocredito' => 'required|numeric',
+            'monto_prestamo' => 'required|numeric',
+            'empresa_id' => 'required',
+            'fecha_prestamo' => 'required',
+            'fecha_vencimiento' => 'required'
+            
+        ],[
+            'numerocredito.required'=>'El campo numero de credito es requerido',
+            'numerocredito.numeric'=>'El campo numero de credito debe ser numerico',
+            'monto_prestamo.required'=>'El campo monto es requerido.',
+            'descripcion.required'=>'El campo descripcion es requerido.',
+            'empresa_id.required'=>'Debe seleccionar una empresa',
+            'fecha_prestamo.required'=>'El campo fecha prestamo es requerido.',
+            'fecha_vencimiento.required'=>'El campo fecha de vencimiento es requerido.',
+        ]);
+
+        $prestamo->update($request->all()+[
+            'monto_deuda' => $request->monto_prestamo
+        ]);
+
+        return redirect()->route('prestamo.index')->with('guardar', 'ok');
     }
 
     /**

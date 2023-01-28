@@ -41,7 +41,7 @@
        <div class="flex-wrap card-header d-flex justify-content-center align-items-center">
           <div class="header-title ">
              {{-- <h4 class="card-title text-center">$855.8K</h4> --}}
-             <p class="mb-0 text-center" > <b >PRESTAMOS POR EMPRESA</b></p>          
+             <p class="mb-0 text-center" > <b >ESTADOS DE PRESTAMOS</b></p>          
           </div>
           
           

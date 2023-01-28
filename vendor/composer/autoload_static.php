@@ -634,6 +634,7 @@ class ComposerStaticInit4e76b9f6c8da8f6e5f18b965464225f2
         'App\\Models\\Medida' => __DIR__ . '/../..' . '/app/Models/Medida.php',
         'App\\Models\\Prestamo' => __DIR__ . '/../..' . '/app/Models/Prestamo.php',
         'App\\Models\\PrestamoDetalle' => __DIR__ . '/../..' . '/app/Models/PrestamoDetalle.php',
+        'App\\Models\\Sucursal' => __DIR__ . '/../..' . '/app/Models/Sucursal.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Models\\Venta' => __DIR__ . '/../..' . '/app/Models/Venta.php',
         'App\\Models\\VentaDetalle' => __DIR__ . '/../..' . '/app/Models/VentaDetalle.php',

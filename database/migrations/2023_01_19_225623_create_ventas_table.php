@@ -18,6 +18,10 @@ return new class extends Migration
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 
+            $table->unsignedBigInteger('sucursal_id');
+            $table->foreign('sucursal_id')->references('id')->on('sucursals');
+            $table->string('nombre')->nullable();
+            $table->string('documento')->nullable();
 
             $table->dateTime('venta_fecha');
 

@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Sucursal extends Model
 {
     use HasFactory;
+    protected $guarded = ['id'];
+    public function images()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

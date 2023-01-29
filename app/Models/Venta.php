@@ -13,6 +13,10 @@ class Venta extends Model
     public function users(){
         return $this->belongsTo(User::class,'user_id');
     }
+    public function sucursales()
+    {
+        return $this->belongsTo(Sucursal::class);
+    }
     public function ventaDetalles(){
         return $this->hasMany(VentaDetalle::class);
     }

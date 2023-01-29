@@ -134,7 +134,9 @@ class VentaController extends Controller
         foreach ($ventaDetalles as $ventaDetalle) {
             $subtotal += $ventaDetalle->cantidad*$ventaDetalle->precio-$ventaDetalle->cantidad* $ventaDetalle->precio*$ventaDetalle->descuento/100;
         }
+        
         $pdf = Pdf::loadView('ventas.pdf.index', compact('ventum', 'ventaDetalles', 'subtotal'));
+        
         return $pdf->download('Reporte_de_venta_'.$ventum->id.'.pdf');
 
 

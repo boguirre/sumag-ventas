@@ -1,3 +1,7 @@
+<?php
+    use Illuminate\Support\Facades\Storage;
+
+?>
 <!DOCTYPE html>
 <html>
 
@@ -137,7 +141,18 @@
 <body>
     <header>
 		<div class="row">
-			<img src="codingboss.png" alt="" style="float: right">
+           
+            @isset($ventum->sucursales->images)
+            <img id="picture" class=""
+                src=" {{ Storage::url($ventum->sucursales->images->url) }}" alt="">
+                {{-- <img src="data:image/png;base64, {!! base64_encode(QrCode::size(200)->generate('http://codersfree.test/view-verfication/'.$course->slug.'?')) !!} "> --}}
+                {{-- <img src="data:image/png;base64,{{!! base64_encode(file_get_contents(asset('/storage/'.str_replace('public/','',$ventum->sucursales->images->url)))) }}"> --}}
+                @else
+            {{-- <img id="picture" class="p-1 avatar-70 rounded-pill bg-soft-primary"
+                 alt="" src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> --}}
+                 <img src="codingboss.png" alt="" style="float: right">
+
+                 @endisset     
 		</div>
 		
 

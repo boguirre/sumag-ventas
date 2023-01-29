@@ -15,7 +15,7 @@ class Venta extends Model
     }
     public function sucursales()
     {
-        return $this->belongsTo(Sucursal::class);
+        return $this->belongsTo(Sucursal::class,'sucursal_id');
     }
     public function ventaDetalles(){
         return $this->hasMany(VentaDetalle::class);

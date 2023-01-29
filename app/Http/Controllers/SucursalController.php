@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Sucursal;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class SucursalController extends Controller
 {
@@ -15,7 +16,9 @@ class SucursalController extends Controller
      */
     public function index()
     {
-        //
+        $sucursals = Sucursal::all();
+
+        return view('sucursales.index', compact('sucursals'));
     }
 
     /**
@@ -25,7 +28,8 @@ class SucursalController extends Controller
      */
     public function create()
     {
-        //
+        return view('sucursales.create');
+
     }
 
     /**
@@ -36,7 +40,23 @@ class SucursalController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|max:50',
+            'file' => 'required|image'
+
+        ],[
+            'nombre.required'=>'El campo nombre es requerido.',
+            'file.required'=>'debe seleccionar una imagen'
+        ]);
+        $sucursal = Sucursal::create($request->all());
+        if($request->file('file')){
+            $url =  Storage::put('public/sucursales', $request->file('file'));
+
+            $sucursal->images()->create([
+                'url' => $url
+            ]);
+        }
+        return redirect()->route('sucursal.index')->with('guardar', 'ok');
     }
 
     /**
@@ -58,7 +78,8 @@ class SucursalController extends Controller
      */
     public function edit(Sucursal $sucursal)
     {
-        //
+        return view('sucursales.edit',compact('sucursal'));
+
     }
 
     /**
@@ -70,7 +91,31 @@ class SucursalController extends Controller
      */
     public function update(Request $request, Sucursal $sucursal)
     {
-        //
+        $request->validate([
+            'nombre' => 'required|max:50',
+            'file' => 'image'
+
+        ],[
+            'nombre.required'=>'El campo nombre es requerido.',
+            'file.image'=>'debe seleccionar una imagen'
+        ]);
+        $sucursal->update($request->all());
+        if($request->file('file')){
+            $url = Storage::put('public/sucursales', $request->file('file'));
+
+            if($sucursal->images){
+                Storage::delete($sucursal->images->url);
+
+                $sucursal->images->update([
+                    'url' => $url
+                ]);
+            }else{
+                $sucursal->images()->create([
+                    'url' => $url
+                ]);
+            }
+        }
+        return redirect()->route('sucursal.index')->with('editar', 'ok');
     }
 
     /**
@@ -81,6 +126,16 @@ class SucursalController extends Controller
      */
     public function destroy(Sucursal $sucursal)
     {
-        //
+        $sucursal->estado = 0;
+        $sucursal->save();
+        return redirect()->route('sucursal.index')->with('eliminar', 'ok');
+        
+    }
+    public function activar(Sucursal $sucursal)
+    {
+        $sucursal->estado = 1;
+        $sucursal->save();
+        return redirect()->route('sucursal.index')->with('activar', 'ok');
+    
     }
 }

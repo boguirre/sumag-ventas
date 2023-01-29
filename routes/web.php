@@ -6,8 +6,11 @@ use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\MedidaController;
+use App\Http\Controllers\PagoProveedorController;
 use App\Http\Controllers\PrestamoController;
+use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\VentaController;
+use App\Models\PagoProveedor;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -52,3 +55,6 @@ Route::get('/prestamo/reporte', [PrestamoController::class,'reporte'])->name('pr
 Route::resource('prestamo', PrestamoController::class)->middleware('auth')->names('prestamo');
 Route::resource('empresa', EmpresaController::class)->middleware('auth')->names('empresa');
 Route::post('prestamo/{prestamo}/addpago', [PrestamoController::class, 'addpago'])->name('prestamo.addpago');
+Route::resource('proveedor', ProveedorController::class)->middleware('auth')->names('proveedor');
+Route::resource('pago-proveedor', PagoProveedorController::class)->middleware('auth')->names('pago-proveedor');
+Route::post('pago-proveedor/{pagoProveedor}/addpago', [PagoProveedorController::class, 'addpago'])->name('pago-proveedor.addpago');

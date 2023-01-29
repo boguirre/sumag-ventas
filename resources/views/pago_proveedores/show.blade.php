@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="flex-wrap d-flex justify-content-between align-items-center" style="color: black">
                     <div>
-                        <h1>Detalle de Prestamo</h1>
+                        <h1>Detalle de Pago</h1>
                     </div>
                 </div>
             </div>
@@ -30,50 +30,50 @@
             <div class="card">
                 <div class="card-body">
                     {!! Form::open([
-                        'route' => ['prestamo.addpago', $prestamo],
+                        'route' => ['pago-proveedor.addpago', $pagoProveedor],
                         'autocomplete' => 'off',
                         'files' => true,
                         'class' => 'formulario',
                     ]) !!}
                     <div class="row">
                         <div class="col-md-3">
-                            <label for="">N° de Credito</label>
-                            <input type="text" name="" id="codigo" value="{{ $prestamo->numerocredito }}"
+                            <label for="">N° de Factura</label>
+                            <input type="text" name="" id="codigo" value="{{ $pagoProveedor->numero_factura }}"
                                 class="form-control" disabled>
                         </div>
                         <div class="col-md-3">
-                            <label for="">Fecha de Vencimiento</label>
-                            <input type="text" name="" id="stock" value="{{ $prestamo->fecha_vencimiento }}"
+                            <label for="">Fecha de Deposito</label>
+                            <input type="text" name="" id="stock" value="{{ $pagoProveedor->fecha_deposito }}"
                                 class="form-control" disabled>
                         </div>
 
                         <div class="col-md-3">
-                            <label for="">Empresa</label>
-                            <input type="text" name="" id="stock" value="{{ $prestamo->empresa->nombre }}"
+                            <label for="">Proveedor</label>
+                            <input type="text" name="" id="stock" value="{{ $pagoProveedor->proveedor->razon_social }}"
                                 class="form-control" disabled>
                         </div>
 
                         <div class="col-md-3">
                             <label for="">Tienda</label>
-                            <input type="text" name="" id="stock" value="{{ $prestamo->sucursal->nombre }}"
+                            <input type="text" name="" id="stock" value="{{ $pagoProveedor->sucursal->nombre }}"
                                 class="form-control" disabled>
                         </div>
 
                         <div class="col-md-3">
-                            <label for="">Monto del Prestamo</label>
-                            <input type="text" name="" id="uni_medida" value="{{ $prestamo->monto_prestamo }}"
+                            <label for="">Monto del Deposito</label>
+                            <input type="text" name="" id="uni_medida" value="{{ $pagoProveedor->monto_deposito }}"
                                 class="form-control" disabled>
                         </div>
                         
                         <div class="col-md-3">
                             <label for="">Monto Faltante a Pagar</label>
-                            <input type="text" name="" id="uni_medida" value="{{ $prestamo->monto_deuda }}"
+                            <input type="text" name="" id="uni_medida" value="{{ $pagoProveedor->monto_pago }}"
                                 class="form-control" disabled>
                         </div>
 
                         <div class="col-md-3">
                             <label for="quantity">Estado</label>
-                            @if ($prestamo->estado == 1)
+                            @if ($pagoProveedor->estado == 1)
                                 <a class="form-control btn btn-warning">En Deuda</a>
                             @else
                                 <a class="form-control btn btn-success">Cancelado</a>
@@ -82,7 +82,7 @@
                     </div>
 
 
-                    @if ($prestamo->monto_deuda > 0)
+                    @if ($pagoProveedor->monto_pago > 0)
                         <div class="col-md-3" style="margin-top: 15px">
                             <label for="">Monto a Pagar</label>
                             <input type="number" name="monto" id="uni_medida" value="" class="form-control"
@@ -97,7 +97,7 @@
                     <br>
 
                     <div class="form-group" style="margin-bottom: 15px">
-                        @if ($prestamo->monto_deuda > 0)
+                        @if ($pagoProveedor->monto_pago > 0)
                             <button type="submit" id="agregar" class="btn btn-primary rounded-pill" style="float:right">
                                 <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                     <path fill-rule="evenodd" clip-rule="evenodd"
@@ -121,7 +121,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($prestamo->prestamo_detalles as $detalle)
+                                    @foreach ($pagoProveedor->pago_proveedor_detalles as $detalle)
                                         <tr>
                                             <td><a class="btn btn-primary">{{ $detalle->id }}</a></td>
                                             <td>{{ $detalle->monto }}</td>
@@ -134,7 +134,7 @@
                     </div>
 
                     <div class="card-footer text-muted">
-                        <a href="{{ route('prestamo.index') }}" class="btn btn-light">
+                        <a href="{{ route('pago-proveedor.index') }}" class="btn btn-light">
                             Regresar
                         </a>
                     </div>

@@ -44,6 +44,16 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="form-label" for="pwd">Tienda:</label>
+                        
+                        {!! Form::select('sucursal_id', $sucursals, null, ['class' => 'form-control']) !!}
+
+                        @error('sucursal_id')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label class="form-label" for="pwd">Monto:</label>
                         <input type="number" class="form-control" id="monto_prestamo" name="monto_prestamo"
                             placeholder="Ingrese el monto" value="{{ $prestamo->monto_prestamo }}">

@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="flex-wrap d-flex justify-content-between align-items-center" style="color: black">
                     <div>
-                        <h1>Registrar Empresas</h1>
+                        <h1>Registrar Proveedor</h1>
                     </div>
                     {{-- <div>
                   <a href="{{route('categoria.create')}}" class="btn btn-link  btn-soft-primary">
@@ -28,7 +28,7 @@
                 </div>
             </div> --}}
                 <div class="card-body">
-                    {!! Form::open(['route' => 'empresa.store', 'autocomplete' => 'off', 'files' => true, 'class' => 'formulario']) !!}
+                    {!! Form::open(['route' => 'proveedor.store', 'autocomplete' => 'off', 'files' => true, 'class' => 'formulario']) !!}
                     <div class="form-group">
                         <label class="form-label" for="codigo">Codigo:</label>
                         <input type="text" class="form-control" id="codigo" name="codigo"
@@ -38,15 +38,32 @@
                         @enderror
                     </div>
                     <div class="form-group">
-                        <label class="form-label" for="pwd">Nombre:</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre"
-                            placeholder="Ingrese El Nombre" value="{{ old('nombre') }}">
-                        @error('nombre')
+                      <label class="form-label" for="codigo">RUC:</label>
+                      <input type="text" class="form-control" id="ruc" name="ruc"
+                          placeholder="Ingrese El RUC" value="{{ old('ruc') }}">
+                      @error('ruc')
+                          <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                      @enderror
+                  </div>
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Razon Social:</label>
+                        <input type="text" class="form-control" id="razon_social" name="razon_social"
+                            placeholder="Ingrese la razon social" value="{{ old('razon_social') }}">
+                        @error('razon_social')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
+
+                    <div class="form-group">
+                      <label class="form-label" for="pwd">Numero de Telefono:</label>
+                      <input type="text" class="form-control" id="numero_telefono" name="numero_telefono"
+                          placeholder="Ingrese el numero de telefono" value="{{ old('numero_telefono') }}">
+                      @error('numero_telefono')
+                          <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                      @enderror
+                  </div>
                     <button type="submit" class="btn btn-primary">Registrar</button>
-                    <a href="{{ route('empresa.index') }}" class="btn btn-danger">
+                    <a href="{{ route('proveedor.index') }}" class="btn btn-danger">
                         Cancelar
                     </a> {!! Form::close() !!}
                 </div>

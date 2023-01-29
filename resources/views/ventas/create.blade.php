@@ -31,6 +31,32 @@
                     {!! Form::open(['route' => 'venta.store', 'autocomplete' => 'off', 'files' => true, 'class' => 'formulario']) !!}
                     
                     <div class="row">
+                        <div class="col-md-4">
+                            <label for="">Nombre:</label>
+                            <input type="text" name="nombre" id="nombre" value="{{old('nombre')}}" class="form-control" >
+                            @error('nombre')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                          </div>
+                          
+                          <div class="col-md-4">
+                            <label for="">RUC / DNI:</label>
+                            <input type="text" name="documento" id="documento" value="{{old('documento')}}" class="form-control" >
+                            @error('documento')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                          </div>
+                          <div class="col-md-4">
+                            <label for="">Tienda</label>
+                            {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
+                            <select class="form-control" name="sucursal_id" id="sucursal_id">
+                                <option value="" disabled selected>Selecccione una Tienda</option>
+                                @foreach ($sucursals as $sucursal)
+                                <option value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
+                                @endforeach
+                            </select>
+
+                        </div>
                         <div class="col-md-6">
                             <label for="product_id">Producto</label>
                             {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
@@ -180,8 +206,12 @@ function mostrarValores() {
 
 function agregar() {
     datosProducto = document.getElementById('articulo_id').value.split('_');
-
+    datosSucursal = document.getElementById('sucursal_id').value.split('_');
+    sucursal_id = datosSucursal[0];
     product_id = datosProducto[0];
+    name = $("#nombre").val();
+    document = $("#documento").val();
+    sucursal = $("#sucursal_id option:selected").text();
     producto = $("#articulo_id option:selected").text();
     quantity = $("#cantidad").val();
     discount = $("#descuento").val();
@@ -189,7 +219,7 @@ function agregar() {
     codigo = $("#codigo").val();
     stock = $("#stock").val();
     impuesto = $("#impuesto").val();
-    if (product_id != "" && quantity != "" && quantity > 0 && discount != "" && price != "") {
+    if (product_id != "" && quantity != "" && quantity > 0 && discount != "" && price != "" && name !="" && document !="" && sucursal_id !="") {
         if (parseInt(stock) >= parseInt(quantity)) {
             subtotal[cont] = (quantity * price) - (quantity * price * discount / 100);
             total = total + subtotal[cont];

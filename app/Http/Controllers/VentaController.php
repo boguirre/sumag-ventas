@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Venta;
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
+use App\Models\Sucursal;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -32,8 +33,9 @@ class VentaController extends Controller
     public function create()
     {
         $articulos = Articulo::get();
+        $sucursals = Sucursal::get();
 
-        return view('ventas.create', compact('articulos'));
+        return view('ventas.create', compact('articulos', 'sucursals'));
     }
 
     /**
@@ -44,6 +46,16 @@ class VentaController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'nombre' => 'required',
+            'documento' => 'required|numeric',
+            
+        ],[
+            'nombre.required'=>'El campo nombre  es requerido',
+            'documento.numeric'=>'El campo numero del N° documento debe ser numerico',
+            'documento.required'=>'El campo del RUC/DNI es requerido.'
+            
+        ]);
         $venta = Venta::create($request->all()+[
             'user_id'=>Auth::user()->id,
             'venta_fecha'=>Carbon::now('America/Lima'),

@@ -8,6 +8,8 @@ use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\MedidaController;
 use App\Http\Controllers\PagoProveedorController;
 use App\Http\Controllers\PrestamoController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\VentaController;
 use App\Models\PagoProveedor;
 use Illuminate\Support\Facades\Artisan;

@@ -87,7 +87,10 @@ class PagoProveedorController extends Controller
      */
     public function edit(PagoProveedor $pagoProveedor)
     {
-        //
+        $sucursales = Sucursal::pluck('nombre', 'id');
+        $proveedores = Proveedor::where('estado', 1)->pluck('razon_social', 'id');
+
+        return view('pago_proveedores.edit', compact('sucursales', 'proveedores', 'pagoProveedor'));
     }
 
     /**
@@ -99,7 +102,29 @@ class PagoProveedorController extends Controller
      */
     public function update(Request $request, PagoProveedor $pagoProveedor)
     {
-        //
+        $request->validate([
+            'descripcion' => 'required',
+            'numero_factura' => 'required|numeric',
+            'monto_deposito' => 'required|numeric',
+            'proveedor_id' => 'required',
+            'sucursal_id' => 'required',
+            'fecha_deposito' => 'required',
+            
+        ],[
+            'numero_factura.required'=>'El campo numero de factura es requerido',
+            'numero_factura.numeric'=>'El campo numero de credito debe ser numerico',
+            'monto_deposito.required'=>'El campo monto es requerido.',
+            'descripcion.required'=>'El campo descripcion es requerido.',
+            'proveedor_id.required'=>'Debe seleccionar un proveedor',
+            'sucursal_id.required'=>'Debe seleccionar una tienda',
+            'fecha_deposito.required'=>'El campo fecha deposito es requerido.',
+        ]);
+
+        $pagoProveedor->update($request->all()+[
+            'monto_pago' => $request->monto_deposito
+        ]);
+
+        return redirect()->route('pago-proveedor.index')->with('guardar', 'ok');
     }
 
     /**

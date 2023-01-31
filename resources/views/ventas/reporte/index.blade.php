@@ -40,7 +40,7 @@
        <div class="flex-wrap card-header d-flex justify-content-center align-items-center">
           <div class="header-title ">
              {{-- <h4 class="card-title text-center">$855.8K</h4> --}}
-             <p class="mb-0 text-center" > <b >VENTAS POR MESE DEL PRESENTE AÑO</b></p>          
+             <p class="mb-0 text-center" > <b >VENTAS POR MESES DEL PRESENTE AÑO</b></p>          
           </div>
           
           

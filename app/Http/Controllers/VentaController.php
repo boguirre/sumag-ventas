@@ -6,10 +6,12 @@ use App\Models\Venta;
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
 use App\Models\Sucursal;
+use App\Models\VentaDetalle;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class VentaController extends Controller
 {
@@ -135,12 +137,74 @@ class VentaController extends Controller
             $subtotal += $ventaDetalle->cantidad*$ventaDetalle->precio-$ventaDetalle->cantidad* $ventaDetalle->precio*$ventaDetalle->descuento/100;
         }
         
-        $pdf = Pdf::setOptions(['isHTML5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('ventas.pdf.index', compact('ventum', 'ventaDetalles', 'subtotal'));
+        $pdf = Pdf::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('ventas.pdf.index', compact('ventum', 'ventaDetalles', 'subtotal'));
         
         return $pdf->download('Reporte_de_venta_'.$ventum->id.'.pdf');
 
 
+        
     }
 
+    public function reporte(){
+        $año = Carbon::now('America/Lima')->format('Y');
+
+        $ventaspormes = DB::select(
+            DB::raw("SELECT coalesce(total,0)as total
+                FROM (SELECT 'january' AS month UNION SELECT 'february' AS month UNION SELECT 'march' AS month UNION SELECT 'april' AS month UNION SELECT 'may' AS month UNION SELECT 'june' AS month UNION SELECT 'july' AS month UNION SELECT 'august' AS month UNION SELECT 'september' AS month UNION SELECT 'october' AS month UNION SELECT 'november' AS month UNION SELECT 'december' AS month ) m LEFT JOIN (SELECT MONTHNAME(venta_fecha) AS MONTH, COUNT(*) AS ventas, SUM(total)AS total 
+                FROM ventas WHERE year(venta_fecha)= $año
+                GROUP BY MONTHNAME(venta_fecha),MONTH(venta_fecha) 
+                ORDER BY MONTH(venta_fecha)) c ON m.MONTH =c.MONTH;"));
+            $data=[];
+            foreach($ventaspormes as $ventasporme){
+         
+                //    $report['label'][] = $salesByMonth->mes;
+
+                    $data['data'][] = $ventasporme->total;
+
+              }
+
+             $data['data'] = json_encode($data);
+            $reporte="";
+            $report=$this->top5ventasproductos($reporte);
+            // return $report;
+
+            return view('ventas.reporte.index',$data+$report);
+             
+
+    }
+
+    public function top5ventasproductos(){
+        $año = Carbon::now('America/Lima')->format('Y');
+
+        $ventastop5s =   VentaDetalle::join('articulos as a', 'venta_detalles.articulo_id', 'a.id')
+             ->select(
+                 DB::raw("a.nombre as articulo, SUM(venta_detalles.cantidad * a.precio_venta) AS total"),
+             )->whereYear("venta_detalles.created_at", $año)
+             ->groupBy('a.nombre')
+             ->orderBy(DB::raw("SUM(venta_detalles.cantidad * a.precio_venta) "), 'desc')
+             ->get()->take(5);
+
+            // $contDif = (5 - count($ventastop5s));
+            // if ($contDif > 0) {
+            // for ($i = 1; $i <= $contDif; $i++) {
+            //     array_keys($ventastop5s ,["articulo" => "-", 'total' => 0]);
+            //   }
+            // }
+    
+        $report=[];
+        foreach($ventastop5s as $ventastop5){
+                 
+                $report['label'][] = $ventastop5->articulo;
+
+                $report['report'][] = $ventastop5->total;
+
+          }
+          $report['report'] = json_encode($report);
+
+
+         $reporte=$report;
+
+         return $reporte;
+    }
     
 }

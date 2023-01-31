@@ -42,20 +42,30 @@ class SucursalController extends Controller
     {
         $request->validate([
             'nombre' => 'required|max:50',
-            'file' => 'required|image'
+            'logo' => 'required|image'
 
         ],[
             'nombre.required'=>'El campo nombre es requerido.',
-            'file.required'=>'debe seleccionar una imagen'
+            'logo.required'=>'debe seleccionar una imagen'
         ]);
-        $sucursal = Sucursal::create($request->all());
-        if($request->file('file')){
-            $url =  Storage::put('public/sucursales', $request->file('file'));
+        // if($request->file('file')){
+        //     $url =  Storage::put('public/sucursales', $request->file('file'));
 
-            $sucursal->images()->create([
-                'url' => $url
-            ]);
-        }
+        //     $sucursal->images()->create([
+        //         'url' => $url
+        //     ]);
+        // }
+        $sucursal = $request->all();
+        
+        if($request->hasFile('logo')){
+            ///ORIGINAL
+                $sucursal['logo']= time().''.$request->file('logo')->hashName();
+
+                $request->file('logo')->storeAs('public/sucursales/',$sucursal['logo']);
+                }
+
+        Sucursal::create($sucursal);
+
         return redirect()->route('sucursal.index')->with('guardar', 'ok');
     }
 

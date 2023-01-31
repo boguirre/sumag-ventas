@@ -141,20 +141,9 @@
 <body>
     <header>
 		<div class="row">
-           
-            @isset($ventum->sucursales->images)
             <img id="picture" class=""
-                src=" {{ Storage::url($ventum->sucursales->images->url) }}" alt="" style="float: right">
-                <img src="codingboss.png" alt="" style="float: right">
-
-                {{-- <img src="data:image/png;base64, {!! base64_encode(QrCode::size(200)->generate('http://codersfree.test/view-verfication/'.$course->slug.'?')) !!} "> --}}
-                {{-- <img src="data:image/png;base64,{{!! base64_encode(file_get_contents(asset('/storage/'.str_replace('public/','',$ventum->sucursales->images->url)))) }}"> --}}
-                @else
-            {{-- <img id="picture" class="p-1 avatar-70 rounded-pill bg-soft-primary"
-                 alt="" src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> --}}
-                 <img src="codingboss.png" alt="" style="float: right">
-
-                 @endisset     
+            src=" {{ Storage::url('sucursales/'.$ventum->sucursales->logo) }}" alt="" style="float: right">
+           
 		</div>
 		
 
@@ -162,10 +151,21 @@
 		<br>
         <div  class="img-centrar" id="card-cabe">
 				<h1 class="centrar-th" >MI COMPROBANTE DE VENTA</h1>
-			<h2 class="centrar-th">EMPRESA SUMAG</h2>
-			
+			<h2 class="centrar-th">" {{$ventum->sucursales->nombre}} "</h2>
+            
+            <br>
+            <br>
 			</div>
+            <br>
         <div>
+            <div style="text-align: center">
+
+                <b>Cliente:</b> {{$ventum->nombre}} <b> <b></b>     RUC/DNI:</b> {{$ventum->documento}} <b></b> <b> Fecha de Compra:</b> {{\Carbon\Carbon::parse($ventum->venta_fecha)->format('d-m-Y')}}
+            <p>-------------------------------------------------------------------------------------------------------------------------------------------------------</p>
+            
+            </div>
+
+            <br>
 			
             <table id="datos">
                 <thead>
@@ -183,6 +183,7 @@
                                 Email: {{$ventum->users->email}}
                             </p>
                         </th>
+                        
                     </tr>
                 </tbody>
             </table>
@@ -194,9 +195,9 @@
                 {{$sale->user->id}}
             </p>  --}}
             <p class="centrar-th">
-                NUMERO DE VENTA
+                GUIA DE PEDIDO
                 <br>
-                {{$ventum->id}}
+                N° {{$ventum->id}}
             </p>
         </div>
     </header>
@@ -269,7 +270,11 @@
         <!--puedes poner un mensaje aqui-->
         <div style="text-align: center">
             <p >
-                <b>SUMAG IMPORTACIONES DE CALIDAD TU MEJOR OPCIÓN!!</b><br>UNA DE LAS MEJORES EMPRESAS DONDE VENDE PRODUCTOS DE CALIDAD<br> <b>Telefono:</b> 987654321<br> <b>Email:</b> sumag@gmail.com
+                <b>{{$ventum->sucursales->nombre}} TU MEJOR OPCIÓN!!</b><br>UNA DE LAS MEJORES EMPRESAS DONDE VENDE PRODUCTOS DE CALIDAD
+                <br> <b>Ventas Por Mayor Y Menor </b><br>
+                <b>Atendemos Pedidos A Provincia </b> <br> <b> Dirección: </b> Av. Abancay 1119 - 1129 Tda:07(2do. Piso) <br>
+                <b>Celular:</b> 972117469 / 960516029 / 4284670<br>
+                <b>Gracias!! Por Su Preferencia.</b>
             </p>
         </div>
     </footer>

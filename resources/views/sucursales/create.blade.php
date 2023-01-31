@@ -39,8 +39,8 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="pwd">Seleccione una imagen:</label>
-                        <input type="file" class="form-control" id="file" name="file" accept="image/*">
-                        @error('file')
+                        <input type="file" class="form-control" id="logo" name="logo" accept="image/*">
+                        @error('logo')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
@@ -95,5 +95,19 @@
                         })
 
                     })
+                </script>
+                <script>
+                    document.getElementById("logo").addEventListener('change', cambiarImagen);
+            
+                    function cambiarImagen(event) {
+                        var file = event.target.files[0];
+            
+                        var reader = new FileReader();
+                        reader.onload = (event) => {
+                            document.getElementById("picture").setAttribute('src', event.target.result);
+                        };
+            
+                        reader.readAsDataURL(file);
+                    }
                 </script>
 @endsection

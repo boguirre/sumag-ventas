@@ -50,9 +50,9 @@
                                         <td>
                                             <div class="d-flex px-2 py-1">
                                               <div>
-                                                @isset($sucursal->images)
+                                                @isset($sucursal->logo)
                                                 <img id="picture" class="p-1 avatar-70 rounded-pill bg-soft-primary "
-                                                    src="{{ Storage::url($sucursal->images->url) }}" alt="">
+                                                    src="{{ Storage::url('sucursales/'.$sucursal->logo) }}" alt="">
                                             @else
                                                 <img id="picture" class="p-1 avatar-70 rounded-pill bg-soft-primary"
                                                      alt="" src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">

@@ -144,7 +144,9 @@
            
             @isset($ventum->sucursales->images)
             <img id="picture" class=""
-                src=" {{ Storage::url($ventum->sucursales->images->url) }}" alt="">
+                src=" {{ Storage::url($ventum->sucursales->images->url) }}" alt="" style="float: right">
+                <img src="codingboss.png" alt="" style="float: right">
+
                 {{-- <img src="data:image/png;base64, {!! base64_encode(QrCode::size(200)->generate('http://codersfree.test/view-verfication/'.$course->slug.'?')) !!} "> --}}
                 {{-- <img src="data:image/png;base64,{{!! base64_encode(file_get_contents(asset('/storage/'.str_replace('public/','',$ventum->sucursales->images->url)))) }}"> --}}
                 @else

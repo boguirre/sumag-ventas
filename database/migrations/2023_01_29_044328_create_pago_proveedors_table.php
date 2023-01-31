@@ -13,18 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('prestamos', function (Blueprint $table) {
+        Schema::create('pago_proveedors', function (Blueprint $table) {
             $table->id();
-            $table->text('descripcion')->nullable();
-            $table->double('numerocredito');
-            $table->double('monto_prestamo');
-            $table->double('monto_deuda');
-            $table->dateTime('fecha_prestamo');
-            $table->dateTime('fecha_vencimiento');
-            $table->unsignedBigInteger('empresa_id');
+            $table->dateTime('fecha_deposito');
+            $table->double('monto_deposito');
+            $table->double('monto_pago');
             $table->unsignedBigInteger('sucursal_id');
-            $table->foreign('empresa_id')->references('id')->on('empresas')->onDelete('cascade');
+            $table->string('numero_factura');
+            $table->unsignedBigInteger('proveedor_id');
+            $table->text('descripcion');
             $table->foreign('sucursal_id')->references('id')->on('sucursals')->onDelete('cascade');
+            $table->foreign('proveedor_id')->references('id')->on('proveedors')->onDelete('cascade');
             $table->integer('estado')->default(1);
             $table->timestamps();
         });
@@ -37,6 +36,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('prestamos');
+        Schema::dropIfExists('pago_proveedors');
     }
 };

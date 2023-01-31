@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Prestamo;
 use App\Http\Controllers\Controller;
 use App\Models\Empresa;
+use App\Models\Sucursal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -30,7 +31,8 @@ class PrestamoController extends Controller
     public function create()
     {
         $empresas = Empresa::all();
-        return view('prestamos.create', compact('empresas'));
+        $sucursals = Sucursal::all();
+        return view('prestamos.create', compact('empresas', 'sucursals'));
     }
 
     /**
@@ -46,6 +48,7 @@ class PrestamoController extends Controller
             'numerocredito' => 'required|numeric',
             'monto_prestamo' => 'required|numeric',
             'empresa_id' => 'required',
+            'sucursal_id' => 'required',
             'fecha_prestamo' => 'required',
             'fecha_vencimiento' => 'required'
             
@@ -55,6 +58,7 @@ class PrestamoController extends Controller
             'monto_prestamo.required'=>'El campo monto es requerido.',
             'descripcion.required'=>'El campo descripcion es requerido.',
             'empresa_id.required'=>'Debe seleccionar una empresa',
+            'sucursal_id.required'=>'Debe seleccionar una tienda',
             'fecha_prestamo.required'=>'El campo fecha prestamo es requerido.',
             'fecha_vencimiento.required'=>'El campo fecha de vencimiento es requerido.',
         ]);
@@ -86,7 +90,8 @@ class PrestamoController extends Controller
     public function edit(Prestamo $prestamo)
     {
         $empresas = Empresa::pluck('nombre', 'id');
-        return view('prestamos.edit', compact('prestamo', 'empresas'));
+        $sucursals = Sucursal::pluck('nombre', 'id');
+        return view('prestamos.edit', compact('prestamo', 'empresas', 'sucursals'));
     }
 
     /**
@@ -103,6 +108,7 @@ class PrestamoController extends Controller
             'numerocredito' => 'required|numeric',
             'monto_prestamo' => 'required|numeric',
             'empresa_id' => 'required',
+            'sucursal_id' => 'required',
             'fecha_prestamo' => 'required',
             'fecha_vencimiento' => 'required'
             
@@ -112,9 +118,11 @@ class PrestamoController extends Controller
             'monto_prestamo.required'=>'El campo monto es requerido.',
             'descripcion.required'=>'El campo descripcion es requerido.',
             'empresa_id.required'=>'Debe seleccionar una empresa',
+            'sucursal_id.required'=>'Debe seleccionar una tienda',
             'fecha_prestamo.required'=>'El campo fecha prestamo es requerido.',
             'fecha_vencimiento.required'=>'El campo fecha de vencimiento es requerido.',
         ]);
+
 
         $prestamo->update($request->all()+[
             'monto_deuda' => $request->monto_prestamo

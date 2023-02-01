@@ -157,8 +157,6 @@ class VentaController extends Controller
             $data=[];
             foreach($ventaspormes as $ventasporme){
          
-                //    $report['label'][] = $salesByMonth->mes;
-
                     $data['data'][] = $ventasporme->total;
 
               }
@@ -166,9 +164,12 @@ class VentaController extends Controller
              $data['data'] = json_encode($data);
             $reporte="";
             $report=$this->top5ventasproductos($reporte);
-            // return $report;
+            $reportedia="";
+            $repordias=$this->reportesdeventasdiarias($reportedia);
+            $getyearmonth = Carbon::now('America/Lima')->format('Y-m');
 
-            return view('ventas.reporte.index',$data+$report);
+            $ventasportiendas = DB::select('call spventasxtienda(?)',array($getyearmonth));
+            return view('ventas.reporte.index', compact('ventasportiendas','getyearmonth'), $data+$report+$repordias);
              
 
     }
@@ -182,14 +183,8 @@ class VentaController extends Controller
              )->whereYear("venta_detalles.created_at", $año)
              ->groupBy('a.nombre')
              ->orderBy(DB::raw("SUM(venta_detalles.cantidad * a.precio_venta) "), 'desc')
-             ->get()->take(5);
+             ->take(5)->get();
 
-            // $contDif = (5 - count($ventastop5s));
-            // if ($contDif > 0) {
-            // for ($i = 1; $i <= $contDif; $i++) {
-            //     array_keys($ventastop5s ,["articulo" => "-", 'total' => 0]);
-            //   }
-            // }
     
         $report=[];
         foreach($ventastop5s as $ventastop5){
@@ -205,6 +200,24 @@ class VentaController extends Controller
          $reporte=$report;
 
          return $reporte;
+    }
+    public function reportesdeventasdiarias(){
+        $getyearmonth = Carbon::now('America/Lima')->format('Y-m');
+
+        $ventasdias=DB::select('call spventasxdiasxmes(?)',array($getyearmonth));
+        $repordias=[];
+        foreach($ventasdias as $ventasdia){
+                 
+                $repordias['label'][] = $ventasdia->dia;
+
+                $repordias['repordias'][] = $ventasdia->totaldia;
+          }
+          $repordias['repordias'] = json_encode($repordias);
+
+
+         $reportedia=$repordias;
+
+         return $reportedia;
     }
     
 }

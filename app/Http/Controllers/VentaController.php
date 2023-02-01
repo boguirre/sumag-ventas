@@ -23,8 +23,9 @@ class VentaController extends Controller
     public function index()
     {
         $ventas = Venta::all();
+        $sucursals = Sucursal::get();
 
-        return view('ventas.index', compact('ventas'));
+        return view('ventas.index', compact('ventas','sucursals'));
     }
 
     /**
@@ -119,6 +120,19 @@ class VentaController extends Controller
     public function destroy(Venta $venta)
     {
         //
+    }
+
+    public function exportarpdffechas(Request $request){
+        $sucursals= Sucursal::select('nombre')->where('id','1')->get();
+        // return $sucursals;
+        $fechainicio = $request->fechainicial;
+        $fechafinal = $request->fechaterminal;
+
+        // return $fecha;
+        $ventas = Venta::whereBetween(DB::raw('DATE(venta_fecha)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        $pdf = Pdf::loadView('ventas.pdf.fechas', compact('ventas','sucursals','fechainicio','fechafinal'));
+        
+        return $pdf->download('Reporte_de_venta_.pdf');
     }
     public function cambio_estado(Venta $ventum)
     {

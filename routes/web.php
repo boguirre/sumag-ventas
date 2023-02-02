@@ -48,9 +48,10 @@ Route::post('categoria/{categorium}/activar', [CategoriaController::class, 'acti
 Route::resource('medida', MedidaController::class)->middleware('auth')->names('medida');
 Route::resource('articulo', ArticuloController::class)->middleware('auth')->names('articulo');
 Route::get('/venta/{ventum}/pdf',[VentaController::class, 'pdf'])->name('venta.pdf');
+Route::get('/ventas/reporte', [VentaController::class,'reporte'])->name('venta.reporte');
+Route::post('/venta/pdf',[VentaController::class, 'exportarpdffechas'])->name('venta.pdf');
 Route::resource('venta', VentaController::class)->middleware('auth')->names('venta');
 Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');
-
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');
 Route::get('/prestamo/reporte', [PrestamoController::class,'reporte'])->name('prestamos.reporte');
 Route::resource('prestamo', PrestamoController::class)->middleware('auth')->names('prestamo');

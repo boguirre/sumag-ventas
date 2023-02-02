@@ -13,6 +13,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
 
 class VentaController extends Controller
@@ -81,6 +82,7 @@ class VentaController extends Controller
      */
     public function show(Venta $ventum)
     {
+
         $subtotal = 0 ;
         $ventaDetalles = $ventum->ventaDetalles;
         foreach ($ventaDetalles as $ventaDetalle) {
@@ -152,13 +154,15 @@ class VentaController extends Controller
         } 
     }
     public function pdf(Venta $ventum){
+        $image = Storage::url($ventum->sucursales->images->url);
+
         $subtotal = 0 ;
         $ventaDetalles = $ventum->ventaDetalles;
         foreach ($ventaDetalles as $ventaDetalle) {
             $subtotal += $ventaDetalle->cantidad*$ventaDetalle->precio-$ventaDetalle->cantidad* $ventaDetalle->precio*$ventaDetalle->descuento/100;
         }
         
-        $pdf = Pdf::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('ventas.pdf.index', compact('ventum', 'ventaDetalles', 'subtotal'));
+        $pdf = Pdf::loadView('ventas.pdf.index', compact('ventum', 'ventaDetalles', 'subtotal','image'));
         
         return $pdf->download('Reporte_de_venta_'.$ventum->id.'.pdf');
 

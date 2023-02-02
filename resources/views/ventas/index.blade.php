@@ -104,7 +104,7 @@
                             </ul>
                             <!-- fieldsets -->
                             <fieldset style="display: block;">
-                                {!! Form::open(['route' => 'venta.pdf', 'autocomplete' => 'off', 'files' => true, 'class'=>'formulario']) !!}
+                                {!! Form::open(['route' => 'venta.pdffechas', 'autocomplete' => 'off', 'files' => true, 'class'=>'formulario']) !!}
                                     <div class="col-sm-12">
                                         <div class="row" >
                                             

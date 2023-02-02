@@ -52,7 +52,7 @@ Route::get('/venta/{ventum}/pdf',[VentaController::class, 'pdf'])->name('venta.p
 Route::get('/ventas/reporte', [VentaController::class,'reporte'])->name('venta.reporte');
 Route::post('venta/exportfechas/', [VentaController::class, 'exportarexcelfechas'])->name('venta.exportfechas');
 
-Route::post('/venta/pdf',[VentaController::class, 'exportarpdffechas'])->name('venta.pdf');
+Route::post('/venta/pdf',[VentaController::class, 'exportarpdffechas'])->name('venta.pdffechas');
 Route::resource('venta', VentaController::class)->middleware('auth')->names('venta');
 
 Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');

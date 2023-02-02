@@ -390,7 +390,7 @@
                     <span class="item-name">Pago Proveedores</span>
                 </a>
             </li>
-            {{-- <li class="nav-item">
+            <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-auth" role="button" aria-expanded="false" aria-controls="sidebar-user">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -472,8 +472,8 @@
                         </a>
                     </li>
                 </ul>
-            </li> --}}
-            {{-- <li class="nav-item">
+            </li> 
+            <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-user" role="button" aria-expanded="false" aria-controls="sidebar-user">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -605,8 +605,8 @@
                     <span class="default-icon">Elements</span>
                     <span class="mini-icon">-</span>
                 </a>
-            </li> --}}
-            {{-- <li class="nav-item">
+            </li> 
+            <li class="nav-item">
                 <a class="nav-link" href="https://templates.iqonic.design/hope-ui/html/dist/#accordion">
                     <i class="icon">
                          <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                                
@@ -615,8 +615,8 @@
                     </i>
                     <span class="item-name">Components</span>
                 </a>
-            </li> --}}
-            {{-- <li class="nav-item">
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-widget" role="button" aria-expanded="false" aria-controls="sidebar-widget">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -873,7 +873,7 @@
                         </a>
                     </li>
                 </ul>
-            </li> --}}
+            </li>
         </ul>
         <!-- Sidebar Menu End -->        </div>
 </div>

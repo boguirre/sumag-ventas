@@ -7,6 +7,8 @@ use App\Models\Proveedor;
 use App\Models\Sucursal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Storage;
 
 class PagoProveedorController extends Controller
 {
@@ -162,5 +164,15 @@ class PagoProveedorController extends Controller
         ]);
 
         return redirect()->route('pago-proveedor.show', $pagoProveedor)->with('addpago', 'ok');
+    }
+
+    public function exportpdf(PagoProveedor $pagoProveedor)
+    {
+        $image = Storage::url($pagoProveedor->sucursal->images->url);
+
+        $pdf = Pdf::loadView('pago_proveedores.pdf.index', compact('image', 'pagoProveedor'));
+
+        // return view('pago_proveedores.pdf.index', compact('image'));
+        return $pdf->setPaper('a4')->download('Reporte_de_pago_'.$pagoProveedor->id.'.pdf');
     }
 }

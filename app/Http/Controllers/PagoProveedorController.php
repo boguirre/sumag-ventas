@@ -8,6 +8,7 @@ use App\Models\Sucursal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class PagoProveedorController extends Controller
@@ -173,6 +174,80 @@ class PagoProveedorController extends Controller
         $pdf = Pdf::loadView('pago_proveedores.pdf.index', compact('image', 'pagoProveedor'));
 
         // return view('pago_proveedores.pdf.index', compact('image'));
-        return $pdf->setPaper('a4')->download('Reporte_de_pago_'.$pagoProveedor->id.'.pdf');
+        return $pdf->setPaper('a4')->download('Reporte_de_pago_proveedor_'.$pagoProveedor->sucursal->nombre.'.pdf');
     }
+
+    public function reporte()
+    {
+        $pagos= DB::select('call sp_sumapagosproveedores()');
+        $data=[];
+        foreach($pagos as $pago){
+                 
+               $data['label'][] = $pago->razon_social;
+
+               $data['data'][] = $pago->cantidad;
+
+        }
+        $data['data'] = json_encode($data);
+        $reporte="";
+        $report=$this->reporteEstado($reporte);
+        $reportempresa="";
+        $reportempresas=$this->reportexempresas($reportempresa);
+        return view('pago_proveedores.reporte.index',$data+$report+$reportempresas);
+    }
+
+    public function reporteEstado(){
+        $pagosestados= DB::select('call sp_sumaestadosprov()');
+        $report=[];
+        foreach($pagosestados as $pagosestado){
+                 
+                $report['label'][] = $pagosestado->estado;
+
+                $report['report'][] = $pagosestado->cantidad;
+
+          }
+
+         $report['report'] = json_encode($report);
+
+         $reporte=$report;
+
+         return $reporte;
+    }
+
+    public function reportexempresas()
+    {
+        $pagosempresas= DB::select('call sp_sumapagosempresas()');
+        $reportempresas=[];
+        foreach($pagosempresas as $pagosempresa){
+                 
+                $reportempresas['label'][] = $pagosempresa->nombre;
+
+                $reportempresas['reportempresas'][] = $pagosempresa->cantidad;
+
+          }
+
+         $reportempresas['reportempresas'] = json_encode($reportempresas);
+
+         $reportempresa=$reportempresas;
+
+         return $reportempresa;
+    }
+
+    // public function reporteMontos(){
+    //     $montos= DB::select('call sp_sumamontos()');
+    //     $report=[];
+    //     foreach($montos as $monto){
+                 
+    //             $report['label'][] = $monto->estado;
+
+    //             $report['report'][] = $monto->cantidad;
+
+    //       }
+
+    //      $report['report'] = json_encode($report);
+
+    //      $reporte=$report;
+
+    //      return $reporte;
+    // }
 }

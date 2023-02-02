@@ -19,6 +19,7 @@
         display: flex;
         justify-content: space-between;
         width: 100%;
+        border-radius: 5%;
         background: rgb(27, 107, 245);
     }
 
@@ -29,6 +30,7 @@
     }
 
     .company_address {
+        float: left;
         margin-right: 10px;
         margin-left: 10px;
     }
@@ -39,10 +41,14 @@
 
     .invoice_header p {
         margin-top: 10px;
+        margin-left: 15px
     }
 
     .logo_container img {
         height: 60px;
+        border-radius: 15px;
+        margin-top: 15px;
+        margin-left: 15px;
     }
 
     .customer_container {
@@ -95,7 +101,7 @@
     }
 
     .note {
-        width: 50%;
+        width: 100%;
     }
 
     .invoice_footer_amount {
@@ -111,6 +117,7 @@
     .in_head {
         margin: 0;
         text-align: center;
+        border-radius: 15px;
         background: rgb(13, 97, 241);
         padding: 5px;
     }
@@ -121,9 +128,7 @@
         <div class="invoice_header">
             <div class="logo_container">
                 <img src="http://sumag-ventas.test{{$image}}">
-            </div>
-            <div class="company_address">
-                <h2>Importaciones y Exportaciones SUMAG.</h2>
+                <h2 style="float: right; margin-right: 20px">~ TIENDA {{$pagoProveedor->sucursal->nombre}}</h2>
                 <p>
                     ATTN: Dennis Menees, CEO <br>
                     Global Co. <br>
@@ -154,10 +159,10 @@
                         <td>:</td>
                         <td><b>{{$pagoProveedor->fecha_deposito}}</b></td>
                     </tr>
-                    <tr>
+                    <tr style="float: right">
                         <td>Monto de Deposito</td>
                         <td>:</td>
-                        <td><b>{{$pagoProveedor->monto_deposito}}</b></td>
+                        <td><b>S/. {{$pagoProveedor->monto_deposito}}</b></td>
                     </tr>
                     <tr>
                         <td>Estado</td>
@@ -187,20 +192,20 @@
                 <tr>
                     <td>{{ $detalle->id }}</td>
                     <td colspan="4">{{ $detalle->fecha_pago }}</td>
-                    <td>{{ $detalle->monto }}</td>
+                    <td>S/. {{ $detalle->monto }}</td>
                 </tr>
                 @endforeach
                 <tr>
                     <th colspan="5">Total</th>
-                    <th>{{$pagoProveedor->monto_deposito}}</th>
+                    <th>S/. {{$pagoProveedor->monto_deposito}}</th>
                 </tr>
             </table>
         </div>
         <div class="invoice_footer">
             <div class="note">
-                <h2>Terminos y Condiciones</h2>
+                <h2>Descripcion</h2>
                 <p>
-                    Texto Referemcial
+                    {{$pagoProveedor->descripcion}}
                 </p>
             </div>
         </div>

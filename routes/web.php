@@ -64,5 +64,7 @@ Route::post('sucursal/{sucursal}/activar', [SucursalController::class, 'activar'
 Route::resource('sucursal', SucursalController::class)->middleware('auth')->names('sucursal');
 Route::post('prestamo/{prestamo}/addpago', [PrestamoController::class, 'addpago'])->name('prestamo.addpago');
 Route::resource('proveedor', ProveedorController::class)->middleware('auth')->names('proveedor');
+Route::get('/pago-proveedor/{pagoProveedor}/pdf', [PagoProveedorController::class, 'exportpdf'])->name('pago-proveedor.exportpdf');
 Route::resource('pago-proveedor', PagoProveedorController::class)->middleware('auth')->names('pago-proveedor');
 Route::post('pago-proveedor/{pagoProveedor}/addpago', [PagoProveedorController::class, 'addpago'])->name('pago-proveedor.addpago');
+

@@ -17,8 +17,9 @@ class Sucursal extends Model
     public function pago_proveedores(){
         return $this->hasMany(PagoProveedor::class);
     }
-    // public function images()
-    // {
-    //     return $this->morphOne(Image::class, 'imageable');
-    // }
+    
+    public function images()
+    {
+        return $this->morphOne(Image::class, 'imageable');
+    }
 }

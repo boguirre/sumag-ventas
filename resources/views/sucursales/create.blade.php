@@ -39,8 +39,8 @@
                     </div>
                     <div class="form-group">
                         <label class="form-label" for="pwd">Seleccione una imagen:</label>
-                        <input type="file" class="form-control" id="logo" name="logo" accept="image/*">
-                        @error('logo')
+                        <input type="file" class="form-control" id="file" name="file" accept="image/*">
+                        @error('file')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>

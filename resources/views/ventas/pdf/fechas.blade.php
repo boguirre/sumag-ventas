@@ -50,7 +50,7 @@
                                     <table class="table table-bordered " id="dataTable" width="100%" cellspacing="0">
                                         <thead>
                                             <tr>
-                                                <th scope="col" style="text-align:center"> <small><b>TIenda</b> </small></th>
+                                                <th scope="col" style="text-align:center"> <small><b>Tienda</b> </small></th>
                                                 <th scope="col" style="text-align:center"> <small><b>Cliente</b> </small></th>
                                                 <th scope="col" style="text-align:center"> <small><b>RUC / DNI</b> </small></th>
                                                 

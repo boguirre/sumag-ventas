@@ -12,6 +12,7 @@ use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\VentaController;
 use App\Models\PagoProveedor;
+use App\Models\Venta;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
@@ -49,8 +50,11 @@ Route::resource('medida', MedidaController::class)->middleware('auth')->names('m
 Route::resource('articulo', ArticuloController::class)->middleware('auth')->names('articulo');
 Route::get('/venta/{ventum}/pdf',[VentaController::class, 'pdf'])->name('venta.pdf');
 Route::get('/ventas/reporte', [VentaController::class,'reporte'])->name('venta.reporte');
+Route::post('venta/exportfechas/', [VentaController::class, 'exportarexcelfechas'])->name('venta.exportfechas');
+
 Route::post('/venta/pdf',[VentaController::class, 'exportarpdffechas'])->name('venta.pdf');
 Route::resource('venta', VentaController::class)->middleware('auth')->names('venta');
+
 Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');
 Route::get('/prestamo/reporte', [PrestamoController::class,'reporte'])->name('prestamos.reporte');

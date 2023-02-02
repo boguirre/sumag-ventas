@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PagosFechasExport;
 use App\Models\PagoProveedor;
 use App\Models\Proveedor;
 use App\Models\Sucursal;
@@ -10,6 +11,7 @@ use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PagoProveedorController extends Controller
 {
@@ -21,8 +23,9 @@ class PagoProveedorController extends Controller
     public function index()
     {
         $pagoProveedores = PagoProveedor::all();
+        $sucursals = Sucursal::all();
 
-        return view('pago_proveedores.index', compact('pagoProveedores'));
+        return view('pago_proveedores.index', compact('pagoProveedores', 'sucursals'));
     }
 
     /**
@@ -233,21 +236,19 @@ class PagoProveedorController extends Controller
          return $reportempresa;
     }
 
-    // public function reporteMontos(){
-    //     $montos= DB::select('call sp_sumamontos()');
-    //     $report=[];
-    //     foreach($montos as $monto){
-                 
-    //             $report['label'][] = $monto->estado;
+    public function exportarexcelfechas(Request $request){
 
-    //             $report['report'][] = $monto->cantidad;
+        $request->validate([
+            'fechainicial' => 'required',
+            'fechaterminal' => 'required',
+            'sucursal_id' => 'required'
+        ],[
+            'fechainicial.required' => 'el campo fecha inicial es requerido',
+            'fechaterminal.required' => 'el campo fecha final es requerido',
+            'sucursal_id.required' => 'Se debe elegir una sucursal es requerido'
+        ]);
 
-    //       }
-
-    //      $report['report'] = json_encode($report);
-
-    //      $reporte=$report;
-
-    //      return $reporte;
-    // }
+        $pagos = PagoProveedor::whereBetween(DB::raw('DATE(fecha_deposito)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        return Excel::download(new PagosFechasExport($request->fechainicial,$request->fechaterminal,$pagos), 'pagosfechas.xlsx');
+    }
 }

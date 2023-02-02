@@ -51,7 +51,7 @@
             </div>
         </div>
 
-        <div class="col-md-9 col-lg-7">
+        <div class="col-md-12 col-lg-12">
             <div class="card" data-aos="fade-up" data-aos-delay="800">
                 <div class="flex-wrap card-header d-flex justify-content-center align-items-center">
                     <div class="header-title ">

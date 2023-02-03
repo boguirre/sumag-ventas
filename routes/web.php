@@ -43,6 +43,7 @@ Route::middleware([
 Route::get('cmd/{command}', function ($command) {
     Artisan::call($command);
 });
+
 Route::resource('admin',AdminController::class)->middleware('auth')->names('admin');
 Route::resource('categoria', CategoriaController::class)->middleware('auth')->names('categoria');
 Route::post('categoria/{categorium}/activar', [CategoriaController::class, 'activar'])->middleware('auth')->name('categoria.activar');
@@ -50,10 +51,12 @@ Route::resource('medida', MedidaController::class)->middleware('auth')->names('m
 Route::resource('articulo', ArticuloController::class)->middleware('auth')->names('articulo');
 Route::get('/venta/{ventum}/pdf',[VentaController::class, 'pdf'])->name('venta.pdf');
 Route::get('/ventas/reporte', [VentaController::class,'reporte'])->name('venta.reporte');
+Route::get('/ventas/reporte/fechas/',[VentaController::class, 'reportesxfiltros'])->middleware('auth');
+Route::post('/ventas/reporte/fechas/',[VentaController::class, 'reportesxfiltrosxfechas'])->middleware('auth')->name('venta.reportefechas');
 Route::post('venta/exportfechas/', [VentaController::class, 'exportarexcelfechas'])->name('venta.exportfechas');
-
 Route::post('/venta/pdf',[VentaController::class, 'exportarpdffechas'])->name('venta.pdffechas');
 Route::resource('venta', VentaController::class)->middleware('auth')->names('venta');
+Route::post('/venta',[VentaController::class, 'indexventas'])->name('venta.indexventas');
 
 Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');

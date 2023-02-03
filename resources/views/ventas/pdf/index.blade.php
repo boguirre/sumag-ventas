@@ -127,9 +127,8 @@
 	#card-cabe{
 		background: #3a57e8;
 		color: white;
-		border-radius: 1rem;
+		border-radius: 3em 1em;
 		font-weight:bold;
-		margin-top: 10%;
         margin-left: 10%;
         margin-right: 10%;
 		box-shadow: 0 1.25em 1.8em rgba(8, 21, 65, 0.25);
@@ -140,20 +139,16 @@
 
 <body>
     <header>
-		<div class="row">
-            <img id="picture" class=""
-            src=" {{ Storage::url('sucursales/'.$ventum->sucursales->logo) }}" alt="" style="float: right">
-           
-		</div>
-		
-
-
-		<br>
+            
+              <center><img id="picture" class=""
+                src="http://sumag-ventas.test{{$image}}" alt="" style="border-width: 5px;border-radius: 3em 1em;
+                border-style: solid;
+                border-color: #3a57e8;" width="20%" height="15%" ></center>
+            
         <div  class="img-centrar" id="card-cabe">
 				<h1 class="centrar-th" >MI COMPROBANTE DE VENTA</h1>
 			<h2 class="centrar-th">" {{$ventum->sucursales->nombre}} "</h2>
             
-            <br>
             <br>
 			</div>
             <br>

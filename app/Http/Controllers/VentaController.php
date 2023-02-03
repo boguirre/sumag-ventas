@@ -6,14 +6,18 @@ use App\Exports\VentaFechasExport;
 use App\Models\Venta;
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
+use App\Models\Image;
 use App\Models\Sucursal;
 use App\Models\VentaDetalle;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Maatwebsite\Excel\Facades\Excel;
+use PhpParser\Node\Stmt\Return_;
 
 class VentaController extends Controller
 {
@@ -24,10 +28,22 @@ class VentaController extends Controller
      */
     public function index()
     {
-        $ventas = Venta::all();
+        $mes = Carbon::now('America/Lima')->format('m');
+        $year = Carbon::now('America/Lima')->format('Y');
+        $ventas = Venta::whereMonth(('ventas.venta_Fecha'),'=',$mes)->whereYear(('ventas.venta_Fecha'),'=',$year)->get();
+    
         $sucursals = Sucursal::get();
 
         return view('ventas.index', compact('ventas','sucursals'));
+    }
+
+    public function indexventas(Request $request){
+
+        $ventas = Venta::whereBetween('ventas.venta_Fecha', [$request->fechainicial, $request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        $sucursals = Sucursal::get();
+
+        return view('ventas.index', compact('ventas','sucursals'));
+
     }
 
     /**
@@ -81,6 +97,7 @@ class VentaController extends Controller
      */
     public function show(Venta $ventum)
     {
+
         $subtotal = 0 ;
         $ventaDetalles = $ventum->ventaDetalles;
         foreach ($ventaDetalles as $ventaDetalle) {
@@ -124,14 +141,17 @@ class VentaController extends Controller
         //
     }
 
-    public function exportarpdffechas(Request $request){
-        $sucursals= Sucursal::select('nombre')->where('id','1')->get();
+    public function exportarpdffechas(Request $request, Venta $ventas){
+
+        $sucursals= Sucursal::select('nombre')->where('id',[$request->sucursal_id])->get();
         // return $sucursals;
         $fechainicio = $request->fechainicial;
         $fechafinal = $request->fechaterminal;
 
         // return $fecha;
-        $ventas = Venta::whereBetween(DB::raw('DATE(venta_fecha)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        $ventas = $ventas->whereBetween(DB::raw('DATE(venta_fecha)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        // $image = Storage::url();
+
         $pdf = Pdf::loadView('ventas.pdf.fechas', compact('ventas','sucursals','fechainicio','fechafinal'));
         
         return $pdf->download('Reporte_de_venta_.pdf');
@@ -152,13 +172,15 @@ class VentaController extends Controller
         } 
     }
     public function pdf(Venta $ventum){
+        $image = Storage::url($ventum->sucursales->images->url);
+
         $subtotal = 0 ;
         $ventaDetalles = $ventum->ventaDetalles;
         foreach ($ventaDetalles as $ventaDetalle) {
             $subtotal += $ventaDetalle->cantidad*$ventaDetalle->precio-$ventaDetalle->cantidad* $ventaDetalle->precio*$ventaDetalle->descuento/100;
         }
         
-        $pdf = Pdf::setOptions(['isHtml5ParserEnabled' => true, 'isRemoteEnabled' => true])->loadView('ventas.pdf.index', compact('ventum', 'ventaDetalles', 'subtotal'));
+        $pdf = Pdf::loadView('ventas.pdf.index', compact('ventum', 'ventaDetalles', 'subtotal','image'));
         
         return $pdf->download('Reporte_de_venta_'.$ventum->id.'.pdf');
 
@@ -195,6 +217,8 @@ class VentaController extends Controller
 
     }
 
+
+
     public function top5ventasproductos(){
         $año = Carbon::now('America/Lima')->format('Y');
 
@@ -205,7 +229,7 @@ class VentaController extends Controller
              ->groupBy('a.nombre')
              ->orderBy(DB::raw("SUM(venta_detalles.cantidad * a.precio_venta) "), 'desc')
              ->take(5)->get();
-
+        
     
         $report=[];
         foreach($ventastop5s as $ventastop5){
@@ -241,6 +265,38 @@ class VentaController extends Controller
          return $reportedia;
     }
 
-    
+    public function reportesxfiltros(Request $request){
+        $sucursals = Sucursal::get();
+
+        $ventasdias =  DB::select('call spventasxdiasxmesxfechas(?,?,?)', array($request->fechainicial,$request->fechaterminal,$request->sucursal_id));
+        $repordias=[];
+        foreach($ventasdias as $ventasdia){
+                 
+                $repordias['label'][] = $ventasdia->dia;
+
+                $repordias['repordias'][] = $ventasdia->totaldia;
+          }
+          $repordias['repordias'] = json_encode($repordias);
+          
+          return view('ventas.reporte.indexfechas', compact('sucursals'), $repordias);
+
+    }
+
+    public function reportesxfiltrosxfechas(Request $request){
+        $sucursals = Sucursal::get();
+
+        $ventasdias =  DB::select('call spventasxdiasxmesxfechas(?,?,?)', array($request->fechainicial,$request->fechaterminal,$request->sucursal_id));
+        $repordias=[];
+        foreach($ventasdias as $ventasdia){
+                 
+                $repordias['label'][] = $ventasdia->dia;
+
+                $repordias['repordias'][] = $ventasdia->totaldia;
+          }
+          $repordias['repordias'] = json_encode($repordias);
+          
+          return view('ventas.reporte.indexfechas', compact('sucursals'), $repordias);
+
+    }
     
 }

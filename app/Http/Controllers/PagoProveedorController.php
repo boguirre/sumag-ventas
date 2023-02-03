@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PagosFechasExport;
 use App\Models\PagoProveedor;
 use App\Models\Proveedor;
 use App\Models\Sucursal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PagoProveedorController extends Controller
 {
@@ -20,8 +23,9 @@ class PagoProveedorController extends Controller
     public function index()
     {
         $pagoProveedores = PagoProveedor::all();
+        $sucursals = Sucursal::all();
 
-        return view('pago_proveedores.index', compact('pagoProveedores'));
+        return view('pago_proveedores.index', compact('pagoProveedores', 'sucursals'));
     }
 
     /**
@@ -173,6 +177,78 @@ class PagoProveedorController extends Controller
         $pdf = Pdf::loadView('pago_proveedores.pdf.index', compact('image', 'pagoProveedor'));
 
         // return view('pago_proveedores.pdf.index', compact('image'));
-        return $pdf->setPaper('a4')->download('Reporte_de_pago_'.$pagoProveedor->id.'.pdf');
+        return $pdf->setPaper('a4')->download('Reporte_de_pago_proveedor_'.$pagoProveedor->sucursal->nombre.'.pdf');
+    }
+
+    public function reporte()
+    {
+        $pagos= DB::select('call sp_sumapagosproveedores()');
+        $data=[];
+        foreach($pagos as $pago){
+                 
+               $data['label'][] = $pago->razon_social;
+
+               $data['data'][] = $pago->cantidad;
+
+        }
+        $data['data'] = json_encode($data);
+        $reporte="";
+        $report=$this->reporteEstado($reporte);
+        $reportempresa="";
+        $reportempresas=$this->reportexempresas($reportempresa);
+        return view('pago_proveedores.reporte.index',$data+$report+$reportempresas);
+    }
+
+    public function reporteEstado(){
+        $pagosestados= DB::select('call sp_sumaestadosprov()');
+        $report=[];
+        foreach($pagosestados as $pagosestado){
+                 
+                $report['label'][] = $pagosestado->estado;
+
+                $report['report'][] = $pagosestado->cantidad;
+
+          }
+
+         $report['report'] = json_encode($report);
+
+         $reporte=$report;
+
+         return $reporte;
+    }
+
+    public function reportexempresas()
+    {
+        $pagosempresas= DB::select('call sp_sumapagosempresas()');
+        $reportempresas=[];
+        foreach($pagosempresas as $pagosempresa){
+                 
+                $reportempresas['label'][] = $pagosempresa->nombre;
+
+                $reportempresas['reportempresas'][] = $pagosempresa->cantidad;
+
+          }
+
+         $reportempresas['reportempresas'] = json_encode($reportempresas);
+
+         $reportempresa=$reportempresas;
+
+         return $reportempresa;
+    }
+
+    public function exportarexcelfechas(Request $request){
+
+        $request->validate([
+            'fechainicial' => 'required',
+            'fechaterminal' => 'required',
+            'sucursal_id' => 'required'
+        ],[
+            'fechainicial.required' => 'el campo fecha inicial es requerido',
+            'fechaterminal.required' => 'el campo fecha final es requerido',
+            'sucursal_id.required' => 'Se debe elegir una sucursal es requerido'
+        ]);
+
+        $pagos = PagoProveedor::whereBetween(DB::raw('DATE(fecha_deposito)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        return Excel::download(new PagosFechasExport($request->fechainicial,$request->fechaterminal,$pagos), 'pagosfechas.xlsx');
     }
 }

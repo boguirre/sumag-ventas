@@ -230,7 +230,7 @@
                                 <ul>
                                     @foreach ($categorias as $categoria )
                                     <li>
-                                        <a href="{{route('web.escoger_producto', $categoria)}}"><img src="{{Storage::url($categoria->imagen->url)}}" alt="">{{$categoria->name}}</a>
+                                        <a href="{{route('web.escoger_producto', $categoria)}}"><img src="" alt="">{{$categoria->nombre}}</a>
                                         {{-- {{route('web.escoger_producto')}} --}}
                                     </li>
                                     @endforeach
@@ -249,7 +249,7 @@
                                 
                                 @foreach ($rangos as $rango)
                                 <li>
-                                    <a href="{{route('web.escoger_producto',$rango)}}">{{$rango->name}}</a>
+                                    <a href="{{route('web.escoger_producto',$rango)}}">{{$rango->nombre}}</a>
                                     {{-- {{route('web.escoger_producto')}}     --}}
                                 </li>
                                 @endforeach

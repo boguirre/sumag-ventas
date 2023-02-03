@@ -17,6 +17,8 @@ use App\Models\Venta;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\WebController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -28,9 +30,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return redirect()->route('login');
-});
+Route::get('/',[WebController::class,'index'])->name('web.index');
+Route::get('/articulos',[WebController::class,'escoger_producto2'])->name('web.escoger_producto2');
+Route::get('/sobre-nosotros',[WebController::class,'sobre_nosotros'])->name('web.sobre_nosotros');
+Route::get('/contacto',[WebController::class,'contacto'])->name('web.contacto');
+Route::get('articulo/{articulo}',[WebController::class,'vista_producto'])->name('web.vista_producto');
+Route::get('categori/{categori}',[WebController::class,'escoger_producto'])->name('web.escoger_producto');
+
 
 Route::middleware([
     'auth:sanctum',
@@ -41,6 +47,8 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
+
+
 Route::get('cmd/{command}', function ($command) {
     Artisan::call($command);
 });

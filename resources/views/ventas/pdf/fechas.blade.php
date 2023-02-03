@@ -20,7 +20,7 @@
                 <div class="container-fluid">
          <div class="row">
 
-            <img src="codingboss.png" alt="" style="width: 100; height:100" class="float-left">
+            {{-- <img src="http://sumag-ventas.test{{$image}}" alt="" style="width: 100; height:100" class="float-left"> --}}
             <br>
         </div>
     </div>

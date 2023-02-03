@@ -6,6 +6,7 @@ use App\Exports\VentaFechasExport;
 use App\Models\Venta;
 use App\Http\Controllers\Controller;
 use App\Models\Articulo;
+use App\Models\Image;
 use App\Models\Sucursal;
 use App\Models\VentaDetalle;
 use Barryvdh\DomPDF\Facade\Pdf;
@@ -31,7 +32,6 @@ class VentaController extends Controller
         $year = Carbon::now('America/Lima')->format('Y');
         $ventas = Venta::whereMonth(('ventas.venta_Fecha'),'=',$mes)->whereYear(('ventas.venta_Fecha'),'=',$year)->get();
     
-        // $ventas = Venta::where;
         $sucursals = Sucursal::get();
 
         return view('ventas.index', compact('ventas','sucursals'));
@@ -141,14 +141,17 @@ class VentaController extends Controller
         //
     }
 
-    public function exportarpdffechas(Request $request){
-        $sucursals= Sucursal::select('nombre')->where('id','1')->get();
+    public function exportarpdffechas(Request $request, Venta $ventas){
+
+        $sucursals= Sucursal::select('nombre')->where('id',[$request->sucursal_id])->get();
         // return $sucursals;
         $fechainicio = $request->fechainicial;
         $fechafinal = $request->fechaterminal;
 
         // return $fecha;
-        $ventas = Venta::whereBetween(DB::raw('DATE(venta_fecha)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        $ventas = $ventas->whereBetween(DB::raw('DATE(venta_fecha)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        // $image = Storage::url();
+
         $pdf = Pdf::loadView('ventas.pdf.fechas', compact('ventas','sucursals','fechainicio','fechafinal'));
         
         return $pdf->download('Reporte_de_venta_.pdf');
@@ -214,12 +217,7 @@ class VentaController extends Controller
 
     }
 
-    public function reporteventas(){
-        $getyearmonth = Carbon::now('America/Lima')->format('Y-m');
 
-        $ventasportiendas = DB::select('call spventasxtienda(?)',array($getyearmonth));
-
-    }
 
     public function top5ventasproductos(){
         $año = Carbon::now('America/Lima')->format('Y');

@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\DuaController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\MedidaController;
@@ -69,4 +70,6 @@ Route::get('/pago-proveedor/reporte', [PagoProveedorController::class,'reporte']
 Route::post('pago-proveedor/exportfechas/', [PagoProveedorController::class, 'exportarexcelfechas'])->name('pago-proveedor.exportfechas');
 Route::resource('pago-proveedor', PagoProveedorController::class)->middleware('auth')->names('pago-proveedor');
 Route::post('pago-proveedor/{pagoProveedor}/addpago', [PagoProveedorController::class, 'addpago'])->name('pago-proveedor.addpago');
+
+Route::resource('dua', DuaController::class)->names('dua');
 

@@ -80,6 +80,14 @@
                         @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Seleccione un archivo:</label>
+                        <input type="file" class="form-control" id="file" name="file">
+                        @error('file')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
+
                     {{-- <div class="form-group">
                         <label class="form-label" for="pwd">Fecha de Vencimiento:</label>
                         {!! Form::date('fecha_vencimiento', null, ['class' => 'form-control']) !!}

@@ -6,6 +6,7 @@ use App\Models\Dua;
 use App\Models\Sucursal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class DuaController extends Controller
 {
@@ -44,7 +45,8 @@ class DuaController extends Controller
             'monto_percepcion' => 'required|numeric',
             'sucursal_id' => 'required',
             'fecha_numeracion' => 'required',
-            'mes_llegada' => 'required'
+            'mes_llegada' => 'required',
+            'file' => 'required'
             
         ],[
             'numero_dua.required'=>'El campo numero de DUA es requerido',
@@ -58,6 +60,12 @@ class DuaController extends Controller
         $mes_llegada = Carbon::parse($request->mes_llegada);
         $dua  = Dua::create($request->all()+[
             'mes_cobro' => $mes_llegada->addMonths(4)
+        ]);
+
+        $url = $request->file->store('resources');
+
+        $dua->resource()->create([
+            'url' => $url
         ]);
 
         return redirect()->route('dua.index')->with('guardar', 'ok');
@@ -116,6 +124,22 @@ class DuaController extends Controller
             'mes_cobro' => $mes_llegada->addMonths(4)
         ]);
 
+        if($request->file('file')){
+            $url = $request->file->store('resources');
+
+            if($dua->resource){
+                Storage::delete($dua->resource->url);
+
+                $dua->resource->update([
+                    'url' => $url
+                ]);
+            }else{
+                $dua->resource()->create([
+                    'url' => $url
+                ]);
+            }
+        }
+
         return redirect()->route('dua.index')->with('guardar', 'ok');
     }
 
@@ -128,5 +152,10 @@ class DuaController extends Controller
     public function destroy(Dua $dua)
     {
         //
+    }
+
+    public function download(Request $request)
+    {
+        return response()->download(storage_path('app/' . $request->url));
     }
 }

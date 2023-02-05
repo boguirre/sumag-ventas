@@ -82,5 +82,6 @@ Route::post('pago-proveedor/exportfechas/', [PagoProveedorController::class, 'ex
 Route::resource('pago-proveedor', PagoProveedorController::class)->middleware('auth')->names('pago-proveedor');
 Route::post('pago-proveedor/{pagoProveedor}/addpago', [PagoProveedorController::class, 'addpago'])->name('pago-proveedor.addpago');
 Route::post('dua/download', [DuaController::class, 'download'])->name('dua.download');
+Route::get('/dua/reporte', [DuaController::class,'reporte'])->name('dua.reporte');
 Route::resource('dua', DuaController::class)->names('dua');
 

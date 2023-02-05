@@ -158,4 +158,13 @@ class DuaController extends Controller
     {
         return response()->download(storage_path('app/' . $request->url));
     }
+
+
+
+    public function reporte(){
+
+
+        return view('duas.reporte.index');
+    }
+
 }

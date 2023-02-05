@@ -645,7 +645,7 @@
                 </a>
                 <ul class="sub-nav collapse" id="sidebar-widget" data-bs-parent="#sidebar-menu">
                     <li class="nav-item">
-                        <a class="nav-link " href="{{route('dua.index')}}">
+                        <a class="nav-link {{ (Request::is('dua')| Request::is('dua/*') ? 'active' : '') }}" href="{{route('dua.index')}}">
                             <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
@@ -657,8 +657,8 @@
                             <span class="item-name">General</span>
                         </a>
                     </li>
-                    {{-- <li class="nav-item">
-                        <a class="nav-link " href="../dashboard/widget/widgetchart.html">
+                    <li class="nav-item">
+                        <a class="nav-link {{ (Request::is('dua/reporte') ? 'active' : '') }}" href="{{route('dua.reporte')}}">
                             <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
@@ -666,11 +666,11 @@
                                     </g>
                                 </svg>
                             </i>
-                            <i class="sidenav-mini-icon"> W </i>
-                            <span class="item-name">Widget Chart</span>
+                            <i class="sidenav-mini-icon" title="Reporte de Duas"> R </i>
+                            <span class="item-name" title="Reporte de Duas" >Reporte</span>
                         </a>
                     </li>
-                     <li class="nav-item">
+                     {{-- <li class="nav-item">
                         <a class="nav-link " href="../dashboard/widget/widgetcard.html">
                             <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">

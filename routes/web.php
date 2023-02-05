@@ -31,11 +31,12 @@ use App\Http\Controllers\WebController;
 */
 
 Route::get('/',[WebController::class,'index'])->name('web.index');
+Route::get('ver_articulo/{articulo}',[WebController::class,'ver_articulo'])->name('web.ver_articulo');
+Route::get('escoger_producto/{categoria}',[WebController::class,'escoger_producto'])->name('web.escoger_producto');
 Route::get('/articulos',[WebController::class,'escoger_producto2'])->name('web.escoger_producto2');
 Route::get('/sobre-nosotros',[WebController::class,'sobre_nosotros'])->name('web.sobre_nosotros');
 Route::get('/contacto',[WebController::class,'contacto'])->name('web.contacto');
-Route::get('articulo/{articulo}',[WebController::class,'vista_producto'])->name('web.vista_producto');
-Route::get('categori/{categori}',[WebController::class,'escoger_producto'])->name('web.escoger_producto');
+
 
 
 Route::middleware([

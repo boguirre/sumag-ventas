@@ -18,29 +18,39 @@ class WebController extends Controller
         return view('web.index', compact('articulos','categorias'));
     }
 
-    public function vista_producto(Articulo $articulo){
+    public function ver_articulo(Articulo $articulo){
+        
+        $destacados = Articulo::where('estado',1)                   
+                             ->latest('id')
+                             ->get();
 
-        return view('web.vista_producto', compact('articulo'));
+        return view('web.ver_articulo', compact('articulo','destacados'));
+        
 
     }
 
     public function escoger_producto(Categoria $categoria){
-
+        $productos = Articulo::where('categoria_id', $categoria->id)
+                                 ->where('estado',1)
+                                 ->latest('id')
+                                 ->get();
+        $filtrocategoria = Categoria::all();
        
-        return view('web.escoger_producto', compact('categoria'));
-
+        return view('web.escoger_producto',compact('categoria','productos','filtrocategoria'));
+        
     }
 
     public function escoger_producto2(){
-        
-        return view('web.escoger_producto2');
+        $productosgeneral = Articulo::all();
+        $categoriageneral = Categoria::all();
+        return view('web.escoger_producto2', compact('productosgeneral','categoriageneral'));
     }
 
     public function sobre_nosotros(){
 
         return view('web.sobre_nosotros');
     }
-    
+
     public function contacto(){
         return view('web.contacto');
     }

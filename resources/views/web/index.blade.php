@@ -13,7 +13,7 @@
                                     <h1 class="banner-title mb-40">
                                         Moda Sumag <span>Hombres</span>
                                     </h1>
-                                    <p>Productos desarrolados con alta calidad.</p>
+                                    <p>Productos desarrollados con mas alta calidad.</p>
                                     <a href="{{route('web.escoger_producto2')}}" class="shop-now">Comprar ahora</a>
                                     <span class="border-line"></span>
                                 </div>
@@ -24,14 +24,14 @@
                         </div>
                     </div>
 
-                   <div class="banner-slider-single banner-animation-col">
+                    <div class="banner-slider-single banner-animation-col">
                         <div class="row align-items-center">
                             <div class="col-md-6 col-lg-6">
                                 <div class="banner-content">
                                     <h1 class="banner-title mb-40">
                                         Moda Sumag <span>Mujeres</span>
                                     </h1>
-                                    <p>Productos desarrolados con alta calidad.</p>
+                                    <p>Productos desarrollados con mas alta calidad.</p>
                                     <a href="{{route('web.escoger_producto2')}}" class="shop-now">Comprar ahora</a>
                                     <span class="border-line"></span>
                                 </div>
@@ -65,8 +65,7 @@
         </div>
     </section>
     <!--End hero slider-->
-
-
+    
     <!-- etiquetas de atencion alcliente , pago , envio gratis -->
     <!-- Etiquetas donde encontramos: atencion al cleinte , pago seguro, envio gratis -->
     <section class="featured section-padding">
@@ -86,7 +85,7 @@
                 <div class="col-lg-4 col-md-4 d-flex">
                     <div class="banner-box d-flex align-items-center flex-fill wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
                         <div class="banner-icon">
-                            <i class="feather-shield"></i>
+                            <i class="feather-credit-card"></i>
                         </div>
                         <div class="banner-text">
                             <h3>Pago Seguro</h3>
@@ -97,10 +96,10 @@
                 <div class="col-lg-4 col-md-4 d-flex">
                     <div class="banner-box d-flex align-items-center flex-fill wow animate__animated animate__fadeInUp" data-wow-delay=".2s">
                         <div class="banner-icon">
-                            <i class="feather-truck"></i>
+                            <i class="feather-shield"></i>
                         </div>
                         <div class="banner-text">
-                            <h3>Envio gratis</h3>
+                            <h3>Garantia</h3>
                             <p>En todos los pedidos</p>
                         </div>
                     </div>
@@ -153,11 +152,9 @@
                                 <div class="product-img-col">
                         
                                     <!-- Imagen del producto -->
-                                    <div class="product-img product-img-zoom">
-                                        <a href="{{route('web.escoger_producto', $articulo)}}">
-                                            
-                                            
-                                            <img src="@if($articulo->images){{Storage::url($articulo->images->url)}}@else https://cdn.pixabay.com/photo/2021/05/18/17/49/grass-6264039_960_720.jpg @endif" alt="">
+                                    <div class="product-img product-img-zoom ">
+                                        <a href="{{route('web.ver_articulo', $articulo)}}">
+                                            <img src="@if($articulo->images) {{Storage::url($articulo->images->url)}}@else {{asset('assets/img/sin-imagen2.png')}} @endif" alt="">
                                         </a>
                                     </div>
                                     <!-- ertiqueta amarilla de venta -->
@@ -170,13 +167,13 @@
                                 <!-- parte inferior del card donde se muesta el nombre del prodycto su precio y estrellas -->
                                 <div class="product-content">
                         
-                                    <h2><a href="{{route('web.escoger_producto', $articulo)}}">{{$articulo->nombre}}</a></h2>
+                                    <h2><a href="{{route('web.ver_articulo', $articulo)}}">{{$articulo->nombre}}</a></h2>
                                     {{-- {{route('web.vista_producto')}} --}}
                         
                                     <div class="product-card-bottom mt-0">
                                         <div class="product-price">
                                             <span>S/. {{$articulo->precio_venta}} <p> soles </p> </span>
-                                            
+                                            <span> <p>Cantidad :  {{$articulo->stock}} </p>  </span>
                                             {{-- <span class="old-price">S/. {{$producto->descuento}}</span>
                                             <span class="discount-tag">- {{round((($producto->descuento)/($producto->precio))*100,0)}}%</span> --}}
                                         </div>

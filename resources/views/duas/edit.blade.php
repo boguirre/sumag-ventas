@@ -78,6 +78,14 @@
                         @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Seleccione un archivo:</label>
+                        <input type="file" class="form-control" id="file" name="file">
+                        @error('file')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
+
                     <div>
                         <button type="submit" class="btn btn-primary">Actualizar</button>
                         <a href="{{ route('dua.index') }}" class="btn btn-danger">Cancelar</a>

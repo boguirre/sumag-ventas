@@ -6,6 +6,8 @@ use App\Models\Dua;
 use App\Models\Sucursal;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
 class DuaController extends Controller
@@ -162,9 +164,40 @@ class DuaController extends Controller
 
 
     public function reporte(){
+        $añomes = Carbon::now('America/Lima')->format('Y-m');
+
+        $duas = DB::select('call spduaestados(?)',array($añomes));
+        // return $duas;
+        foreach($duas as $dua){
+                 
+            $data['label'][] = $dua->estado;
+
+            $data['data'][] = $dua->cantidad;
+      }
+        $data['data'] = json_encode($data);
 
 
-        return view('duas.reporte.index');
+        $report = '';
+        $report=$this->reportepersepcion($report);
+
+        return view('duas.reporte.index',compact('añomes'),$data+$report);
+    }
+
+
+    public function reportepersepcion(){
+        $añomes = Carbon::now('America/Lima')->format('Y-m');
+        $duaspersepciones = DB::select('call spduaspersepcion(?)',array($añomes));
+
+        foreach($duaspersepciones as $duaspersepcion){
+                 
+            $report['label'][] = $duaspersepcion->sucursal;
+
+            $report['report'][] = $duaspersepcion->cantidad;
+      }
+        $report['report'] = json_encode($report);
+
+        return $report;
+
     }
 
 }

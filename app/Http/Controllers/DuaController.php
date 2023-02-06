@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DuaFechasExport;
 use App\Models\Dua;
 use App\Models\Sucursal;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DuaController extends Controller
 {
@@ -19,8 +22,9 @@ class DuaController extends Controller
      */
     public function index()
     {
+        $sucursals = Sucursal::get();
         $duas = Dua::all();
-        return view('duas.index', compact('duas'));
+        return view('duas.index', compact('duas','sucursals'));
     }
 
     /**
@@ -200,4 +204,20 @@ class DuaController extends Controller
 
     }
 
+    public function exportarpdffechas(Request $request){
+        $sucursals= Sucursal::select('nombre')->where('id',[$request->sucursal_id])->get();
+
+        $fechainicio = $request->fechainicial;
+        $fechafinal = $request->fechaterminal;
+
+        $duas = Dua::whereBetween(DB::raw('DATE(created_at)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        $pdf = Pdf::loadView('duas.pdf.fechas', compact('duas','sucursals','fechainicio','fechafinal'));
+        
+        return $pdf->download('Reporte_de_Duas.pdf');
+    }
+    public function exportarexcelfechas(Request $request){
+        $duas = Dua::whereBetween(DB::raw('DATE(created_at)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        return Excel::download(new DuaFechasExport($request->fechainicial,$request->fechaterminal,$duas), 'duas_reporte_fechas.xlsx');
+
+    }
 }

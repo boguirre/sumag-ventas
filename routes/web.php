@@ -82,6 +82,9 @@ Route::get('/pago-proveedor/reporte', [PagoProveedorController::class,'reporte']
 Route::post('pago-proveedor/exportfechas/', [PagoProveedorController::class, 'exportarexcelfechas'])->name('pago-proveedor.exportfechas');
 Route::resource('pago-proveedor', PagoProveedorController::class)->middleware('auth')->names('pago-proveedor');
 Route::post('pago-proveedor/{pagoProveedor}/addpago', [PagoProveedorController::class, 'addpago'])->name('pago-proveedor.addpago');
+Route::post('dua/exportfechas/', [DuaController::class, 'exportarpdffechas'])->name('dua.pdffechas');
+Route::post('venta/excelfechas/', [DuaController::class, 'exportarexcelfechas'])->name('dua.excelfechas');
+
 Route::post('dua/download', [DuaController::class, 'download'])->name('dua.download');
 Route::get('/dua/reporte', [DuaController::class,'reporte'])->name('dua.reporte');
 Route::resource('dua', DuaController::class)->names('dua');

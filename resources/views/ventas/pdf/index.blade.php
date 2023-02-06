@@ -23,9 +23,21 @@
         font-family: "Poppins", sans-serif;
         font-size: 14px;
         /*font-family: SourceSansPro;*/
+        
     }
 
+    #imgmarca{
+        background-image: url(http://sumag-ventas.test{{$image}});
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+        height: 100%;
+    width: 100%;
+  position: absolute;
+  background-position: center center;
+  opacity: 0.1;
+  background-size: cover;
 
+     }
     #datos {
         float: left;
         margin-top: 0%;
@@ -138,8 +150,10 @@
 </style>
 
 <body>
+    <div id="imgmarca"></div>      
+
     <header>
-            
+
               <center><img id="picture" class=""
                 src="http://sumag-ventas.test{{$image}}" alt="" style="border-width: 5px;border-radius: 3em 1em;
                 border-style: solid;
@@ -261,6 +275,7 @@
     </section>
     <br>
     <br>
+
     <footer>
         <!--puedes poner un mensaje aqui-->
         <div style="text-align: center">

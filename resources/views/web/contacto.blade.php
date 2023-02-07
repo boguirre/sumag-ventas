@@ -74,7 +74,7 @@
                 <div class="col-lg-4 col-md-6 d-flex">
                     <div class="contact-card w-100">
                         <div class="contact-body">
-                            <div class="contact-icon">
+                            <div class="contact-icon" >
                                 <p><i class="feather-phone-call"></i></p>
                             </div>
                             <div class="contact-details">
@@ -92,7 +92,7 @@
                             </div>
                             <div class="contact-details">
                                 <h4>Direccion</h4>
-                                <p class="text-muted">Gamara 312 av. paseo la republica</p>
+                                <p class="text-muted">Av. Abancay 1113, Lima 15001</p>
                             </div>
                         </div>
                     </div>
@@ -104,7 +104,7 @@
 
     <!-- Google Map -->
     <div class="map-grid">
-        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d39826.04283008571!2d-0.06359185714613338!3d51.40070868201977!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4876002c98ae8579%3A0x69e9592192db09e5!2sBeckenham%2C%20UK!5e0!3m2!1sen!2sin!4v1642686555108!5m2!1sen!2sin" allowfullscreen="" aria-hidden="false" tabindex="0" class="contact-map"></iframe>
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.7895534741565!2d-77.0298344!3d-12.057995799999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8bed1b314ad%3A0x5d84c81fc44645e3!2sSumac%20Fashion!5e0!3m2!1ses-419!2spe!4v1675573996139!5m2!1ses-419!2spe" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" allowfullscreen="" aria-hidden="false" tabindex="0" class="contact-map"></iframe>
     </div>
     <!-- Google Map --> 
  </x-app-layout>

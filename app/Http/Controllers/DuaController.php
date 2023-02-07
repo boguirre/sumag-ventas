@@ -220,4 +220,11 @@ class DuaController extends Controller
         return Excel::download(new DuaFechasExport($request->fechainicial,$request->fechaterminal,$duas), 'duas_reporte_fechas.xlsx');
 
     }
+
+    public function estado(Dua $dua)
+    {
+        $dua->estado = 2;
+        $dua->save();
+        return redirect()->route('dua.index')->with('activar', 'ok');
+    }
 }

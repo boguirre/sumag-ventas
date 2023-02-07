@@ -120,6 +120,48 @@
 
                         {!! Form::close() !!}
                     </fieldset>
+                    <fieldset style="display: block;">
+                        {!! Form::open([
+                            'route' => 'pago-proveedor.filtro',
+                            'autocomplete' => 'off',
+                            'files' => true,
+                            'class' => 'formulario',
+                        ]) !!}
+
+                        <div class="col-sm-12">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <label for="">Tienda</label>
+                                    {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
+                                    <select class="form-control" name="sucursal_id" id="sucursal_id">
+                                        <option value="" disabled selected>Selecccione una Tienda</option>
+                                        @foreach ($sucursals as $sucursal)
+                                            <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
+                                        @endforeach
+                                    </select>
+
+                                    @error('sucursal_id')
+                                            <small class="text-danger">
+                                                <b>{{ $message }}</b>
+                                            </small>
+                                    @enderror
+
+                                </div>
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <br>
+                                        <button type="submit"
+                                            class="btn btn-primary rounded-pill btn-sm ms-auto mt-1">
+                                            Filtrar Información
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        {!! Form::close() !!}
+                    </fieldset>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped" data-toggle="data-table">
                             <thead>

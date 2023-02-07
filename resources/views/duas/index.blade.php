@@ -9,7 +9,11 @@
                     </div>
                     <div>
                         <a href="{{ route('dua.create') }}" class="btn btn-primary" style="color: white; border-radius: 12px">
-                          <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                            <path fill-rule="evenodd" clip-rule="evenodd" d="M7.33 2H16.66C20.06 2 22 3.92 22 7.33V16.67C22 20.06 20.07 22 16.67 22H7.33C3.92 22 2 20.06 2 16.67V7.33C2 3.92 3.92 2 7.33 2ZM12.82 12.83H15.66C16.12 12.82 16.49 12.45 16.49 11.99C16.49 11.53 16.12 11.16 15.66 11.16H12.82V8.34C12.82 7.88 12.45 7.51 11.99 7.51C11.53 7.51 11.16 7.88 11.16 8.34V11.16H8.33C8.11 11.16 7.9 11.25 7.74 11.4C7.59 11.56 7.5 11.769 7.5 11.99C7.5 12.45 7.87 12.82 8.33 12.83H11.16V15.66C11.16 16.12 11.53 16.49 11.99 16.49C12.45 16.49 12.82 16.12 12.82 15.66V12.83Z" fill="currentColor"></path>                            </svg> 
+                            <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M7.33 2H16.66C20.06 2 22 3.92 22 7.33V16.67C22 20.06 20.07 22 16.67 22H7.33C3.92 22 2 20.06 2 16.67V7.33C2 3.92 3.92 2 7.33 2ZM12.82 12.83H15.66C16.12 12.82 16.49 12.45 16.49 11.99C16.49 11.53 16.12 11.16 15.66 11.16H12.82V8.34C12.82 7.88 12.45 7.51 11.99 7.51C11.53 7.51 11.16 7.88 11.16 8.34V11.16H8.33C8.11 11.16 7.9 11.25 7.74 11.4C7.59 11.56 7.5 11.769 7.5 11.99C7.5 12.45 7.87 12.82 8.33 12.83H11.16V15.66C11.16 16.12 11.53 16.49 11.99 16.49C12.45 16.49 12.82 16.12 12.82 15.66V12.83Z"
+                                    fill="currentColor"></path>
+                            </svg>
                             Registrar
                         </a>
                     </div>
@@ -28,7 +32,7 @@
                     </div>
 
 
-                   
+
                     {{-- <div style="float: right;  margin-top: 2%;
                         margin-left: 2%;
                         margin-right: 2%; color: black">Monto Total Faltante a Pagar: <strong style="color: green">S/.{{$prestamos->where('estado', 1)->sum('monto_deuda')}}</strong></div> --}}
@@ -37,13 +41,13 @@
                 <div class="card-body">
                     <div class="card">
                         <p>
-                            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false" aria-controls="collapseExample" style="border-radius: 12px">
+                            <a class="btn btn-primary" data-bs-toggle="collapse" href="#collapseExample" role="button"
+                                aria-expanded="false" aria-controls="collapseExample" style="border-radius: 12px">
                                 <?xml version="1.0" encoding="iso-8859-1"?>
                                 <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                 <svg height="30px" width="30px" version="1.1" id="Layer_1"
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 303.188 303.188"
-                                    xml:space="preserve">
+                                    xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                                    viewBox="0 0 303.188 303.188" xml:space="preserve">
                                     <g>
                                         <polygon style="fill:#E8E8E8;"
                                             points="219.821,0 32.842,0 32.842,303.188 270.346,303.188 270.346,50.525 	" />
@@ -74,40 +78,42 @@
                                         <polygon style="fill:#FB3449;"
                                             points="227.64,25.263 32.842,25.263 32.842,0 219.821,0 	" />
                                         <g>
-                                            <path style="fill:#A4A9AD;" d="M126.841,241.152c0,5.361-1.58,9.501-4.742,12.421c-3.162,2.921-7.652,4.381-13.472,4.381h-3.643
+                                            <path style="fill:#A4A9AD;"
+                                                d="M126.841,241.152c0,5.361-1.58,9.501-4.742,12.421c-3.162,2.921-7.652,4.381-13.472,4.381h-3.643
                                             v15.917H92.022v-47.979h16.606c6.06,0,10.611,1.324,13.652,3.971C125.321,232.51,126.841,236.273,126.841,241.152z
                                              M104.985,247.387h2.363c1.947,0,3.495-0.546,4.644-1.641c1.149-1.094,1.723-2.604,1.723-4.529c0-3.238-1.794-4.857-5.382-4.857
                                             h-3.348C104.985,236.36,104.985,247.387,104.985,247.387z" />
-                                            <path style="fill:#A4A9AD;" d="M175.215,248.864c0,8.007-2.205,14.177-6.613,18.509s-10.606,6.498-18.591,6.498h-15.523v-47.979
+                                            <path style="fill:#A4A9AD;"
+                                                d="M175.215,248.864c0,8.007-2.205,14.177-6.613,18.509s-10.606,6.498-18.591,6.498h-15.523v-47.979
                                             h16.606c7.701,0,13.646,1.969,17.836,5.907C173.119,235.737,175.215,241.426,175.215,248.864z M161.76,249.324
                                             c0-4.398-0.87-7.657-2.609-9.78c-1.739-2.122-4.381-3.183-7.926-3.183h-3.773v26.877h2.888c3.939,0,6.826-1.143,8.664-3.43
                                             C160.841,257.523,161.76,254.028,161.76,249.324z" />
-                                            <path style="fill:#A4A9AD;" d="M196.579,273.871h-12.766v-47.979h28.355v10.403h-15.589v9.156h14.374v10.403h-14.374
+                                            <path style="fill:#A4A9AD;"
+                                                d="M196.579,273.871h-12.766v-47.979h28.355v10.403h-15.589v9.156h14.374v10.403h-14.374
                                             L196.579,273.871L196.579,273.871z" />
                                         </g>
-                                        <polygon style="fill:#D1D3D3;"
-                                            points="219.821,50.525 270.346,50.525 219.821,0 	" />
+                                        <polygon style="fill:#D1D3D3;" points="219.821,50.525 270.346,50.525 219.821,0 	" />
                                     </g>
-                                </svg> 
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="35px"
-                                                                height="35px">
-                                                                <path fill="#4CAF50"
-                                                                    d="M41,10H25v28h16c0.553,0,1-0.447,1-1V11C42,10.447,41.553,10,41,10z" />
-                                                                <path fill="#FFF"
-                                                                    d="M32 15H39V18H32zM32 25H39V28H32zM32 30H39V33H32zM32 20H39V23H32zM25 15H30V18H25zM25 25H30V28H25zM25 30H30V33H25zM25 20H30V23H25z" />
-                                                                <path fill="#2E7D32" d="M27 42L6 38 6 10 27 6z" />
-                                                                <path fill="#FFF"
-                                                                    d="M19.129,31l-2.411-4.561c-0.092-0.171-0.186-0.483-0.284-0.938h-0.037c-0.046,0.215-0.154,0.541-0.324,0.979L13.652,31H9.895l4.462-7.001L10.274,17h3.837l2.001,4.196c0.156,0.331,0.296,0.725,0.42,1.179h0.04c0.078-0.271,0.224-0.68,0.439-1.22L19.237,17h3.515l-4.199,6.939l4.316,7.059h-3.74V31z" />
-                                                            </svg>
+                                </svg>
+                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="35px" height="35px">
+                                    <path fill="#4CAF50"
+                                        d="M41,10H25v28h16c0.553,0,1-0.447,1-1V11C42,10.447,41.553,10,41,10z" />
+                                    <path fill="#FFF"
+                                        d="M32 15H39V18H32zM32 25H39V28H32zM32 30H39V33H32zM32 20H39V23H32zM25 15H30V18H25zM25 25H30V28H25zM25 30H30V33H25zM25 20H30V23H25z" />
+                                    <path fill="#2E7D32" d="M27 42L6 38 6 10 27 6z" />
+                                    <path fill="#FFF"
+                                        d="M19.129,31l-2.411-4.561c-0.092-0.171-0.186-0.483-0.284-0.938h-0.037c-0.046,0.215-0.154,0.541-0.324,0.979L13.652,31H9.895l4.462-7.001L10.274,17h3.837l2.001,4.196c0.156,0.331,0.296,0.725,0.42,1.179h0.04c0.078-0.271,0.224-0.68,0.439-1.22L19.237,17h3.515l-4.199,6.939l4.316,7.059h-3.74V31z" />
+                                </svg>
                                 Exportar Información
                             </a>
-                            
-                          </p>
-                          <div class="collapse" id="collapseExample">
+
+                        </p>
+                        <div class="collapse" id="collapseExample">
                             <div class="card card-body">
 
                                 <div id="form-wizard1" class="">
-                                    <ul id="top-tab-list" class="p-0 row list-inline" style="  display: flex;
+                                    <ul id="top-tab-list" class="p-0 row list-inline"
+                                        style="  display: flex;
                                         align-items: center;
                                         justify-content: center;
                                         ">
@@ -119,8 +125,8 @@
                                                     <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
                                                     <svg height="30px" width="30px" version="1.1" id="Layer_1"
                                                         xmlns="http://www.w3.org/2000/svg"
-                                                        xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 303.188 303.188"
-                                                        xml:space="preserve">
+                                                        xmlns:xlink="http://www.w3.org/1999/xlink"
+                                                        viewBox="0 0 303.188 303.188" xml:space="preserve">
                                                         <g>
                                                             <polygon style="fill:#E8E8E8;"
                                                                 points="219.821,0 32.842,0 32.842,303.188 270.346,303.188 270.346,50.525 	" />
@@ -151,31 +157,35 @@
                                                             <polygon style="fill:#FB3449;"
                                                                 points="227.64,25.263 32.842,25.263 32.842,0 219.821,0 	" />
                                                             <g>
-                                                                <path style="fill:#A4A9AD;" d="M126.841,241.152c0,5.361-1.58,9.501-4.742,12.421c-3.162,2.921-7.652,4.381-13.472,4.381h-3.643
+                                                                <path style="fill:#A4A9AD;"
+                                                                    d="M126.841,241.152c0,5.361-1.58,9.501-4.742,12.421c-3.162,2.921-7.652,4.381-13.472,4.381h-3.643
                                                                 v15.917H92.022v-47.979h16.606c6.06,0,10.611,1.324,13.652,3.971C125.321,232.51,126.841,236.273,126.841,241.152z
                                                                  M104.985,247.387h2.363c1.947,0,3.495-0.546,4.644-1.641c1.149-1.094,1.723-2.604,1.723-4.529c0-3.238-1.794-4.857-5.382-4.857
                                                                 h-3.348C104.985,236.36,104.985,247.387,104.985,247.387z" />
-                                                                <path style="fill:#A4A9AD;" d="M175.215,248.864c0,8.007-2.205,14.177-6.613,18.509s-10.606,6.498-18.591,6.498h-15.523v-47.979
+                                                                <path style="fill:#A4A9AD;"
+                                                                    d="M175.215,248.864c0,8.007-2.205,14.177-6.613,18.509s-10.606,6.498-18.591,6.498h-15.523v-47.979
                                                                 h16.606c7.701,0,13.646,1.969,17.836,5.907C173.119,235.737,175.215,241.426,175.215,248.864z M161.76,249.324
                                                                 c0-4.398-0.87-7.657-2.609-9.78c-1.739-2.122-4.381-3.183-7.926-3.183h-3.773v26.877h2.888c3.939,0,6.826-1.143,8.664-3.43
                                                                 C160.841,257.523,161.76,254.028,161.76,249.324z" />
-                                                                <path style="fill:#A4A9AD;" d="M196.579,273.871h-12.766v-47.979h28.355v10.403h-15.589v9.156h14.374v10.403h-14.374
+                                                                <path style="fill:#A4A9AD;"
+                                                                    d="M196.579,273.871h-12.766v-47.979h28.355v10.403h-15.589v9.156h14.374v10.403h-14.374
                                                                 L196.579,273.871L196.579,273.871z" />
                                                             </g>
                                                             <polygon style="fill:#D1D3D3;"
                                                                 points="219.821,50.525 270.346,50.525 219.821,0 	" />
                                                         </g>
                                                     </svg>
-                                                    
+
                                                 </div>
                                                 <span class="dark-wizard">Exportar PDF</span>
                                             </a>
                                         </li>
-                                        <li id="personal" class="mb-2 col-lg-3 col-md-6 text-start" style="display:inline-block;">
+                                        <li id="personal" class="mb-2 col-lg-3 col-md-6 text-start"
+                                            style="display:inline-block;">
                                             <a href="javascript:void();">
                                                 <div class="iq-icon me-3">
-                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="35px"
-                                                        height="35px">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
+                                                        width="35px" height="35px">
                                                         <path fill="#4CAF50"
                                                             d="M41,10H25v28h16c0.553,0,1-0.447,1-1V11C42,10.447,41.553,10,41,10z" />
                                                         <path fill="#FFF"
@@ -184,33 +194,36 @@
                                                         <path fill="#FFF"
                                                             d="M19.129,31l-2.411-4.561c-0.092-0.171-0.186-0.483-0.284-0.938h-0.037c-0.046,0.215-0.154,0.541-0.324,0.979L13.652,31H9.895l4.462-7.001L10.274,17h3.837l2.001,4.196c0.156,0.331,0.296,0.725,0.42,1.179h0.04c0.078-0.271,0.224-0.68,0.439-1.22L19.237,17h3.515l-4.199,6.939l4.316,7.059h-3.74V31z" />
                                                     </svg>
-            
+
                                                 </div>
                                                 <span class="dark-wizard">Exportar Excel</span>
                                             </a>
                                         </li>
-            
-            
+
+
                                     </ul>
                                     <!-- fieldsets -->
                                     <fieldset style="display: block;">
-                                        {!! Form::open(['route' => 'dua.pdffechas', 'autocomplete' => 'off', 'files' => true,
-                                        'class'=>'formulario']) !!}
+                                        {!! Form::open(['route' => 'dua.pdffechas', 'autocomplete' => 'off', 'files' => true, 'class' => 'formulario']) !!}
                                         <div class="col-sm-12">
                                             <div class="row">
-            
-            
+
+
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="example-text-input" class="form-control-label">Fecha
                                                             Inicial:</label>
-                                                        {!! Form::date('fechainicial', null, ['class' => 'form-control block w-full
-                                                        mt-1'. ($errors->has('fechaNacimiento') ? ' border-red-600' : '')]) !!}
-            
+                                                        {!! Form::date('fechainicial', null, [
+                                                            'class' =>
+                                                                'form-control block w-full
+                                                                                                                mt-1' .
+                                                                ($errors->has('fechaNacimiento') ? ' border-red-600' : ''),
+                                                        ]) !!}
+
                                                         @error('fechaterminal')
-                                                        <small class="text-danger">
-                                                            <b>{{$message}}</b>
-                                                        </small>
+                                                            <small class="text-danger">
+                                                                <b>{{ $message }}</b>
+                                                            </small>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -218,13 +231,17 @@
                                                     <div class="form-group">
                                                         <label for="example-text-input" class="form-control-label">Fecha
                                                             Salida:</label>
-                                                        {!! Form::date('fechaterminal', null, ['class' => 'form-control block w-full
-                                                        mt-1'. ($errors->has('fechaNacimiento') ? ' border-red-600' : '')]) !!}
-            
+                                                        {!! Form::date('fechaterminal', null, [
+                                                            'class' =>
+                                                                'form-control block w-full
+                                                                                                                mt-1' .
+                                                                ($errors->has('fechaNacimiento') ? ' border-red-600' : ''),
+                                                        ]) !!}
+
                                                         @error('fechaterminal')
-                                                        <small class="text-danger">
-                                                            <b>{{$message}}</b>
-                                                        </small>
+                                                            <small class="text-danger">
+                                                                <b>{{ $message }}</b>
+                                                            </small>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -232,13 +249,15 @@
                                                     <label for="">Tienda</label>
                                                     {{-- <select class="form-control selectpicker" data-live-search="true"
                                                         name="product_id" id="product_id"> --}}
-                                                        <select class="form-control" name="sucursal_id" id="sucursal_id">
-                                                            <option value="" disabled selected>Selecccione una Tienda</option>
-                                                            @foreach ($sucursals as $sucursal)
-                                                            <option value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
-                                                            @endforeach
-                                                        </select>
-            
+                                                    <select class="form-control" name="sucursal_id" id="sucursal_id">
+                                                        <option value="" disabled selected>Selecccione una Tienda
+                                                        </option>
+                                                        @foreach ($sucursals as $sucursal)
+                                                            <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
@@ -247,8 +266,8 @@
                                                             class="btn btn-danger rounded-pill btn-sm ms-auto mt-1">
                                                             <?xml version="1.0" encoding="iso-8859-1"?>
                                                             <!-- Uploaded to: SVG Repo, www.svgrepo.com, Generator: SVG Repo Mixer Tools -->
-                                                            <svg height="30px" width="30px" version="1.1" id="Layer_1"
-                                                                xmlns="http://www.w3.org/2000/svg"
+                                                            <svg height="30px" width="30px" version="1.1"
+                                                                id="Layer_1" xmlns="http://www.w3.org/2000/svg"
                                                                 xmlns:xlink="http://www.w3.org/1999/xlink"
                                                                 viewBox="0 0 303.188 303.188" xml:space="preserve">
                                                                 <g>
@@ -281,54 +300,66 @@
                                                                     <polygon style="fill:#FB3449;"
                                                                         points="227.64,25.263 32.842,25.263 32.842,0 219.821,0 	" />
                                                                     <g>
-                                                                        <path style="fill:#A4A9AD;" d="M126.841,241.152c0,5.361-1.58,9.501-4.742,12.421c-3.162,2.921-7.652,4.381-13.472,4.381h-3.643
+                                                                        <path style="fill:#A4A9AD;"
+                                                                            d="M126.841,241.152c0,5.361-1.58,9.501-4.742,12.421c-3.162,2.921-7.652,4.381-13.472,4.381h-3.643
                                                                 v15.917H92.022v-47.979h16.606c6.06,0,10.611,1.324,13.652,3.971C125.321,232.51,126.841,236.273,126.841,241.152z
                                                                  M104.985,247.387h2.363c1.947,0,3.495-0.546,4.644-1.641c1.149-1.094,1.723-2.604,1.723-4.529c0-3.238-1.794-4.857-5.382-4.857
                                                                 h-3.348C104.985,236.36,104.985,247.387,104.985,247.387z" />
-                                                                        <path style="fill:#A4A9AD;" d="M175.215,248.864c0,8.007-2.205,14.177-6.613,18.509s-10.606,6.498-18.591,6.498h-15.523v-47.979
+                                                                        <path style="fill:#A4A9AD;"
+                                                                            d="M175.215,248.864c0,8.007-2.205,14.177-6.613,18.509s-10.606,6.498-18.591,6.498h-15.523v-47.979
                                                                 h16.606c7.701,0,13.646,1.969,17.836,5.907C173.119,235.737,175.215,241.426,175.215,248.864z M161.76,249.324
                                                                 c0-4.398-0.87-7.657-2.609-9.78c-1.739-2.122-4.381-3.183-7.926-3.183h-3.773v26.877h2.888c3.939,0,6.826-1.143,8.664-3.43
                                                                 C160.841,257.523,161.76,254.028,161.76,249.324z" />
-                                                                        <path style="fill:#A4A9AD;" d="M196.579,273.871h-12.766v-47.979h28.355v10.403h-15.589v9.156h14.374v10.403h-14.374
+                                                                        <path style="fill:#A4A9AD;"
+                                                                            d="M196.579,273.871h-12.766v-47.979h28.355v10.403h-15.589v9.156h14.374v10.403h-14.374
                                                                 L196.579,273.871L196.579,273.871z" />
                                                                     </g>
                                                                     <polygon style="fill:#D1D3D3;"
                                                                         points="219.821,50.525 270.346,50.525 219.821,0 	" />
                                                                 </g>
                                                             </svg> Exportar Información
-            
-            
-            
-            
+
+
+
+
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                         {!! Form::close() !!}
-            
-                                        <button type="button" name="next" class="btn btn-primary next action-button float-end"
+
+                                        <button type="button" name="next"
+                                            class="btn btn-primary next action-button float-end"
                                             value="Next">Siguiente</button>
                                     </fieldset>
                                     <fieldset style="display: none;">
-                                        {!! Form::open(['route' => 'dua.excelfechas', 'autocomplete' => 'off', 'files' => true,
-                                        'class'=>'formulario']) !!}
-            
+                                        {!! Form::open([
+                                            'route' => 'dua.excelfechas',
+                                            'autocomplete' => 'off',
+                                            'files' => true,
+                                            'class' => 'formulario',
+                                        ]) !!}
+
                                         <div class="col-sm-12">
                                             <div class="row">
-            
-            
+
+
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <label for="example-text-input" class="form-control-label">Fecha
                                                             Inicial:</label>
-                                                        {!! Form::date('fechainicial', null, ['class' => 'form-control block w-full
-                                                        mt-1'. ($errors->has('fechaNacimiento') ? ' border-red-600' : '')]) !!}
-            
+                                                        {!! Form::date('fechainicial', null, [
+                                                            'class' =>
+                                                                'form-control block w-full
+                                                                                                                mt-1' .
+                                                                ($errors->has('fechaNacimiento') ? ' border-red-600' : ''),
+                                                        ]) !!}
+
                                                         @error('fechaterminal')
-                                                        <small class="text-danger">
-                                                            <b>{{$message}}</b>
-                                                        </small>
+                                                            <small class="text-danger">
+                                                                <b>{{ $message }}</b>
+                                                            </small>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -336,13 +367,17 @@
                                                     <div class="form-group">
                                                         <label for="example-text-input" class="form-control-label">Fecha
                                                             Salida:</label>
-                                                        {!! Form::date('fechaterminal', null, ['class' => 'form-control block w-full
-                                                        mt-1'. ($errors->has('fechaNacimiento') ? ' border-red-600' : '')]) !!}
-            
+                                                        {!! Form::date('fechaterminal', null, [
+                                                            'class' =>
+                                                                'form-control block w-full
+                                                                                                                mt-1' .
+                                                                ($errors->has('fechaNacimiento') ? ' border-red-600' : ''),
+                                                        ]) !!}
+
                                                         @error('fechaterminal')
-                                                        <small class="text-danger">
-                                                            <b>{{$message}}</b>
-                                                        </small>
+                                                            <small class="text-danger">
+                                                                <b>{{ $message }}</b>
+                                                            </small>
                                                         @enderror
                                                     </div>
                                                 </div>
@@ -350,21 +385,23 @@
                                                     <label for="">Tienda</label>
                                                     {{-- <select class="form-control selectpicker" data-live-search="true"
                                                         name="product_id" id="product_id"> --}}
-                                                        <select class="form-control" name="sucursal_id" id="sucursal_id">
-                                                            <option value="" disabled selected>Selecccione una Tienda</option>
-                                                            @foreach ($sucursals as $sucursal)
-                                                            <option value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
-                                                            @endforeach
-                                                        </select>
-            
+                                                    <select class="form-control" name="sucursal_id" id="sucursal_id">
+                                                        <option value="" disabled selected>Selecccione una Tienda
+                                                        </option>
+                                                        @foreach ($sucursals as $sucursal)
+                                                            <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}
+                                                            </option>
+                                                        @endforeach
+                                                    </select>
+
                                                 </div>
                                                 <div class="col-md-3">
                                                     <div class="form-group">
                                                         <br>
                                                         <button type="submit"
                                                             class="btn btn-success rounded-pill btn-sm ms-auto mt-1">
-                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="35px"
-                                                                height="35px">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48"
+                                                                width="35px" height="35px">
                                                                 <path fill="#4CAF50"
                                                                     d="M41,10H25v28h16c0.553,0,1-0.447,1-1V11C42,10.447,41.553,10,41,10z" />
                                                                 <path fill="#FFF"
@@ -374,28 +411,28 @@
                                                                     d="M19.129,31l-2.411-4.561c-0.092-0.171-0.186-0.483-0.284-0.938h-0.037c-0.046,0.215-0.154,0.541-0.324,0.979L13.652,31H9.895l4.462-7.001L10.274,17h3.837l2.001,4.196c0.156,0.331,0.296,0.725,0.42,1.179h0.04c0.078-0.271,0.224-0.68,0.439-1.22L19.237,17h3.515l-4.199,6.939l4.316,7.059h-3.74V31z" />
                                                             </svg>
                                                             Exportar Información
-            
-            
-            
-            
+
+
+
+
                                                         </button>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
-            
-            
+
+
                                         {!! Form::close() !!}
                                         <button type="button" name="previous"
                                             class="btn btn-dark previous action-button-previous float-end me-1"
                                             value="Previous">Anterior</button>
                                     </fieldset>
-            
-            
+
+
                                     </fieldset>
                                 </div>
                             </div>
-                          </div>
+                        </div>
                     </div>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped" data-toggle="data-table">
@@ -415,45 +452,63 @@
                                 @foreach ($duas as $dua)
                                     <tr>
                                         <td>
-                                          {{$dua->id}}
-                                          <a href="{{route('dua.show', $dua)}}">                            <svg width="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">                            <path fill-rule="evenodd" clip-rule="evenodd" d="M8.09756 12C8.09756 14.1333 9.8439 15.8691 12 15.8691C14.1463 15.8691 15.8927 14.1333 15.8927 12C15.8927 9.85697 14.1463 8.12121 12 8.12121C9.8439 8.12121 8.09756 9.85697 8.09756 12ZM17.7366 6.04606C19.4439 7.36485 20.8976 9.29455 21.9415 11.7091C22.0195 11.8933 22.0195 12.1067 21.9415 12.2812C19.8537 17.1103 16.1366 20 12 20H11.9902C7.86341 20 4.14634 17.1103 2.05854 12.2812C1.98049 12.1067 1.98049 11.8933 2.05854 11.7091C4.14634 6.88 7.86341 4 11.9902 4H12C14.0683 4 16.0293 4.71758 17.7366 6.04606ZM12.0012 14.4124C13.3378 14.4124 14.4304 13.3264 14.4304 11.9979C14.4304 10.6597 13.3378 9.57362 12.0012 9.57362C11.8841 9.57362 11.767 9.58332 11.6597 9.60272C11.6207 10.6694 10.7426 11.5227 9.65971 11.5227H9.61093C9.58166 11.6779 9.56215 11.833 9.56215 11.9979C9.56215 13.3264 10.6548 14.4124 12.0012 14.4124Z" fill="currentColor"></path>                            </svg>                        </a>
+                                            {{ $dua->id }}
+                                            <a href="{{ route('dua.show', $dua) }}"> <svg width="32"
+                                                    viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M8.09756 12C8.09756 14.1333 9.8439 15.8691 12 15.8691C14.1463 15.8691 15.8927 14.1333 15.8927 12C15.8927 9.85697 14.1463 8.12121 12 8.12121C9.8439 8.12121 8.09756 9.85697 8.09756 12ZM17.7366 6.04606C19.4439 7.36485 20.8976 9.29455 21.9415 11.7091C22.0195 11.8933 22.0195 12.1067 21.9415 12.2812C19.8537 17.1103 16.1366 20 12 20H11.9902C7.86341 20 4.14634 17.1103 2.05854 12.2812C1.98049 12.1067 1.98049 11.8933 2.05854 11.7091C4.14634 6.88 7.86341 4 11.9902 4H12C14.0683 4 16.0293 4.71758 17.7366 6.04606ZM12.0012 14.4124C13.3378 14.4124 14.4304 13.3264 14.4304 11.9979C14.4304 10.6597 13.3378 9.57362 12.0012 9.57362C11.8841 9.57362 11.767 9.58332 11.6597 9.60272C11.6207 10.6694 10.7426 11.5227 9.65971 11.5227H9.61093C9.58166 11.6779 9.56215 11.833 9.56215 11.9979C9.56215 13.3264 10.6548 14.4124 12.0012 14.4124Z"
+                                                        fill="currentColor"></path>
+                                                </svg> </a>
                                         </td>
-                                        <td>{{ $dua->numero_dua }}</td>                                        
-                                        <td class="text-center">S/. {{$dua->monto_percepcion}}</td>
-                                        <td>{{$dua->fecha_numeracion}}</td>
-                                        <td>{{$dua->mes_cobro}}</td>
-                                        <td>{{$dua->sucursal->nombre}}</td>
+                                        <td>{{ $dua->numero_dua }}</td>
+                                        <td class="text-center">S/. {{ $dua->monto_percepcion }}</td>
+                                        <td>{{ $dua->fecha_numeracion }}</td>
+                                        <td>{{ $dua->mes_cobro }}</td>
+                                        <td>{{ $dua->sucursal->nombre }}</td>
                                         @if ($dua->estado == 1)
-                                            <td><a class="btn btn-warning">Activado</a></td>
+                                            <td>
+                                                {!! Form::open([
+                                                    'route' => ['dua.estado', $dua],
+                                                    'autocomplete' => 'off',
+                                                    'files' => true,
+                                                    'class' => 'formulario',
+                                                ]) !!}
+                                                <button type="submit" class="btn btn-warning">
+                                                    Activado
+                                                </button>
+                                                {!! Form::close() !!}
+                                            </td>
                                         @else
                                             <td><a class="btn btn-success">Cancelado</a></td>
                                         @endif
                                         @if ($dua->estado == 2)
                                             <td>No se puede editar</td>
                                         @else
-                                        <td class="text-center">
-                                            <ul class="table-controls">
-                                                <form action="{{ route('dua.destroy', $dua) }}" method="POST"
-                                                    class="casino formulario">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <a href="{{ route('dua.edit', $dua) }}"
-                                                        class="bs-tooltip btn btn-primary"
-                                                        style="margin-right: 10px; margin-left: 10px"
-                                                        data-bs-toggle="tooltip" data-bs-placement="top" title="Editar"
-                                                        data-original-title="Edit"><svg xmlns="http://www.w3.org/2000/svg"
-                                                            width="24" height="24" viewBox="0 0 24 24" fill="none"
-                                                            stroke="currentColor" stroke-width="2" stroke-linecap="round"
-                                                            stroke-linejoin="round"
-                                                            class="feather feather-edit-2 p-1 br-8 mb-1">
-                                                            <path
-                                                                d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
-                                                            </path>
-                                                        </svg>Editar</a>
-                                                </form>
-                                                
-                                            </ul>
-                                        </td>
+                                            <td class="text-center">
+                                                <ul class="table-controls">
+                                                    <form action="{{ route('dua.destroy', $dua) }}" method="POST"
+                                                        class="casino formulario">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <a href="{{ route('dua.edit', $dua) }}"
+                                                            class="bs-tooltip btn btn-primary"
+                                                            style="margin-right: 10px; margin-left: 10px"
+                                                            data-bs-toggle="tooltip" data-bs-placement="top"
+                                                            title="Editar" data-original-title="Edit"><svg
+                                                                xmlns="http://www.w3.org/2000/svg" width="24"
+                                                                height="24" viewBox="0 0 24 24" fill="none"
+                                                                stroke="currentColor" stroke-width="2"
+                                                                stroke-linecap="round" stroke-linejoin="round"
+                                                                class="feather feather-edit-2 p-1 br-8 mb-1">
+                                                                <path
+                                                                    d="M17 3a2.828 2.828 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5L17 3z">
+                                                                </path>
+                                                            </svg>Editar</a>
+                                                    </form>
+
+                                                </ul>
+                                            </td>
                                         @endif
                                     </tr>
                                 @endforeach
@@ -465,4 +520,29 @@
             </div>
 
         </div>
-@endsection
+    @endsection
+    @section('scripts')
+        <script>
+            $('.formulario').submit(function(e) {
+                e.preventDefault()
+
+                Swal.fire({
+                    title: 'Estas seguro de cambiar a estado cancelado a esta DUA?',
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si!',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.value) {
+
+
+                        this.submit()
+
+                    }
+                })
+
+            })
+        </script>
+    @endsection

@@ -6,9 +6,12 @@ use App\Http\Controllers\Controller;
 use App\Models\Articulo;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
+use Livewire\WithPagination;
+
 
 class WebController extends Controller
 {
+    
     public function index(){
         $categorias = Categoria::all();
         $articulos = Articulo::where('estado',1)
@@ -33,7 +36,7 @@ class WebController extends Controller
         $productos = Articulo::where('categoria_id', $categoria->id)
                                  ->where('estado',1)
                                  ->latest('id')
-                                 ->get();
+                                 ->paginate(3);
         $filtrocategoria = Categoria::all();
        
         return view('web.escoger_producto',compact('categoria','productos','filtrocategoria'));

@@ -85,8 +85,9 @@
                                     </div>	
 
                                         <div class="product-extra-link2">
-                                            <button type="submit" class="button button-add-to-cart me-3 bg-success"><i class="fab fa-whatsapp"></i>Whatsapp</button>
-                                            <!-- <a aria-label="Add To Wishlist" class="button btn-wishlist" href="wishlist.html"><i class="fi-rs-heart"></i>Add to wishlist</a> -->
+                                            <a type="submit" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=995316286&text=Hola,%20estoy%20interesado%20en%20el%20{{$articulo->nombre}}%20que%20se%20ha%20publicado."><i class="fab fa-whatsapp"></i>Whatsapp</a></a>
+
+                                            {{-- <a aria-label="Add To Wishlist" class="button btn-wishlist" href="wishlist.html"><i class="fi-rs-heart"></i>Add to wishlist</a> --}}
                                         </div>
 
                                         <div class="pro-share">

@@ -13,91 +13,66 @@
         </div>
     </div>
 
+    {{-- @livewire('web.web-escoger-producto') --}}
     <div class="page-content">
         {{-- descripcionde cateogira --}}
         <div class="container">
             <div class="row">
                 <div class="col-xl-12 col-lg-12">
                     <div class="product-main-content">
-
+    
                         <div class="product-text">
                             <h5><p>{{$categoria->nombre}}:  @if($categoria->articulos->count('id') < 2) {{$categoria->articulos->count('id')}} Articulo @else {{$categoria->articulos->count('id')}}  Articulos @endif</p>  </h5>  
                         </div>
                         
-
+    
                     </div>
                 </div>
             </div>
         </div>
-
-        {{-- contenido  --}}
+    
+       {{-- contenido  --}}
         <div class="container mb-30">
             <div class="row flex-row-reverse">
-
+    
                 <div class="col-lg-4-5">
+                    
                     <div class="shop-product-fillter">
-
+    
                         <div class="totall-product">
                             <div class="sort-by-product-area">
                                 <div class="sort-by-cover mr-10">
-
-                                    <div class="sort-by-product-wrap">
-                                        <div class="sort-by">
-                                            <span>Default sorting</span>
-                                        </div>
-                                        <div class="sort-by-dropdown-wrap">
-                                            <span><i class="fi-rs-angle-small-down"></i></span>
-                                        </div>
-                                    </div>
-
-                                    <div class="sort-by-dropdown">
-                                        <ul>
-                                            <li><a class="active" href="#">50</a></li>
-                                            <li><a href="#">100</a></li>
-                                            <li><a href="#">150</a></li>
-                                            <li><a href="#">200</a></li>
-                                            <li><a href="#">All</a></li>
-                                        </ul>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="totall-product">
-                            <div class="sort-by-product-area">
-                                <div class="sort-by-cover">
+    
                                     <div class="sort-by-product-wrap">
                                         <div class="sort-by">
                                             <span>Mostrar:</span>
                                         </div>
                                         <div class="sort-by-dropdown-wrap">
-                                            <span> 8 <i class="fi-rs-angle-small-down"></i></span>
+                                            <select wire:model="cant" class="form-select border-white">
+                                                <option value="3"><span>3</span></option>
+                                                <option value="6"><span>6</span></option>
+                                                <option value="9"><span>9</span></option>
+                                                <option value="12"><span>12</span></option>
+                                                <option value="15"><span>15</span></option>
+                                            </select>
                                         </div>
                                     </div>
-                                    <div class="sort-by-dropdown">
-                                        <ul>
-                                            <li><a class="active" href="#">8</a></li>
-                                            <li><a href="#">10</a></li>
-                                            <li><a href="#">15</a></li>
-                                            <li><a href="#">20</a></li>
-                                            <li><a href="#">All</a></li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="sort-by-cover sort-link-right">
-                                    <div class="sort-by-link">
-                                        <div class="sort-link">
-                                            <a href="product-category-list.html" class="m-0 active"><i class="fi-rs-apps"></i></a>
-                                            {{-- <a href="product-category-grid.html" class="m-0 active"><i class="fi-rs-list"></i></a> --}}
-                                        </div>
-                                    </div>
+    
                                 </div>
                             </div>
                         </div>
-
+                        <div class="totall-product col-lg-auto">
+                            <div class="sort-by-product-area">
+                                <div class="sort-by-cover">
+                                    <input type="text" placeholder="Buscar..." wire:model="search">
+                                </div>
+                            </div>
+                        </div>
+    
+                        
+    
                     </div>
-
+    
                     <div class="row product-grid">
                         <!-- mostrar producto card -->
                         @foreach ($productos as $producto)
@@ -110,7 +85,7 @@
                                             <img class="img-fluid" src="@if($producto->images) {{Storage::url($producto->images->url)}}@else {{asset('assets/img/sin-imagen2.png')}} @endif" alt="" />
                                         </a>
                                     </div>
-                                     
+                                    
                                     <div class="product-badge">
                                         <span class="best">Venta</span>
                                     </div>
@@ -133,37 +108,28 @@
                         @endforeach
                         <!-- /mostrar producto card -->
                     </div>
-
+    
                     <!--product grid-->
                     <div class="pagination-area">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="fi-rs-angle-left"></i></a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item active"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item"><a class="page-link" href="#">10</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#"><i class="fi-rs-angle-right"></i></a>
-                                </li>
+                                {{$productos->links()}}
                             </ul>
                         </nav>
                         <div class="pagination-show">
-                            <p>Showing 1–8 of 62 results</p>
+                            {{-- <p>Showing 1–8 of 62 results</p> --}}
                         </div>
                     </div>
                     
                     <!--End Deals-->
                 </div>
-
+    
                 <div class="col-lg-1-5 primary-sidebar sticky-sidebar">
                     <!-- Fillter By Price -->
                     <div class="sidebar-widget price_range range mb-30">
                         <h5 class="section-title style-1 mb-20">Seleccionar:</h5>
                         <div class="list-group">
-
+    
                             <div class="list-group-item mb-10">
                                 <label class="list-group-text">CATEGORIAS</label>
                                 <ul class="footer-list mb-sm-5 mb-md-0">
@@ -174,22 +140,22 @@
                                     </li>
                                     @endforeach
                                 </ul>
-
+    
                             </div>
-
+    
                     
-
+    
                         </div>
                         <br>
-                       
+                    
                         <a href="{{route('web.escoger_producto2')}}" class="btn fillter-btn">Mostrar todo</a>
                     </div>
                     <!-- Product sidebar Widget -->
                 </div>
-
+    
             </div>
         </div>
-
-
+    
     </div>
+
  </x-app-layout>

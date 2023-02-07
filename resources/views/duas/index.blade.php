@@ -102,7 +102,7 @@
                                 Exportar Información
                             </a>
                             
-                          </p>
+                        </p>
                           <div class="collapse" id="collapseExample">
                             <div class="card card-body">
 

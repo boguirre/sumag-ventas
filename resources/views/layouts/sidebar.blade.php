@@ -142,7 +142,7 @@
             <li><hr class="hr-horizontal"></li>
             <li class="nav-item static-item">
                 <a class="nav-link static-item disabled" href="#" tabindex="-1">
-                    <span class="default-icon">Entradas</span>
+                    <span class="default-icon">Entradas De Productos</span>
                     <span class="mini-icon">-</span>
                 </a>
             </li>
@@ -202,7 +202,7 @@
                                 </svg>
                             </i>
                             <i class="sidenav-mini-icon" title="Medidas"> M </i>
-                            <span class="item-name" title="Medidas">Medidas</span>
+                            <span class="item-name" title="Medidas">Unidad De Medidas</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -235,7 +235,7 @@
                     <path opacity="0.4" d="M17.523 7.39595V8.86667C17.1673 8.7673 16.7913 8.71761 16.4052 8.71761H15.7447V7.39595C15.7447 5.37868 14.0681 3.73903 12.0053 3.73903C9.94257 3.73903 8.26594 5.36874 8.25578 7.37608V8.71761H7.60545C7.20916 8.71761 6.83319 8.7673 6.47754 8.87661V7.39595C6.4877 4.41476 8.95692 2 11.985 2C15.0537 2 17.523 4.41476 17.523 7.39595Z" fill="currentColor"></path>
                     </svg>
                     </i>
-                    <span class="item-name">Sucursales</span>
+                    <span class="item-name">Tiendas</span>
                 </a>
             </li>
             
@@ -628,7 +628,7 @@
                     <span class="item-name">Components</span>
                 </a>
             </li> --}}
-            <li class="nav-item">
+            <li class="nav-item mb-5">
                 <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-widget" role="button" aria-expanded="false" aria-controls="sidebar-widget">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -685,7 +685,7 @@
                     </li> --}}
                 </ul>
             </li>
-            <li class="nav-item">
+            {{-- <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-maps" role="button" aria-expanded="false" aria-controls="sidebar-maps">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -728,8 +728,8 @@
                         </a>
                     </li>
                 </ul>
-            </li>
-            <li class="nav-item">
+            </li> --}}
+            {{-- <li class="nav-item">
                 <a class="nav-link" data-bs-toggle="collapse" href="#sidebar-form" role="button" aria-expanded="false" aria-controls="sidebar-form">
                     <i class="icon">
                         <svg width="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -885,7 +885,7 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> --}}
         </ul>
         <!-- Sidebar Menu End -->        </div>
 </div>

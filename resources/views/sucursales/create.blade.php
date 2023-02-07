@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="flex-wrap d-flex justify-content-between align-items-center" style="color: black">
                     <div>
-                        <h1>Registrar Sucursal</h1>
+                        <h1>Registrar Tiendas</h1>
                     </div>
                     {{-- <div>
                   <a href="{{route('categoria.create')}}" class="btn btn-link  btn-soft-primary">

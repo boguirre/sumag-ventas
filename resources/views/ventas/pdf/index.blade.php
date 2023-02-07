@@ -221,6 +221,8 @@
                     <tr id="fa">
                         <th>CANTIDAD</th>
 						<th>CODIGO</th>
+                        <th>UND.MEDIDA</th>
+
                         <th>PRODUCTO</th>
                         <th>PRECIO VENTA(PEN)</th>
                         <th>SUBTOTAL(PEN)</th>
@@ -231,6 +233,8 @@
                     <tr>
                         <td class="centrar-th" >{{$ventaDetalle->cantidad}}</td>
                         <td class="centrar-th">{{$ventaDetalle->articulo->codigo}}</td>
+                        <td class="centrar-th">{{$ventaDetalle->articulo->medida->nombre}}</td>
+
 						<td class="centrar-th">{{$ventaDetalle->articulo->nombre}}</td>
 
                         <td class="centrar-th">s/ {{$ventaDetalle->precio}}</td>
@@ -242,7 +246,7 @@
                 <tfoot>
                     
                     <tr>
-                        <th colspan="4">
+                        <th colspan="5">
                             <p align="right">SUBTOTAL:</p>
                         </th>
                         <td>
@@ -251,7 +255,7 @@
                     </tr>
                    
                     <tr>
-                        <th colspan="4">
+                        <th colspan="5">
                             <p align="right">TOTAL IMPUESTO ({{$ventum->impuesto}}%):</p>
                         </th>
                         <td>
@@ -260,7 +264,7 @@
                     </tr>
 
                     <tr>
-                        <th colspan="4">
+                        <th colspan="5">
                             <p align="right">TOTAL PAGAR:</p>
                         </th>
                         <td>

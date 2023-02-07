@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="flex-wrap d-flex justify-content-between align-items-center" style="color: black">
                     <div>
-                        <h1>Sucursal</h1>
+                        <h1>Tiendas</h1>
                     </div>
                     <div>
                         <a href="{{ route('sucursal.create') }}" class="btn btn-link  btn-soft-primary">
@@ -28,7 +28,7 @@
             <div class="card">
                 <div class="card-header d-flex justify-content-between">
                     <div class="header-title">
-                        <h4 class="card-title"> Lista De Sucursales </h4>
+                        <h4 class="card-title"> Lista De Tiendas </h4>
                     </div>
                 </div>
                 <div class="card-body">

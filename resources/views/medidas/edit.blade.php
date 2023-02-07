@@ -5,7 +5,7 @@
       <div class="col-md-12">
           <div class="flex-wrap d-flex justify-content-between align-items-center" style="color: black">
               <div>
-                  <h1>Editar Medidas</h1>
+                  <h1>Editar Unidad De Medidas</h1>
               </div>
               {{-- <div>
                   <a href="{{route('categoria.create')}}" class="btn btn-link  btn-soft-primary">

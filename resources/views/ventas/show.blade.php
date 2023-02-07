@@ -31,13 +31,23 @@
                                 <label class="form-control-label"><strong>Cliente</strong></label>
                                 <p><a href="{{route('clients.show', $sale->client)}}">{{$sale->client->name}}</a></p>
                             </div> --}}
-                            <div class="col-md-4 text-center">
+                            <div class="col-md-3 text-center">
+                                <label class="form-control-label"><strong>Tienda</strong></label>
+                                <p>{{$ventum->sucursales->nombre}}</p>
+                            </div>
+                            <div class="col-md-3 text-center">
                                 <label class="form-control-label"><strong>Vendedor</strong></label>
                                 <p>{{$ventum->users->name}}</p>
                             </div>
-                            <div class="col-md-4 text-center">
-                                <label class="form-control-label"><strong>Número Venta</strong></label>
-                                <p>{{$ventum->id}}</p>
+                            <div class="col-md-3 text-center">
+                                <label class="form-control-label"><strong>Cliente</strong></label>
+                                <p>{{$ventum->nombre}}</p>
+                                <p><b>RUC/DNI:</b> {{$ventum->documento}}</p>
+                            </div>
+                            <div class="col-md-3 text-center">
+                                <label class="form-control-label"><strong>Número Guia de Pedido</strong></label>
+                                <p># {{$ventum->id}}</p>
+                                
                             </div>
                         </div>
                         <br /><br />
@@ -48,6 +58,7 @@
                                     <thead>
                                         <tr>
                                             <th>Producto</th>
+                                            <th>Unidad de Medida</th>
                                             <th>Precio Venta (PEN)</th>
                                             <th>Descuento(PEN)</th>
                                             <th>Cantidad</th>
@@ -57,7 +68,7 @@
                                     <tfoot>
     
                                         <tr>
-                                            <th colspan="4">
+                                            <th colspan="5">
                                                 <p align="right">SUBTOTAL:</p>
                                             </th>
                                             <th>
@@ -66,7 +77,7 @@
                                         </tr>
     
                                         <tr>
-                                            <th colspan="4">
+                                            <th colspan="5">
                                                 <p align="right">TOTAL IMPUESTO ({{$ventum->impuesto}}%):</p>
                                             </th>
                                             <th>
@@ -74,7 +85,7 @@
                                             </th>
                                         </tr>
                                         <tr>
-                                            <th colspan="4">
+                                            <th colspan="5">
                                                 <p align="right">TOTAL:</p>
                                             </th>
                                             <th>
@@ -87,6 +98,8 @@
                                         @foreach($ventaDetalles as $ventaDetalle)
                                         <tr>
                                             <td>{{$ventaDetalle->articulo->nombre}}</td>
+                                            <td>{{$ventaDetalle->articulo->medida->nombre}}</td>
+
                                             <td>s/ {{$ventaDetalle->precio}}</td>
                                             <td>{{$ventaDetalle->descuento}} %</td>
                                             <td>{{$ventaDetalle->cantidad}}</td>

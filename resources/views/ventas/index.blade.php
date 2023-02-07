@@ -407,6 +407,7 @@
                             <tr>
                                 <th>Id</th>
                                 <th>Fecha</th>
+                                <th>Sucursal</th>
                                 <th>Total</th>
                                 <th>Estado</th>
                                 <th style="width:50px;">Acciones</th>
@@ -421,6 +422,7 @@
                             <tr>
                                 <td>{{ $ventum->id }}</td>
                                 <td>{{ $ventum->venta_fecha }}</td>
+                                <td>{{ $ventum->sucursales->nombre }}</td>
 
                                 <td>{{ $ventum->total }}</td>
 

@@ -2,11 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\DuaFechasExport;
 use App\Models\Dua;
 use App\Models\Sucursal;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class DuaController extends Controller
 {
@@ -17,8 +22,9 @@ class DuaController extends Controller
      */
     public function index()
     {
+        $sucursals = Sucursal::get();
         $duas = Dua::all();
-        return view('duas.index', compact('duas'));
+        return view('duas.index', compact('duas','sucursals'));
     }
 
     /**
@@ -162,9 +168,63 @@ class DuaController extends Controller
 
 
     public function reporte(){
+        $añomes = Carbon::now('America/Lima')->format('Y-m');
+
+        $duas = DB::select('call spduaestados(?)',array($añomes));
+        // return $duas;
+        foreach($duas as $dua){
+                 
+            $data['label'][] = $dua->estado;
+
+            $data['data'][] = $dua->cantidad;
+      }
+        $data['data'] = json_encode($data);
 
 
-        return view('duas.reporte.index');
+        $report = '';
+        $report=$this->reportepersepcion($report);
+
+        return view('duas.reporte.index',compact('añomes'),$data+$report);
     }
 
+
+    public function reportepersepcion(){
+        $añomes = Carbon::now('America/Lima')->format('Y-m');
+        $duaspersepciones = DB::select('call spduaspersepcion(?)',array($añomes));
+
+        foreach($duaspersepciones as $duaspersepcion){
+                 
+            $report['label'][] = $duaspersepcion->sucursal;
+
+            $report['report'][] = $duaspersepcion->cantidad;
+      }
+        $report['report'] = json_encode($report);
+
+        return $report;
+
+    }
+
+    public function exportarpdffechas(Request $request){
+        $sucursals= Sucursal::select('nombre')->where('id',[$request->sucursal_id])->get();
+
+        $fechainicio = $request->fechainicial;
+        $fechafinal = $request->fechaterminal;
+
+        $duas = Dua::whereBetween(DB::raw('DATE(created_at)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        $pdf = Pdf::loadView('duas.pdf.fechas', compact('duas','sucursals','fechainicio','fechafinal'));
+        
+        return $pdf->download('Reporte_de_Duas.pdf');
+    }
+    public function exportarexcelfechas(Request $request){
+        $duas = Dua::whereBetween(DB::raw('DATE(created_at)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        return Excel::download(new DuaFechasExport($request->fechainicial,$request->fechaterminal,$duas), 'duas_reporte_fechas.xlsx');
+
+    }
+
+    public function estado(Dua $dua)
+    {
+        $dua->estado = 2;
+        $dua->save();
+        return redirect()->route('dua.index')->with('activar', 'ok');
+    }
 }

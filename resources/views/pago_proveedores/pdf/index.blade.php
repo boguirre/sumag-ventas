@@ -1,18 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Reporte de {{$pagoProveedor->proveedor->razon_social}}</title>
+    <title>Reporte de {{ $pagoProveedor->proveedor->razon_social }}</title>
 </head>
 <style>
-    body{
+    body {
         font-family: Arial, Helvetica, sans-serif;
     }
 
     .invoice_container {
         padding: 10px 10px;
+    }
+
+    #imgmarca {
+        background-image: url(http://sumag-ventas.test{{ $image }});
+        background-repeat: no-repeat;
+        background-blend-mode: overlay;
+        height: 100%;
+        width: 100%;
+        position: absolute;
+        background-position: center center;
+        opacity: 0.1;
+        background-size: cover;
+
     }
 
     .invoice_header {
@@ -41,7 +55,8 @@
 
     .invoice_header p {
         margin-top: 10px;
-        margin-left: 15px
+        margin-left: 15px;
+        display: flex;
     }
 
     .logo_container img {
@@ -124,11 +139,12 @@
 </style>
 
 <body>
+    <div id="imgmarca"></div>  
     <div class="invoice_container">
         <div class="invoice_header">
             <div class="logo_container">
-                <img src="http://sumag-ventas.test{{$image}}">
-                <h2 style="float: right; margin-right: 20px">~ TIENDA {{$pagoProveedor->sucursal->nombre}}</h2>
+                <img src="http://sumag-ventas.test{{ $image }}">
+                <h2 style="float: right; margin-right: 20px">~ EMPRESA {{ $pagoProveedor->sucursal->nombre }}</h2>
                 <p>
                     ATTN: Dennis Menees, CEO <br>
                     Global Co. <br>
@@ -140,10 +156,10 @@
         <div class="customer_container">
             <div>
                 <h2>Reporte a</h2>
-                <h4>Proveedor: {{$pagoProveedor->proveedor->razon_social}}</h4>
+                <h4>Proveedor: {{ $pagoProveedor->proveedor->razon_social }}</h4>
                 <p>
-                    RUC: {{$pagoProveedor->proveedor->ruc}} <br>
-                    Telefono: {{$pagoProveedor->proveedor->numero_telefono}}
+                    RUC: {{ $pagoProveedor->proveedor->ruc }} <br>
+                    Telefono: {{ $pagoProveedor->proveedor->numero_telefono }}
                 </p>
             </div>
             <div class="in_details">
@@ -152,31 +168,34 @@
                     <tr>
                         <td>N° Reporte</td>
                         <td>:</td>
-                        <td><b>#{{$pagoProveedor->id}}</b></td>
+                        <td><b>#{{ $pagoProveedor->id }}</b></td>
                     </tr>
                     <tr>
                         <td>Fecha de Deposito</td>
                         <td>:</td>
-                        <td><b>{{$pagoProveedor->fecha_deposito}}</b></td>
+                        <td><b>{{ $pagoProveedor->fecha_deposito }}</b></td>
                     </tr>
                     <tr style="float: right">
                         <td>Monto de Deposito</td>
                         <td>:</td>
-                        <td><b>S/. {{$pagoProveedor->monto_deposito}}</b></td>
+                        <td><b>S/. {{ $pagoProveedor->monto_deposito }}</b></td>
                     </tr>
                     <tr>
                         <td>Estado</td>
                         <td>:</td>
-                        <td>@switch($pagoProveedor->estado)
-                            @case(1)
-                            <b>En deuda</b>
+                        <td>
+                            @switch($pagoProveedor->estado)
+                                @case(1)
+                                    <b>En deuda</b>
                                 @break
-                            @case(2)
-                            <b>Cancelado</b>
+
+                                @case(2)
+                                    <b>Cancelado</b>
                                 @break
-                            @default
-                                
-                        @endswitch</td>
+
+                                @default
+                            @endswitch
+                        </td>
                     </tr>
                 </table>
             </div>
@@ -189,15 +208,15 @@
                     <th>Monto</th>
                 </tr>
                 @foreach ($pagoProveedor->pago_proveedor_detalles as $detalle)
-                <tr>
-                    <td>{{ $detalle->id }}</td>
-                    <td colspan="4">{{ $detalle->fecha_pago }}</td>
-                    <td>S/. {{ $detalle->monto }}</td>
-                </tr>
+                    <tr>
+                        <td>{{ $detalle->id }}</td>
+                        <td colspan="4">{{ $detalle->fecha_pago }}</td>
+                        <td>S/. {{ $detalle->monto }}</td>
+                    </tr>
                 @endforeach
                 <tr>
                     <th colspan="5">Total</th>
-                    <th>S/. {{$pagoProveedor->monto_deposito}}</th>
+                    <th>S/. {{ $pagoProveedor->monto_deposito }}</th>
                 </tr>
             </table>
         </div>
@@ -205,10 +224,11 @@
             <div class="note">
                 <h2>Descripcion</h2>
                 <p>
-                    {{$pagoProveedor->descripcion}}
+                    {{ $pagoProveedor->descripcion }}
                 </p>
             </div>
         </div>
     </div>
 </body>
+
 </html>

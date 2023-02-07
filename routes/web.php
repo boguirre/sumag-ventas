@@ -65,8 +65,9 @@ Route::get('/ventas/reporte/fechas/',[VentaController::class, 'reportesxfiltros'
 Route::post('/ventas/reporte/fechas/',[VentaController::class, 'reportesxfiltrosxfechas'])->middleware('auth')->name('venta.reportefechas');
 Route::post('venta/exportfechas/', [VentaController::class, 'exportarexcelfechas'])->name('venta.exportfechas');
 Route::post('/venta/pdf',[VentaController::class, 'exportarpdffechas'])->name('venta.pdffechas');
+Route::post('venta/store',[VentaController::class, 'store'])->name('venta.store');
 Route::resource('venta', VentaController::class)->middleware('auth')->names('venta');
-Route::post('/venta',[VentaController::class, 'indexventas'])->name('venta.indexventas');
+Route::post('venta',[VentaController::class, 'indexventas'])->name('venta.indexventas');
 
 Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');
@@ -82,7 +83,12 @@ Route::get('/pago-proveedor/reporte', [PagoProveedorController::class,'reporte']
 Route::post('pago-proveedor/exportfechas/', [PagoProveedorController::class, 'exportarexcelfechas'])->name('pago-proveedor.exportfechas');
 Route::resource('pago-proveedor', PagoProveedorController::class)->middleware('auth')->names('pago-proveedor');
 Route::post('pago-proveedor/{pagoProveedor}/addpago', [PagoProveedorController::class, 'addpago'])->name('pago-proveedor.addpago');
+Route::post('pago-proveedor/filtro', [PagoProveedorController::class, 'filtro'])->name('pago-proveedor.filtro');
+Route::post('dua/exportfechas/', [DuaController::class, 'exportarpdffechas'])->name('dua.pdffechas');
+Route::post('venta/excelfechas/', [DuaController::class, 'exportarexcelfechas'])->name('dua.excelfechas');
+
 Route::post('dua/download', [DuaController::class, 'download'])->name('dua.download');
+Route::post('dua/{dua}/estado', [DuaController::class, 'estado'])->name('dua.estado');
 Route::get('/dua/reporte', [DuaController::class,'reporte'])->name('dua.reporte');
 Route::resource('dua', DuaController::class)->names('dua');
 

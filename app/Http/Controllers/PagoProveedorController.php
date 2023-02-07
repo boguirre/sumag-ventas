@@ -251,4 +251,12 @@ class PagoProveedorController extends Controller
         $pagos = PagoProveedor::whereBetween(DB::raw('DATE(fecha_deposito)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
         return Excel::download(new PagosFechasExport($request->fechainicial,$request->fechaterminal,$pagos), 'pagosfechas.xlsx');
     }
+
+    public function filtro(Request $request)
+    {
+        $pagoProveedores = PagoProveedor::where('sucursal_id', $request->sucursal_id)->get();
+        $sucursals = Sucursal::all();
+
+        return view('pago_proveedores.index', compact('pagoProveedores', 'sucursals'));
+    }
 }

@@ -229,7 +229,8 @@ function agregar() {
             totales();
             evaluar();
             $('#detalles').append(fila);
-        } else {
+        } 
+        else {
             Swal.fire({
                 icon: 'error',
                 type: 'error',

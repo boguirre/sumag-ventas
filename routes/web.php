@@ -65,8 +65,9 @@ Route::get('/ventas/reporte/fechas/',[VentaController::class, 'reportesxfiltros'
 Route::post('/ventas/reporte/fechas/',[VentaController::class, 'reportesxfiltrosxfechas'])->middleware('auth')->name('venta.reportefechas');
 Route::post('venta/exportfechas/', [VentaController::class, 'exportarexcelfechas'])->name('venta.exportfechas');
 Route::post('/venta/pdf',[VentaController::class, 'exportarpdffechas'])->name('venta.pdffechas');
+Route::post('venta/store',[VentaController::class, 'store'])->name('venta.store');
 Route::resource('venta', VentaController::class)->middleware('auth')->names('venta');
-Route::post('/venta',[VentaController::class, 'indexventas'])->name('venta.indexventas');
+Route::post('venta',[VentaController::class, 'indexventas'])->name('venta.indexventas');
 
 Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');

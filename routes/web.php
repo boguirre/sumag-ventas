@@ -52,6 +52,7 @@ Route::middleware([
 
 Route::get('cmd/{command}', function ($command) {
     Artisan::call($command);
+    dd(Artisan::output());
 });
 
 Route::resource('admin',AdminController::class)->middleware('auth')->names('admin');

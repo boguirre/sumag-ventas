@@ -3,6 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Models\Dua;
+use App\Models\PagoProveedor;
+use App\Models\Prestamo;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -14,13 +18,20 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin.index');
+        $fechaactual = Carbon::now('America/Lima')->format('Y-m-d');
+        $fechaactualmes = Carbon::now('America/Lima')->addMonth()->format('Y-m-d');
+
+        $alertaduas =  Dua::whereDate('mes_cobro','>=',$fechaactual)->whereDate('mes_cobro','<=',$fechaactualmes)->where('estado','1')->get();
+
+        $alertaprestamos = Prestamo::whereDate('fecha_vencimiento','>=', $fechaactual)->where('estado', 1)->get();
+        return view('admin.index',compact('alertaduas', 'alertaprestamos'));
     }
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
+
     public function create()
     {
         

@@ -39,7 +39,7 @@
                     <ul class="footer-list mb-sm-5 mb-md-0">
                         @foreach ($categorias as $categoria)
                         <li>
-                            <a href="{{route('web.escoger_producto',$categoria)}}">{{$categoria->nombre}}</a>
+                            <a href="{{route('web.escoger_producto',$categoria)}}">{{Str::Upper($categoria->nombre)}}</a>
                             {{-- {{route('web.escoger_producto')}}     --}}
                         </li>
                         @endforeach

@@ -14,43 +14,14 @@
                 <div class="col-xl-3 col-lg-4">
                     <div class="header-left">
                         <ul>
-                            <!-- Idioma del sistema -->
-                            <!-- <li>
-                                <a class="language-dropdown-active" href="#">English <i class="fi-rs-angle-small-down"></i></a>
-                                <ul class="language-dropdown">
-                                    <li>
-                                        <a href="#"><img src="assets/img/flags/flag-fr.png" alt="">Français</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="assets/img/flags/flag-dt.png" alt="">Deutsch</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="assets/img/flags/flag-ru.png" alt="">Pусский</a>
-                                    </li>
-                                </ul>
-                            </li> -->
-                            <!-- Estado del dinero -->
-                            <!-- <li>
-                                <a class="language-dropdown-active" href="#">USD <i class="fi-rs-angle-small-down"></i></a>
-                                <ul class="language-dropdown">
-                                    <li>
-                                        <a href="#"><img src="assets/img/flags/flag-fr.png" alt="">INR</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="assets/img/flags/flag-dt.png" alt="">MBP</a>
-                                    </li>
-                                    <li>
-                                        <a href="#"><img src="assets/img/flags/flag-ru.png" alt="">EU</a>
-                                    </li>
-                                </ul>
-                            </li> -->
+                            
                         </ul>
                     </div>
                 </div>
 
                
                 <!-- lo que mas gusta y la cuenta -->
-                <div class="col-xl-3 col-lg-4">
+                {{-- <div class="col-xl-3 col-lg-4">
                     <div class="header-details">
                         <div class="header-inner">
                             
@@ -64,12 +35,7 @@
                                 
                                 <div class="cart-dropdown-wrap account-dropdown">
                                     <ul>
-                                        {{-- <li>
-                                            <a href="{{ route('profile.show') }}">Cuenta</a>
-                                        </li>
-                                        <li>
-                                            <a href="{{ route('register') }}">Ingresar</a>
-                                        </li> --}}
+                                        
                                         <li>
                                             <form method="POST" action="{{ route('logout') }}" x-data>
                                                 @csrf
@@ -106,7 +72,7 @@
 
                         </div>
                     </div>
-                </div>
+                </div> --}}
 
             </div>
         </div>
@@ -126,20 +92,7 @@
 
                     <!-- cuadro de todo las tegorias listadas y buscar -->
                     <div class="header-search">
-                        <form action="">
-                            {{-- {{route('web.escoger_producto')}} --}}
-                            <select class="select-active">
-                                <option>Todas las cateogrias</option>
-                                <option>Ropa de hombre</option>
-                                <option>Ropa de Mujer</option>
-                                <option>Ropa de Niño</option>
-                                <option>Calzados</option>
-                                <option>Ropa de verano</option>
-                                <option>Ropa de invierno</option>
-                            </select>
-                            <input type="text" placeholder="Buscar producto">
-                            <input type="submit" name="form-submit" class="submit-btn">
-                        </form>
+                    @livewire('search')
                     </div>
 
                     <!-- casilla donde se muestra los escogidos para comprarlo -->
@@ -230,7 +183,7 @@
                                 <ul>
                                     @foreach ($categorias as $categoria )
                                     <li>
-                                        <a href="{{route('web.escoger_producto', $categoria)}}"><img src="" alt="">{{$categoria->nombre}}</a>
+                                        <a href="{{route('web.escoger_producto', $categoria)}}"><img src="" alt="">{{Str::Upper($categoria->nombre)}}</a>
                                         {{-- {{route('web.escoger_producto')}} --}}
                                     </li>
                                     @endforeach
@@ -249,12 +202,12 @@
                                 
                                 @foreach ($rangos as $rango)
                                 <li>
-                                    <a href="{{route('web.escoger_producto',$rango)}}">{{$rango->nombre}}</a>
+                                    <a href="{{route('web.escoger_producto',$rango)}}">{{Str::Upper($rango->nombre)}}</a>
                                     {{-- {{route('web.escoger_producto')}}     --}}
                                 </li>
                                 @endforeach
                                 <li>
-                                    <a href="#">Nosotros<i class="fi-rs-angle-down"></i></a>
+                                    <a href="#">NOSOTROS<i class="fi-rs-angle-down"></i></a>
                                     <ul class="has-submenu">
                                         <li><a href="{{route('web.sobre_nosotros')}}">Sobre nosotros</a></li>
                                         {{-- {{route('web.sobre_nosotros')}} --}}
@@ -380,11 +333,8 @@
 
         <div class="mobile-header-content">
             <!-- buscar en el menu deplegable movil -->
-            <div class="mobile-search mobile-search-three mobile-header-border">
-                <form action="product-category-list.html">
-                    <input type="text" placeholder="Buscar categorias" />
-                    <button type="submit"><i class="fi-rs-search"></i></button>
-                </form>
+            <div class="mobile-search mobile-search-three mobile-header-border mb-auto">
+                @livewire('search')
             </div>
 
             <!-- Listado de categorias en el menu desplegable movil -->
@@ -401,7 +351,7 @@
 
                         @foreach ($categorias as $categoria)
                         <li>
-                            <a href="{{route('web.escoger_producto',$categoria)}}">{{$categoria->name}}</a>
+                            <a href="{{route('web.escoger_producto',$categoria)}}">{{Str::Upper($categoria->nombre)}}</a>
                                     {{-- {{route('web.escoger_producto')}}     --}}
                         </li>
                         @endforeach
@@ -455,14 +405,14 @@
                             </ul>
                         </li> -->
                         <li class="mobile-menu-item">
-                            <a href="#">Pagina</a>
+                            <a href="#">NOSOTROS</a>
                             <ul class="dropdown">
-                                <li><a href="">Sobre nosotros</a></li>
+                                <li><a href="{{route('web.sobre_nosotros')}}">Sobre nosotros</a></li>
                                 {{-- {{route('web.sobre_nosotros')}} --}}
                                 <!-- <li><a href="account.html">My cuenta</a></li>
                                 <li><a href="login.html">Login</a></li>
                                 <li><a href="register.html">Registrar</a></li> -->
-                                <li><a href="">Contacto</a></li>
+                                <li><a href="{{route('web.contacto')}}">Contacto</a></li>
                                 {{-- {{route('web.contacto')}} --}}
                                 {{-- <li><a href="privacy-policy.html">Politicas de privacidad</a></li>
                                 <li><a href="terms-conditions.html">Terminos de servicio</a></li> --}}

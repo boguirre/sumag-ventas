@@ -37,7 +37,7 @@
     
                 <div class="col-lg-4-5">
                     
-                    <div class="shop-product-fillter">
+                    {{-- <div class="shop-product-fillter">
     
                         <div class="totall-product">
                             <div class="sort-by-product-area">
@@ -71,7 +71,7 @@
     
                         
     
-                    </div>
+                    </div> --}}
     
                     <div class="row product-grid">
                         <!-- mostrar producto card -->

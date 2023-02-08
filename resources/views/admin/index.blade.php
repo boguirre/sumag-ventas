@@ -18,7 +18,7 @@
     @section('content')
         <br>
         <div class="row">
-            <div class="col-md-12 col-lg-10">
+            <div class="col-md-12 col-lg-12">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="card" data-aos="fade-up" data-aos-delay="800">

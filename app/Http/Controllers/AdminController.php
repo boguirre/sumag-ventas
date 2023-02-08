@@ -21,7 +21,7 @@ class AdminController extends Controller
         $fechaactualmes = Carbon::now('America/Lima')->addMonth()->format('Y-m-d');
 
         $alertaduas =  Dua::whereDate('mes_cobro','>=',$fechaactual)->whereDate('mes_cobro','<=',$fechaactualmes)->where('estado','1')->get();
-        return view('admin.index',compact('alertasduas'));
+        return view('admin.index',compact('alertaduas'));
     }
     /**
      * Show the form for creating a new resource.

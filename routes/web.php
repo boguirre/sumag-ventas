@@ -73,6 +73,9 @@ Route::post('venta',[VentaController::class, 'indexventas'])->name('venta.indexv
 Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');
 Route::get('/prestamo/reporte', [PrestamoController::class,'reporte'])->name('prestamos.reporte');
+Route::post('prestamo/exportpdf', [PrestamoController::class, 'exportarpdffechas'])->name('prestamo.pdf');
+Route::post('prestamo/exportexcel', [PrestamoController::class, 'exportarexcelfechas'])->name('prestamo.excel');
+Route::post('prestamo/filtro', [PrestamoController::class, 'filtro'])->name('prestamo.filtro');
 Route::resource('prestamo', PrestamoController::class)->middleware('auth')->names('prestamo');
 Route::resource('empresa', EmpresaController::class)->middleware('auth')->names('empresa');
 Route::post('sucursal/{sucursal}/activar', [SucursalController::class, 'activar'])->middleware('auth')->name('sucursal.activar');

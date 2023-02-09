@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PrestamoFechasExport;
 use App\Models\Prestamo;
 use App\Http\Controllers\Controller;
 use App\Models\Empresa;
 use App\Models\Sucursal;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PrestamoController extends Controller
 {
@@ -20,7 +23,8 @@ class PrestamoController extends Controller
     public function index()
     {
         $prestamos = Prestamo::all();
-        return view('prestamos.index', compact('prestamos'));
+        $sucursals = Sucursal::all();
+        return view('prestamos.index', compact('prestamos', 'sucursals'));
     }
 
     /**
@@ -201,4 +205,31 @@ class PrestamoController extends Controller
 
          return $reporte;
     }
+
+    public function exportarpdffechas(Request $request){
+        $sucursals= Sucursal::select('nombre')->where('id',[$request->sucursal_id])->get();
+
+        $fechainicio = $request->fechainicial;
+        $fechafinal = $request->fechaterminal;
+
+        $prestamos = Prestamo::whereBetween(DB::raw('DATE(fecha_prestamo)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        $pdf = Pdf::loadView('prestamos.pdf.fechas', compact('prestamos','sucursals','fechainicio','fechafinal'));
+        
+        return $pdf->download('Reporte_de_Prestamos.pdf');
+    }
+
+    public function exportarexcelfechas(Request $request){
+        $prestamos = Prestamo::whereBetween(DB::raw('DATE(fecha_prestamo)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        return Excel::download(new PrestamoFechasExport($request->fechainicial,$request->fechaterminal,$prestamos), 'prestamos_reporte_fechas.xlsx');
+
+    }
+
+    public function filtro(Request $request)
+    {
+        $prestamos = Prestamo::where('sucursal_id', $request->sucursal_id)->get();
+        $sucursals = Sucursal::all();
+
+        return view('prestamos.index', compact('prestamos', 'sucursals'));
+    }
 }
+

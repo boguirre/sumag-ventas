@@ -66,7 +66,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="pwd">Fecha de Prestamo:</label>
-                        {!! Form::datetimelocal('fecha_prestamo', null, ['class' => 'form-control']) !!}
+                        {!! Form::date('fecha_prestamo', null, ['class' => 'form-control']) !!}
                         @error('fecha_prestamo')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
@@ -74,7 +74,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="pwd">Fecha de Vencimiento:</label>
-                        {!! Form::datetimelocal('fecha_vencimiento', null, ['class' => 'form-control']) !!}
+                        {!! Form::date('fecha_vencimiento', null, ['class' => 'form-control']) !!}
                         @error('fecha_vencimiento')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror

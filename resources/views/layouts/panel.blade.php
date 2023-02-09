@@ -125,7 +125,7 @@
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
 
     @yield('scripts')
-
+   
     <!-- Wrapper End-->
     <!-- offcanvas start -->
 
@@ -160,7 +160,20 @@
     <!-- App Script -->
     <script src="/js/hope-ui.js" defer></script>
 
-
+    <script>
+        $(document).ready(function() {
+        $('#datatable').DataTable({
+            destroy:true,
+            lengthMenu: [
+            [ 5, 10, 25, -1 ],
+            [ '5', '10', '25', 'Todos' ]
+        ],
+            language: {
+                url: "https://cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
+            }
+         });
+         });
+      </script>
     <script>
         document.getElementById("file").addEventListener('change', cambiarImagen);
 

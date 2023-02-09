@@ -160,7 +160,7 @@
                 border-color: #3a57e8;" width="20%" height="15%" ></center>
             
         <div  class="img-centrar" id="card-cabe">
-				<h1 class="centrar-th" >MI COMPROBANTE DE VENTA</h1>
+				<h1 class="centrar-th" >MI GUIA DE PEDIDO </h1>
 			<h2 class="centrar-th">" {{$ventum->sucursales->nombre}} "</h2>
             
             <br>
@@ -204,7 +204,7 @@
                 {{$sale->user->id}}
             </p>  --}}
             <p class="centrar-th">
-                GUIA DE PEDIDO
+                NÚMERO DEL PEDIDO
                 <br>
                 N° {{$ventum->id}}
             </p>

@@ -19,6 +19,7 @@
 @endsection
 
 @section('content')
+
 <div class="row">
   <div class="col-md-6 col-lg-5">
     <div class="card" data-aos="fade-up" data-aos-delay="800">
@@ -175,6 +176,9 @@
           colors: ['transparent']
         },
         xaxis: {
+          title:{
+            text: ' Meses Del Año'
+          },
           categories: ["Ene", "Feb", "Mar", "Abr", "May", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"],
         },
         yaxis: {
@@ -272,9 +276,15 @@ $(document).ready(function(){
         xaxis: {
           type: 'date',
           title: {
+            text: 'Días del Mes'
+          }
+        },
+        yaxis: {
+          title: {
             text: 'S/. (Soles)'
           }
         },
+
         };
 
         var chart = new ApexCharts(document.querySelector("#chartventasxdiasdelmes"), options);

@@ -20,8 +20,7 @@ class AdminController extends Controller
     {
         $fechaactual = Carbon::now('America/Lima')->format('Y-m-d');
         $fechaactualmes = Carbon::now('America/Lima')->addMonth()->format('Y-m-d');
-
-        $alertaduas =  Dua::whereDate('mes_cobro','>=',$fechaactual)->whereDate('mes_cobro','<=',$fechaactualmes)->where('estado','1')->get();
+        $alertaduas =  Dua::where('mes_cobro','<=',$fechaactual)->whereDate('mes_cobro','<=',$fechaactualmes)->where('estado','1')->get();
 
         $alertaprestamos = Prestamo::whereDate('fecha_vencimiento','>=', $fechaactual)->where('estado', 1)->get();
         return view('admin.index',compact('alertaduas', 'alertaprestamos'));

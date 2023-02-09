@@ -167,7 +167,7 @@
                                 <!-- parte inferior del card donde se muesta el nombre del prodycto su precio y estrellas -->
                                 <div class="product-content">
                         
-                                    <h2><a href="{{route('web.ver_articulo', $articulo)}}">{{$articulo->nombre}}</a></h2>
+                                    <h2><a href="{{route('web.ver_articulo', $articulo)}}">{{Str::Upper($articulo->nombre)}}</a></h2>
                                     {{-- {{route('web.vista_producto')}} --}}
                         
                                     <div class="product-card-bottom mt-0">
@@ -232,7 +232,7 @@
                                 </div>
                                 
                                 <div class="category-content">
-                                    <h4><a href="{{route('web.escoger_producto',$categoria)}}">{{$categoria->nombre}}</a></h4>
+                                    <h4><a href="{{route('web.escoger_producto',$categoria)}}">{{Str::Upper($categoria->nombre)}}</a></h4>
                                     {{-- {{route('web.escoger_producto')}} --}}
                                     <p>Productos de alta calidad</p>
                                     <a href="{{route('web.escoger_producto',$categoria)}}" class="view-more">Ver mas</a>

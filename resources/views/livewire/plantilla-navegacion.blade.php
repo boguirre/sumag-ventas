@@ -163,6 +163,7 @@
 
                 <div class="logo header-logo d-block d-lg-none">
                     <a href="/"><img src="{{asset('assets/img/SUMAG.png')}}" alt="logo"></a>
+                    
                     {{-- {{route('web.index')}} --}}
                 </div>
 

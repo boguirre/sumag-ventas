@@ -1,8 +1,7 @@
-<div class="form-control border-white dropdown">
-
-        
-        <input data-bs-toggle="dropdown" type="text" placeholder="🔍 Buscar producto" wire:model="search">            
-
+<form action="">
+    <div class="" >
+        <input class="" type="text" placeholder="🔍 Buscar producto ..." wire:model="search">  
+             
         @if ($search)
             <ul class="list-group border-white dropdown-menu mt-auto" >
                 @forelse ($this->results as $result)
@@ -14,9 +13,7 @@
                         No hay ninguna coincidencia 😥
                     </li>
                 @endforelse
-            </ul>
-            
+            </ul>      
         @endif
-
-
-</div>
+    </div>     
+</form>

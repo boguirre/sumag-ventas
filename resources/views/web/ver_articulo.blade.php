@@ -46,7 +46,7 @@
                             <div class="col-md-7 col-sm-12 col-xs-12">
                                 <div class="detail-info pr-30 pl-30">
 
-                                    <h4 class="title-detail">{{$articulo->nombre}}</h4>
+                                    <h4 class="title-detail">{{Str::Upper($articulo->nombre)}}</h4>
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
                                             <span class="current-price">S/. {{$articulo->precio_venta}}</span>
@@ -85,8 +85,7 @@
                                     </div>	
 
                                         <div class="product-extra-link2">
-                                            <a type="submit" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=936499838&text=Hola%20👋,%20estoy%20interesado%20en%20el%20{{$articulo->nombre}}%20que%20se%20ha%20publicado."><i class="fab fa-whatsapp"></i>Whatsapp</a></a>
-
+                                            <a type="submit" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=936499838&text=Hola%20👋,%20estoy%20interesado%20en%20el%20{{Str::Upper($articulo->nombre)}}%20que%20se%20ha%20publicado."><i class="fab fa-whatsapp"></i>Whatsapp</a></a>
                                             {{-- <a aria-label="Add To Wishlist" class="button btn-wishlist" href="wishlist.html"><i class="fi-rs-heart"></i>Add to wishlist</a> --}}
                                         </div>
 
@@ -165,7 +164,7 @@
                                                     </div>
 
                                                     <div class="product-content">
-                                                        <h2><a href="{{route('web.ver_articulo', $destacado)}}">{{$destacado->nombre}}</a></h2>
+                                                        <h2><a href="{{route('web.ver_articulo', $destacado)}}">{{Str::Upper($destacado->nombre)}}</a></h2>
                                                         <div class="product-card-bottom mt-0">
                                                             <div class="product-price">
                                                                 <span>S/. {{$destacado->precio_venta}} <p> soles </p> </span>

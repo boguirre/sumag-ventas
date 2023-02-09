@@ -12,6 +12,11 @@ class Categoria extends Model
 
     protected $guarded = ['id'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     public function articulos(){
         return $this->hasMany(Articulo::class);
     }

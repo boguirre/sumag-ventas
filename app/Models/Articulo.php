@@ -10,6 +10,11 @@ class Articulo extends Model
 
     protected $guarded = ['id'];
 
+    public function getRouteKeyName()
+    {
+        return 'slug';
+    }
+
     use HasFactory;
 
     public function medida()

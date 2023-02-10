@@ -26,12 +26,14 @@ class DuaController extends Controller
         $duas = Dua::all();
         return view('duas.index', compact('duas','sucursals'));
     }
+    public function filtro(Request $request)
+    {
+        $sucursals = Sucursal::get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+        $duas = Dua::where('sucursal_id', $request->sucursal_id)->get();
+
+        return view('duas.index', compact('duas', 'sucursals'));
+    }
     public function create()
     {
         $sucursals = Sucursal::all();

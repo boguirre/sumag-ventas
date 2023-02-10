@@ -90,6 +90,7 @@ Route::post('pago-proveedor/{pagoProveedor}/addpago', [PagoProveedorController::
 Route::post('pago-proveedor/filtro', [PagoProveedorController::class, 'filtro'])->name('pago-proveedor.filtro');
 Route::post('dua/exportfechas/', [DuaController::class, 'exportarpdffechas'])->name('dua.pdffechas');
 Route::post('venta/excelfechas/', [DuaController::class, 'exportarexcelfechas'])->name('dua.excelfechas');
+Route::post('dua/filtro', [DuaController::class, 'filtro'])->name('dua.filtro');
 
 Route::post('dua/download', [DuaController::class, 'download'])->name('dua.download');
 Route::post('dua/{dua}/estado', [DuaController::class, 'estado'])->name('dua.estado');

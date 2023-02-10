@@ -435,6 +435,60 @@
                             </div>
                         </div>
                     </div>
+                    
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between">
+                            <div class="header-title">
+                                <h4 class="card-title"> Filtro de Información por Tiendas:</h4>
+                            </div>
+        
+        
+        
+                           
+                       
+                            </div>
+                        <div class="card-body">
+                            {!! Form::open(['route' => 'dua.filtro', 'autocomplete' => 'off', 'files' => true,
+                            'class'=>'']) !!}
+                            <div class="col-sm-12">
+                                <div class="row">
+                                    
+
+                                    <div class="col-md-3">
+                                        <label for="">Tienda:</label>
+                                        {{-- <select class="form-control selectpicker" data-live-search="true"
+                                            name="product_id" id="product_id"> --}}
+                                            <select class="form-control" name="sucursal_id" id="sucursal_id">
+                                                <option value="" disabled selected>Selecccione una Tienda</option>
+                                                @foreach ($sucursals as $sucursal)
+                                                <option value="{{$sucursal->id}}">{{$sucursal->nombre}}</option>
+                                                @endforeach
+                                            </select>
+    
+                                    </div>
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <br>
+                                            <button type="submit" class="btn btn-danger rounded-pill btn-sm ms-auto mt-1">
+                                                <svg width="32" viewBox="0 0 24 24" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg">
+                                                    <path fill-rule="evenodd" clip-rule="evenodd"
+                                                        d="M2 10.6699C2 5.88166 5.84034 2 10.5776 2C12.8526 2 15.0343 2.91344 16.6429 4.53936C18.2516 6.16529 19.1553 8.37052 19.1553 10.6699C19.1553 15.4582 15.3149 19.3399 10.5776 19.3399C5.84034 19.3399 2 15.4582 2 10.6699ZM19.0134 17.6543L21.568 19.7164H21.6124C22.1292 20.2388 22.1292 21.0858 21.6124 21.6082C21.0955 22.1306 20.2576 22.1306 19.7407 21.6082L17.6207 19.1785C17.4203 18.9766 17.3076 18.7024 17.3076 18.4164C17.3076 18.1304 17.4203 17.8562 17.6207 17.6543C18.0072 17.2704 18.6268 17.2704 19.0134 17.6543Z"
+                                                        fill="currentColor"></path>
+                                                </svg>
+                                                Buscar Información
+    
+    
+    
+    
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
                     <div class="table-responsive">
                         <table id="datatable" class="table table-striped" data-toggle="data-table">
                             <thead>

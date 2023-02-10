@@ -76,6 +76,7 @@ Route::get('/prestamo/reporte', [PrestamoController::class,'reporte'])->name('pr
 Route::post('prestamo/exportpdf', [PrestamoController::class, 'exportarpdffechas'])->name('prestamo.pdf');
 Route::post('prestamo/exportexcel', [PrestamoController::class, 'exportarexcelfechas'])->name('prestamo.excel');
 Route::post('prestamo/filtro', [PrestamoController::class, 'filtro'])->name('prestamo.filtro');
+Route::post('prestamo/download', [PrestamoController::class, 'download'])->name('prestamo.download');
 Route::resource('prestamo', PrestamoController::class)->middleware('auth')->names('prestamo');
 Route::resource('empresa', EmpresaController::class)->middleware('auth')->names('empresa');
 Route::post('sucursal/{sucursal}/activar', [SucursalController::class, 'activar'])->middleware('auth')->name('sucursal.activar');

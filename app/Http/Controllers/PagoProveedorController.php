@@ -259,4 +259,21 @@ class PagoProveedorController extends Controller
 
         return view('pago_proveedores.index', compact('pagoProveedores', 'sucursals'));
     }
+    public function exportarpdffechas(Request $request){
+        $sucursal_id= $request->sucursal_id;
+        if($sucursal_id == ""){
+             $sucursal_id= Sucursal::first()->id;
+        }
+        $sucursals= Sucursal::select('nombre')->where('id',[$sucursal_id])->get();
+        // return $sucursals;
+        $fechainicio = $request->fechainicial;
+        $fechafinal = $request->fechaterminal;
+
+        // return $fecha;
+        $pagoProveedores = PagoProveedor::whereBetween(DB::raw('DATE(fecha_deposito)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$sucursal_id])->get();
+
+        $pdf = Pdf::loadView('pago_proveedores.pdf.fechas', compact('pagoProveedores','sucursals','fechainicio','fechafinal'));
+        
+        return $pdf->setPaper('a4', 'landscape')->download('Reporte_de_Pago_Proveedores.pdf');
+    }
 }

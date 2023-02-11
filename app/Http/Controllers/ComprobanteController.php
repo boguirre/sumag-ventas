@@ -2,14 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
-use App\Models\Dua;
-use App\Models\PagoProveedor;
-use App\Models\Prestamo;
-use Carbon\Carbon;
+use App\Models\Comprobante;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class ComprobanteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,22 +14,17 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $fechaactual = Carbon::now('America/Lima')->format('Y-m-d');
-        $fechaactualmes = Carbon::now('America/Lima')->addMonth()->format('Y-m-d');
-        $alertaduas =  Dua::where('mes_cobro','<=',$fechaactual)->whereDate('mes_cobro','<=',$fechaactualmes)->where('estado','1')->get();
-
-        $alertaprestamos = Prestamo::whereDate('fecha_vencimiento','>=', $fechaactual)->where('estado', 1)->get();
-        return view('admin.index',compact('alertaduas', 'alertaprestamos'));
+        //
     }
+
     /**
      * Show the form for creating a new resource.
      *
      * @return \Illuminate\Http\Response
      */
-
     public function create()
     {
-        
+        //
     }
 
     /**
@@ -50,10 +41,10 @@ class AdminController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Comprobante  $comprobante
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Comprobante $comprobante)
     {
         //
     }
@@ -61,10 +52,10 @@ class AdminController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \App\Models\Comprobante  $comprobante
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Comprobante $comprobante)
     {
         //
     }
@@ -73,10 +64,10 @@ class AdminController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \App\Models\Comprobante  $comprobante
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Comprobante $comprobante)
     {
         //
     }
@@ -84,10 +75,10 @@ class AdminController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \App\Models\Comprobante  $comprobante
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Comprobante $comprobante)
     {
         //
     }

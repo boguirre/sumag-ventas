@@ -86,6 +86,11 @@
                         @enderror
                     </div>
 
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Subida de Archivos:</label>
+                        <input type="file" name="files[]" multiple>
+                    </div>
+
                     <div>
                       <button type="submit" class="btn btn-primary">Actualizar</button>
                       <a  href="{{route('prestamo.index')}}" class="btn btn-danger">Cancelar</a>

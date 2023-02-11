@@ -21,4 +21,9 @@ class Prestamo extends Model
     public function prestamo_detalles(){
         return $this->hasMany(PrestamoDetalle::class);
     }
+
+    public function resources()
+    {
+        return $this->morphMany(Resource::class, 'resourceable'); 
+    }
 }

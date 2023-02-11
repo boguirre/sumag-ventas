@@ -153,6 +153,11 @@ $(document).ready(function(){
         xaxis: {
           type: 'date',
           title: {
+            text: 'Días del Mes'
+          }
+        },
+        yaxis: {
+          title: {
             text: 'S/. (Soles)'
           }
         },

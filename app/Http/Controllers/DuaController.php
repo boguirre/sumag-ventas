@@ -26,12 +26,14 @@ class DuaController extends Controller
         $duas = Dua::all();
         return view('duas.index', compact('duas','sucursals'));
     }
+    public function filtro(Request $request)
+    {
+        $sucursals = Sucursal::get();
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+        $duas = Dua::where('sucursal_id', $request->sucursal_id)->get();
+
+        return view('duas.index', compact('duas', 'sucursals'));
+    }
     public function create()
     {
         $sucursals = Sucursal::all();
@@ -205,12 +207,17 @@ class DuaController extends Controller
     }
 
     public function exportarpdffechas(Request $request){
-        $sucursals= Sucursal::select('nombre')->where('id',[$request->sucursal_id])->get();
+        $sucursal_id= $request->sucursal_id;
+        if($sucursal_id == ""){
+             $sucursal_id= Sucursal::first()->id;
+        }
+
+        $sucursals= Sucursal::select('nombre')->where('id',[$sucursal_id])->get();
 
         $fechainicio = $request->fechainicial;
         $fechafinal = $request->fechaterminal;
 
-        $duas = Dua::whereBetween(DB::raw('DATE(created_at)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
+        $duas = Dua::whereBetween(DB::raw('DATE(created_at)'),[$request->fechainicial,$request->fechaterminal])->where('sucursal_id',[$sucursal_id])->get();
         $pdf = Pdf::loadView('duas.pdf.fechas', compact('duas','sucursals','fechainicio','fechafinal'));
         
         return $pdf->download('Reporte_de_Duas.pdf');

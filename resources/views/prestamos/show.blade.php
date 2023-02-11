@@ -133,6 +133,35 @@
                         </div>
                     </div>
 
+                    <div class="form-group">
+                        <h4 class="card-title">Lista de Recursos</h4>
+                        <div class="table-responsive col-md-12">
+                            <table id="detalles" class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Item</th>
+                                        <th>Archivo</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($prestamo->resources as $resource)
+                                        <tr>
+                                            <td><a class="btn btn-primary">{{ $resource->id }}</a></td>
+                                            <td>{{ $resource->url }}</td>
+                                            <td>
+                                                {!! Form::open(['route' => 'prestamo.download', 'autocomplete' => 'off', 'files' => true]) !!}
+                                                <input type="hidden" name="url" value="\{{$resource->url}}">
+                                                <button type="submit" class="btn btn-warning">Descargar</button>
+                                                {!! Form::close() !!}
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
                     <div class="card-footer text-muted">
                         <a href="{{ route('prestamo.index') }}" class="btn btn-light">
                             Regresar
@@ -140,11 +169,7 @@
                     </div>
 
                 </div>
-
-
-
             </div>
-
         </div>
     @endsection
     @section('scripts')

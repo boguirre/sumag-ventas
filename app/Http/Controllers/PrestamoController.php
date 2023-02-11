@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Exports\PrestamoFechasExport;
 use App\Models\Prestamo;
 use App\Http\Controllers\Controller;
 use App\Models\Empresa;
 use App\Models\Sucursal;
 use Carbon\Carbon;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PrestamoController extends Controller
 {
@@ -20,7 +24,8 @@ class PrestamoController extends Controller
     public function index()
     {
         $prestamos = Prestamo::all();
-        return view('prestamos.index', compact('prestamos'));
+        $sucursals = Sucursal::all();
+        return view('prestamos.index', compact('prestamos', 'sucursals'));
     }
 
     /**
@@ -51,21 +56,34 @@ class PrestamoController extends Controller
             'sucursal_id' => 'required',
             'fecha_prestamo' => 'required',
             'fecha_vencimiento' => 'required'
-            
-        ],[
-            'numerocredito.required'=>'El campo numero de credito es requerido',
-            'numerocredito.numeric'=>'El campo numero de credito debe ser numerico',
-            'monto_prestamo.required'=>'El campo monto es requerido.',
-            'descripcion.required'=>'El campo descripcion es requerido.',
-            'empresa_id.required'=>'Debe seleccionar una empresa',
-            'sucursal_id.required'=>'Debe seleccionar una tienda',
-            'fecha_prestamo.required'=>'El campo fecha prestamo es requerido.',
-            'fecha_vencimiento.required'=>'El campo fecha de vencimiento es requerido.',
+
+        ], [
+            'numerocredito.required' => 'El campo numero de credito es requerido',
+            'numerocredito.numeric' => 'El campo numero de credito debe ser numerico',
+            'monto_prestamo.required' => 'El campo monto es requerido.',
+            'descripcion.required' => 'El campo descripcion es requerido.',
+            'empresa_id.required' => 'Debe seleccionar una empresa',
+            'sucursal_id.required' => 'Debe seleccionar una tienda',
+            'fecha_prestamo.required' => 'El campo fecha prestamo es requerido.',
+            'fecha_vencimiento.required' => 'El campo fecha de vencimiento es requerido.',
         ]);
 
-        $prestamo  = Prestamo::create($request->all()+[
+        $prestamo  = Prestamo::create($request->all() + [
             'monto_deuda' => $request->monto_prestamo
         ]);
+
+        $files = $request->file('files');
+
+        foreach ($files as $file) {
+            // $file->store('resources');
+
+            Storage::putFileAs('resources/', $file, $file->getClientOriginalName());
+
+            $prestamo->resources()->create([
+                'url' => $file->getClientOriginalName()
+            ]);
+        }
+
 
         return redirect()->route('prestamo.index')->with('guardar', 'ok');
     }
@@ -111,22 +129,52 @@ class PrestamoController extends Controller
             'sucursal_id' => 'required',
             'fecha_prestamo' => 'required',
             'fecha_vencimiento' => 'required'
-            
-        ],[
-            'numerocredito.required'=>'El campo numero de credito es requerido',
-            'numerocredito.numeric'=>'El campo numero de credito debe ser numerico',
-            'monto_prestamo.required'=>'El campo monto es requerido.',
-            'descripcion.required'=>'El campo descripcion es requerido.',
-            'empresa_id.required'=>'Debe seleccionar una empresa',
-            'sucursal_id.required'=>'Debe seleccionar una tienda',
-            'fecha_prestamo.required'=>'El campo fecha prestamo es requerido.',
-            'fecha_vencimiento.required'=>'El campo fecha de vencimiento es requerido.',
+
+        ], [
+            'numerocredito.required' => 'El campo numero de credito es requerido',
+            'numerocredito.numeric' => 'El campo numero de credito debe ser numerico',
+            'monto_prestamo.required' => 'El campo monto es requerido.',
+            'descripcion.required' => 'El campo descripcion es requerido.',
+            'empresa_id.required' => 'Debe seleccionar una empresa',
+            'sucursal_id.required' => 'Debe seleccionar una tienda',
+            'fecha_prestamo.required' => 'El campo fecha prestamo es requerido.',
+            'fecha_vencimiento.required' => 'El campo fecha de vencimiento es requerido.',
         ]);
 
 
-        $prestamo->update($request->all()+[
+        $prestamo->update($request->all() + [
             'monto_deuda' => $request->monto_prestamo
         ]);
+
+        $files = $request->file('files');
+
+        if ($files) {
+            // $url = $request->file->store('resources');
+
+            foreach ($files as $file) {
+                
+                Storage::putFileAs('resources/', $file, $file->getClientOriginalName());
+
+                if ($prestamo->resources) {
+                    // $url = 'resources/'. $prestamo->resources->url;
+                    // Storage::delete($url);
+
+                    foreach ($prestamo->resources as $resource) {
+                        $url = 'resources/'. $resource->url;
+                         Storage::delete($url);
+                         $resource->delete();
+                    }
+
+                    $prestamo->resources()->create([
+                        'url' => $file->getClientOriginalName()
+                    ]);
+                } else {
+                    $prestamo->resources()->create([
+                        'url' => $file->getClientOriginalName()
+                    ]);
+                }
+            }
+        }
 
         return redirect()->route('prestamo.index')->with('guardar', 'ok');
     }
@@ -146,7 +194,7 @@ class PrestamoController extends Controller
     {
         $request->validate([
             'monto' => 'required|numeric'
-        ],[
+        ], [
             'monto.required' => 'el nonto es requerido',
         ]);
 
@@ -168,37 +216,69 @@ class PrestamoController extends Controller
         return redirect()->route('prestamo.show', $prestamo)->with('addpago', 'ok');
     }
 
-    public function reporte(){
-        $prestamos= DB::select('call sp_sumaprestamos()');
-        $data=[];
-        foreach($prestamos as $prestamo){
-                 
-               $data['label'][] = $prestamo->nombre;
+    public function reporte()
+    {
+        $prestamos = DB::select('call sp_sumaprestamos()');
+        $data = [];
+        foreach ($prestamos as $prestamo) {
 
-               $data['data'][] = $prestamo->cantidad;
+            $data['label'][] = $prestamo->nombre;
 
+            $data['data'][] = $prestamo->cantidad;
         }
         $data['data'] = json_encode($data);
-        $reporte="";
-        $report=$this->reporteEstado($reporte);
-        return view('prestamos.reporte.index',$data+$report);
+        $reporte = "";
+        $report = $this->reporteEstado($reporte);
+        return view('prestamos.reporte.index', $data + $report);
     }
 
-    public function reporteEstado(){
-        $prestamosestados= DB::select('call sp_sumaestados()');
-        $report=[];
-        foreach($prestamosestados as $prestamosestado){
-                 
-                $report['label'][] = $prestamosestado->estado;
+    public function reporteEstado()
+    {
+        $prestamosestados = DB::select('call sp_sumaestados()');
+        $report = [];
+        foreach ($prestamosestados as $prestamosestado) {
 
-                $report['report'][] = $prestamosestado->cantidad;
+            $report['label'][] = $prestamosestado->estado;
 
-          }
+            $report['report'][] = $prestamosestado->cantidad;
+        }
 
-         $report['report'] = json_encode($report);
+        $report['report'] = json_encode($report);
 
-         $reporte=$report;
+        $reporte = $report;
 
-         return $reporte;
+        return $reporte;
+    }
+
+    public function exportarpdffechas(Request $request)
+    {
+        $sucursals = Sucursal::select('nombre')->where('id', [$request->sucursal_id])->get();
+
+        $fechainicio = $request->fechainicial;
+        $fechafinal = $request->fechaterminal;
+
+        $prestamos = Prestamo::whereBetween(DB::raw('DATE(fecha_prestamo)'), [$request->fechainicial, $request->fechaterminal])->where('sucursal_id', [$request->sucursal_id])->get();
+        $pdf = Pdf::loadView('prestamos.pdf.fechas', compact('prestamos', 'sucursals', 'fechainicio', 'fechafinal'));
+
+        return $pdf->download('Reporte_de_Prestamos.pdf');
+    }
+
+    public function exportarexcelfechas(Request $request)
+    {
+        $prestamos = Prestamo::whereBetween(DB::raw('DATE(fecha_prestamo)'), [$request->fechainicial, $request->fechaterminal])->where('sucursal_id', [$request->sucursal_id])->get();
+        return Excel::download(new PrestamoFechasExport($request->fechainicial, $request->fechaterminal, $prestamos), 'prestamos_reporte_fechas.xlsx');
+    }
+
+    public function filtro(Request $request)
+    {
+        $prestamos = Prestamo::where('sucursal_id', $request->sucursal_id)->get();
+        $sucursals = Sucursal::all();
+
+        return view('prestamos.index', compact('prestamos', 'sucursals'));
+    }
+
+    public function download(Request $request)
+    {
+        return response()->download(storage_path('app\resources' . $request->url));
     }
 }

@@ -73,6 +73,10 @@ Route::post('venta',[VentaController::class, 'indexventas'])->name('venta.indexv
 Route::get('cambio_estado/venta/{ventum}', [VentaController::class,'cambio_estado'])->name('cambio.estado.venta');
 Route::resource('ingreso', IngresoController::class)->middleware('auth')->names('ingreso');
 Route::get('/prestamo/reporte', [PrestamoController::class,'reporte'])->name('prestamos.reporte');
+Route::post('prestamo/exportpdf', [PrestamoController::class, 'exportarpdffechas'])->name('prestamo.pdf');
+Route::post('prestamo/exportexcel', [PrestamoController::class, 'exportarexcelfechas'])->name('prestamo.excel');
+Route::post('prestamo/filtro', [PrestamoController::class, 'filtro'])->name('prestamo.filtro');
+Route::post('prestamo/download', [PrestamoController::class, 'download'])->name('prestamo.download');
 Route::resource('prestamo', PrestamoController::class)->middleware('auth')->names('prestamo');
 Route::resource('empresa', EmpresaController::class)->middleware('auth')->names('empresa');
 Route::post('sucursal/{sucursal}/activar', [SucursalController::class, 'activar'])->middleware('auth')->name('sucursal.activar');
@@ -81,12 +85,15 @@ Route::post('prestamo/{prestamo}/addpago', [PrestamoController::class, 'addpago'
 Route::resource('proveedor', ProveedorController::class)->middleware('auth')->names('proveedor');
 Route::get('/pago-proveedor/{pagoProveedor}/pdf', [PagoProveedorController::class, 'exportpdf'])->name('pago-proveedor.exportpdf');
 Route::get('/pago-proveedor/reporte', [PagoProveedorController::class,'reporte'])->name('pago-proveedor.reporte');
+Route::post('pago-proveedor/exportpdf', [PagoProveedorController::class, 'exportarpdffechas'])->name('pago-proveedor.pdf');
+
 Route::post('pago-proveedor/exportfechas/', [PagoProveedorController::class, 'exportarexcelfechas'])->name('pago-proveedor.exportfechas');
 Route::resource('pago-proveedor', PagoProveedorController::class)->middleware('auth')->names('pago-proveedor');
 Route::post('pago-proveedor/{pagoProveedor}/addpago', [PagoProveedorController::class, 'addpago'])->name('pago-proveedor.addpago');
 Route::post('pago-proveedor/filtro', [PagoProveedorController::class, 'filtro'])->name('pago-proveedor.filtro');
 Route::post('dua/exportfechas/', [DuaController::class, 'exportarpdffechas'])->name('dua.pdffechas');
 Route::post('venta/excelfechas/', [DuaController::class, 'exportarexcelfechas'])->name('dua.excelfechas');
+Route::post('dua/filtro', [DuaController::class, 'filtro'])->name('dua.filtro');
 
 Route::post('dua/download', [DuaController::class, 'download'])->name('dua.download');
 Route::post('dua/{dua}/estado', [DuaController::class, 'estado'])->name('dua.estado');

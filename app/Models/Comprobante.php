@@ -8,4 +8,15 @@ use Illuminate\Database\Eloquent\Model;
 class Comprobante extends Model
 {
     use HasFactory;
+
+    protected $guarded = ['id'];
+
+    public function tipo_comprobante(){
+        return $this->belongsTo(TipoComprobante::class);
+    }
+
+    public function resources()
+    {
+        return $this->morphMany(Resource::class, 'resourceable'); 
+    }
 }

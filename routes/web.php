@@ -3,6 +3,7 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ComprobanteController;
 use App\Http\Controllers\DuaController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\IngresoController;
@@ -99,4 +100,6 @@ Route::post('dua/download', [DuaController::class, 'download'])->name('dua.downl
 Route::post('dua/{dua}/estado', [DuaController::class, 'estado'])->name('dua.estado');
 Route::get('/dua/reporte', [DuaController::class,'reporte'])->name('dua.reporte');
 Route::resource('dua', DuaController::class)->names('dua');
+Route::post('comprobante/download', [ComprobanteController::class, 'download'])->name('comprobante.download');
+Route::resource('comprobante', ComprobanteController::class)->names('comprobante');
 

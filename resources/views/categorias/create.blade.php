@@ -29,6 +29,7 @@
             </div> --}}
                 <div class="card-body">
                     {!! Form::open(['route' => 'categoria.store', 'autocomplete' => 'off', 'files' => true, 'class' => 'formulario']) !!}
+                    
                     <div class="form-group">
                         <label class="form-label" for="pwd">Nombre:</label>
                         <input type="text" class="form-control" id="nombre" name="nombre"
@@ -37,18 +38,35 @@
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Slug :</label>
+                        <input type="text" class="form-control" id="slug" name="slug"
+                            placeholder="Ingrese El Slug" readonly value="{{ old('slug') }}">
+                        @error('slug')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Registrar</button>
                     <a href="{{route('categoria.index')}}" class="btn btn-danger">
                         Cancelar
-                     </a>                     {!! Form::close() !!}
+                     </a>                     
+                     {!! Form::close() !!}
                 </div>
 
 
 
             </div>
         </div>
+
+
+        
+        
     @endsection
+    
 @section('scripts')
+                
                 <script>
                     $('.formulario').submit(function(e) {
                         e.preventDefault()
@@ -69,8 +87,28 @@
                                 this.submit()
 
                             }
-                        })
+                        });
 
-                    })
+                    });
+
                 </script>
+                
+                <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
+                <script src="prototype.js"></script>
+                <script src="jquery.js"></script>
+                <script>
+                    jQuery.noConflict();
+
+                    (function($) {
+                        $(document).ready( function() {
+                                            $('#nombre').stringToSlug({
+                                            setEvents: 'keyup keydown blur',
+                                            getPut: '#slug',
+                                            space: '-'
+                                            });
+                                        });
+                    })(jQuery);
+                </script>
+                
+                
 @endsection

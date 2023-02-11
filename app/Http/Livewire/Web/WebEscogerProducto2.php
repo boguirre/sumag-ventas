@@ -22,7 +22,7 @@ class WebEscogerProducto2 extends Component
 
         $productosgeneral = Articulo::where('nombre','like','%'.$this->search.'%')
                                         ->paginate($this->cant);
-        $categoriageneral = Categoria::all();
+        $categoriageneral = Categoria::where('estado',1)->get();
         return view('livewire.web.web-escoger-producto2',compact('productosgeneral','categoriageneral'));
     }
     public function updatingSearch(){

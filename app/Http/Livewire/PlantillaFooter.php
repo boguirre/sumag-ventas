@@ -10,7 +10,7 @@ class PlantillaFooter extends Component
 {
     public function render()
     {
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('estado',1)->get();
         return view('livewire.plantilla-footer', compact('categorias'));
     }
 }

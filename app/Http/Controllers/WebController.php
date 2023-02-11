@@ -13,7 +13,7 @@ class WebController extends Controller
 {
     
     public function index(){
-        $categorias = Categoria::all();
+        $categorias = Categoria::where('estado',1)->get();
         $articulos = Articulo::where('estado',1)
                             ->latest('id')
                             ->orderByRaw('id desc limit 12')
@@ -37,7 +37,7 @@ class WebController extends Controller
                                  ->where('estado',1)
                                  ->latest('id')
                                  ->paginate(3);
-        $filtrocategoria = Categoria::all();
+        $filtrocategoria = Categoria::where('estado',1)->get();
        
         return view('web.escoger_producto',compact('categoria','productos','filtrocategoria'));
         
@@ -45,7 +45,7 @@ class WebController extends Controller
 
     public function escoger_producto2(){
         $productosgeneral = Articulo::all();
-        $categoriageneral = Categoria::all();
+        $categoriageneral = Categoria::where('estado',1)->get();
         return view('web.escoger_producto2', compact('productosgeneral','categoriageneral'));
     }
 

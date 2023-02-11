@@ -44,7 +44,8 @@ class ArticuloController extends Controller
         $request->validate([
             'codigo' => 'required',
             'nombre' => 'required|max:50',
-            'descripcion' => 'required|max:50',
+            'slug' => 'required|unique:articulos',
+            'descripcion' => 'required',
             'categoria_id' => 'required',
             'medida_id' => 'required',
             'stock_minimo' => 'required|min:1',
@@ -55,6 +56,7 @@ class ArticuloController extends Controller
         ],[
             'codigo.required'=>'El campo codigo es requerido.',
             'nombre.required'=>'El campo nombre es requerido.',
+            'slug.required'=>'El campo slug es requerido.',
             'descripcion.required'=>'El campo descripcion es requerido.',
             'categoria_id.required'=>'El campo categoria es requerido.',
             'medida_id.required'=>'El campo medida es requerido.',
@@ -113,7 +115,8 @@ class ArticuloController extends Controller
         $request->validate([
             'codigo' => 'required',
             'nombre' => 'required|max:50',
-            'descripcion' => 'required|max:50',
+            'slug' => 'required',
+            'descripcion' => 'required',
             'categoria_id' => 'required',
             'medida_id' => 'required',
             'stock_minimo' => 'required|min:1',
@@ -124,6 +127,7 @@ class ArticuloController extends Controller
         ],[
             'codigo.required'=>'El campo codigo es requerido.',
             'nombre.required'=>'El campo nombre es requerido.',
+            'slug.required'=>'El campo slug es requerido.',
             'descripcion.required'=>'El campo descripcion es requerido.',
             'categoria_id.required'=>'El campo categoria es requerido.',
             'medida_id.required'=>'El campo medida es requerido.',

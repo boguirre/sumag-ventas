@@ -38,10 +38,11 @@ class CategoriaController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nombre' => 'required|max:50'
-            
+            'nombre' => 'required|max:50',
+            'slug' => 'required|unique:categorias'
         ],[
-            'nombre.required'=>'El campo nombre es requerido.'
+            'nombre.required'=>'El campo nombre es requerido.',
+            'slug.required'=>'El campo slug es requerido.'
 
         ]);
         Categoria::create($request->all());
@@ -81,9 +82,11 @@ class CategoriaController extends Controller
     {
         $request->validate([
             'nombre' => 'required|max:50',
+            'slug' => 'required'
             
         ],[
-            'nombre.required'=>'El campo nombre es requerido.'
+            'nombre.required'=>'El campo nombre es requerido.',
+            'slug.required'=>'El campo slug es requerido.'
 
         ]);
         $categorium->update($request->all());

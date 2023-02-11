@@ -29,6 +29,7 @@
             </div> --}}
                 <div class="card-body">
                     {!! Form::open(['route' => 'articulo.store', 'autocomplete' => 'off', 'files' => true, 'class' => 'formulario']) !!}
+                    
                     <div class="form-group">
                         <label class="form-label" for="pwd">Codigo:</label>
                         <input type="text" class="form-control" id="codigo" name="codigo"
@@ -43,6 +44,15 @@
                         <input type="text" class="form-control" id="nombre" name="nombre"
                             placeholder="Ingrese El Nombre" value="{{ old('nombre') }}">
                         @error('nombre')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Slug :</label>
+                        <input type="text" class="form-control" id="slug" name="slug"
+                            placeholder="Ingrese El Slug" readonly value="{{ old('slug') }}">
+                        @error('slug')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
@@ -82,6 +92,7 @@
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
+
                     <div class="form-group">
                         <label class="form-label" for="pwd">Stock Minimo:</label>
                         <input type="number" class="form-control" id="stock_minimo" name="stock_minimo"
@@ -142,6 +153,7 @@
 @endsection
 
 @section('scripts')
+                
                 <script>
                     $('.formulario').submit(function(e) {
                         e.preventDefault()
@@ -162,8 +174,39 @@
                                 this.submit()
 
                             }
-                        })
+                        });
 
-                    })
+                    });
                 </script>
+
+                <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
+                <script src="prototype.js"></script>
+                <script src="jquery.js"></script>
+                <script>
+                    jQuery.noConflict();
+
+                    (function($) {
+                        $(document).ready( function() {
+                                            $('#nombre').stringToSlug({
+                                            setEvents: 'keyup keydown blur',
+                                            getPut: '#slug',
+                                            space: '-'
+                                            });
+                                        });
+                    })(jQuery);
+                </script>
+
+                <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+                <script>
+                    ClassicEditor
+                        .create( document.querySelector( '#descripcion' ) )
+                        .catch( error => {
+                            console.error( error );
+                        } );
+                    
+                </script>
+          
+            
 @endsection
+
+

@@ -7879,7 +7879,7 @@ table.no-border td, table.no-border th, table.no-border thead {
 .header .header-search form input {
   max-width: 600px;
   border-width: 0px;
-  border-radius: 0 5px 5px 0;
+  border-radius: 5px 5px 5px 5px;
   margin-left: 20px;
   background-color: #FFF;
   border: none;
@@ -10489,7 +10489,7 @@ footer .hotline img {
     line-height: normal;
   }
   .detail-info .product-extra-link2 .button.button-add-to-cart i {
-    display: none;
+    
   }
 
   .product-extra-link2 .btn-wishlist {
@@ -10644,7 +10644,7 @@ footer .hotline img {
   }
 
   .header .header-search {
-    display: none;
+    
   }
 
   .main-menu.main-menu-mrg-1 {

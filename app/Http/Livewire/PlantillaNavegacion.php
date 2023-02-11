@@ -14,8 +14,8 @@ class PlantillaNavegacion extends Component
 
     public function render()
     {
-        $categorias = Categoria::where('nombre','like','%'.$this->search.'%')->get();
-        $rangos = Categoria::orderByRaw('id asc limit 6')->get();
+        $categorias = Categoria::where('nombre','like','%'.$this->search.'%')->where('estado',1)->get();
+        $rangos = Categoria::orderByRaw('id asc limit 6')->where('estado',1)->get();
         return view('livewire.plantilla-navegacion',compact('categorias','rangos'));
     }
 }

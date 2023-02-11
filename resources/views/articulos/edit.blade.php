@@ -34,6 +34,7 @@
                         'files' => true,
                         'class' => '',
                     ]) !!}
+
                     <div class="form-group">
                       <label class="form-label" for="pwd">Codigo:</label>
                       <input type="text" class="form-control" id="codigo" name="codigo"
@@ -41,12 +42,22 @@
                       @error('codigo')
                           <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                       @enderror
-                  </div>
+                    </div>
+
                     <div class="form-group">
                         <label class="form-label" for="pwd">Nombre:</label>
                         <input type="text" class="form-control" id="nombre" name="nombre"
                             placeholder="Ingrese El Nombre" value="{{ $articulo->nombre }}">
                         @error('nombre')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Slug :</label>
+                        <input type="text" class="form-control" id="slug" name="slug"
+                            placeholder="Ingrese El Slug" readonly value="{{ $articulo->slug}}">
+                        @error('slug')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
@@ -58,7 +69,7 @@
                       @error('categoria_id')
                           <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                       @enderror
-                  </div>
+                    </div>
 
                     <div class="form-group">
                         <label class="form-label" for="pwd">Seleccione una Unidad de Medida:</label>
@@ -68,68 +79,96 @@
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
-
                     
                     <div class="form-group">
-                      <label class="form-label" for="pwd">Descripcion:</label>
-                      <textarea class="form-control" id="descripcion" name="descripcion" rows="5">{{$articulo->descripcion}}</textarea>
-                      @error('descripcion')
-                          <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                      @enderror
-                  </div>
+                        <label class="form-label" for="pwd">Descripcion:</label>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="5">{{$articulo->descripcion}}</textarea>
+                        @error('descripcion')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
 
-                  <div class="form-group">
-                    <label class="form-label" for="pwd">Stock Minimo:</label>
-                    <input type="number" class="form-control" id="stock_minimo" name="stock_minimo"
-                        placeholder="Ingrese El stock minimo" value="{{ $articulo->stock_minimo }}">
-                    @error('stock_minimo')
-                        <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                    @enderror
-                </div>
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Stock Minimo:</label>
+                        <input type="number" class="form-control" id="stock_minimo" name="stock_minimo"
+                            placeholder="Ingrese El stock minimo" value="{{ $articulo->stock_minimo }}">
+                        @error('stock_minimo')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
 
-                  <div class="form-group">
-                      <label class="form-label" for="pwd">Precio Compra:</label>
-                      <input type="number" class="form-control" id="precio_unitario" name="precio_unitario"
-                          placeholder="Ingrese El precio compra" value="{{ $articulo->precio_unitario }}">
-                      @error('precio_unitario')
-                          <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                      @enderror
-                  </div>
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Precio Compra:</label>
+                        <input type="number" class="form-control" id="precio_unitario" name="precio_unitario"
+                            placeholder="Ingrese El precio compra" value="{{ $articulo->precio_unitario }}">
+                        @error('precio_unitario')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
 
-                  <div class="form-group">
-                      <label class="form-label" for="pwd">Precio Venta:</label>
-                      <input type="number" class="form-control" id="precio_venta" name="precio_venta"
-                          placeholder="Ingrese El precio venta" value="{{ $articulo->precio_venta}}">
-                      @error('precio_venta')
-                          <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                      @enderror
-                  </div>
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Precio Venta:</label>
+                        <input type="number" class="form-control" id="precio_venta" name="precio_venta"
+                            placeholder="Ingrese El precio venta" value="{{ $articulo->precio_venta}}">
+                        @error('precio_venta')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
 
-                  <div class="form-group">
-                    <label class="form-label" for="pwd">Seleccione una imagen:</label>
-                    <input type="file" class="form-control" id="file" name="file" accept="image/*">
-                    @error('file')
-                        <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                    @enderror
-                  </div>
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Seleccione una imagen:</label>
+                        <input type="file" class="form-control" id="file" name="file" accept="image/*">
+                        @error('file')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
 
                     <div class="grid grid-cols-2 gap-4">
-                    <figure>
-                        @isset($articulo->images)
-                        <img id="picture" class="form-group" style="width: 250px; height: 250px; "
-                            src="{{ Storage::url($articulo->images->url) }}" alt="">
-                    @else
-                        <img id="picture" class="w-full h-64 object-cover object-center"
-                            style="width: 250px; height: 250px; " alt="" src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-                    @endisset
-                    </figure>
-                    <div>
-                    <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <a href="{{route('articulo.index')}}" class="btn btn-danger">
-                        Cancelar
-                     </a>                    
-                     {!! Form::close() !!}
-                </div>
-            </div>
+                        <figure>
+                            @isset($articulo->images)
+                            <img id="picture" class="form-group" style="width: 250px; height: 250px; "
+                                src="{{ Storage::url($articulo->images->url) }}" alt="">
+                        @else
+                            <img id="picture" class="w-full h-64 object-cover object-center"
+                                style="width: 250px; height: 250px; " alt="" src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                        @endisset
+                        </figure>
+                        <div>
+                            <button type="submit" class="btn btn-primary">Actualizar</button>
+                            <a href="{{route('articulo.index')}}" class="btn btn-danger">
+                                Cancelar
+                            </a>                    
+                            {!! Form::close() !!}
+                        </div>
+                    </div>
         </div>
+    @endsection
+
+    @section('scripts')
+            <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
+            <script src="prototype.js"></script>
+            <script src="jquery.js"></script>
+            <script>
+                jQuery.noConflict();
+
+                (function($) {
+                    $(document).ready( function() {
+                                        $('#nombre').stringToSlug({
+                                        setEvents: 'keyup keydown blur',
+                                        getPut: '#slug',
+                                        space: '-'
+                                        });
+                                    });
+                })(jQuery);
+            </script>
+
+            <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+            <script>
+                ClassicEditor
+                    .create( document.querySelector( '#descripcion' ) )
+                    .catch( error => {
+                        console.error( error );
+                    } );
+                
+            </script>
     @endsection

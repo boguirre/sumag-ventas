@@ -23,13 +23,15 @@
                     <ul class="contact-info">
                         <li><p><i class="fas fa-phone-alt"></i>+51 95989658425</p></li>
                         <li><p><i class="fas fa-envelope"></i> sumag@gmail.com</p></li>
-                        <li><p><i class="fas fa-map-marker-alt"></i>Perú</p></li>
+                        <li><p><i class="fas fa-map-marker-alt"></i>Av. Abancay 1113, Lima 15001, Perú</p></li>
                     </ul>
                     <ul class="footer-social-icon">
+                        {{-- <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li> --}}
                         <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                        {{-- <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
                         <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                        <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li> --}}
                     </ul>
                 </div>
 
@@ -244,9 +246,11 @@
                                     <ul>
                                         <li class="me-2"><span>Share :</span></li>
                                         <li><a href="#"><i class="fab fa-facebook"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-whatsapp"></i></a></li>
+                                        
+                                        {{-- <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
                                         <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-twitter"></i></a></li> --}}
                                     </ul>
                                 </div>
                             </div>

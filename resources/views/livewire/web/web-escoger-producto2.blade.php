@@ -28,7 +28,7 @@
                 <div class="totall-product col-lg-auto">
                     <div class="sort-by-product-area">
                         <div class="sort-by-cover">
-                            <input type="text" placeholder="Buscar..." wire:model="search">
+                            <input class="border border-white" type="text" placeholder="Buscar..." wire:model="search">
                         </div>
                     </div>
                 </div>
@@ -85,7 +85,7 @@
                         </div>
                 
                         <div class="product-content">
-                            <h2><a href="{{route('web.ver_articulo', $producto)}}">{{$producto->nombre}}</a></h2>
+                            <h2><a href="{{route('web.ver_articulo', $producto)}}">{{Str::Upper($producto->nombre)}}</a></h2>
                             <div class="product-card-bottom mt-0">
                                 <div class="product-price">
                                     <span>S/. {{$producto->precio_venta}} <p> soles </p> </span>
@@ -138,7 +138,7 @@
                         <ul class="footer-list mb-sm-5 mb-md-0">
                             @foreach ($categoriageneral as $categoria)
                             <li>
-                                <a href="{{route('web.escoger_producto',$categoria)}}"><i class="feather-shopping-cart"></i>  {{$categoria->nombre}}</a>
+                                <a href="{{route('web.escoger_producto',$categoria)}}"><i class="feather-shopping-cart"></i>  {{Str::Upper($categoria->nombre)}}</a>
                                 {{-- {{route('web.escoger_producto')}}     --}}
                             </li>
                             @endforeach

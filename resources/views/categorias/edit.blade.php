@@ -34,6 +34,7 @@
                         'files' => true,
                         'class' => '',
                     ]) !!}
+
                     <div class="form-group">
                         <label class="form-label" for="pwd">Nombre:</label>
                         <input type="text" class="form-control" id="nombre" name="nombre"
@@ -42,6 +43,16 @@
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
+
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Slug:</label>
+                        <input type="text" class="form-control" id="slug" name="slug"
+                            placeholder="Ingrese El Slug" readonly value="{{ $categorium->slug }}">
+                        @error('slug')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
+
                     <button type="submit" class="btn btn-primary">Actualizar</button>
                     <button type="submit" class="btn btn-danger">Cancelar</button>
                     {!! Form::close() !!}
@@ -51,4 +62,24 @@
 
             </div>
         </div>
+    @endsection
+
+    @section('scripts')
+                <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
+                <script src="prototype.js"></script>
+                <script src="jquery.js"></script>
+                <script>
+                    jQuery.noConflict();
+
+                    (function($) {
+                        $(document).ready( function() {
+                                            $('#nombre').stringToSlug({
+                                            setEvents: 'keyup keydown blur',
+                                            getPut: '#slug',
+                                            space: '-'
+                                            });
+                                        });
+                    })(jQuery);
+                </script>
+
     @endsection

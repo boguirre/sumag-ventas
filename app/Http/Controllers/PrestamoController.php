@@ -146,6 +146,36 @@ class PrestamoController extends Controller
             'monto_deuda' => $request->monto_prestamo
         ]);
 
+        $files = $request->file('files');
+
+        if ($files) {
+            // $url = $request->file->store('resources');
+
+            foreach ($files as $file) {
+                
+                Storage::putFileAs('resources/', $file, $file->getClientOriginalName());
+
+                if ($prestamo->resources) {
+                    // $url = 'resources/'. $prestamo->resources->url;
+                    // Storage::delete($url);
+
+                    foreach ($prestamo->resources as $resource) {
+                        $url = 'resources/'. $resource->url;
+                         Storage::delete($url);
+                         $resource->delete();
+                    }
+
+                    $prestamo->resources()->create([
+                        'url' => $file->getClientOriginalName()
+                    ]);
+                } else {
+                    $prestamo->resources()->create([
+                        'url' => $file->getClientOriginalName()
+                    ]);
+                }
+            }
+        }
+
         return redirect()->route('prestamo.index')->with('guardar', 'ok');
     }
 

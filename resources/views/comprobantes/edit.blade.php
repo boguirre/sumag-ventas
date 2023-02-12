@@ -52,13 +52,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="pwd">Tipo de Importe:</label>
-                        <select name="tipo_importe" class="form-control">
-                            <option value="" selected disabled>Seleccione una tienda</option>
-                            
-                                <option value="BANCARIA">TRANSF. BANCARIA</option>
-                                <option value="CREDITOS">CREDITOS</option>
-                            
-                        </select>
+                        {!! Form::select('tipo_importe_id', $tipo_importes, null, ['class' => 'form-control']) !!}
 
                         @error('tipo_importe')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>

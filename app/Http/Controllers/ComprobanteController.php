@@ -6,6 +6,7 @@ use App\Exports\ComprobanteFechasExport;
 use App\Models\Comprobante;
 use App\Models\Sucursal;
 use App\Models\TipoComprobante;
+use App\Models\TipoImporte;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -37,7 +38,8 @@ class ComprobanteController extends Controller
         $sucursals = Sucursal::all();
 
         $tipo_comprobantes = TipoComprobante::all();
-        return view('comprobantes.create', compact('tipo_comprobantes','sucursals'));
+        $tipo_importes = TipoImporte::all();
+        return view('comprobantes.create', compact('tipo_comprobantes','sucursals', 'tipo_importes'));
     }
 
     /**
@@ -107,9 +109,9 @@ class ComprobanteController extends Controller
     public function edit(Comprobante $comprobante)
     {    
         $sucursals = Sucursal::pluck('nombre', 'id');
-
+        $tipo_importes = TipoImporte::pluck('nombre', 'id');
         $tipo_comprobantes = TipoComprobante::pluck('nombre', 'id');
-        return view('comprobantes.edit', compact('comprobante', 'tipo_comprobantes','sucursals'));
+        return view('comprobantes.edit', compact('comprobante', 'tipo_comprobantes','sucursals','tipo_importes'));
     }
 
     /**

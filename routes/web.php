@@ -100,6 +100,9 @@ Route::post('dua/download', [DuaController::class, 'download'])->name('dua.downl
 Route::post('dua/{dua}/estado', [DuaController::class, 'estado'])->name('dua.estado');
 Route::get('/dua/reporte', [DuaController::class,'reporte'])->name('dua.reporte');
 Route::resource('dua', DuaController::class)->names('dua');
+Route::post('comprobante/excelfechas/', [ComprobanteController::class, 'exportarexcelfechas'])->name('comprobante.excelfechas');
+
+Route::post('comprobante/exportpdf', [ComprobanteController::class, 'exportarpdffechas'])->name('comprobante.pdf');
 Route::post('comprobante/download', [ComprobanteController::class, 'download'])->name('comprobante.download');
 Route::resource('comprobante', ComprobanteController::class)->names('comprobante');
 

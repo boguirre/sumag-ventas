@@ -206,7 +206,7 @@
                                     </ul>
                                     <!-- fieldsets -->
                                     <fieldset style="display: block;">
-                                        {!! Form::open(['route' => 'dua.pdffechas', 'autocomplete' => 'off', 'files' => true, 'class' => '']) !!}
+                                        {!! Form::open(['route' => 'comprobante.pdf', 'autocomplete' => 'off', 'files' => true, 'class' => '']) !!}
                                         <div class="col-sm-12">
                                             <div class="row">
 
@@ -337,7 +337,7 @@
                                     </fieldset>
                                     <fieldset style="display: none;">
                                         {!! Form::open([
-                                            'route' => 'dua.excelfechas',
+                                            'route' => 'comprobante.excelfechas',
                                             'autocomplete' => 'off',
                                             'files' => true,
                                             'class' => '',

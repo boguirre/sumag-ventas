@@ -10,7 +10,7 @@ class TipoComprobante extends Model
     use HasFactory;
 
     protected $guarded = ['id'];
-
+    
     public function comprobantes(){
         return $this->hasMany(Comprobante::class);
     }

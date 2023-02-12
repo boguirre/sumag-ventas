@@ -32,7 +32,15 @@
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Empresas:</label>
 
+                        {!! Form::select('sucursal_id', $sucursals, null, ['class' => 'form-control']) !!}
+
+                        @error('sucursal_id')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
                     <div class="form-group">
                         <label class="form-label" for="pwd">Tipo Comprobante:</label>
                         {!! Form::select('tipo_comprobante_id', $tipo_comprobantes, null, ['class' => 'form-control']) !!}

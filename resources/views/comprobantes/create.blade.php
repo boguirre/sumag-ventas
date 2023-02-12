@@ -26,7 +26,19 @@
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
+                    <div class="form-group">
+                        <label class="form-label" for="pwd">Empresa:</label>
+                        <select name="sucursal_id" class="form-control">
+                            <option value="" selected disabled>Seleccione una tienda</option>
+                            @foreach ($sucursals as $sucursal)
+                                <option value="{{ $sucursal->id }}">{{ $sucursal->nombre }}</option>
+                            @endforeach
+                        </select>
 
+                        @error('sucursal_id')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
                     <div class="form-group">
                         <label class="form-label" for="pwd">Tipo Comprobante:</label>
                         <select name="tipo_comprobante_id" class="form-control">

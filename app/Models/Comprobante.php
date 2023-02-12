@@ -14,7 +14,9 @@ class Comprobante extends Model
     public function tipo_comprobante(){
         return $this->belongsTo(TipoComprobante::class);
     }
-
+    public function sucursal(){
+        return $this->belongsTo(Sucursal::class);
+    }
     public function resources()
     {
         return $this->morphMany(Resource::class, 'resourceable'); 

@@ -22,11 +22,8 @@
             <td>{{\Carbon\Carbon::parse($comprobante->fecha_emision)->format('Y-m-d')}}</td>
             <td>{{$comprobante->sucursal->nombre}}</td>
             <td>{{ $comprobante->tipo_comprobante->nombre}}</td>
-            @if($comprobante->tipo_importe == 'BANCARIA')
-            <td >TRANSF. BANCARIA</td>
-            @else
-            <td >CREDITO</td>
-            @endif
+            <td>{{ $comprobante->tipo_importe->nombre}}</td>
+
             <td>{{$comprobante->importe}}</td>
 
             <td>{{\Carbon\Carbon::parse($comprobante->fecha_pago)->format('Y-m-d')}}</td>

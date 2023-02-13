@@ -725,7 +725,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        {{-- <a class="nav-link {{ (Request::is('dua/reporte') ? 'active' : '') }}" href="{{route('dua.reporte')}}">
+                        <a class="nav-link {{ (Request::is('comprobantes/reporte') ? 'active' : '') }}" href="{{route('comprobante.reporte')}}">
                             <i class="icon">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="10" viewBox="0 0 24 24" fill="currentColor">
                                     <g>
@@ -733,9 +733,9 @@
                                     </g>
                                 </svg>
                             </i>
-                            <i class="sidenav-mini-icon" title="Reporte de Duas"> R </i>
-                            <span class="item-name" title="Reporte de Duas" >Reporte</span>
-                        </a> --}}
+                            <i class="sidenav-mini-icon" title="Reporte de Comprobante"> R </i>
+                            <span class="item-name" title="Reporte de Comprobante" >Reporte</span>
+                        </a>
                     </li>
                      {{-- <li class="nav-item">
                         <a class="nav-link " href="../dashboard/widget/widgetcard.html">

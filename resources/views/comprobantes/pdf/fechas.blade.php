@@ -73,11 +73,8 @@
                                                 <td style="text-align:center"><small>{{$comprobante->sucursal->nombre}}</small></td>
                                                 <td style="text-align:center"><small>{{ $comprobante->tipo_comprobante->nombre}}</small></td>
 
-                                                @if($comprobante->tipo_importe == 'BANCARIA')
-                                                <td style="text-align:center"><small>TRANSF. BANCARIA</small></td>
-                                                @else
-                                                <td style="text-align:center"><small>CREDITO</small></td>
-                                                @endif
+                                                <td style="text-align:center"><small>{{$comprobante->tipo_importe->nombre}}</small></td>
+                                                
                                                 <td style="text-align:center"><small>{{$comprobante->importe}}</small></td>
 
                                                 <td style="text-align:center"><small> {{\Carbon\Carbon::parse($comprobante->fecha_pago)->format('Y-m-d')}}</small></td>

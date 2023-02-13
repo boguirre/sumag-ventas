@@ -10,6 +10,7 @@ use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\MedidaController;
 use App\Http\Controllers\PagoProveedorController;
 use App\Http\Controllers\PrestamoController;
+use App\Http\Controllers\PrestamoDetalleController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\VentaController;
@@ -105,4 +106,5 @@ Route::get('/comprobantes/reporte', [ComprobanteController::class,'reporte'])->n
 Route::post('comprobante/exportpdf', [ComprobanteController::class, 'exportarpdffechas'])->name('comprobante.pdf');
 Route::post('comprobante/download', [ComprobanteController::class, 'download'])->name('comprobante.download');
 Route::resource('comprobante', ComprobanteController::class)->names('comprobante');
+Route::resource('prestamo-detalle', PrestamoDetalleController::class)->names('prestamo-detalle');
 

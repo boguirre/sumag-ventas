@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreign('prestamo_id')->references('id')->on('prestamos')->onDelete('cascade');
             $table->double('monto');
             $table->dateTime('fecha_pago');
+            $table->integer('estado')->default(1);
             $table->timestamps();
         });
     }

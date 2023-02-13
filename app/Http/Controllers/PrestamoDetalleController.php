@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Prestamo;
 use App\Models\PrestamoDetalle;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class PrestamoDetalleController extends Controller
@@ -69,7 +71,22 @@ class PrestamoDetalleController extends Controller
      */
     public function update(Request $request, PrestamoDetalle $prestamoDetalle)
     {
-        //
+        $prestamo = Prestamo::find($prestamoDetalle->prestamo_id);
+
+        $fecha_actual = Carbon::now('America/Lima');
+
+        if ($prestamoDetalle->fecha_pago > $fecha_actual) {
+            $prestamoDetalle->update([
+                'estado' => 2
+            ]);
+        }
+        else{
+            $prestamoDetalle->update([
+                'estado' => 3
+            ]);
+        }
+
+        return redirect()->route('prestamo.show', $prestamo)->with('addpago', 'ok');
     }
 
     /**

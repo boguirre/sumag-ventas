@@ -516,7 +516,7 @@
                                         <td class="text-center">S/. {{ $comprobante->importe }}</td>
                                         <td>{{ $comprobante->fecha_emision }}</td>
                                         <td>{{ $comprobante->fecha_pago}}</td>
-                                        <td>{{ $comprobante->tipo_importe }}</td>
+                                        <td>{{ $comprobante->tipo_importe->nombre }}</td>
                                         
                                         @if ($comprobante->estado == 1)
                                             <td>

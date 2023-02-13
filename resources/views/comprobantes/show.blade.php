@@ -40,7 +40,7 @@
                     <div class="form-group">
                         <label class="form-label" for="pwd">Tipo de Importe:</label>
                         <input type="text" class="form-control" id="numero_comprobante" name="numero_comprobante"
-                        placeholder="Ingrese el numero del comprobante" value="{{ $comprobante->tipo_importe }}" disabled>
+                        placeholder="Ingrese el numero del comprobante" value="{{ $comprobante->tipo_importe->nombre }}" disabled>
 
                         @error('tipo_importe')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>

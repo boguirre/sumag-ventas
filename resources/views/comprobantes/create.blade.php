@@ -55,12 +55,11 @@
 
                     <div class="form-group">
                         <label class="form-label" for="pwd">Tipo de Importe:</label>
-                        <select name="tipo_importe" class="form-control">
-                            <option value="" selected disabled>Seleccione una tienda</option>
-                            
-                                <option value="BANCARIA">TRANSF. BANCARIA</option>
-                                <option value="CREDITOS">CREDITOS</option>
-                            
+                        <select name="tipo_importe_id" class="form-control">
+                            <option value="" selected disabled>Seleccione un Tipo de Importe</option>
+                            @foreach ($tipo_importes as $tipos)
+                                <option value="{{ $tipos->id }}">{{ $tipos->nombre }}</option>
+                            @endforeach
                         </select>
 
                         @error('tipo_importe')

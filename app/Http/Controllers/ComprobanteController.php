@@ -6,6 +6,7 @@ use App\Exports\ComprobanteFechasExport;
 use App\Models\Comprobante;
 use App\Models\Sucursal;
 use App\Models\TipoComprobante;
+use App\Models\TipoImporte;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -37,7 +38,8 @@ class ComprobanteController extends Controller
         $sucursals = Sucursal::all();
 
         $tipo_comprobantes = TipoComprobante::all();
-        return view('comprobantes.create', compact('tipo_comprobantes','sucursals'));
+        $tipo_importes = TipoImporte::all();
+        return view('comprobantes.create', compact('tipo_comprobantes','sucursals', 'tipo_importes'));
     }
 
     /**
@@ -53,18 +55,18 @@ class ComprobanteController extends Controller
             'numero_comprobante' => 'required',
             'importe' => 'required|numeric',
             'tipo_comprobante_id' => 'required',
-            'tipo_importe' => 'required',
+            'tipo_importe_id' => 'required',
             'fecha_pago' => 'required',
             'sucursal_id' => 'required',
 
         ], [
-            'numero_comprobante.required' => 'El campo numero de credito es requerido',
-            'importe.required' => 'El campo monto es requerido.',
+            'numero_comprobante.required' => 'El campo numero de comprobante es requerido',
+            'importe.required' => 'El campo importe es requerido.',
             'descripcion.required' => 'El campo descripcion es requerido.',
-            'tipo_comprobante_id.required' => 'Debe seleccionar una empresa',
-            'tipo_importe.required' => 'Debe seleccionar una tienda',
+            'tipo_comprobante_id.required' => 'Debe seleccionar un tipo de comprobante',
+            'tipo_importe_id.required' => 'Debe seleccionar un tipo de importe',
             'sucursal_id.required'=>'Debe seleccionar una empresa',
-            'fecha_pago.required' => 'El campo fecha prestamo es requerido.',
+            'fecha_pago.required' => 'El campo fecha de pago es requerido.',
         ]);
 
         $comprobante  = Comprobante::create($request->all() + [
@@ -107,9 +109,9 @@ class ComprobanteController extends Controller
     public function edit(Comprobante $comprobante)
     {    
         $sucursals = Sucursal::pluck('nombre', 'id');
-
+        $tipo_importes = TipoImporte::pluck('nombre', 'id');
         $tipo_comprobantes = TipoComprobante::pluck('nombre', 'id');
-        return view('comprobantes.edit', compact('comprobante', 'tipo_comprobantes','sucursals'));
+        return view('comprobantes.edit', compact('comprobante', 'tipo_comprobantes','sucursals','tipo_importes'));
     }
 
     /**
@@ -126,16 +128,18 @@ class ComprobanteController extends Controller
             'numero_comprobante' => 'required',
             'importe' => 'required|numeric',
             'tipo_comprobante_id' => 'required',
-            'tipo_importe' => 'required',
+            'tipo_importe_id' => 'required',
             'fecha_pago' => 'required',
+            'sucursal_id' => 'required'
 
         ], [
-            'numero_comprobante.required' => 'El campo numero de credito es requerido',
-            'importe.required' => 'El campo monto es requerido.',
+            'numero_comprobante.required' => 'El campo numero de comprobante es requerido',
+            'importe.required' => 'El campo importe es requerido.',
             'descripcion.required' => 'El campo descripcion es requerido.',
-            'tipo_comprobante_id.required' => 'Debe seleccionar una empresa',
-            'tipo_importe.required' => 'Debe seleccionar una tienda',
-            'fecha_pago.required' => 'El campo fecha prestamo es requerido.',
+            'tipo_comprobante_id.required' => 'Debe seleccionar un tipo de comprobante',
+            'tipo_importe_id.required' => 'Debe seleccionar un tipo de importe',
+            'fecha_pago.required' => 'El campo fecha pago es requerido.',
+            'sucursal_id.required'=>'Debe seleccionar una empresa',
         ]);
 
         $comprobante->update($request->all() + [

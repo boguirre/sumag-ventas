@@ -21,4 +21,8 @@ class Comprobante extends Model
     {
         return $this->morphMany(Resource::class, 'resourceable'); 
     }
+
+    public function tipo_importe(){
+        return $this->belongsTo(TipoImporte::class);
+    }
 }

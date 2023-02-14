@@ -58,8 +58,9 @@ Route::get('cmd/{command}', function ($command) {
     dd(Artisan::output());
 });
 
-Route::resource('usuario', UserController::class)->middleware('can:Modulo Usuarios')->names('users');
-
+Route::resource('usuario', UserController::class)->middleware('can:Modulo Usuarios')->names('usuario');
+Route::get('/usuario/{usuario}/editarol',[UserController::class, 'editrol'])->name('usuario.roles');
+Route::put('usuario/{usuario}/updaterol', [UserController::class, 'updaterol'])->name('usuario.updaterole');
 Route::resource('admin', AdminController::class)->middleware('can:Modulo Dashboard')->names('admin');
 
 Route::resource('categoria', CategoriaController::class)->middleware('can:Modulo Categorias')->names('categoria');

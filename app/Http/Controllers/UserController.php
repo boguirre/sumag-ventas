@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -15,8 +16,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::all();
-        return view('usuarios.index',compact('users','roles'));
+        $users = User::where('estado','1')->get();
+        return view('usuarios.index',compact('users'));
     }
 
     /**
@@ -44,11 +45,11 @@ class UserController extends Controller
             
         ]);
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = ($request->password);
-        $user->save();// No es necesario poner Bycrit ya que en el Modelo hay un metodo
+        $usuario = new User();
+        $usuario->name = $request->name;
+        $usuario->email = $request->email;
+        $usuario->password = ($request->password);
+        $usuario->save();// No es necesario poner Bycrit ya que en el Modelo hay un metodo
         // que encripta todo los datos enviados en un Input con name password.
 
         return redirect()->route('usuario.index')->with('guardar', 'ok');
@@ -71,11 +72,16 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(User $usuario)
     {
-        return view('usuarios.edit', compact('user'));
+        return view('usuarios.edit', compact('usuario'));
     }
-    
+    public function editrol(User $usuario){
+
+        $roles = Role::all();
+
+        return view('user.role',compact('usuario','roles'));
+    }
     /**
      * Update the specified resource in storage.
      *
@@ -83,17 +89,17 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request,User $user)
+    public function update(Request $request,User $usuario)
     {
         $request->validate([
             'name' => 'required|max:50',
             'email' => 'required|email'
         ]);
 
-        $user->update([
-            $user->name = $request->name,
-            $user->email = $request->email,
-            $user->password = ($request->password) // No es necesario poner Bycrit ya que en el Modelo hay un metodo
+        $usuario->update([
+            $usuario->name = $request->name,
+            $usuario->email = $request->email,
+            $usuario->password = ($request->password) // No es necesario poner Bycrit ya que en el Modelo hay un metodo
                                                    // que encripta todo los datos enviados en un Input con name password.
         ]);
 
@@ -105,11 +111,22 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(User $user)
-    {
-        $user->estado = 2;
 
-        $user->save();
+    public function updaterol(Request $request, User $usuario)
+    {
+        $request->validate([
+            'roles' => 'required'
+        ]);
+
+        $usuario->roles()->sync($request->roles);
+
+        return redirect()->route('usuario.index');
+    }
+    public function destroy(User $usuario)
+    {
+        $usuario->estado = 2;
+
+        $usuario->save();
 
         return redirect()->route('usuario.index');
     }

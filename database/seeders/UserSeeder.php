@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
 
             'name' => 'Bruno Aguirre',
             'email'=> 'baguirre@gmail.com',
-            'password'=>bcrypt('123456789')
+            'password'=>('123456789')
 
 
         ])->assignRole('Admin');
@@ -28,7 +28,7 @@ class UserSeeder extends Seeder
 
             'name' => 'Carlos Aguirre',
             'email'=> 'bagui@gmail.com',
-            'password'=>bcrypt('123456789')
+            'password'=>('123456789')
 
         ])->assignRole('Gerencia');
 
@@ -36,7 +36,7 @@ class UserSeeder extends Seeder
 
             'name' => 'Luis Aguirre',
             'email'=> 'baguirrero1@gmail.com',
-            'password'=>bcrypt('123456789')
+            'password'=>('123456789')
 
         ])->assignRole('Vendedor');
     }

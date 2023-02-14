@@ -57,7 +57,7 @@ Route::get('cmd/{command}', function ($command) {
     Artisan::call($command);
     dd(Artisan::output());
 });
-Route::resource('users',UserController::class)->names('users');
+Route::resource('usuario',UserController::class)->names('users');
 
 Route::resource('admin',AdminController::class)->middleware('auth')->names('admin');
 Route::resource('categoria', CategoriaController::class)->middleware('auth')->names('categoria');

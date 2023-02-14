@@ -16,7 +16,7 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-        return view('users.index',compact('users','roles'));
+        return view('usuarios.index',compact('users','roles'));
     }
 
     /**
@@ -26,7 +26,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        return view('usuarios.create');
     }
 
     /**
@@ -51,7 +51,7 @@ class UserController extends Controller
         $user->save();// No es necesario poner Bycrit ya que en el Modelo hay un metodo
         // que encripta todo los datos enviados en un Input con name password.
 
-        return redirect()->route('users.index')->with('guardar', 'ok');
+        return redirect()->route('usuario.index')->with('guardar', 'ok');
     }
 
     /**
@@ -73,7 +73,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        return view('users.edit', compact('user'));
+        return view('usuarios.edit', compact('user'));
     }
     
     /**
@@ -97,7 +97,7 @@ class UserController extends Controller
                                                    // que encripta todo los datos enviados en un Input con name password.
         ]);
 
-        return redirect()->route('users.index');    }
+        return redirect()->route('usuario.index');    }
 
     /**
      * Remove the specified resource from storage.
@@ -111,6 +111,6 @@ class UserController extends Controller
 
         $user->save();
 
-        return redirect()->route('users.index');
+        return redirect()->route('usuario.index');
     }
 }

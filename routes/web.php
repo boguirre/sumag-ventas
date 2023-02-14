@@ -13,6 +13,7 @@ use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\PrestamoDetalleController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\SucursalController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VentaController;
 use App\Models\PagoProveedor;
 use App\Models\Venta;
@@ -56,6 +57,7 @@ Route::get('cmd/{command}', function ($command) {
     Artisan::call($command);
     dd(Artisan::output());
 });
+Route::resource('users',UserController::class)->names('users');
 
 Route::resource('admin',AdminController::class)->middleware('auth')->names('admin');
 Route::resource('categoria', CategoriaController::class)->middleware('auth')->names('categoria');

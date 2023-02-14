@@ -216,5 +216,39 @@ class ComprobanteController extends Controller
         return Excel::download(new ComprobanteFechasExport($request->fechainicial,$request->fechaterminal,$comprobantes), 'comprobantes_reporte_fechas.xlsx');
 
     }
+    public function reporte(){
+        $añomes = Carbon::now('America/Lima')->format('Y-m');
+
+        $comprobantes = DB::select('call spcomprobantesestados(?)',array($añomes));
+        foreach($comprobantes as $comprobante){
+                 
+            $data['label'][] = $comprobante->estado;
+
+            $data['data'][] = $comprobante->cantidad;
+      }
+        $data['data'] = json_encode($data);
+
+
+        $report = '';
+        $report=$this->reportexsucursal($report);
+
+        // return $report;
+        return view('comprobantes.reporte.index',compact('añomes'),$data+$report);
+    }
+    public function reportexsucursal(){
+        $añomes = Carbon::now('America/Lima')->format('Y-m');
+        $comprobantessucu = DB::select('call spcomprobantesxsucursal(?)',array($añomes));
+
+        foreach($comprobantessucu as $comprobantesu){
+                 
+            $report['label'][] = $comprobantesu->sucursal;
+
+            $report['report'][] = $comprobantesu->cantidad;
+      }
+        $report['report'] = json_encode($report);
+
+        return $report;
+
+    }
 }
 

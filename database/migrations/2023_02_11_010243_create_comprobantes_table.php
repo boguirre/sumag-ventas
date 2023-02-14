@@ -18,12 +18,15 @@ return new class extends Migration
             $table->unsignedBigInteger('tipo_comprobante_id');
             $table->string('numero_comprobante');
             $table->date('fecha_emision');
-            $table->string('tipo_importe');
+            $table->unsignedBigInteger('tipo_importe_id');
             $table->double('importe');
             $table->date('fecha_pago');
+            $table->unsignedBigInteger('sucursal_id');
+            $table->foreign('sucursal_id')->references('id')->on('sucursals')->onDelete('cascade');
             $table->text('descripcion');
             $table->integer('estado')->default(1);
             $table->foreign('tipo_comprobante_id')->references('id')->on('tipo_comprobantes')->onDelete('cascade');
+            $table->foreign('tipo_importe_id')->references('id')->on('tipo_importes')->onDelete('cascade');
             $table->timestamps();
         });
     }

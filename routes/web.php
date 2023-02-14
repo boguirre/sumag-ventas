@@ -3,14 +3,17 @@
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ArticuloController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\ComprobanteController;
 use App\Http\Controllers\DuaController;
 use App\Http\Controllers\EmpresaController;
 use App\Http\Controllers\IngresoController;
 use App\Http\Controllers\MedidaController;
 use App\Http\Controllers\PagoProveedorController;
 use App\Http\Controllers\PrestamoController;
+use App\Http\Controllers\PrestamoDetalleController;
 use App\Http\Controllers\ProveedorController;
 use App\Http\Controllers\SucursalController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VentaController;
 use App\Models\PagoProveedor;
 use App\Models\Venta;
@@ -54,6 +57,7 @@ Route::get('cmd/{command}', function ($command) {
     Artisan::call($command);
     dd(Artisan::output());
 });
+Route::resource('users',UserController::class)->names('users');
 
 Route::resource('admin',AdminController::class)->middleware('auth')->names('admin');
 Route::resource('categoria', CategoriaController::class)->middleware('auth')->names('categoria');
@@ -99,4 +103,10 @@ Route::post('dua/download', [DuaController::class, 'download'])->name('dua.downl
 Route::post('dua/{dua}/estado', [DuaController::class, 'estado'])->name('dua.estado');
 Route::get('/dua/reporte', [DuaController::class,'reporte'])->name('dua.reporte');
 Route::resource('dua', DuaController::class)->names('dua');
+Route::post('comprobante/excelfechas/', [ComprobanteController::class, 'exportarexcelfechas'])->name('comprobante.excelfechas');
+Route::get('/comprobantes/reporte', [ComprobanteController::class,'reporte'])->name('comprobante.reporte');
+Route::post('comprobante/exportpdf', [ComprobanteController::class, 'exportarpdffechas'])->name('comprobante.pdf');
+Route::post('comprobante/download', [ComprobanteController::class, 'download'])->name('comprobante.download');
+Route::resource('comprobante', ComprobanteController::class)->names('comprobante');
+Route::resource('prestamo-detalle', PrestamoDetalleController::class)->names('prestamo-detalle');
 

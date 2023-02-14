@@ -64,7 +64,7 @@
                             <input type="text" name="" id="uni_medida" value="{{ $prestamo->monto_prestamo }}"
                                 class="form-control" disabled>
                         </div>
-                        
+
                         <div class="col-md-3">
                             <label for="">Monto Faltante a Pagar</label>
                             <input type="text" name="" id="uni_medida" value="{{ $prestamo->monto_deuda }}"
@@ -81,15 +81,32 @@
                         </div>
                     </div>
 
+                    <div class="row">
+                        @if ($prestamo->monto_deuda > 0)
+                            <div class="col-md-3" style="margin-top: 15px">
+                                <label for="">Monto a Pagar</label>
+                                <input type="number" name="monto" id="uni_medida" value="" class="form-control"
+                                    style="border-color: blue">
 
-                    @if ($prestamo->monto_deuda > 0)
-                        <div class="col-md-3" style="margin-top: 15px">
-                            <label for="">Monto a Pagar</label>
-                            <input type="number" name="monto" id="uni_medida" value="" class="form-control"
-                                style="border-color: blue">
-                        </div>
-                    @else
-                    @endif
+                                @error('monto')
+                                    <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                                @enderror
+                            </div>
+
+                            <div class="col-md-3" style="margin-top: 15px">
+                                <label for="">Fecha del Pago</label>
+                                <input type="date" name="fecha_pago" id="fecha_pago" value="" class="form-control"
+                                    style="border-color: blue">
+
+                                @error('fecha_pago')
+                                    <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                                @enderror
+                            </div>
+                        @else
+                        @endif
+                    </div>
+
+
 
 
 
@@ -118,14 +135,35 @@
                                         <th>Item</th>
                                         <th>Monto</th>
                                         <th>Fecha</th>
+                                        <th>Acciones</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    @foreach ($prestamo->prestamo_detalles as $detalle)
+                                    @foreach ($prestamo->prestamo_detalles as $prestamoDetalle)
                                         <tr>
-                                            <td><a class="btn btn-primary">{{ $detalle->id }}</a></td>
-                                            <td>{{ $detalle->monto }}</td>
-                                            <td>{{ $detalle->fecha_pago }}</td>
+                                            <td><a class="btn btn-primary">{{ $prestamoDetalle->id }}</a></td>
+                                            <td>{{ $prestamoDetalle->monto }}</td>
+                                            <td>{{ $prestamoDetalle->fecha_pago }}</td>
+                                            <td>
+                                                {!! Form::model($prestamoDetalle, ['route' => ['prestamo-detalle.update', $prestamoDetalle], 'method' => 'put', 'class' => 'formulario2']) !!}
+                                                @switch($prestamoDetalle->estado)
+                                                    @case(1)
+                                                    <button type="submit" class="btn btn-primary">Confirmar Pago</button>
+                                                        @break
+                                                    @case(2)
+                                                    <button type="button" class="btn btn-success">Pago Confirmado</button>
+                                                        @break
+
+                                                    @case(3)
+                                                    <button type="button" class="btn btn-success">Pago Confirmado</button>
+                                                    <a style="color: red; margin-left: 10px"> | Fuera de la Fecha de Pago</a>
+                                                        @break
+                                                    @default
+                                                        
+                                                @endswitch
+                                                
+                                                {!! Form::close() !!}
+                                            </td>
                                         </tr>
                                     @endforeach
                                 </tbody>
@@ -151,7 +189,7 @@
                                             <td>{{ $resource->url }}</td>
                                             <td>
                                                 {!! Form::open(['route' => 'prestamo.download', 'autocomplete' => 'off', 'files' => true]) !!}
-                                                <input type="hidden" name="url" value="\{{$resource->url}}">
+                                                <input type="hidden" name="url" value="\{{ $resource->url }}">
                                                 <button type="submit" class="btn btn-warning">Descargar</button>
                                                 {!! Form::close() !!}
                                             </td>
@@ -173,28 +211,51 @@
         </div>
     @endsection
     @section('scripts')
-    <script>
-        $('.formulario').submit(function(e) {
-            e.preventDefault()
+        <script>
+            $('.formulario').submit(function(e) {
+                e.preventDefault()
 
-            Swal.fire({
-                title: 'Estas seguro de guardar?',
-                text: "¡No podrás revertir esto!",
-                icon: 'info',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Si, Guardar!',
-                cancelButtonText: 'Cancelar',
-            }).then((result) => {
-                if (result.value) {
+                Swal.fire({
+                    title: 'Estas seguro de guardar?',
+                    text: "¡No podrás revertir esto!",
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, Guardar!',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.value) {
 
 
-                    this.submit()
+                        this.submit()
 
-                }
+                    }
+                })
+
             })
 
-        })
-    </script>
-@endsection
+            $('.formulario2').submit(function(e) {
+                e.preventDefault()
+
+                Swal.fire({
+                    title: 'Estas seguro de Confirmar el pago?',
+                    text: "¡No podrás revertir esto!",
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, Guardar!',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.value) {
+
+
+                        this.submit()
+
+                    }
+                })
+
+            })
+        </script>
+    @endsection

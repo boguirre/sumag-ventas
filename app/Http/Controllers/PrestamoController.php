@@ -193,9 +193,11 @@ class PrestamoController extends Controller
     public function addpago(Request $request, Prestamo $prestamo)
     {
         $request->validate([
-            'monto' => 'required|numeric'
+            'monto' => 'required|numeric',
+            'fecha_pago' => 'required'
         ], [
             'monto.required' => 'el nonto es requerido',
+            'fecha_pago.required' => 'la fecha es requerida'
         ]);
 
         if ($request->monto > $prestamo->monto_deuda) {
@@ -210,7 +212,7 @@ class PrestamoController extends Controller
 
         $prestamo->prestamo_detalles()->create([
             'monto' => $request->monto,
-            'fecha_pago' => Carbon::now('America/Lima')
+            'fecha_pago' => $request->fecha_pago
         ]);
 
         return redirect()->route('prestamo.show', $prestamo)->with('addpago', 'ok');

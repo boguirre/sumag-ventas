@@ -13,7 +13,9 @@ class Sucursal extends Model
     public function prestamos(){
         return $this->hasMany(Prestamo::class);
     }
-
+    public function comprobantes(){
+        return $this->hasMany(Comprobante::class);
+    }
     public function duas(){
         return $this->hasMany(Dua::class);
     }

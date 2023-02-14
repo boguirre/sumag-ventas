@@ -3,7 +3,7 @@
         <input class="" type="text" placeholder="🔍 Buscar producto ..." wire:model="search">  
              
         @if ($search)
-            <ul class="list-group dropdown-menu mt-auto" style="border-color:#ffeeee">
+            <ul class="list-group dropdown-menu mt-auto" style="border-color:#ad7dc1">
                 @forelse ($this->results as $result)
                     <li class="list-group-item  list-group-item-action dropdown-item row-auto" style="border-color:#ffffff">
                         <a href="{{route('web.ver_articulo', $result)}}">

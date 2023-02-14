@@ -24,9 +24,9 @@ class WebEscogerProducto extends Component
     public function render()
     {
         $productos = Articulo::where('categoria_id','=', $this->categoria->id)
-                                 ->where('estado',1)
-                                 ->latest('id')
-                                 ->paginate(3);
+                                ->where('publicacion', 1)
+                                ->latest('id')
+                                ->paginate(15);
         $filtrocategoria = Categoria::all();
         return view('livewire.web.web-escoger-producto',compact('categoria','productos','filtrocategoria'));
         

@@ -86,15 +86,15 @@
 
                                         <div class="product-extra-link2">
                                             <p>Atencion mediante: </p> <br>
-                                            <a type="submit" style="border-color:white" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=936499838&text=Hola%20👋,%20estoy%20interesado%20en%20el%20{{Str::Upper($articulo->nombre)}}%20que%20se%20ha%20publicado."><i class="fab fa-whatsapp"></i>Whatsapp</a></a>
-                                            <a type="submit" style="border-color:white" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=936499838&text=Hola%20👋,%20estoy%20interesado%20en%20el%20{{Str::Upper($articulo->nombre)}}%20que%20se%20ha%20publicado."><i class="fab fa-whatsapp"></i>Whatsapp</a></a>
+                                            <a type="submit" style="border-color:white" target="_blank" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=960516029&text=Hola%20👋,%20estoy%20interesado%20en%20el%20articulo%20{{Str::Upper($articulo->nombre)}}%20con%20codigo%20{{$articulo->codigo}}%20que%20se%20ha%20publicado%20en%20la%20pagina%20Sumag.com"><i class="fab fa-whatsapp"></i>Atencion SUMAG    </a></a>
+                                            <a type="submit" style="border-color:white" target="_blank" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=972117469&text=Hola%20👋,%20estoy%20interesado%20en%20el%20articulo%20{{Str::Upper($articulo->nombre)}}%20con%20codigo%20{{$articulo->codigo}}%20que%20se%20ha%20publicado%20en%20la%20pagina%20Sumag.com"><i class="fab fa-whatsapp"></i>Atencion DAMANELSI</a></a>
                                             {{-- <a aria-label="Add To Wishlist" class="button btn-wishlist" href="wishlist.html"><i class="fi-rs-heart"></i>Add to wishlist</a> --}}
                                         </div>
 
                                         <div class="pro-share">
                                             <ul>
                                                 <li class="me-2"><span>Compartir :</span></li>
-                                                <li><a href="http://www.facebook.com/sharer.php?u={{request()->fullUrl()}}&text={{$articulo->nombre}}"><i class="fab fa-facebook"></i></a></li>
+                                                <li><a target="_blank" href="http://www.facebook.com/sharer.php?u={{request()->fullUrl()}}&text={{$articulo->nombre}}"><i class="fab fa-facebook"></i></a></li>
                                                 {{-- <li><a href="#"><i class="fab fa-linkedin"></i></a></li>
                                                 <li><a href="#"><i class="fab fa-instagram"></i></a></li>
                                                 <li><a href="#"><i class="fab fa-twitter"></i></a></li> --}}

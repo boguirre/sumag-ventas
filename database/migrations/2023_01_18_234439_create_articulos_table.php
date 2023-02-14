@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('codigo');
             $table->string('nombre');
             $table->string('slug');
+            $table->integer('publicacion');
             $table->longText('descripcion');
             $table->integer('stock')->default(0);
             $table->integer('stock_minimo');

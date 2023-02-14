@@ -18,6 +18,7 @@ class Search extends Component
     public function getResultsProperty(){
         return Articulo::where('nombre','like','%'.$this->search.'%')
         ->where('estado', 1)
+        ->where('publicacion', 1)
         ->get();
     }
 

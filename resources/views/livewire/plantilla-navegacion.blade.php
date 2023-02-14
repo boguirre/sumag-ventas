@@ -84,7 +84,7 @@
             <div class="header-col">
                 <!-- logo SUMAG -->
                 <div class="logo header-logo">
-                    <a href="/"><img src="{{asset('assets/img/SUMAG1.png')}}" alt="logo"></a>
+                    <a href="/"><img src="{{asset('assets/img/logo-sumag-damanelsin6.png')}}" alt="logo"></a>
                     {{-- {{route('web.index')}} --}}
                 </div>
                 
@@ -162,7 +162,7 @@
             <div class="header-col">
 
                 <div class="logo header-logo d-block d-lg-none">
-                    <a href="/"><img src="{{asset('assets/img/SUMAG.png')}}" alt="logo"></a>
+                    <a href="/"><img src="{{asset('assets/img/logo-sumag-damanelsin6.png')}}" alt="logo"></a>
                     
                     {{-- {{route('web.index')}} --}}
                 </div>
@@ -230,7 +230,7 @@
                 <!-- LLAMNOS AHORA -->
                 <div class="contact-item d-none d-lg-flex">
                     <img src="{{asset('assets/img/icons/icon-headphone-white.svg')}}" alt="contact-number">
-                    <p>LLAMANOS AHORA<span>+51 3235168154</span></p>
+                    <p>CONTACTENOS<span><i class="fab fa-whatsapp"> 960516029</i></span><span><i class="fab fa-whatsapp"> 972117469</i></span></p>
                 </div>
                 
                 <!-- Parte superior en modo movile -->
@@ -317,7 +317,7 @@
         <div class="mobile-header-top">
             <!-- Logo -->
             <div class="mobile-header-logo">
-                <a href="/"><img src="{{asset('assets/img/SUMAG1.png')}}" alt="logo" /></a>
+                <a href="/"><img src="{{asset('assets/img/logo-sumag-damanelsin6.png')}}" alt="logo" /></a>
                 {{-- {{route('web.index')}} --}}
             </div>
             

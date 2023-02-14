@@ -86,6 +86,22 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="form-label">Estado de Publicacion :</label>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="publicacion" id="publicacion"
+                                    checked="" value="{{old('publicacion',0,true)}}">
+                            <label for="radio1" class="form-check-label pl-2">No publicar en la web</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input type="radio" class="form-check-input" name="publicacion" id="pubicacion" value="{{old('publicacion',1)}}">
+                            <label for="radio2" class="form-check-label pl-2">Publicar en la web</label>
+                        </div>
+                        @error('publicacion')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label class="form-label" for="pwd">Descripcion:</label>
                         <textarea class="form-control" id="descripcion" name="descripcion" rows="5" value="{{ old('descripcion') }}"></textarea>
                         @error('descripcion')

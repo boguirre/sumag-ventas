@@ -9,7 +9,7 @@
                 <div class="col">
                     <div class="footer-about font-md mb-md-3 mb-lg-3 mb-xl-0 wow animate__animated animate__fadeInUp" data-wow-delay="0">
                         <div class="logo mb-30">
-                            <a href="/" class="mb-15"><img src="{{asset('assets/img/SUMAG1.png')}}" alt="logo" /></a>
+                            <a href="/" class="mb-15"><img src="{{asset('assets/img/logo-sumag-damanelsin6.png')}}" alt="logo" /></a>
                             {{-- {{route('web.index')}} --}}
                             <p>Integer posuere orci sit amet feugiat pellent que. Suspendisse vel tempor justo, sit amet posuere orci dapibus auctor.Integer posuere orci sit amet.</p>
                             <!-- <a href="index.html"><img src="assets/img/payment.png" alt="logo" /></a> -->
@@ -21,7 +21,8 @@
                 <div class="footer-widget col wow animate__animated animate__fadeInUp" data-wow-delay=".1s">
                     <h4 class="footer-title">Informacion de Contacto</h4>
                     <ul class="contact-info">
-                        <li><p><i class="fas fa-phone-alt"></i>+51 95989658425</p></li>
+                        <li><p><i class="fas fa-phone-alt"></i>+51 960516029</p></li>
+                        <li><p><i class="fas fa-phone-alt"></i>+51 972117469</p></li>
                         <li><p><i class="fas fa-envelope"></i> sumag@gmail.com</p></li>
                         <li><p><i class="fas fa-map-marker-alt"></i>Av. Abancay 1113, Lima 15001, Perú</p></li>
                     </ul>

@@ -14,11 +14,11 @@
                                 </div>
                                 <div class="sort-by-dropdown-wrap">
                                     <select wire:model="cant" class="form-select border-white">
-                                        <option value="3"><span>3</span></option>
-                                        <option value="6"><span>6</span></option>
-                                        <option value="9"><span>9</span></option>
-                                        <option value="12"><span>12</span></option>
                                         <option value="15"><span>15</span></option>
+                                        <option value="25"><span>25</span></option>
+                                        <option value="35"><span>35</span></option>
+                                        <option value="45"><span>45</span></option>
+                                        <option value="55"><span>55</span></option>
                                     </select>
                                 </div>
                             </div>

@@ -5,8 +5,8 @@
             <div class="col-xl-12 col-lg-12 m-auto">
                 <div class="page-header breadcrumb-wrap">
                     <div class="breadcrumb">
-                        <a href="/" rel="nofollow"><i class="fas fa-home mr-10"></i>SUMAG</a>
-                        <span></span> Categoria <span></span> {{Str::Upper($categoria->nombre)}}
+                        <a href="/" rel="nofollow"><i class="fas fa-home mr-10"></i>SUMAG | DAMA NELSIN</a>
+                        <span></span> Categoría <span></span> {{Str::Upper($categoria->nombre)}}
                     </div>
                 </div>
             </div>
@@ -37,42 +37,7 @@
     
                 <div class="col-lg-4-5">
                     
-                    {{-- <div class="shop-product-fillter">
-    
-                        <div class="totall-product">
-                            <div class="sort-by-product-area">
-                                <div class="sort-by-cover mr-10">
-    
-                                    <div class="sort-by-product-wrap">
-                                        <div class="sort-by">
-                                            <span>Mostrar:</span>
-                                        </div>
-                                        <div class="sort-by-dropdown-wrap">
-                                            <select wire:model="cant" class="form-select border-white">
-                                                <option value="3"><span>3</span></option>
-                                                <option value="6"><span>6</span></option>
-                                                <option value="9"><span>9</span></option>
-                                                <option value="12"><span>12</span></option>
-                                                <option value="15"><span>15</span></option>
-                                            </select>
-                                        </div>
-                                    </div>
-    
-                                </div>
-                            </div>
-                        </div>
-                        <div class="totall-product col-lg-auto">
-                            <div class="sort-by-product-area">
-                                <div class="sort-by-cover">
-                                    <input type="text" placeholder="Buscar..." wire:model="search">
-                                </div>
-                            </div>
-                        </div>
-    
-                        
-    
-                    </div> --}}
-    
+                    @if ($productos->count())
                     <div class="row product-grid">
                         <!-- mostrar producto card -->
                         @foreach ($productos as $producto)
@@ -108,8 +73,10 @@
                         @endforeach
                         <!-- /mostrar producto card -->
                     </div>
+                   
     
                     <!--product grid-->
+                    @if ($productos->hasPages())
                     <div class="pagination-area">
                         <nav aria-label="Page navigation example">
                             <ul class="pagination justify-content-start">
@@ -120,8 +87,16 @@
                             {{-- <p>Showing 1–8 of 62 results</p> --}}
                         </div>
                     </div>
+                    @else 
+                    
+                    @endif
                     
                     <!--End Deals-->
+                    @else
+                    <div class="px-6 py-4">
+                        <span> <p> Próximamente nuevos artículos en la categoría {{$categoria->nombre}} 👋😊</p></span>
+                    </div>
+                    @endif
                 </div>
     
                 <div class="col-lg-1-5 primary-sidebar sticky-sidebar">
@@ -131,7 +106,7 @@
                         <div class="list-group">
     
                             <div class="list-group-item mb-10">
-                                <label class="list-group-text">CATEGORIAS</label>
+                                <label class="list-group-text">Categorías</label>
                                 <ul class="footer-list mb-sm-5 mb-md-0">
                                     @foreach ($filtrocategoria as $categoria)
                                     <li>

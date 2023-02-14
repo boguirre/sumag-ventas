@@ -80,7 +80,7 @@ class UserController extends Controller
 
         $roles = Role::all();
 
-        return view('user.role',compact('usuario','roles'));
+        return view('usuarios.role',compact('usuario','roles'));
     }
     /**
      * Update the specified resource in storage.
@@ -95,14 +95,18 @@ class UserController extends Controller
             'name' => 'required|max:50',
             'email' => 'required|email'
         ]);
+        $usuario->update($request->except(['password']));
 
         $usuario->update([
             $usuario->name = $request->name,
             $usuario->email = $request->email,
-            $usuario->password = ($request->password) // No es necesario poner Bycrit ya que en el Modelo hay un metodo
                                                    // que encripta todo los datos enviados en un Input con name password.
         ]);
-
+        if($request->password != ''){
+            $usuario->update([
+                $usuario->password = $request->password,
+            ]);
+        }
         return redirect()->route('usuario.index');    }
 
     /**

@@ -61,11 +61,12 @@ class User extends Authenticatable
     protected $appends = [
         'profile_photo_url',
     ];
-    public function ventas(){
-        return $this->hasMany(Venta::class);
-    }
     public function setPasswordAttribute($password) {
 
         $this->attributes['password'] = Hash::make($password);
     }
+    public function ventas(){
+        return $this->hasMany(Venta::class);
+    }
+    
 }

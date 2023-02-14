@@ -3,7 +3,7 @@
     <div class="container">
         <div class="page-header breadcrumb-wrap">
             <div class="breadcrumb">
-                <a href="/" rel="nofollow"><i class="fas fa-home mr-10"></i>SUMAG</a>
+                <a href="/" rel="nofollow"><i class="fas fa-home mr-10"></i>SUMAG | DAMA NELSIN</a>
                 <span></span> Sobre Nosotros
             </div>
         </div>

@@ -77,7 +77,7 @@
                             <i class="feather-headphones"></i>
                         </div>
                         <div class="banner-text">
-                            <h3>Atencion al cliente</h3>
+                            <h3>Atención al cliente</h3>
                             <p>Obtener ayuda cuando lo necesite</p>
                         </div>
                     </div>
@@ -89,7 +89,7 @@
                         </div>
                         <div class="banner-text">
                             <h3>Pago Seguro</h3>
-                            <p>Rapido y Seguro</p>
+                            <p>Brindamos diferentes métodos de pago</p>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@
                             <i class="feather-shield"></i>
                         </div>
                         <div class="banner-text">
-                            <h3>Garantia</h3>
+                            <h3>Garantía</h3>
                             <p>En todos los pedidos</p>
                         </div>
                     </div>
@@ -127,7 +127,7 @@
                         
                     </div>
                     <div class="col-12 col-lg-2 col-md-2 text-end">
-                        <a href="{{route('web.escoger_producto2')}}" class="view-more">Ver mas</a>
+                        <a href="{{route('web.escoger_producto2')}}" class="view-more">Ver más</a>
                         {{-- {{route('web.escoger_producto')}} --}}
                     </div>
                 </div>
@@ -208,7 +208,7 @@
 
             <!-- Letra de categoria destacadas -->
             <div class="section-title wow animate__animated animate__fadeIn" data-wow-delay="0">
-                <h3 class="">CATEGORIAS DESTACADAS</h3>
+                <h3 class="">CATEGORÍAS DESTACADOS</h3>
             </div>
             
             <!-- categorias destacadas: mostrando su imagen nombre, descripcion, y link  -->
@@ -234,7 +234,7 @@
                                 <div class="category-content">
                                     <h4><a href="{{route('web.escoger_producto',$categoria)}}">{{Str::Upper($categoria->nombre)}}</a></h4>
                                     {{-- {{route('web.escoger_producto')}} --}}
-                                    <p>Productos de alta calidad</p>
+                                    <p>Productos de calidad, al por mayor y menor.</p>
                                     <a href="{{route('web.escoger_producto',$categoria)}}" class="view-more">Ver mas</a>
                                 </div>
                                 

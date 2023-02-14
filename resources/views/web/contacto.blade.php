@@ -79,7 +79,7 @@
                             </div>
                             <div class="contact-details">
                                 <h4>Numero de Celular</h4>
-                                <p class="text-muted">+5196262665</p>
+                                <p class="text-muted"><span><i class="fab fa-whatsapp"> 960516029</i></span><br><span><i class="fab fa-whatsapp"> 972117469</i></span></p>
                             </div>
                         </div>
                     </div>

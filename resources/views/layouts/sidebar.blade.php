@@ -14,6 +14,7 @@
         <!--logo End-->
         <h4 class="logo-title">SUMAG</h4>
     </a>
+
     <div class="sidebar-toggle" data-toggle="sidebar" data-active="true">
         <i class="icon">
             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

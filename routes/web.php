@@ -12,6 +12,7 @@ use App\Http\Controllers\PagoProveedorController;
 use App\Http\Controllers\PrestamoController;
 use App\Http\Controllers\PrestamoDetalleController;
 use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\RoleController;
 use App\Http\Controllers\SucursalController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\VentaController;
@@ -123,3 +124,5 @@ Route::post('comprobante/download', [ComprobanteController::class, 'download'])-
 Route::resource('comprobante', ComprobanteController::class)->middleware('can:Modulo Comprobantes')->names('comprobante');
 
 Route::resource('prestamo-detalle', PrestamoDetalleController::class)->middleware('can:Modulo Prestamos')->names('prestamo-detalle');
+
+Route::resource('roles', RoleController::class)->middleware('can:Modulo Usuarios')->names('role');

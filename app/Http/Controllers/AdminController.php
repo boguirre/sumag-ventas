@@ -5,9 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Comprobante;
 use App\Models\Dua;
+use App\Models\Ingreso;
 use App\Models\PagoProveedor;
 use App\Models\Prestamo;
 use App\Models\PrestamoDetalle;
+use App\Models\User;
 use App\Models\Venta;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
@@ -28,11 +30,12 @@ class AdminController extends Controller
         $alertaprestamos = PrestamoDetalle::where('fecha_pago','>=',$fechaactual)->whereDate('fecha_pago','<=',$fechaactualmes)->where('estado','1')->get();
         
         $ventas = Venta::all()->where('estado','VALIDO')->sum('total');
-
+        $ingresos = Ingreso::all()->where('estado','VALIDO')->sum('total');
+        $usuarios = User::all()->count();
 
 
         $comprobantes = Comprobante::where('fecha_pago','<=',$fechaactual)->whereDate('fecha_pago','<=',$fechaactualmes)->where('estado','1')->get();
-        return view('admin.index',compact('alertaduas', 'alertaprestamos','comprobantes','ventas'));
+        return view('admin.index',compact('alertaduas', 'alertaprestamos','comprobantes','ventas','ingresos','usuarios'));
     }
     /**
      * Show the form for creating a new resource.

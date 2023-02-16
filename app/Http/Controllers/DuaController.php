@@ -173,14 +173,15 @@ class DuaController extends Controller
         $añomes = Carbon::now('America/Lima')->format('Y-m');
 
         $duas = DB::select('call spduaestados(?)',array($añomes));
-        // return $duas;
+       
+
         foreach($duas as $dua){
                  
             $data['label'][] = $dua->estado;
 
             $data['data'][] = $dua->cantidad;
-      }
-        $data['data'] = json_encode($data);
+        }
+        $data['data'] = json_encode(isset($data));
 
 
         $report = '';
@@ -200,7 +201,7 @@ class DuaController extends Controller
 
             $report['report'][] = $duaspersepcion->cantidad;
       }
-        $report['report'] = json_encode($report);
+        $report['report'] = json_encode(isset($report));
 
         return $report;
 

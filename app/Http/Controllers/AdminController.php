@@ -8,6 +8,7 @@ use App\Models\Dua;
 use App\Models\PagoProveedor;
 use App\Models\Prestamo;
 use App\Models\PrestamoDetalle;
+use App\Models\Venta;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -25,12 +26,13 @@ class AdminController extends Controller
         $alertaduas =  Dua::where('mes_cobro','<=',$fechaactual)->whereDate('mes_cobro','<=',$fechaactualmes)->where('estado','1')->get();
 
         $alertaprestamos = PrestamoDetalle::where('fecha_pago','>=',$fechaactual)->whereDate('fecha_pago','<=',$fechaactualmes)->where('estado','1')->get();
-
+        
+        $ventas = Venta::all()->where('estado','VALIDO')->sum('total');
 
 
 
         $comprobantes = Comprobante::where('fecha_pago','<=',$fechaactual)->whereDate('fecha_pago','<=',$fechaactualmes)->where('estado','1')->get();
-        return view('admin.index',compact('alertaduas', 'alertaprestamos','comprobantes'));
+        return view('admin.index',compact('alertaduas', 'alertaprestamos','comprobantes','ventas'));
     }
     /**
      * Show the form for creating a new resource.

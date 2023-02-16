@@ -60,7 +60,7 @@
         margin-left: 2%;
         margin-right: 2%;
         font-size: 20px;
-        background: #3a57e8;
+        background: #8B4AF8;
 		color: white;
 		border-radius: 1rem;
 		font-weight:bold;
@@ -90,7 +90,7 @@
 
     #facliente thead {
         padding: 20px;
-        background: #3a57e8;
+        background: #8B4AF8;
         text-align: left;
         border-bottom: 1px solid #FFFFFF;
     }
@@ -104,7 +104,7 @@
 
     #facvendedor thead {
         padding: 20px;
-        background: #3a57e8;
+        background: #8B4AF8;
         text-align: center;
         border-bottom: 1px solid #FFFFFF;
 		align-items: center;
@@ -120,7 +120,7 @@
 
     #facproducto thead {
         padding: 20px;
-        background: #3a57e8;
+        background: #8B4AF8;
         text-align: center;
         border-bottom: 1px solid #FFFFFF;
     }
@@ -137,7 +137,7 @@
 
 	}
 	#card-cabe{
-		background: #3a57e8;
+		background: #8B4AF8;
 		color: white;
 		border-radius: 3em 1em;
 		font-weight:bold;
@@ -157,7 +157,7 @@
               <center><img id="picture" class=""
                 src="http://sumag-ventas.test{{$image}}" alt="" style="border-width: 5px;border-radius: 3em 1em;
                 border-style: solid;
-                border-color: #3a57e8;" width="20%" height="15%" ></center>
+                border-color: #8B4AF8;" width="20%" height="15%" ></center>
             
         <div  class="img-centrar" id="card-cabe">
 				<h1 class="centrar-th" >MI GUIA DE PEDIDO </h1>

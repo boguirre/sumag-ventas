@@ -41,7 +41,7 @@
                           
                           <div class="col-md-4">
                             <label for="">RUC / DNI:</label>
-                            <input type="text" name="documento" id="documento" value="{{old('documento')}}" class="form-control" onkeypress='return solonumeros(event)' onpaste="return false" minlength="8" maxlength="11">
+                            <input type="text" name="documento" id="documento" value="{{old('documento')}}" class="form-control" onkeypress='return solonumeros(event)' onpaste="return false" minlength="8" maxlength="11" required>
                             @error('documento')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror

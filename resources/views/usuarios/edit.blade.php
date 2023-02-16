@@ -32,7 +32,7 @@
                         'route' => ['usuario.update', $usuario],
                         'method' => 'put',
                         'files' => true,
-                        'class' => '',
+                        'class' => 'formulario',
                     ]) !!}
 
 <div class="form-group">
@@ -62,8 +62,9 @@
 </div>
 
                     <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <button type="submit" class="btn btn-danger">Cancelar</button>
-                    {!! Form::close() !!}
+                    <a href="{{route('usuario.index')}}" class="btn btn-danger">
+                        Cancelar
+                     </a>                     {!! Form::close() !!}
                 </div>
 
 
@@ -73,3 +74,29 @@
     @endsection
 
     
+    @section('scripts')
+    <script>
+        $('.formulario').submit(function(e) {
+            e.preventDefault()
+
+            Swal.fire({
+                title: 'Estas seguro de actualizar?',
+                text: "¡No podrás revertir esto!",
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, Guardar!',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.value) {
+
+
+                    this.submit()
+
+                }
+            })
+
+        })
+    </script>
+@endsection

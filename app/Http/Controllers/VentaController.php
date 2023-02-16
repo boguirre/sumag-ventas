@@ -32,7 +32,7 @@ class VentaController extends Controller
         $year = Carbon::now('America/Lima')->format('Y');
         $ventas = Venta::whereMonth(('ventas.venta_Fecha'),'=',$mes)->whereYear(('ventas.venta_Fecha'),'=',$year)->get();
     
-        $sucursals = Sucursal::get();
+        $sucursals = Sucursal::where('estado','1')->get();
 
         return view('ventas.index', compact('ventas','sucursals'));
     }
@@ -40,7 +40,7 @@ class VentaController extends Controller
     public function indexventas(Request $request){
 
         $ventas = Venta::whereBetween('ventas.venta_Fecha', [$request->fechainicial, $request->fechaterminal])->where('sucursal_id',[$request->sucursal_id])->get();
-        $sucursals = Sucursal::get();
+        $sucursals = Sucursal::where('estado','1')->get();
 
         return view('ventas.index', compact('ventas','sucursals'));
 
@@ -53,8 +53,8 @@ class VentaController extends Controller
      */
     public function create()
     {
-        $articulos = Articulo::get();
-        $sucursals = Sucursal::get();
+        $articulos = Articulo::where('estado','1')->get();
+        $sucursals = Sucursal::where('estado','1')->get();
 
         return view('ventas.create', compact('articulos', 'sucursals'));
     }

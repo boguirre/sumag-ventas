@@ -32,16 +32,16 @@
                         'route' => ['articulo.update', $articulo],
                         'method' => 'put',
                         'files' => true,
-                        'class' => '',
+                        'class' => 'formulario',
                     ]) !!}
 
                     <div class="form-group">
-                      <label class="form-label" for="pwd">Codigo:</label>
-                      <input type="text" class="form-control" id="codigo" name="codigo"
-                          placeholder="Ingrese El codigo" value="{{ $articulo->codigo}}">
-                      @error('codigo')
-                          <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                      @enderror
+                        <label class="form-label" for="pwd">Codigo:</label>
+                        <input type="text" class="form-control" id="codigo" name="codigo"
+                            placeholder="Ingrese El codigo" value="{{ $articulo->codigo }}">
+                        @error('codigo')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -56,19 +56,19 @@
                     <div class="form-group">
                         <label class="form-label" for="pwd">Slug :</label>
                         <input type="text" class="form-control" id="slug" name="slug"
-                            placeholder="Ingrese El Slug" readonly value="{{ $articulo->slug}}">
+                            placeholder="Ingrese El Slug" readonly value="{{ $articulo->slug }}">
                         @error('slug')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
 
                     <div class="form-group">
-                      <label class="form-label" for="pwd">Seleccione una Categoria:</label>
-                      {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control']) !!}
+                        <label class="form-label" for="pwd">Seleccione una Categoria:</label>
+                        {!! Form::select('categoria_id', $categorias, null, ['class' => 'form-control']) !!}
 
-                      @error('categoria_id')
-                          <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                      @enderror
+                        @error('categoria_id')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
                     </div>
 
                     <div class="form-group">
@@ -84,21 +84,22 @@
                         <label class="form-label">Estado de Publicacion :</label>
                         <div class="form-check form-check-inline">
                             <input type="radio" class="form-check-input" name="publicacion" id="publicacion"
-                                    value="{{old('publicacion',0)}}" {{($articulo->publicacion=="0")? "checked" : "" }}>
+                                value="{{ old('publicacion', 0) }}" {{ $articulo->publicacion == '0' ? 'checked' : '' }}>
                             <label for="radio1" class="form-check-label pl-2">No publicar en la web</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input type="radio" class="form-check-input" name="publicacion" id="pubicacion" value="{{old('publicacion',1)}}" {{($articulo->publicacion=="1")? "checked" : "" }}>
+                            <input type="radio" class="form-check-input" name="publicacion" id="pubicacion"
+                                value="{{ old('publicacion', 1) }}" {{ $articulo->publicacion == '1' ? 'checked' : '' }}>
                             <label for="radio2" class="form-check-label pl-2">Publicar en la web</label>
                         </div>
                         @error('publicacion')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
-                    
+
                     <div class="form-group">
                         <label class="form-label" for="pwd">Descripcion:</label>
-                        <textarea class="form-control" id="descripcion" name="descripcion" rows="5">{{$articulo->descripcion}}</textarea>
+                        <textarea class="form-control" id="descripcion" name="descripcion" rows="5">{{ $articulo->descripcion }}</textarea>
                         @error('descripcion')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
@@ -125,7 +126,7 @@
                     <div class="form-group">
                         <label class="form-label" for="pwd">Precio Venta:</label>
                         <input type="number" class="form-control" id="precio_venta" name="precio_venta"
-                            placeholder="Ingrese El precio venta" value="{{ $articulo->precio_venta}}">
+                            placeholder="Ingrese El precio venta" value="{{ $articulo->precio_venta }}">
                         @error('precio_venta')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
@@ -142,49 +143,74 @@
                     <div class="grid grid-cols-2 gap-4">
                         <figure>
                             @isset($articulo->images)
-                            <img id="picture" class="form-group" style="width: 250px; height: 250px; "
-                                src="{{ Storage::url($articulo->images->url) }}" alt="">
-                        @else
-                            <img id="picture" class="w-full h-64 object-cover object-center"
-                                style="width: 250px; height: 250px; " alt="" src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-                        @endisset
+                                <img id="picture" class="form-group" style="width: 250px; height: 250px; "
+                                    src="{{ Storage::url($articulo->images->url) }}" alt="">
+                            @else
+                                <img id="picture" class="w-full h-64 object-cover object-center"
+                                    style="width: 250px; height: 250px; " alt=""
+                                    src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                            @endisset
                         </figure>
                         <div>
                             <button type="submit" class="btn btn-primary">Actualizar</button>
-                            <a href="{{route('articulo.index')}}" class="btn btn-danger">
+                            <a href="{{ route('articulo.index') }}" class="btn btn-danger">
                                 Cancelar
-                            </a>                    
+                            </a>
                             {!! Form::close() !!}
                         </div>
                     </div>
-        </div>
-    @endsection
+                </div>
+            @endsection
 
-    @section('scripts')
-            <script src="{{asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js')}}"></script>
-            <script src="prototype.js"></script>
-            <script src="jquery.js"></script>
-            <script>
-                jQuery.noConflict();
+            @section('scripts')
+                <script src="{{ asset('vendor/jQuery-Plugin-stringToSlug-1.3/jquery.stringToSlug.min.js') }}"></script>
+                <script src="prototype.js"></script>
+                <script src="jquery.js"></script>
+                <script>
+                    jQuery.noConflict();
 
-                (function($) {
-                    $(document).ready( function() {
-                                        $('#nombre').stringToSlug({
-                                        setEvents: 'keyup keydown blur',
-                                        getPut: '#slug',
-                                        space: '-'
-                                        });
-                                    });
-                })(jQuery);
-            </script>
+                    (function($) {
+                        $(document).ready(function() {
+                            $('#nombre').stringToSlug({
+                                setEvents: 'keyup keydown blur',
+                                getPut: '#slug',
+                                space: '-'
+                            });
+                        });
+                    })(jQuery);
+                </script>
 
-            <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
-            <script>
-                ClassicEditor
-                    .create( document.querySelector( '#descripcion' ) )
-                    .catch( error => {
-                        console.error( error );
-                    } );
-                
-            </script>
-    @endsection
+                <script src="https://cdn.ckeditor.com/ckeditor5/35.4.0/classic/ckeditor.js"></script>
+                <script>
+                    ClassicEditor
+                        .create(document.querySelector('#descripcion'))
+                        .catch(error => {
+                            console.error(error);
+                        });
+                </script>
+
+                <script>
+                    $('.formulario').submit(function(e) {
+                        e.preventDefault()
+
+                        Swal.fire({
+                            title: 'Estas seguro de actualizar?',
+                            text: "¡No podrás revertir esto!",
+                            icon: 'info',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Si, Guardar!',
+                            cancelButtonText: 'Cancelar',
+                        }).then((result) => {
+                            if (result.value) {
+
+
+                                this.submit()
+
+                            }
+                        });
+
+                    });
+                </script>
+            @endsection

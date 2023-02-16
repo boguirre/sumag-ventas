@@ -5,7 +5,7 @@
             <div class="col-md-12">
                 <div class="flex-wrap d-flex justify-content-between align-items-center" style="color: black">
                     <div>
-                        <h1>Editar Tienda</h1>
+                        <h1>Editar Categoria</h1>
                     </div>
                     {{-- <div>
                   <a href="{{route('categoria.create')}}" class="btn btn-link  btn-soft-primary">
@@ -28,46 +28,40 @@
                 </div>
             </div> --}}
                 <div class="card-body">
-                    {!! Form::model($sucursal, [
-                        'route' => ['sucursal.update', $sucursal],
+                    {!! Form::model($role, [
+                        'route' => ['role.update', $role],
                         'method' => 'put',
                         'files' => true,
                         'class' => 'formulario',
                     ]) !!}
+
                     <div class="form-group">
                         <label class="form-label" for="pwd">Nombre:</label>
-                        <input type="text" class="form-control" id="nombre" name="nombre"
-                            placeholder="Ingrese El Nombre" value="{{ $sucursal->nombre }}">
-                        @error('nombre')
+                        <input type="text" class="form-control" id="name" name="name"
+                            placeholder="Ingrese El Nombre" value="{{ $role->name }}">
+                        @error('name')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
                     </div>
-                    <div class="form-group">
-                        <label class="form-label" for="pwd">Seleccione una imagen:</label>
-                        <input type="file" class="form-control" id="file" name="file" accept="image/*">
-                        @error('file')
-                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
-                        @enderror
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                        <figure>
-                            @isset($sucursal->images)
-                                <img id="picture" class="form-group" style="width: 250px; height: 250px; "
-                                    src="{{ Storage::url($sucursal->images->url) }}" alt="">
-                            @else
-                                <img id="picture" class="w-full h-64 object-cover object-center"
-                                    style="width: 250px; height: 250px; " alt=""
-                                    src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-                            @endisset
-                        </figure>
-                        <div>
 
+                    <label class="form-label" for="pwd"><strong> Elegir Permisos:</strong></label>
+
+                    @error('permissions')
+                        <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                    @enderror
+                    
+                    @foreach ($permissions as $permission)
+                        <div class="form-group">
+                            <label>
+                                {!! Form::checkbox('permissions[]', $permission->id, null, ['class' => 'mr-1']) !!}
+                                {{ $permission->name }}
+                            </label>
                         </div>
-                    </div>
+                    @endforeach
+
                     <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <a href="{{ route('sucursal.index') }}" class="btn btn-danger">
-                        Cancelar
-                    </a> {!! Form::close() !!}
+                    <button type="submit" class="btn btn-danger">Cancelar</button>
+                    {!! Form::close() !!}
                 </div>
 
 
@@ -75,29 +69,29 @@
             </div>
         </div>
     @endsection
+
     @section('scripts')
-        <script>
-            $('.formulario').submit(function(e) {
-                e.preventDefault()
+    <script>
+        $('.formulario').submit(function(e) {
+            e.preventDefault()
 
-                Swal.fire({
-                    title: 'Estas seguro de actualizar?',
-                    text: "¡No podrás revertir esto!",
-                    icon: 'info',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si, Guardar!',
-                    cancelButtonText: 'Cancelar',
-                }).then((result) => {
-                    if (result.value) {
+            Swal.fire({
+                title: '¿Estas seguro de actualizar este rol?',
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si!',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.value) {
 
 
-                        this.submit()
+                    this.submit()
 
-                    }
-                })
-
+                }
             })
-        </script>
-    @endsection
+
+        })
+    </script>
+@endsection

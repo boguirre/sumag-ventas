@@ -7,7 +7,7 @@
     <title>SUMAG</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" href="/images/favicon.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo-sumag-damanelsin.png')}}" >
 
     <!-- Library / Plugin Css Build -->
     <link rel="stylesheet" href="{{asset('/css/core/libs.min.css')}}" />

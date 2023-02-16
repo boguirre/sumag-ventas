@@ -4,9 +4,9 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>IMPORTACIONES SUMAG | DAMA NELSI</title>
+        <title>SUMAG | DAMA NELSI</title>
         <!-- LOGO SUMAG -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo-sumag-damanelsin.png')}}" >
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo-sumag-damanelsin10.png')}}" >
 		
         <!-- Animate CSS -->
         <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">

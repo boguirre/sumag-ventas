@@ -28,8 +28,11 @@
                     </ul>
                     <ul class="footer-social-icon">
                         {{-- <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li> --}}
-                        <li><a href="#" target="_blank"><i class="fab fa-facebook"></i></a></li>
-                        <li><a href="#" target="_blank"><i class="fab fa-whatsapp"></i></a></li>
+                        <li><a href="https://www.facebook.com/groups/356250952613502/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                        <li><a target="_blank"  href="https://api.whatsapp.com/send?phone=960516029&text=Hola%20👋,%20estoy%20interesado%20en%20los%20articulo%20,%20quisiera%20más%20informacion%20%20publicados%20en%20la%20pagina%20Sumag.com"><i class="fab fa-whatsapp"></i></a></li>
+                        <li><a target="_blank"  href="https://api.whatsapp.com/send?phone=972117469&text=Hola%20👋,%20estoy%20interesado%20en%20los%20articulo%20,%20quisiera%20más%20informacion%20%20publicados%20en%20la%20pagina%20Sumag.com"><i class="fab fa-whatsapp"></i></a></li>
+                        
+                        
                         {{-- <li><a href="#" target="_blank"><i class="fab fa-linkedin"></i></a></li>
                         <li><a href="#" target="_blank"><i class="fab fa-instagram"></i></a></li>
                         <li><a href="#" target="_blank"><i class="fab fa-twitter"></i></a></li> --}}
@@ -42,7 +45,7 @@
                     <ul class="footer-list mb-sm-5 mb-md-0">
                         @foreach ($categorias as $categoria)
                         <li>
-                            <a href="{{route('web.escoger_producto',$categoria)}}">{{Str::Upper($categoria->nombre)}}</a>
+                            <a href="{{route('web.escoger_producto',$categoria)}}">{{Str::ucfirst($categoria->nombre)}}</a>
                             {{-- {{route('web.escoger_producto')}}     --}}
                         </li>
                         @endforeach

@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Articulo;
 use App\Models\Categoria;
 use Illuminate\Http\Request;
-use Livewire\WithPagination;
+
 
 
 class WebController extends Controller
@@ -23,7 +23,9 @@ class WebController extends Controller
     }
 
     public function ver_articulo(Articulo $articulo){
-        
+
+        $this->authorize('published', $articulo);
+
         $destacados = Articulo::where('publicacion', 1)
                             ->where('estado',1)                   
                             ->latest('id')
@@ -35,6 +37,9 @@ class WebController extends Controller
     }
 
     public function escoger_producto(Categoria $categoria){
+
+        $this->authorize('category', $categoria);
+
         $productos = Articulo::where('categoria_id', $categoria->id)
                                 ->where('estado',1)
                                 ->where('publicacion', 1)

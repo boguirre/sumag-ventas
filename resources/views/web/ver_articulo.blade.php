@@ -2,7 +2,7 @@
     <div class="container">
         <div class="page-header breadcrumb-wrap">
             <div class="breadcrumb">
-                <a href="index.html" rel="nofollow"><i class="fas fa-home mr-10"></i>SUMAG</a>
+                <a href="/" rel="nofollow"><i class="fas fa-home mr-10"></i>SUMAG | DAMA NELSIN</a>
                 
                 <span></span>{{$articulo->categoria->nombre}}<a href="shop-grid-right.html"></a><span></span>{{$articulo->nombre}} 
                 
@@ -56,8 +56,8 @@
                                     </div>
 
                                     <ul class="pro-code">
-                                        <li>Product Code : <span class="text-black">{{$articulo->codigo}}</span></li>
-                                        <li>Categories : <span class="text-black">{{$articulo->categoria->nombre}}</span></li>
+                                        <li>Codigo del producto : <span class="text-black">{{$articulo->codigo}}</span></li>
+                                        <li>Categoría : <span class="text-black">{{$articulo->categoria->nombre}}</span></li>
                                     </ul>
                                     
                                     <!-- <div class="rating d-inline-block mb-3">
@@ -85,9 +85,9 @@
                                     </div>	
 
                                         <div class="product-extra-link2">
-                                            <p>Atencion mediante: </p> <br>
-                                            <a type="submit" style="border-color:white" target="_blank" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=960516029&text=Hola%20👋,%20estoy%20interesado%20en%20el%20articulo%20{{Str::Upper($articulo->nombre)}}%20con%20codigo%20{{$articulo->codigo}}%20que%20se%20ha%20publicado%20en%20la%20pagina%20Sumag.com"><i class="fab fa-whatsapp"></i>Atencion SUMAG    </a></a>
-                                            <a type="submit" style="border-color:white" target="_blank" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=972117469&text=Hola%20👋,%20estoy%20interesado%20en%20el%20articulo%20{{Str::Upper($articulo->nombre)}}%20con%20codigo%20{{$articulo->codigo}}%20que%20se%20ha%20publicado%20en%20la%20pagina%20Sumag.com"><i class="fab fa-whatsapp"></i>Atencion DAMANELSI</a></a>
+                                            <p><span> Atencion mediante:</span></p> <br>
+                                            <a type="submit" style="border-color:white" target="_blank" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=960516029&text=Hola%20👋,%20estoy%20interesado%20en%20el%20articulo%20{{Str::ucfirst($articulo->nombre)}}%20con%20codigo%20{{$articulo->codigo}}%20que%20se%20ha%20publicado%20en%20la%20pagina%20Sumag.com"><i class="fab fa-whatsapp"></i>Atencion SUMAG    </a></a>
+                                            <a type="submit" style="border-color:white" target="_blank" class="button button-add-to-cart me-3 bg-success" href="https://api.whatsapp.com/send?phone=972117469&text=Hola%20👋,%20estoy%20interesado%20en%20el%20articulo%20{{Str::ucfirst($articulo->nombre)}}%20con%20codigo%20{{$articulo->codigo}}%20que%20se%20ha%20publicado%20en%20la%20pagina%20Sumag.com"><i class="fab fa-whatsapp"></i>Atencion DAMANELSI</a></a>
                                             {{-- <a aria-label="Add To Wishlist" class="button btn-wishlist" href="wishlist.html"><i class="fi-rs-heart"></i>Add to wishlist</a> --}}
                                         </div>
 

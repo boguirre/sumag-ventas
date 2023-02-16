@@ -32,34 +32,6 @@
                         </div>
                     </div>
                 </div>
-                {{-- <div class="totall-product">
-                    <div class="sort-by-product-area">
-                        <div class="sort-by-cover">
-                            <div class="sort-by-product-wrap">
-                                <div class="sort-by">
-                                    <span>Mostrar:</span>
-                                </div>
-                                <div class="sort-by-dropdown-wrap">
-                                    <select wire:model="cant" class="form-select border-white">
-                                        <option value="3">3</option>
-                                        <option value="6">6</option>
-                                        <option value="9">9</option>
-                                        <option value="12">12</option>
-                                        <option value="15">15</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sort-by-cover sort-link-right">
-                            <div class="sort-by-link">
-                                <div class="sort-link">
-                                    <a href="{{route('web.escoger_producto2')}}" class="m-0 active"><i class="fi-rs-apps"></i></a>
-                                    <a href="product-category-grid.html" class="m-0 active"><i class="fi-rs-list"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div> --}}
 
             </div>
 
@@ -122,7 +94,7 @@
             <!--End Deals-->
             @else
                 <div class="px-6 py-4">
-                    <span> <p>   No existe articulo </p></span>
+                    <span> <p>  Próximamente nuevos artículos 😊</p></span>
                 </div>
             @endif
         </div>

@@ -5,7 +5,7 @@
             <div class="col-xl-12 col-lg-12 m-auto">
                 <div class="page-header breadcrumb-wrap">
                     <div class="breadcrumb">
-                        <a href="/" rel="nofollow"><i class="fas fa-home mr-10"></i>SUMAG</a>
+                        <a href="/" rel="nofollow"><i class="fas fa-home mr-10"></i>SUMAG | DAMA NELSIN</a>
                         <span></span> Productos
                     </div>
                 </div>

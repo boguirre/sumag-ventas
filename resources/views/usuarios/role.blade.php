@@ -25,7 +25,7 @@
 
                 <div class="card-body">
 
-    {!! Form::model($usuario, ['route' => ['usuario.updaterole', $usuario], 'method' => 'put','files'=>true, 'class'=>'']) !!}
+    {!! Form::model($usuario, ['route' => ['usuario.updaterole', $usuario], 'method' => 'put','files'=>true, 'class'=>'casino']) !!}
 
         <div class="form-group">
             <label for="name" class="form-label">Nombre</label>
@@ -63,3 +63,31 @@
 
 
 @endsection
+
+@section('scripts')
+<script>
+    $('.casino').submit(function(e) {
+        e.preventDefault()
+
+        Swal.fire({
+            title: 'Estas seguro de asignar roles a este Usuario?',
+            
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Guardar!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.value) {
+
+
+                this.submit()
+
+            }
+        })
+
+    })
+</script>
+@endsection
+

@@ -142,52 +142,29 @@
     @endsection
 
 
-    {{-- @section('scripts')
-        <script>
-            $('.formulario').submit(function(e) {
-                e.preventDefault()
+    @section('scripts')
+    <script>
+        $('.casino').submit(function(e) {
+            e.preventDefault()
 
-                Swal.fire({
-                    title: 'Estas seguro de Desactivar esta categoria?',
-                    icon: 'warning',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si!',
-                    cancelButtonText: 'Cancelar',
-                }).then((result) => {
-                    if (result.value) {
+            Swal.fire({
+                title: 'Estas seguro de eliminar este registro?',
+                
+                icon: 'info',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Si, Guardar!',
+                cancelButtonText: 'Cancelar',
+            }).then((result) => {
+                if (result.value) {
 
 
-                        this.submit()
+                    this.submit()
 
-                    }
-                })
-
+                }
             })
-        </script>
 
-        <script>
-            $('.formulario2').submit(function(e) {
-                e.preventDefault()
-
-                Swal.fire({
-                    title: 'Estas seguro de Activar esta categoria?',
-                    icon: 'info',
-                    showCancelButton: true,
-                    confirmButtonColor: '#3085d6',
-                    cancelButtonColor: '#d33',
-                    confirmButtonText: 'Si!',
-                    cancelButtonText: 'Cancelar',
-                }).then((result) => {
-                    if (result.value) {
-
-
-                        this.submit()
-
-                    }
-                })
-
-            })
-        </script>
-    @endsection --}}
+        })
+    </script>
+@endsection

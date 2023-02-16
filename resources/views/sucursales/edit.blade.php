@@ -32,7 +32,7 @@
                         'route' => ['sucursal.update', $sucursal],
                         'method' => 'put',
                         'files' => true,
-                        'class' => '',
+                        'class' => 'formulario',
                     ]) !!}
                     <div class="form-group">
                         <label class="form-label" for="pwd">Nombre:</label>
@@ -48,29 +48,56 @@
                         @error('file')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror
-                      </div>
+                    </div>
                     <div class="grid grid-cols-2 gap-4">
                         <figure>
                             @isset($sucursal->images)
-                            <img id="picture" class="form-group" style="width: 250px; height: 250px; "
-                                src="{{ Storage::url($sucursal->images->url) }}" alt="">
-                        @else
-                            <img id="picture" class="w-full h-64 object-cover object-center"
-                                style="width: 250px; height: 250px; " alt="" src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
-                        @endisset
+                                <img id="picture" class="form-group" style="width: 250px; height: 250px; "
+                                    src="{{ Storage::url($sucursal->images->url) }}" alt="">
+                            @else
+                                <img id="picture" class="w-full h-64 object-cover object-center"
+                                    style="width: 250px; height: 250px; " alt=""
+                                    src="https://images.pexels.com/photos/365067/pexels-photo-365067.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1">
+                            @endisset
                         </figure>
                         <div>
-                        
+
+                        </div>
                     </div>
-                </div>
                     <button type="submit" class="btn btn-primary">Actualizar</button>
-                    <a href="{{route('sucursal.index')}}" class="btn btn-danger">
+                    <a href="{{ route('sucursal.index') }}" class="btn btn-danger">
                         Cancelar
-                     </a>                     {!! Form::close() !!}
+                    </a> {!! Form::close() !!}
                 </div>
 
 
 
             </div>
         </div>
+    @endsection
+    @section('scripts')
+        <script>
+            $('.formulario').submit(function(e) {
+                e.preventDefault()
+
+                Swal.fire({
+                    title: 'Estas seguro de actualizar?',
+                    text: "¡No podrás revertir esto!",
+                    icon: 'info',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, Guardar!',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.value) {
+
+
+                        this.submit()
+
+                    }
+                })
+
+            })
+        </script>
     @endsection

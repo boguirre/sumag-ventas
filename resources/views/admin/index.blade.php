@@ -106,8 +106,9 @@
                             <div class="card-body">
                                 @foreach ($alertaprestamos as $prestamo)
                                     @if (
-                                        \Carbon\Carbon::now('America/Lima')->format('Y-m-d') ==
-                                            \Carbon\Carbon::parse($prestamo->fecha_pago)->subDay(3)->format('Y-m-d'))
+                                        \Carbon\Carbon::now('America/Lima')->format('Y-m-d') <=
+                                            \Carbon\Carbon::parse($prestamo->fecha_pago)->subDay(3)->format('Y-m-d') || \Carbon\Carbon::now('America/Lima')->format('Y-m-d') <=
+                                            \Carbon\Carbon::parse($prestamo->fecha_pago)->format('Y-m-d'))
                                         <div class="alert alert-warning  mt-3" role="alert">
                                             <svg width="20" viewBox="0 0 24 24" fill="none"
                                                 xmlns="http://www.w3.org/2000/svg">
@@ -116,7 +117,7 @@
                                                     stroke="currentColor" stroke-width="2" stroke-linecap="round"
                                                     stroke-linejoin="round" />
                                             </svg>
-                                            <strong>Solo faltan 3 Dias!</strong>
+                                            <strong>Solo faltan Pocos Dias!</strong>
                                             Para que culmine el pago con la fecha programada para el {{$prestamo->fecha_pago}}... co numero de credito {{$prestamo->prestamo->numerocredito}} <strong><a href="{{route('prestamo.show', $prestamo->prestamo->id)}}">Click para ver el detalle</a></strong>
                                         </div>
                                     @endif

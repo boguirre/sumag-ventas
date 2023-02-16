@@ -233,7 +233,7 @@ class ComprobanteController extends Controller
 
             $data['data'][] = $comprobante->cantidad;
       }
-        $data['data'] = json_encode($data);
+        $data['data'] = json_encode(isset($data));
 
 
         $report = '';
@@ -252,7 +252,7 @@ class ComprobanteController extends Controller
 
             $report['report'][] = $comprobantesu->cantidad;
       }
-        $report['report'] = json_encode($report);
+        $report['report'] = json_encode(isset($report));
 
         return $report;
 

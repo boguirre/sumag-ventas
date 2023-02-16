@@ -28,7 +28,7 @@
                 </div>
             </div> --}}
             <div class="card-body">
-                {!! Form::model($empresa, ['route' => ['empresa.update', $empresa], 'method' => 'put','files'=>true, 'class'=>'']) !!}
+                {!! Form::model($empresa, ['route' => ['empresa.update', $empresa], 'method' => 'put','files'=>true, 'class'=>'formulario']) !!}
                 <div class="form-group">
                         <label class="form-label" for="codigo">Codigo:</label>
                         <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Ingrese El Codigo" value="{{$empresa->codigo}}">
@@ -52,4 +52,30 @@
         
     </div>
 </div>
+@endsection
+@section('scripts')
+<script>
+    $('.formulario').submit(function(e) {
+        e.preventDefault()
+
+        Swal.fire({
+            title: 'Estas seguro de actualizar?',
+            text: "¡No podrás revertir esto!",
+            icon: 'info',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Si, Guardar!',
+            cancelButtonText: 'Cancelar',
+        }).then((result) => {
+            if (result.value) {
+
+
+                this.submit()
+
+            }
+        })
+
+    })
+</script>
 @endsection

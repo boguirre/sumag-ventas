@@ -115,12 +115,9 @@
                     if (result.value) {
 
 
-                        this.submit()
+                    this.submit()
 
-                    }
-                })
-
+                }
             })
-        </script>
 
     @endsection

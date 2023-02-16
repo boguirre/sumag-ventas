@@ -502,7 +502,7 @@
             @endcan
 
 
-            @can('Modulo DUAS')
+            @can('Modulo Duas')
 
 
             <li>

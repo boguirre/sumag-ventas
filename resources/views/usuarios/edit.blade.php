@@ -72,6 +72,31 @@
             </div>
         </div>
     @endsection
+    @section('scripts')
+                    <script>
+                        $('.formulario').submit(function(e) {
+                            e.preventDefault()
+
+                            Swal.fire({
+                                title: 'Estas seguro de actualizar?',
+                                icon: 'info',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Si, Guardar!',
+                                cancelButtonText: 'Cancelar',
+                            }).then((result) => {
+                                if (result.value) {
+
+
+                                    this.submit()
+
+                                }
+                            })
+
+                        })
+                    </script>
+@endsection
 
     
     @section('scripts')

@@ -34,7 +34,7 @@
         justify-content: space-between;
         width: 100%;
         border-radius: 5%;
-        background: rgb(27, 107, 245);
+        background: #8B4AF8;
     }
 
     .logo_container {
@@ -121,7 +121,7 @@
 
     .invoice_footer_amount {
         margin: auto 0;
-        background: rgb(13, 97, 241);
+        background: #8B4AF8;
     }
 
     .amount_table td,
@@ -133,7 +133,7 @@
         margin: 0;
         text-align: center;
         border-radius: 15px;
-        background: rgb(13, 97, 241);
+        background: #8B4AF8;
         padding: 5px;
     }
 </style>

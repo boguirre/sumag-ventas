@@ -184,7 +184,7 @@
                                 <ul>
                                     @foreach ($categorias as $categoria )
                                     <li>
-                                        <a href="{{route('web.escoger_producto', $categoria)}}"><img src="" alt="">{{Str::Upper($categoria->nombre)}}</a>
+                                        <a href="{{route('web.escoger_producto', $categoria)}}"><img src="" alt="">{{Str::ucfirst($categoria->nombre)}}</a>
                                         {{-- {{route('web.escoger_producto')}} --}}
                                     </li>
                                     @endforeach
@@ -203,7 +203,7 @@
                                 
                                 @foreach ($rangos as $rango)
                                 <li>
-                                    <a href="{{route('web.escoger_producto',$rango)}}">{{Str::Upper($rango->nombre)}}</a>
+                                    <a href="{{route('web.escoger_producto',$rango)}}">{{Str::ucfirst($rango->nombre)}}</a>
                                     {{-- {{route('web.escoger_producto')}}     --}}
                                 </li>
                                 @endforeach
@@ -230,7 +230,10 @@
                 <!-- LLAMNOS AHORA -->
                 <div class="contact-item d-none d-lg-flex">
                     <img src="{{asset('assets/img/icons/icon-headphone-white.svg')}}" alt="contact-number">
-                    <p>CONTÁCTENOS<span><i class="fab fa-whatsapp"> 960516029</i></span><span><i class="fab fa-whatsapp"> 972117469</i></span></p>
+                    <p>CONTÁCTENOS<span>
+                        <a class="text text-white" target="_blank"  href="https://api.whatsapp.com/send?phone=960516029&text=Hola%20👋,%20estoy%20interesado%20en%20los%20articulo%20,%20quisiera%20más%20informacion%20%20publicados%20en%20la%20pagina%20Sumag.com"><i class="fab fa-whatsapp"> 960516029</i></a></span><span>
+                        <a class="text text-white" target="_blank"  href="https://api.whatsapp.com/send?phone=972117469&text=Hola%20👋,%20estoy%20interesado%20en%20los%20articulo%20,%20quisiera%20más%20informacion%20%20publicados%20en%20la%20pagina%20Sumag.com"><i class="fab fa-whatsapp"> 972117469</i></a>
+                        </span></p>
                 </div>
                 
                 <!-- Parte superior en modo movile -->
@@ -352,7 +355,7 @@
 
                         @foreach ($categorias as $categoria)
                         <li>
-                            <a href="{{route('web.escoger_producto',$categoria)}}">{{Str::Upper($categoria->nombre)}}</a>
+                            <a href="{{route('web.escoger_producto',$categoria)}}">{{Str::ucfirst($categoria->nombre)}}</a>
                                     {{-- {{route('web.escoger_producto')}}     --}}
                         </li>
                         @endforeach

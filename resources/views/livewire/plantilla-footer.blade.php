@@ -11,7 +11,7 @@
                         <div class="logo mb-30">
                             <a href="/" class="mb-15"><img src="{{asset('assets/img/logo-sumag-damanelsin6.png')}}" alt="logo" /></a>
                             {{-- {{route('web.index')}} --}}
-                            <p>Integer posuere orci sit amet feugiat pellent que. Suspendisse vel tempor justo, sit amet posuere orci dapibus auctor.Integer posuere orci sit amet.</p>
+                            <p>SUMAG Empresa dedica al rubro de la textileria, lleva 10 años de experiencia en el rubro, centrado en la calidad de productos para todo tipo de cliente; ofreciendo productos al mayoreo.</p>
                             <!-- <a href="index.html"><img src="assets/img/payment.png" alt="logo" /></a> -->
                         </div>
                     </div>

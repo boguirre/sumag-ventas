@@ -15,11 +15,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PagoProveedorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
     public function index()
     {
         $pagoProveedores = PagoProveedor::all();

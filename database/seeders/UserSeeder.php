@@ -2,6 +2,8 @@
 
 namespace Database\Seeders;
 
+use App\Models\TipoComprobante;
+use App\Models\TipoImporte;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -39,5 +41,22 @@ class UserSeeder extends Seeder
             'password'=>('123456789')
 
         ])->assignRole('Vendedor');
+
+        TipoComprobante::create([
+            'nombre' => 'BOLETA'
+        ]);
+
+        TipoComprobante::create([
+            'nombre' => 'FACTURA'
+        ]);
+
+        TipoImporte::create([
+            'nombre' => 'BANCARIA'
+        ]);
+
+        TipoImporte::create([
+            'nombre' => 'CREDITO'
+        ]);
+
     }
 }

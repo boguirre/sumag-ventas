@@ -113,24 +113,15 @@
                                     <li class="nav-item">
                                         <a class="nav-link active" id="Description-tab" data-bs-toggle="tab" href="#Description">Descripcion</a>
                                     </li>
-                                    {{-- <li class="nav-item">
-                                        <a class="nav-link" id="Additional-info-tab" data-bs-toggle="tab" href="#Specification">Especificaciones</a>
-                                    </li> --}}
                                 </ul>
                                 <div class="tab-content shop_info_tab entry-main-content">
                                     <div class="tab-pane fade show active" id="Description">
                                         <div class="">
                                             <ul class="pro-desc">
-                                                <li>{!!$articulo->descripcion!!}</li>
+                                                <p>{!!$articulo->descripcion!!}</p>
                                             </ul> 
                                         </div>
                                     </div>
-                                    {{-- <div class="tab-pane fade" id="Specification">
-                                        <ul class="pro-desc">
-                                            <li>{{$producto->Caracteristicas}}</li>
-                                            
-                                        </ul> 
-                                    </div> --}}
                                 </div>
                             </div>
                         </div>

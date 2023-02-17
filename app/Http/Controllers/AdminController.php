@@ -39,7 +39,7 @@ class AdminController extends Controller
         $usuarios = User::all()->count();
 
 
-        $comprobantes = Comprobante::where('fecha_pago','<=',$fechaactual)->whereDate('fecha_pago','<=',$fechaactualmes)->where('estado','1')->get();
+        $comprobantes = Comprobante::where('fecha_pago','>=',$fechaactual)->whereDate('fecha_pago','<=',$fechaactualmes)->where('estado','1')->get();
         return view('admin.index',compact('alertaduas', 'alertaprestamos','comprobantes','ventas','ingresos','usuarios'));
     }
     /**

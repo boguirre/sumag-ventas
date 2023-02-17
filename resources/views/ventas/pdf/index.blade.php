@@ -27,7 +27,7 @@
     }
 
     #imgmarca{
-        background-image: url(http://sumag-ventas.test{{$image}});
+        background-image: url({{$url}}{{$image}});
         background-repeat: no-repeat;
         background-blend-mode: overlay;
         height: 100%;
@@ -155,7 +155,7 @@
     <header>
 
               <center><img id="picture" class=""
-                src="http://sumag-ventas.test{{$image}}" alt="" style="border-width: 5px;border-radius: 3em 1em;
+                src="{{$url}}{{$image}}" alt="" style="border-width: 5px;border-radius: 3em 1em;
                 border-style: solid;
                 border-color: #8B4AF8;" width="20%" height="15%" ></center>
             

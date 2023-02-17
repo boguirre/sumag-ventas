@@ -172,6 +172,7 @@ class VentaController extends Controller
         } 
     }
     public function pdf(Venta $ventum){
+        $url = env('APP_URL');
         $image = Storage::url($ventum->sucursales->images->url);
 
         $subtotal = 0 ;
@@ -180,7 +181,7 @@ class VentaController extends Controller
             $subtotal += $ventaDetalle->cantidad*$ventaDetalle->precio-$ventaDetalle->cantidad* $ventaDetalle->precio*$ventaDetalle->descuento/100;
         }
         
-        $pdf = Pdf::loadView('ventas.pdf.index', compact('ventum', 'ventaDetalles', 'subtotal','image'));
+        $pdf = Pdf::loadView('ventas.pdf.index', compact('ventum', 'ventaDetalles', 'subtotal','image', 'url'));
         
         return $pdf->download('Reporte_de_venta_'.$ventum->id.'.pdf');
 

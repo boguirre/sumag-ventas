@@ -229,7 +229,7 @@ class PrestamoController extends Controller
         }
         $data['data'] = json_encode($data);
         $reporte = "";
-        $report = $this->reporteEstado(isset($reporte));
+        $report = $this->reporteEstado(($reporte));
         return view('prestamos.reporte.index', $data + $report);
     }
 
@@ -244,7 +244,7 @@ class PrestamoController extends Controller
             $report['report'][] = $prestamosestado->cantidad;
         }
 
-        $report['report'] = json_encode(isset($report));
+        $report['report'] = json_encode(($report));
 
         $reporte = $report;
 

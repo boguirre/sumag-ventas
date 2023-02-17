@@ -66,7 +66,7 @@
                             </div>
                             <div class="contact-details">
                                 <h4>Email</h4>
-                                <p class="text-muted">SUMAGe@gmail.com</p>
+                                <p class="text-muted">SUMAG@gmail.com</p>
                             </div>
                         </div>
                     </div>

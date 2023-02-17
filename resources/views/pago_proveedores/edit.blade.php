@@ -1,3 +1,4 @@
+@section('title', 'Editar Pago De Proveedores')
 @extends('layouts.panel')
 @section('header')
     <div class="container-fluid iq-container">

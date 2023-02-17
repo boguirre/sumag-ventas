@@ -4,11 +4,10 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>SUMAG</title>
+    <title>@yield('title','SUMAG | DAMA NELSI')</title>
 
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo-sumag-damanelsin.png')}}" >
-
+    <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo-sumag-damanelsin8.png')}}" >
     <!-- Library / Plugin Css Build -->
     <link rel="stylesheet" href="{{asset('/css/core/libs.min.css')}}" />
 

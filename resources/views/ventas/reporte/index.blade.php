@@ -1,3 +1,4 @@
+@section('title', 'Reporte De Ventas')
 @extends('layouts.panel')
 @section('header')
 <div class="container-fluid iq-container">

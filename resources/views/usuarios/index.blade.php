@@ -1,3 +1,4 @@
+@section('title', 'Módulo De Usuarios')
 @extends('layouts.panel')
 @section('header')
     <div class="container-fluid iq-container">
@@ -95,6 +96,8 @@
             </div>
 
         </div>
+    </div>
+
     @endsection
 
 
@@ -119,5 +122,7 @@
 
                 }
             })
+        })
+    </script>
 
     @endsection

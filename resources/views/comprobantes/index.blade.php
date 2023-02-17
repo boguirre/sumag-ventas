@@ -531,7 +531,7 @@
                                                     Activado
                                                 </button>
                                                 {!! Form::close() !!}
-                                                <a class="btn btn-primary">Activo</a>
+                                                
                                             </td>
                                         @else
                                             <td><a class="btn btn-success">Cancelado</a></td>

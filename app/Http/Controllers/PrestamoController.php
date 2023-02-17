@@ -204,7 +204,7 @@ class PrestamoController extends Controller
             return redirect()->route('prestamo.show', $prestamo)->with('info', 'El monto no debe exceder del prestamo');
         }
 
-        if ($request->monto >= $prestamo->monto_deuda) {
+        if ($prestamo->monto_deuda == 0) {
             $prestamo->update([
                 'estado' => 2
             ]);

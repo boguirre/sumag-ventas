@@ -521,7 +521,7 @@
                                         
                                         @if ($comprobante->estado == 1)
                                             <td>
-                                                {{-- {!! Form::open([
+                                                {!! Form::open([
                                                     'route' => ['comprobante.estado', $comprobante],
                                                     'autocomplete' => 'off',
                                                     'files' => true,
@@ -530,7 +530,7 @@
                                                 <button type="submit" class="btn btn-warning">
                                                     Activado
                                                 </button>
-                                                {!! Form::close() !!} --}}
+                                                {!! Form::close() !!}
                                                 <a class="btn btn-primary">Activo</a>
                                             </td>
                                         @else

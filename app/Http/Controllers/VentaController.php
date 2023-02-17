@@ -21,11 +21,11 @@ use PhpParser\Node\Stmt\Return_;
 
 class VentaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
     public function index()
     {
         $mes = Carbon::now('America/Lima')->format('m');

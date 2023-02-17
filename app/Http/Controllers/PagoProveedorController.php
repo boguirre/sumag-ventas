@@ -172,9 +172,10 @@ class PagoProveedorController extends Controller
 
     public function exportpdf(PagoProveedor $pagoProveedor)
     {
+        $url = env('APP_URL');
         $image = Storage::url($pagoProveedor->sucursal->images->url);
 
-        $pdf = Pdf::loadView('pago_proveedores.pdf.index', compact('image', 'pagoProveedor'));
+        $pdf = Pdf::loadView('pago_proveedores.pdf.index', compact('image', 'pagoProveedor', 'url'));
 
         // return view('pago_proveedores.pdf.index', compact('image'));
         return $pdf->setPaper('a4')->download('Reporte_de_pago_proveedor_'.$pagoProveedor->sucursal->nombre.'.pdf');

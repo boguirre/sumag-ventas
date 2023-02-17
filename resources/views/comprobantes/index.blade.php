@@ -521,7 +521,7 @@
                                         
                                         @if ($comprobante->estado == 1)
                                             <td>
-                                                {{-- {!! Form::open([
+                                                {!! Form::open([
                                                     'route' => ['comprobante.estado', $comprobante],
                                                     'autocomplete' => 'off',
                                                     'files' => true,
@@ -530,8 +530,8 @@
                                                 <button type="submit" class="btn btn-warning">
                                                     Activado
                                                 </button>
-                                                {!! Form::close() !!} --}}
-                                                <a class="btn btn-primary">Activo</a>
+                                                {!! Form::close() !!}
+                                                
                                             </td>
                                         @else
                                             <td><a class="btn btn-success">Cancelado</a></td>
@@ -574,3 +574,30 @@
 
         </div>
     @endsection
+
+    @section('scripts')
+                    <script>
+                        $('.formulario').submit(function(e) {
+                            e.preventDefault()
+
+                            Swal.fire({
+                                title: 'Estas seguro de cambiar a estado cancelado?',
+                                text: "¡No podrás revertir esto!",
+                                icon: 'info',
+                                showCancelButton: true,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Si, Guardar!',
+                                cancelButtonText: 'Cancelar',
+                            }).then((result) => {
+                                if (result.value) {
+
+
+                                    this.submit()
+
+                                }
+                            })
+
+                        })
+                    </script>
+@endsection

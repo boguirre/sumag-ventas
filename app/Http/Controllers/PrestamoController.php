@@ -73,15 +73,18 @@ class PrestamoController extends Controller
 
         $files = $request->file('files');
 
-        foreach ($files as $file) {
-            // $file->store('resources');
-
-            Storage::putFileAs('resources/', $file, $file->getClientOriginalName());
-
-            $prestamo->resources()->create([
-                'url' => $file->getClientOriginalName()
-            ]);
+        if ($files) {
+            foreach ($files as $file) {
+                // $file->store('resources');
+    
+                Storage::putFileAs('resources/', $file, $file->getClientOriginalName());
+    
+                $prestamo->resources()->create([
+                    'url' => $file->getClientOriginalName()
+                ]);
+            }
         }
+        
 
 
         return redirect()->route('prestamo.index')->with('guardar', 'ok');

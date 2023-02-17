@@ -1,3 +1,4 @@
+@section('title', 'Registrar Ingresos')
 @extends('layouts.panel')
 @section('header')
     <div class="container-fluid iq-container">

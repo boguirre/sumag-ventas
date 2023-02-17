@@ -16,11 +16,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class ComprobanteController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
     public function index()
     {
         $comprobantes = Comprobante::all();
@@ -58,7 +58,7 @@ class ComprobanteController extends Controller
             'tipo_importe_id' => 'required',
             'fecha_pago' => 'required',
             'sucursal_id' => 'required',
-            'file'=> 'required'
+            'files'=> 'required'
 
         ], [
             'numero_comprobante.required' => 'El campo numero de comprobante es requerido',
@@ -68,7 +68,7 @@ class ComprobanteController extends Controller
             'tipo_importe_id.required' => 'Debe seleccionar un tipo de importe',
             'sucursal_id.required'=>'Debe seleccionar una empresa',
             'fecha_pago.required' => 'El campo fecha de pago es requerido.',
-            'file.required' => 'Seleccione los archivos.',
+            'files.required' => 'Seleccione los archivos.',
 
         ]);
 
@@ -195,7 +195,7 @@ class ComprobanteController extends Controller
 
     public function download(Request $request)
     {
-        return response()->download(storage_path('app\resources' . $request->url));
+        return response()->download(storage_path('app/resources' . $request->url));
     }
 
     public function exportarpdffechas(Request $request){
@@ -233,7 +233,7 @@ class ComprobanteController extends Controller
 
             $data['data'][] = $comprobante->cantidad;
       }
-        $data['data'] = json_encode($data);
+        $data['data'] = json_encode(isset($data));
 
 
         $report = '';
@@ -252,7 +252,7 @@ class ComprobanteController extends Controller
 
             $report['report'][] = $comprobantesu->cantidad;
       }
-        $report['report'] = json_encode($report);
+        $report['report'] = json_encode(isset($report));
 
         return $report;
 

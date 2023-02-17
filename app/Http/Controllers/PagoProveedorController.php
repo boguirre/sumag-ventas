@@ -15,11 +15,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PagoProveedorController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
     public function index()
     {
         $pagoProveedores = PagoProveedor::all();
@@ -191,7 +191,7 @@ class PagoProveedorController extends Controller
                $data['data'][] = $pago->cantidad;
 
         }
-        $data['data'] = json_encode($data);
+        $data['data'] = json_encode(isset($data));
         $reporte="";
         $report=$this->reporteEstado($reporte);
         $reportempresa="";
@@ -210,7 +210,7 @@ class PagoProveedorController extends Controller
 
           }
 
-         $report['report'] = json_encode($report);
+         $report['report'] = json_encode(isset($report));
 
          $reporte=$report;
 
@@ -229,7 +229,7 @@ class PagoProveedorController extends Controller
 
           }
 
-         $reportempresas['reportempresas'] = json_encode($reportempresas);
+         $reportempresas['reportempresas'] = json_encode(isset($reportempresas));
 
          $reportempresa=$reportempresas;
 

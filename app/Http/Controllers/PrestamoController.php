@@ -16,11 +16,11 @@ use Maatwebsite\Excel\Facades\Excel;
 
 class PrestamoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
     public function index()
     {
         $prestamos = Prestamo::all();
@@ -230,7 +230,7 @@ class PrestamoController extends Controller
         }
         $data['data'] = json_encode($data);
         $reporte = "";
-        $report = $this->reporteEstado($reporte);
+        $report = $this->reporteEstado(isset($reporte));
         return view('prestamos.reporte.index', $data + $report);
     }
 
@@ -245,7 +245,7 @@ class PrestamoController extends Controller
             $report['report'][] = $prestamosestado->cantidad;
         }
 
-        $report['report'] = json_encode($report);
+        $report['report'] = json_encode(isset($report));
 
         $reporte = $report;
 

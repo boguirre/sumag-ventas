@@ -1,3 +1,4 @@
+@section('title', 'Módulo Articulo')
 @extends('layouts.panel')
 @section('header')
     <div class="container-fluid iq-container">
@@ -56,7 +57,7 @@
                                                     
                                         </td>
 
-                                        <td >
+                                        <td>
                                             {{ $articulo->codigo }}</td>
 
                                         <td>{{ $articulo->nombre }}</td>
@@ -65,7 +66,20 @@
 
                                         <td>{{ $articulo->medida->nombre }}</td>
 
-                                        <td>{{ $articulo->stock }}</td>
+                                        <td>
+                                            @if($articulo->stock >= $articulo->stock_minimo)
+                                            <p class="h2">
+                                                <span class="badge rounded-pill bg-success" style="display: block">{{$articulo->stock}} </span>
+    
+                                            </p>            
+                                            @else
+                                            <p class="h2">
+                                                <span class="badge rounded-pill  bg-danger" style="display: block">{{$articulo->stock }}</span>
+                                
+                                            </p>
+            
+                                            @endif
+                                        </td>
 
                                         <td>{{ $articulo->precio_venta }}</td>
                                         <td class="text-center">

@@ -1,3 +1,4 @@
+@section('title', 'Edtar Tiendas')
 @extends('layouts.panel')
 @section('header')
     <div class="container-fluid iq-container">

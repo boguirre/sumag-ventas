@@ -21,11 +21,11 @@ use PhpParser\Node\Stmt\Return_;
 
 class VentaController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+
+    }
     public function index()
     {
         $mes = Carbon::now('America/Lima')->format('m');
@@ -204,7 +204,7 @@ class VentaController extends Controller
 
               }
 
-             $data['data'] = json_encode($data);
+             $data['data'] = json_encode(isset($data));
             $reporte="";
             $report=$this->top5ventasproductos($reporte);
             $reportedia="";
@@ -239,7 +239,7 @@ class VentaController extends Controller
                 $report['report'][] = $ventastop5->total;
 
           }
-          $report['report'] = json_encode($report);
+          $report['report'] = json_encode(isset($report));
 
 
          $reporte=$report;
@@ -257,7 +257,7 @@ class VentaController extends Controller
 
                 $repordias['repordias'][] = $ventasdia->totaldia;
           }
-          $repordias['repordias'] = json_encode($repordias);
+          $repordias['repordias'] = json_encode(isset($repordias));
 
 
          $reportedia=$repordias;
@@ -276,7 +276,7 @@ class VentaController extends Controller
 
                 $repordias['repordias'][] = $ventasdia->totaldia;
           }
-          $repordias['repordias'] = json_encode($repordias);
+          $repordias['repordias'] = json_encode(isset($repordias));
           
           return view('ventas.reporte.indexfechas', compact('sucursals'), $repordias);
 
@@ -293,7 +293,7 @@ class VentaController extends Controller
 
                 $repordias['repordias'][] = $ventasdia->totaldia;
           }
-          $repordias['repordias'] = json_encode($repordias);
+          $repordias['repordias'] = json_encode(isset($repordias));
           
           return view('ventas.reporte.indexfechas', compact('sucursals'), $repordias);
 

@@ -1,3 +1,4 @@
+@section('title', 'Ver Comprobante')
 @extends('layouts.panel')
 @section('header')
     <div class="container-fluid iq-container">
@@ -102,7 +103,7 @@
                                           <td>{{ $resource->url }}</td>
                                           <td>
                                               {!! Form::open(['route' => 'comprobante.download', 'autocomplete' => 'off', 'files' => true]) !!}
-                                              <input type="hidden" name="url" value="\{{$resource->url}}">
+                                              <input type="hidden" name="url" value="/{{$resource->url}}">
                                               <button type="submit" class="btn btn-warning">Descargar</button>
                                               {!! Form::close() !!}
                                           </td>

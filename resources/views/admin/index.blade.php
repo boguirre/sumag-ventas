@@ -255,7 +255,7 @@
                                                     stroke-linejoin="round" />
                                             </svg>
                                             <strong>Solo faltan Pocos Dias!</strong>
-                                            Para que culmine el pago con la fecha programada para el {{$prestamo->fecha_pago}}... co numero de credito {{$prestamo->prestamo->numerocredito}} <strong><a href="{{route('prestamo.show', $prestamo->prestamo->id)}}">Click para ver el detalle</a></strong>
+                                            Para que culmine el pago con la fecha programada para el {{Date::parse($prestamo->fecha_pago)->locale('es')->format('l j F')}} - con numero de credito {{$prestamo->prestamo->numerocredito}} <strong><a href="{{route('prestamo.show', $prestamo->prestamo->id)}}">Click para ver el detalle</a></strong>
                                         </div>
                                     @endif
                                 @endforeach

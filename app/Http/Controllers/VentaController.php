@@ -204,7 +204,7 @@ class VentaController extends Controller
 
               }
 
-             $data['data'] = json_encode(isset($data));
+             $data['data'] = json_encode(($data));
             $reporte="";
             $report=$this->top5ventasproductos($reporte);
             $reportedia="";
@@ -239,7 +239,7 @@ class VentaController extends Controller
                 $report['report'][] = $ventastop5->total;
 
           }
-          $report['report'] = json_encode(isset($report));
+          $report['report'] = json_encode(($report));
 
 
          $reporte=$report;
@@ -257,7 +257,7 @@ class VentaController extends Controller
 
                 $repordias['repordias'][] = $ventasdia->totaldia;
           }
-          $repordias['repordias'] = json_encode(isset($repordias));
+          $repordias['repordias'] = json_encode(($repordias));
 
 
          $reportedia=$repordias;

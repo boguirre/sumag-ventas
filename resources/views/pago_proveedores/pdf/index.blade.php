@@ -17,7 +17,7 @@
     }
 
     #imgmarca {
-        background-image: url(http://sumag-ventas.test{{ $image }});
+        background-image: url({{$url}}{{ $image }});
         background-repeat: no-repeat;
         background-blend-mode: overlay;
         height: 100%;
@@ -143,7 +143,7 @@
     <div class="invoice_container">
         <div class="invoice_header">
             <div class="logo_container">
-                <img src="http://sumag-ventas.test{{ $image }}">
+                <img src="{{$url}}{{ $image }}">
                 <h2 style="float: right; margin-right: 20px">~ EMPRESA {{ $pagoProveedor->sucursal->nombre }}</h2>
                 <p>
                     ATTN: Dennis Menees, CEO <br>

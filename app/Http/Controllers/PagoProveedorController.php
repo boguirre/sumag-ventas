@@ -191,7 +191,7 @@ class PagoProveedorController extends Controller
                $data['data'][] = $pago->cantidad;
 
         }
-        $data['data'] = json_encode(isset($data));
+        $data['data'] = json_encode(($data));
         $reporte="";
         $report=$this->reporteEstado($reporte);
         $reportempresa="";
@@ -210,7 +210,7 @@ class PagoProveedorController extends Controller
 
           }
 
-         $report['report'] = json_encode(isset($report));
+         $report['report'] = json_encode(($report));
 
          $reporte=$report;
 
@@ -229,7 +229,7 @@ class PagoProveedorController extends Controller
 
           }
 
-         $reportempresas['reportempresas'] = json_encode(isset($reportempresas));
+         $reportempresas['reportempresas'] = json_encode(($reportempresas));
 
          $reportempresa=$reportempresas;
 

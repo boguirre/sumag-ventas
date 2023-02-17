@@ -227,13 +227,14 @@ class ComprobanteController extends Controller
         $nfacturas = Comprobante::where('estado','1')->where('tipo_comprobante_id','=','2')->count();
 
         $comprobantes = DB::select('call spcomprobantesestados(?)',array($añomes));
+        $data=[];
         foreach($comprobantes as $comprobante){
                  
             $data['label'][] = $comprobante->estado;
 
             $data['data'][] = $comprobante->cantidad;
       }
-        $data['data'] = json_encode(isset($data));
+        $data['data'] = json_encode(($data));
 
 
         $report = '';
@@ -245,6 +246,7 @@ class ComprobanteController extends Controller
     public function reportexsucursal(){
         $añomes = Carbon::now('America/Lima')->format('Y-m');
         $comprobantessucu = DB::select('call spcomprobantesxsucursal(?)',array($añomes));
+        $report=[];
 
         foreach($comprobantessucu as $comprobantesu){
                  
@@ -252,7 +254,7 @@ class ComprobanteController extends Controller
 
             $report['report'][] = $comprobantesu->cantidad;
       }
-        $report['report'] = json_encode(isset($report));
+        $report['report'] = json_encode(($report));
 
         return $report;
 

@@ -276,7 +276,7 @@ class VentaController extends Controller
 
                 $repordias['repordias'][] = $ventasdia->totaldia;
           }
-          $repordias['repordias'] = json_encode(isset($repordias));
+          $repordias['repordias'] = json_encode(($repordias));
           
           return view('ventas.reporte.indexfechas', compact('sucursals'), $repordias);
 
@@ -293,7 +293,7 @@ class VentaController extends Controller
 
                 $repordias['repordias'][] = $ventasdia->totaldia;
           }
-          $repordias['repordias'] = json_encode(isset($repordias));
+          $repordias['repordias'] = json_encode(($repordias));
           
           return view('ventas.reporte.indexfechas', compact('sucursals'), $repordias);
 

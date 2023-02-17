@@ -71,13 +71,13 @@
 
             <div class="row">
                 <div class="col-sm-6 mb-3 mb-sm-0">
-                  <div class="product-card" style="border-color: #ffffff">
+                  <div class="product-card" style="">
                     <div class="card-header" style="background:#c396d6">
                         <h5 class="footer footer-title text-white">Nuestra Misión</h5>
                     </div>
                     <div class="card-body">
                       <p class="card-text">"Llevar nuestros modelos de trabajo al máximo de lugares posibles, para que todos los clientes puedan disfrutar de la moda y el mejor diseño. Velar por la calidad de nuestras prendas y el servicio que ofrecemos a nuestros clientes."</p><br><br>
-                     <center><img src="{{asset('assets/img/mision-sumag2.png')}}" alt=""></center>
+                     {{-- <center><img src="{{asset('assets/img/mision-sumag2.png')}}" alt=""></center> --}}
                     </div>
                   </div>
                 </div>
@@ -89,7 +89,7 @@
                     </div>
                     <div class="card-body">
                       <p class="card-text"> "Ser una empresa líder y reconocida en la venta de ropa, lograr también extendernos y crear nuestras cadenas de almacenes, proporcionando cada día más un servicio de excelencia a nuestros clientes y que al mismo tiempo nos permitan competir en el mercado nacional con los mejores precios del mercado."</p><br>
-                      <center><img  src="{{asset('assets/img/vision-sumag1.png')}}" alt=""></center>
+                      {{-- <center><img  src="{{asset('assets/img/vision-sumag1.png')}}" alt=""></center> --}}
                     </div>
                   </div>
                 </div>

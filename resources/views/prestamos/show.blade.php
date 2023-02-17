@@ -145,7 +145,7 @@
                                         <tr>
                                             <td><a class="btn btn-primary">{{ $prestamoDetalle->id }}</a></td>
                                             <td>{{ $prestamoDetalle->monto }}</td>
-                                            <td>{{ $prestamoDetalle->fecha_pago }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($prestamoDetalle->fecha_pago)->format('d-m-Y') }}</td>
                                             <td>
                                                 {!! Form::model($prestamoDetalle, ['route' => ['prestamo-detalle.update', $prestamoDetalle], 'method' => 'put', 'class' => 'formulario2']) !!}
                                                 @switch($prestamoDetalle->estado)

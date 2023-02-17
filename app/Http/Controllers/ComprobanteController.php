@@ -195,7 +195,7 @@ class ComprobanteController extends Controller
 
     public function download(Request $request)
     {
-        return response()->download(storage_path('app\resources' . $request->url));
+        return response()->download(storage_path('app/resources' . $request->url));
     }
 
     public function exportarpdffechas(Request $request){

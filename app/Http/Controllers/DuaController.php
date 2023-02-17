@@ -174,6 +174,7 @@ class DuaController extends Controller
 
         $duas = DB::select('call spduaestados(?)',array($añomes));
        
+        $data = [];
 
         foreach($duas as $dua){
                  
@@ -181,7 +182,7 @@ class DuaController extends Controller
 
             $data['data'][] = $dua->cantidad;
         }
-        $data['data'] = json_encode(isset($data));
+        $data['data'] = json_encode(($data));
 
 
         $report = '';
@@ -194,6 +195,7 @@ class DuaController extends Controller
     public function reportepersepcion(){
         $añomes = Carbon::now('America/Lima')->format('Y-m');
         $duaspersepciones = DB::select('call spduaspersepcion(?)',array($añomes));
+        $report = [];
 
         foreach($duaspersepciones as $duaspersepcion){
                  
@@ -201,7 +203,7 @@ class DuaController extends Controller
 
             $report['report'][] = $duaspersepcion->cantidad;
       }
-        $report['report'] = json_encode(isset($report));
+        $report['report'] = json_encode(($report));
 
         return $report;
 

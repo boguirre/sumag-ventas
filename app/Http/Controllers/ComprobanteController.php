@@ -257,5 +257,12 @@ class ComprobanteController extends Controller
         return $report;
 
     }
+
+    public function estado(Comprobante $comprobante)
+    {
+        $comprobante->estado = 2;
+        $comprobante->save();
+        return redirect()->route('comprobante.index')->with('guardar', 'ok');
+    }
 }
 

@@ -104,6 +104,9 @@
                     <div class="form-group">
                         <label class="form-label" for="pwd">Subida de Archivos:</label>
                         <input type="file" name="files[]" multiple>
+                        @error('files')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
                     </div>
 
                     <div>

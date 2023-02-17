@@ -19,7 +19,6 @@ class PrestamoController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
-
     }
     public function index()
     {
@@ -152,7 +151,7 @@ class PrestamoController extends Controller
             // $url = $request->file->store('resources');
 
             foreach ($files as $file) {
-                
+
                 Storage::putFileAs('resources/', $file, $file->getClientOriginalName());
 
                 if ($prestamo->resources) {
@@ -160,9 +159,9 @@ class PrestamoController extends Controller
                     // Storage::delete($url);
 
                     foreach ($prestamo->resources as $resource) {
-                        $url = 'resources/'. $resource->url;
-                         Storage::delete($url);
-                         $resource->delete();
+                        $url = 'resources/' . $resource->url;
+                        Storage::delete($url);
+                        $resource->delete();
                     }
 
                     $prestamo->resources()->create([
@@ -204,11 +203,11 @@ class PrestamoController extends Controller
             return redirect()->route('prestamo.show', $prestamo)->with('info', 'El monto no debe exceder del prestamo');
         }
 
-        if ($prestamo->monto_deuda == 0) {
-            $prestamo->update([
-                'estado' => 2
-            ]);
-        }
+        // if ($prestamo->monto_deuda == 0) {
+        //     $prestamo->update([
+        //         'estado' => 2
+        //     ]);
+        // }
 
         $prestamo->prestamo_detalles()->create([
             'monto' => $request->monto,

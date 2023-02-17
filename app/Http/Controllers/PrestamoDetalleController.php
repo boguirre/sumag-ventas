@@ -75,24 +75,24 @@ class PrestamoDetalleController extends Controller
 
         $fecha_actual = Carbon::now('America/Lima');
 
-        if ($prestamoDetalle->fecha_pago > $fecha_actual) {
-            $prestamoDetalle->update([
-                'estado' => 2
-            ]);
+        if ($prestamoDetalle->monto > $prestamo->monto_deuda) {
+            return redirect()->route('prestamo.show', $prestamo)->with('info', 'Este monto no debe exceder al monto faltante a pagar del prestamo');
         }
         else{
-            $prestamoDetalle->update([
-                'estado' => 3
-            ]);
+            if ($prestamoDetalle->fecha_pago > $fecha_actual) {
+                $prestamoDetalle->update([
+                    'estado' => 2
+                ]);
+            }
+            else{
+                $prestamoDetalle->update([
+                    'estado' => 3
+                ]);
+            }
+            return redirect()->route('prestamo.show', $prestamo)->with('addpago', 'ok');
         }
 
-        // if ($prestamo->monto_deuda <= 0) {
-        //     $prestamo->update([
-        //         'estado' => 2
-        //     ]);
-        // }
-
-        return redirect()->route('prestamo.show', $prestamo)->with('addpago', 'ok');
+        
     }
 
     /**
@@ -103,6 +103,9 @@ class PrestamoDetalleController extends Controller
      */
     public function destroy(PrestamoDetalle $prestamoDetalle)
     {
-        //
+        $prestamo = Prestamo::find($prestamoDetalle->prestamo_id);
+        $prestamoDetalle->delete();
+
+        return redirect()->route('prestamo.show', $prestamo)->with('addpago', 'ok');
     }
 }

@@ -137,6 +137,7 @@
                                         <th>Monto</th>
                                         <th>Fecha</th>
                                         <th>Acciones</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -164,6 +165,25 @@
                                                 @endswitch
                                                 
                                                 {!! Form::close() !!}
+
+                                                
+                                            </td>
+                                            <td>
+                                                @if ($prestamoDetalle->estado == 1)
+                                                <form action="{{route('prestamo-detalle.destroy', $prestamoDetalle)}}" method="POST" class="formulario3">
+                                                    @csrf
+                                                    @method('DELETE')
+    
+                                                    <button type="submit" class="" style="background: red; color:blanchedalmond; border-color: red"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash p-1 br-8 mb-1">
+                                                        <polyline points="3 6 5 6 21 6"></polyline>
+                                                        <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                                                    </svg></button>
+    
+                                                </form>
+                                                @else
+                                                    
+                                                @endif
+                                                
                                             </td>
                                         </tr>
                                     @endforeach
@@ -247,6 +267,29 @@
                     confirmButtonColor: '#3085d6',
                     cancelButtonColor: '#d33',
                     confirmButtonText: 'Si, Guardar!',
+                    cancelButtonText: 'Cancelar',
+                }).then((result) => {
+                    if (result.value) {
+
+
+                        this.submit()
+
+                    }
+                })
+
+            })
+
+            $('.formulario3').submit(function(e) {
+                e.preventDefault()
+
+                Swal.fire({
+                    title: 'Estas seguro de quitar el pago?',
+                    text: "¡No podrás revertir esto!",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonColor: '#3085d6',
+                    cancelButtonColor: '#d33',
+                    confirmButtonText: 'Si, Quitar!',
                     cancelButtonText: 'Cancelar',
                 }).then((result) => {
                     if (result.value) {

@@ -528,7 +528,7 @@
                                                     'class' => 'formulario',
                                                 ]) !!}
                                                 <button type="submit" class="btn btn-warning">
-                                                    Activado
+                                                    Pendiente
                                                 </button>
                                                 {!! Form::close() !!}
                                                 

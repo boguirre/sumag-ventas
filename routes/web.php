@@ -121,8 +121,9 @@ Route::post('comprobante/excelfechas/', [ComprobanteController::class, 'exportar
 Route::get('/comprobantes/reporte', [ComprobanteController::class, 'reporte'])->middleware('can:Modulo Comprobantes')->name('comprobante.reporte');
 Route::post('comprobante/exportpdf', [ComprobanteController::class, 'exportarpdffechas'])->middleware('can:Modulo Comprobantes')->name('comprobante.pdf');
 Route::post('comprobante/download', [ComprobanteController::class, 'download'])->middleware('can:Modulo Comprobantes')->name('comprobante.download');
-Route::post('comprobante/estado', [ComprobanteController::class, 'estado'])->middleware('can:Modulo Comprobantes')->name('comprobante.estado');
+
 Route::resource('comprobante', ComprobanteController::class)->middleware('can:Modulo Comprobantes')->names('comprobante');
+Route::post('comprobante/{comprobante}/estado', [ComprobanteController::class, 'estado'])->middleware('can:Modulo Comprobantes')->name('comprobante.estado');
 
 Route::resource('prestamo-detalle', PrestamoDetalleController::class)->middleware('can:Modulo Prestamos')->names('prestamo-detalle');
 

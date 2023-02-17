@@ -287,7 +287,8 @@
                 <b>{{$ventum->sucursales->nombre}} TU MEJOR OPCIÓN!!</b><br>UNA DE LAS MEJORES EMPRESAS DONDE VENDE PRODUCTOS DE CALIDAD
                 <br> <b>Ventas Por Mayor Y Menor </b><br>
                 <b>Atendemos Pedidos A Provincia </b> <br> <b> Dirección: </b> Av. Abancay 1119 - 1129 Tda:07(2do. Piso) <br>
-                <b>Celular:</b> 972117469 / 960516029 / 4284670<br>
+                <b>Celular:</b> 972117469 / 960516029 <br>
+                <b>Teléfono</b> (01) 4284670 <br>
                 <b>Gracias!! Por Su Preferencia.</b>
             </p>
         </div>

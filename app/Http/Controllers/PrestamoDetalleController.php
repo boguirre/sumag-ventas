@@ -86,6 +86,12 @@ class PrestamoDetalleController extends Controller
             ]);
         }
 
+        // if ($prestamo->monto_deuda <= 0) {
+        //     $prestamo->update([
+        //         'estado' => 2
+        //     ]);
+        // }
+
         return redirect()->route('prestamo.show', $prestamo)->with('addpago', 'ok');
     }
 

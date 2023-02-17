@@ -95,6 +95,11 @@ class PrestamoController extends Controller
      */
     public function show(Prestamo $prestamo)
     {
+        if ($prestamo->monto_deuda == 0) {
+                $prestamo->update([
+                    'estado' => 2
+                ]);
+            }
         return view('prestamos.show', compact('prestamo'));
     }
 

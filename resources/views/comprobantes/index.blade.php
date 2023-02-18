@@ -490,6 +490,7 @@
                                 <tr>
                                     <th class="text-center">ID</th>
                                     <th>N° Comprobante</th>
+                                    <th>Tienda</th>
                                     <th>Tipo de Comprobante</th>
                                     <th>Monto Importe</th>
                                     <th>Fecha Emision</th>
@@ -513,6 +514,7 @@
                                                 </svg> </a>
                                         </td>
                                         <td>{{ $comprobante->numero_comprobante }}</td>
+                                        <td>{{$comprobante->sucursal->nombre}}</td>
                                         <td>{{ $comprobante->tipo_comprobante->nombre}}</td>
                                         <td class="text-center">S/. {{ $comprobante->importe }}</td>
                                         <td>{{ $comprobante->fecha_emision }}</td>

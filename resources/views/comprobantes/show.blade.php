@@ -29,6 +29,15 @@
                     </div>
 
                     <div class="form-group">
+                        <label class="form-label" for="pwd">Tienda:</label>
+                        <input type="text" class="form-control" id="numero_comprobante" name="numero_comprobante"
+                            placeholder="Ingrese el numero del comprobante" value="{{ $comprobante->sucursal->nombre }}" disabled>
+                        @error('numero_comprobante')
+                            <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
+                        @enderror
+                    </div>
+
+                    <div class="form-group">
                         <label class="form-label" for="pwd">Tipo Comprobante:</label>
                         <input type="text" class="form-control" id="numero_comprobante" name="numero_comprobante"
                         placeholder="Ingrese el numero del comprobante" value="{{ $comprobante->tipo_comprobante->nombre }}" disabled>

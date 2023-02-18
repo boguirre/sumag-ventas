@@ -72,6 +72,7 @@ body {
 
 ol, ul {
   list-style: none;
+  
 }
 
 blockquote, q {
@@ -4766,11 +4767,16 @@ table .product-thumbnail img {
 .pro-desc {
   padding: 0 0 0px 14px;
 }
+.pro-desc ul {
+  padding: 0 0 0px 14px;
+}
 .pro-desc li {
   margin: 0 0 10px;
   position: relative;
   color: #6B7280;
   font-size: 14px;
+  padding: 0 0 0px 14px;
+
 }
 .pro-desc li::before {
   position: absolute;

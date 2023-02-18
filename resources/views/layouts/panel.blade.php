@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{asset('/css/rtl.min.css')}}" />
 
     <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    @yield('css')
 
 
 

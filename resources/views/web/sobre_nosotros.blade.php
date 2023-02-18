@@ -44,7 +44,7 @@
                             </h2>
                             <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    Llevar nuestros modelos de trabajo al máximo de lugares posibles, para que todo el mundo pueda disfrutar de la moda y el mejor diseño. Velar por la calidad de nuestras prendas y el servicio que ofrecemos a nuestros clientes.
+                                    "Llevar nuestros modelos de trabajo al máximo de lugares posibles, para que todos los clientes puedan disfrutar de la moda y el mejor diseño. Velar por la calidad de nuestras prendas y el servicio que ofrecemos a nuestros clientes."
                                 </div>
                             </div>
                         </div>
@@ -58,7 +58,7 @@
                             </h2>
                             <div id="collapseTwo" class="accordion-collapse collapse show" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    Ser una empresa líder y reconocida en la venta de ropa, lograr también extendernos y crear nuestras cadenas de almacenes, proporcionando cada día más un servicio de excelencia a nuestros clientes y que al mismo tiempo nos permitan competir en el mercado nacional con los mejores precios del mercado.
+                                    "Ser una empresa líder y reconocida en la venta de ropa, lograr también extendernos y crear nuestras cadenas de almacenes, proporcionando cada día más un servicio de excelencia a nuestros clientes y que al mismo tiempo nos permitan competir en el mercado nacional con los mejores precios del mercado."
                                 </div>
                             </div>
                         </div>

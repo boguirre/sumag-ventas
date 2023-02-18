@@ -61,7 +61,7 @@
                         <div class="col-md-6">
                             <label for="product_id">Producto</label>
                             {{--  <select class="form-control selectpicker" data-live-search="true" name="product_id" id="product_id">  --}}
-                            <select class="form-control" name="articulo_id" id="articulo_id">
+                            <select class="form-control" name="articulo_id" id="articulo_id" style="width: 100%">
                                 <option value="" disabled selected>Selecccione un producto</option>
                                 @foreach ($articulos as $articulo)
                                 <option value="{{$articulo->id}}_{{$articulo->stock}}_{{$articulo->precio_venta}}_{{$articulo->codigo}}">{{$articulo->nombre}}</option>
@@ -175,9 +175,18 @@
             
         </div>
 @endsection
+@section('css')
+<link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ttskch/select2-bootstrap4-theme@x.x.x/dist/select2-bootstrap4.min.css">
 
+@endsection
 @section('scripts')
-
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js" integrity="sha512-2ImtlRlf2VVmiGZsjm9bEyhjGW4dU7B6TNwh/hx/iSByxNENtj3WVE6o/9Lj4TJeVXPi4bnOIMXFIJJAeufa0A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script>
+    $('#articulo_id').select2({theme: "bootstrap4"  });
+  </script>
 <script>
     function solonumeros(e){
     key=e.keyCode || e.which;

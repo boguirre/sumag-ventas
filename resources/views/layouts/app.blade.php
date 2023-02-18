@@ -5,9 +5,13 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
         <title>SUMAG | DAMA NELSI</title>
-        <!-- LOGO SUMAG -->
-        <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo-sumag-damanelsin10.png')}}" >
-		
+        
+
+        <!-- Scripts -->
+        @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <!-- Styles -->
+        @livewireStyles
         <!-- Animate CSS -->
         <link rel="stylesheet" href="{{asset('assets/css/animate.min.css')}}">
 
@@ -17,21 +21,17 @@
         <!-- Main CSS -->
         <link rel="stylesheet" href="{{asset('assets/css/style.css')}}">
 
+        <!-- LOGO SUMAG -->
+        <link rel="shortcut icon" type="image/x-icon" href="{{asset('assets/img/logo-sumag-damanelsin10.png')}}" >
+
         <!-- Fonts -->
         <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
 
-        <!-- Scripts -->
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-        <!-- Styles -->
-        @livewireStyles
     </head>
     <body >
         <x-jet-banner />
 
-        
             @livewire('plantilla-navegacion')
-
             
             <main class="main">
 
@@ -39,11 +39,9 @@
                 
             </main>
 
-
-        
-
             @stack('modals')
             @livewire('plantilla-footer')
+
             @livewireScripts
             <!-- jQuery -->
             <script src="{{asset('assets/js/jquery-3.6.0.min.js')}}"></script>
@@ -83,8 +81,6 @@
 
             <!-- Custom JS -->
             <script src="{{asset('assets/js/script.js')}}"></script>
-
-            
             
     </body>
 </html>

@@ -32,12 +32,6 @@
                                         </div>
                                         <span class="zoom-icon"><i class="feather-maximize-2"></i></span>
                                     </div>
-                                    <!-- THUMBNAILS -->
-                                    {{-- <div class="slider-nav-thumbnails">
-                                        <div><img src="@if($producto->imagen){{Storage::url($producto->imagen->url)}}@else https://cdn.pixabay.com/photo/2021/05/18/17/49/grass-6264039_960_720.jpg @endif" alt="product image" /></div>
-                                        
-                                    </div> --}}
-
                                 </div>
                                 <!-- End Gallery -->
 
@@ -50,8 +44,6 @@
                                     <div class="clearfix product-price-cover">
                                         <div class="product-price primary-color float-left">
                                             <span class="current-price">S/. {{$articulo->precio_venta}}</span>
-                                            {{-- <span class="old-price">$ {{$producto->descuento}}</span>
-                                            <span class="save-price">-{{round((($producto->descuento)/($producto->precio))*100,0)}}%</span> --}}
                                         </div>
                                     </div>
 
@@ -59,28 +51,13 @@
                                         <li>Codigo del producto : <span class="text-black">{{$articulo->codigo}}</span></li>
                                         <li>Categoría : <span class="text-black">{{$articulo->categoria->nombre}}</span></li>
                                     </ul>
-                                    
-                                    <!-- <div class="rating d-inline-block mb-3">
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star"></i>
-                                        <i class="fas fa-star-half-alt"></i>
-                                        <i class="far fa-star"></i>
-                                        <span class="ml-5"> (3.5)</span>
-                                    </div> -->
-                                    
+                    
                                     <p class="in-stock text-brand">{{$articulo->stock}} en Stock</p>
 
                                     <div class="detail-extralink">
-                                        <!-- <div class="detail-qty border radius">
-                                            <a href="#" class="qty-down"><i class="fi-rs-minus-small"></i></a>
-                                            <span class="qty-val">1</span>
-                                            <a href="#" class="qty-up"><i class="fi-rs-plus-small"></i></a>
-                                        </div> -->
+                                        
                                         <div class="size-select">
-                                            {{-- <select class="form-select">
-                                                <option>Talla: {{$producto->talla}}</option>
-                                            </select> --}}
+                                            
                                         </div>
                                     </div>	
 
@@ -116,15 +93,14 @@
                                 </ul>
                                 <div class="tab-content shop_info_tab entry-main-content">
                                     <div class="tab-pane fade show active" id="Description">
-                                        <div class="">
-                                            <ul class="pro-desc">
+                                            <div class="pro-desc">
                                                 <p>{!!$articulo->descripcion!!}</p>
-                                            </ul> 
-                                        </div>
+                                            </div> 
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        
                         
                         <!-- Products -->
                         <section class="feature-products">

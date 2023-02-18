@@ -6,8 +6,19 @@
     </x-slot>
 
     <div>
+        <div class="row">
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{route('admin.index')}}" class="btn float-right" style=""> Volver A Panel de Administración</a>
+
+                </div>
+
+            </div>
+        </div>
         <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
+            
             @if (Laravel\Fortify\Features::canUpdateProfileInformation())
+            
                 @livewire('profile.update-profile-information-form')
 
                 <x-jet-section-border />

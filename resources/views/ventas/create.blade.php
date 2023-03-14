@@ -187,6 +187,9 @@
 <script>
     $('#articulo_id').select2({theme: "bootstrap4"  });
   </script>
+  <script>
+    $('#dueño_id').select2({theme: "bootstrap4"  });
+  </script>
 <script>
     function solonumeros(e){
     key=e.keyCode || e.which;

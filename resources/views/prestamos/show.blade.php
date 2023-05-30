@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="">Fecha de Vencimiento</label>
-                            <input type="text" name="" id="stock" value="{{ $prestamo->fecha_vencimiento }}"
+                            <input type="text" name="" id="stock" value="{{ \Carbon\Carbon::parse($prestamo->fecha_vencimiento)->format('d/m/Y') }}"
                                 class="form-control" disabled>
                         </div>
 

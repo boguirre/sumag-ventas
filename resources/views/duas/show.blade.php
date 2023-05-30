@@ -58,7 +58,7 @@
                     <div class="form-group">
                         <label class="form-label" for="pwd">Fecha de Numeracion:</label>
                         <input type="text" class="form-control" id="numero_dua" name="numero_dua"
-                            placeholder="Ingrese el numero de dua" value="{{ $dua->fecha_numeracion }}" disabled>
+                            placeholder="Ingrese el numero de dua" value="{{ \Carbon\Carbon::parse($dua->fecha_numeracion)->format('d/m/Y') }}" disabled>
                         @error('fecha_numeracion')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror

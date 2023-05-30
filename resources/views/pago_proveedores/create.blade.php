@@ -67,7 +67,7 @@
 
                     <div class="form-group">
                         <label class="form-label" for="pwd">Fecha de Deposito:</label>
-                        {!! Form::datetimelocal('fecha_deposito', null, ['class' => 'form-control']) !!}
+                        {!! Form::date('fecha_deposito', null, ['class' => 'form-control']) !!}
                         @error('fecha_deposito')
                             <strong class="text-sm text-red-600" style="color: red">{{ $message }}</strong>
                         @enderror

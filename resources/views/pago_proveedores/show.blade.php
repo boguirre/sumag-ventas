@@ -44,7 +44,7 @@
                         </div>
                         <div class="col-md-3">
                             <label for="">Fecha de Deposito</label>
-                            <input type="text" name="" id="stock" value="{{ $pagoProveedor->fecha_deposito }}"
+                            <input type="text" name="" id="stock" value="{{ \Carbon\Carbon::parse($pagoProveedor->fecha_deposito)->format('d/m/Y') }}"
                                 class="form-control" disabled>
                         </div>
 
@@ -126,7 +126,7 @@
                                         <tr>
                                             <td><a class="btn btn-primary">{{ $detalle->id }}</a></td>
                                             <td>{{ $detalle->monto }}</td>
-                                            <td>{{ $detalle->fecha_pago }}</td>
+                                            <td>{{ \Carbon\Carbon::parse($detalle->fecha_pago)->format('d-m-Y') }}</td>
                                         </tr>
                                     @endforeach
                                 </tbody>

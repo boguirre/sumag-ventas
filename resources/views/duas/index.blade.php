@@ -519,8 +519,8 @@
                                         </td>
                                         <td>{{ $dua->numero_dua }}</td>
                                         <td class="text-center">S/. {{ $dua->monto_percepcion }}</td>
-                                        <td>{{ $dua->fecha_numeracion }}</td>
-                                        <td>{{ $dua->mes_cobro }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($dua->fecha_numeracion)->format('d-m-Y') }}</td>
+                                        <td>{{ \Carbon\Carbon::parse($dua->mes_cobro)->format('d-m-Y') }}</td>
                                         <td>{{ $dua->sucursal->nombre }}</td>
                                         @if ($dua->estado == 1)
                                             <td>

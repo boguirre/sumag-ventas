@@ -15,7 +15,7 @@ class MedidaController extends Controller
     }
     public function index()
     {
-        $medidas = Medida::where('estado',1)->get();
+        $medidas = Medida::all();
         return view('medidas.index', compact('medidas'));
 
     }
